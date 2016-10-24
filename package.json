@@ -1,0 +1,24 @@
+{
+  "name": "DANCINGGOATSPA",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "dateformat": "^1.0.12",
+    "react-router": "^2.7.0",
+    "react-scripts": "0.3.0"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-router-scroll": "^0.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/react-scripts/config/eslint.js"
+  }
+}
