@@ -29,7 +29,7 @@ Dancing Goat Single Page Application is a sample website utilizing Kentico Deliv
 1. To preview the unpublished content you need to provide the Preview API key to the application.
 2. Copy the Preview API key from the https://app.kenticocloud.com. For more details, please read: https://kenticocloud.com/docs#previewing-unpublished-content-using-deliver-api .
 3. Insert the Preview API key to the string value of the previewApiKey constant in the 'src\Client.js' file.
-4. If your application is running, you should immediately  see the unpublished version of the content. If not, please proceed with the steps from previous paragraph.
+4. If your application is running, you should immediately  see the unpublished version of the content. If not, please follow the **Application setup** section. 
 
 ## CONTENT DELIVERY
 
