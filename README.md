@@ -37,4 +37,4 @@ The content can be reached either through REST API on URL: http://deliver.kentic
 
 For more information about the Kentico Deliver REST API, please see http://docs.kenticodeliver.apiary.io .
 
-You can find Deliver SDKs in our organization repositories here: https://github.com/Kentico .
+You can find Deliver SDKs repositories in our organization on Github: https://github.com/Kentico .
