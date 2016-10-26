@@ -7,13 +7,13 @@ Dancing Goat Single Page Application is a sample website utilizing Kentico Deliv
 ## PREREQUISITIES
 
 1. Latest version of NodeJS and npm. Both of these components can downloaded here: https://nodejs.org/en/download/ .
-2. Account at https://app.kenticocloud.com with sample Kentico Deliver project. You can read more about Kentico Deliver service activation here: https://kenticocloud.com/docs#enabling-kentico-deliver .
+2. Account at https://app.kenticocloud.com with a sample project that is created automatically for every new subscription. You can read more about Kentico Deliver service activation here: https://kenticocloud.com/docs#enabling-kentico-deliver .
 
 ## CONTENT ADMINISTRATION
 
 1. Navigate to https://app.kenticocloud.com in your browser.
 2. Sign in with your credentials.
-3. You are redirected to content administration interface of your Dancing Goat project. For more details about the content editing, please see https://kenticocloud.com/docs .
+3. You are redirected to content administration interface of your sample project. For more details about the content editing, please see https://kenticocloud.com/docs .
 
 ## APPLICATION SETUP
 
@@ -33,5 +33,8 @@ Dancing Goat Single Page Application is a sample website utilizing Kentico Deliv
 
 ## CONTENT DELIVERY
 
-1. The whole content can be reached through http://deliver.kenticocloud.com/<PROJECT_ID>/items URL, which is also a base URL for all the request on your project.
-2. To read more about the Kentico Deliver API, please see http://docs.kenticodeliver.apiary.io/ .
+The content can be reached either through REST API on URL: http://deliver.kenticocloud.com/PROJECT_ID/items, or through Deliver SDKs.
+
+For more information about the Kentico Deliver REST API, please see http://docs.kenticodeliver.apiary.io .
+
+You can find Deliver SDKs in our organization repositories here: https://github.com/Kentico .
