@@ -1,14 +1,30 @@
-const projectId = "";
+const projectId = "975bf280-fd91-488c-994c-2f04416e5ee3";
 const previewApiKey = "";
 
-function getJsonContent(url, options) {
-  let headers = {}
-  if (previewApiKey !== "") {
-    headers = { headers: { "Authorization": "Bearer " + previewApiKey } }
-    url = "https://preview-deliver.kenticocloud.com/" + projectId + "/" + url;
-  } else {
-    url = "https://deliver.kenticocloud.com/" + projectId + "/" + url;
+function isPreview() {
+  return previewApiKey !== "";
+}
+
+function getBaseUrl() {
+  if (isPreview()) {
+    return "https://preview-deliver.kenticocloud.com/";
   }
+
+  return "https://deliver.kenticocloud.com/";
+}
+
+function getHeaders() {
+  const headers = {};
+  if (isPreview()) {
+    headers["Authorization"] = "Bearer " + previewApiKey;
+  }
+
+  return new Headers(headers);
+}
+
+function getJsonContent(relativeUrl, options) {
+  let url = getBaseUrl() + projectId + "/" + relativeUrl;
+  const headers = getHeaders();
 
   if (options) {
     let parameters = Object.getOwnPropertyNames(options).map((name) => encodeURIComponent(name) + "=" + encodeURIComponent(options[name]));
@@ -17,7 +33,11 @@ function getJsonContent(url, options) {
     }
   }
 
-  return fetch(url, headers).then(checkStatus).then((response) => response.json());
+  const context = {
+    headers: headers,
+  };
+
+  return fetch(url, context).then(checkStatus).then((response) => response.json());
 }
 
 function checkStatus(response) {
@@ -25,7 +45,7 @@ function checkStatus(response) {
     return response;
   }
 
-  let error = "HTTP error " + response.status + ": " + response.statusText;
+  const error = "HTTP error " + response.status + ": " + response.statusText;
   console.log(error); // eslint-disable-line no-console
   throw error;
 }
@@ -39,7 +59,7 @@ class Client {
   getItems(options) {
     return getJsonContent("items", options);
   }
-  
+
 }
 
 export default new Client();

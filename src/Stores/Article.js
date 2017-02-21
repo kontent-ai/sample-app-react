@@ -9,66 +9,66 @@ let articleDetailsPromises = {};
 let changeListeners = [];
 
 let notifyChange = () => {
-    changeListeners.forEach((listener) => {
-        listener();
-    });
+  changeListeners.forEach((listener) => {
+    listener();
+  });
 }
 
 class ArticleStore {
 
-    // Actions
+  // Actions
 
-    provideArticle(articleCodename) {
-        if (articleDetailsPromises[articleCodename]) {
-            return;
-        }
-
-        articleDetailsPromises[articleCodename] = Client.getItem(articleCodename).then((response) => {
-            if (response.item.system) {
-                articleDetails[articleCodename] = response.item;
-                notifyChange();
-            }
-        });
+  provideArticle(articleCodename) {
+    if (articleDetailsPromises[articleCodename]) {
+      return;
     }
 
-    provideArticles(count) {
-        if (count <= articleListCapacity) {
-            return;
-        }
+    articleDetailsPromises[articleCodename] = Client.getItem(articleCodename).then((response) => {
+      if (response.item.system) {
+        articleDetails[articleCodename] = response.item;
+        notifyChange();
+      }
+    });
+  }
 
-        articleListCapacity = count;
-
-        Client.getItems({
-            "system.type": "article",
-            "elements": "title,teaser_image,post_date,summary",
-            "order": "elements.post_date[DESC]"
-        }).then((response) => {
-            articleList = response.items;
-            notifyChange();
-        });
+  provideArticles(count) {
+    if (count <= articleListCapacity) {
+      return;
     }
 
-    // Methods
+    articleListCapacity = count;
 
-    getArticle(articleCodename) {
-        return articleDetails[articleCodename];
-    }
+    Client.getItems({
+      "system.type": "article",
+      "elements": "title,teaser_image,post_date,summary",
+      "order": "elements.post_date[DESC]"
+    }).then((response) => {
+      articleList = response.items;
+      notifyChange();
+    });
+  }
 
-    getArticles(count) {
-        return articleList.slice(0, count);
-    }
+  // Methods
 
-    // Listeners
+  getArticle(articleCodename) {
+    return articleDetails[articleCodename];
+  }
 
-    addChangeListener(listener) {
-        changeListeners.push(listener);
-    }
+  getArticles(count) {
+    return articleList.slice(0, count);
+  }
 
-    removeChangeListener(listener) {
-        changeListeners = changeListeners.filter((element) => {
-            return element !== listener;
-        });
-    }
+  // Listeners
+
+  addChangeListener(listener) {
+    changeListeners.push(listener);
+  }
+
+  removeChangeListener(listener) {
+    changeListeners = changeListeners.filter((element) => {
+      return element !== listener;
+    });
+  }
 
 }
 

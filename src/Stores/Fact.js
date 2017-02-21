@@ -5,49 +5,49 @@ let initialized = false;
 let facts = [];
 
 let notifyChange = () => {
-    changeListeners.forEach((listener) => {
-        listener();
-    });
+  changeListeners.forEach((listener) => {
+    listener();
+  });
 }
 
 let fetchFacts = () => {
-    if (initialized) {
-        return;
-    }
+  if (initialized) {
+    return;
+  }
 
-    Client.getItem("about_us").then((response) => {
-        facts = response.item.elements.facts.value.map((codename) => response.modular_content[codename]);
-        notifyChange();
-    });
+  Client.getItem("about_us").then((response) => {
+    facts = response.item.elements.facts.value.map((codename) => response.modular_content[codename]);
+    notifyChange();
+  });
 
-    initialized = true;
+  initialized = true;
 }
 
 class FactStore {
 
-    // Actions
+  // Actions
 
-    provideFacts() {
-        fetchFacts();
-    }
+  provideFacts() {
+    fetchFacts();
+  }
 
-    // Methods
+  // Methods
 
-    getFacts() {
-        return facts;
-    }
+  getFacts() {
+    return facts;
+  }
 
-    // Listeners
+  // Listeners
 
-    addChangeListener(listener) {
-        changeListeners.push(listener);
-    }
+  addChangeListener(listener) {
+    changeListeners.push(listener);
+  }
 
-    removeChangeListener(listener) {
-        changeListeners = changeListeners.filter((element) => {
-            return element !== listener;
-        });
-    }
+  removeChangeListener(listener) {
+    changeListeners = changeListeners.filter((element) => {
+      return element !== listener;
+    });
+  }
 
 }
 

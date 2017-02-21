@@ -5,129 +5,129 @@ let initialized = false;
 let brewers = [];
 
 let notifyChange = () => {
-    changeListeners.forEach((listener) => {
-        listener();
-    });
+  changeListeners.forEach((listener) => {
+    listener();
+  });
 }
 
 let fetchBrewers = () => {
-    if (initialized) {
-        return;
-    }
+  if (initialized) {
+    return;
+  }
 
-    Client.getItems({
-        "system.type": "brewer",
-        "order": "elements.product_name"
-    }).then((response) => {
-        brewers = response.items;
-        notifyChange();
-    });
+  Client.getItems({
+    "system.type": "brewer",
+    "order": "elements.product_name"
+  }).then((response) => {
+    brewers = response.items;
+    notifyChange();
+  });
 
-    initialized = true;
+  initialized = true;
 }
 
 export class Filter {
-    constructor() {
-        this.manufacturers = [];
-        this.priceRanges = [];
-        this.productStatuses = [];
+  constructor() {
+    this.manufacturers = [];
+    this.priceRanges = [];
+    this.productStatuses = [];
+  }
+
+  matches(brewer) {
+    return this.matchesManufacturers(brewer) && this.matchesPriceRanges(brewer) && this.matchesProductStatuses(brewer);
+  }
+
+  matchesManufacturers(brewer) {
+    if (this.manufacturers.length === 0) {
+      return true;
     }
 
-    matches(brewer) {
-        return this.matchesManufacturers(brewer) && this.matchesPriceRanges(brewer) && this.matchesProductStatuses(brewer);
+    return this.manufacturers.indexOf(brewer.elements.manufacturer.value) >= 0;
+  }
+
+  matchesPriceRanges(brewer) {
+    if (this.priceRanges.length === 0) {
+      return true;
     }
 
-    matchesManufacturers(brewer) {
-        if (this.manufacturers.length === 0) {
-            return true;
-        }
+    let price = brewer.elements.price.value;
 
-        return this.manufacturers.indexOf(brewer.elements.manufacturer.value) >= 0;
+    return this.priceRanges.some((priceRange) => priceRange.min <= price && price <= priceRange.max);
+  }
+
+  matchesProductStatuses(brewer) {
+    if (this.productStatuses.length === 0) {
+      return true;
     }
 
-    matchesPriceRanges(brewer) {
-        if (this.priceRanges.length === 0) {
-            return true;
-        }
+    let status = brewer.elements.product_status.value;
 
-        let price = brewer.elements.price.value;
+    return status.some((x) => this.productStatuses.indexOf(x.name) >= 0);
+  }
 
-        return this.priceRanges.some((priceRange) => priceRange.min <= price && price <= priceRange.max);
-    }
+  toggleManufacturer(manufacturer) {
+    let index = this.manufacturers.indexOf(manufacturer);
 
-    matchesProductStatuses(brewer) {
-        if (this.productStatuses.length === 0) {
-            return true;
-        }
+    if (index < 0) this.manufacturers.push(manufacturer); else this.manufacturers.splice(index, 1);
+  }
 
-        let status = brewer.elements.product_status.value;
+  togglePriceRange(priceRange) {
+    let index = this.priceRanges.findIndex((x) => x.min === priceRange.min && x.max === priceRange.max);
 
-        return status.some((x) => this.productStatuses.indexOf(x.name) >= 0);
-    }
+    if (index < 0) this.priceRanges.push(priceRange); else this.priceRanges.splice(index, 1);
+  }
 
-    toggleManufacturer(manufacturer) {
-        let index = this.manufacturers.indexOf(manufacturer);
+  toggleProductStatus(productStatus) {
+    let index = this.productStatuses.indexOf(productStatus);
 
-        if (index < 0) this.manufacturers.push(manufacturer); else this.manufacturers.splice(index, 1);
-    }
-
-    togglePriceRange(priceRange) {
-        let index = this.priceRanges.findIndex((x) => x.min === priceRange.min && x.max === priceRange.max);
-
-        if (index < 0) this.priceRanges.push(priceRange); else this.priceRanges.splice(index, 1);
-    }
-
-    toggleProductStatus(productStatus) {
-        let index = this.productStatuses.indexOf(productStatus);
-
-        if (index < 0) this.productStatuses.push(productStatus); else this.productStatuses.splice(index, 1);
-    }
+    if (index < 0) this.productStatuses.push(productStatus); else this.productStatuses.splice(index, 1);
+  }
 }
 
 let brewerFilter = new Filter();
 
 class BrewerStore {
 
-    // Actions
+  // Actions
 
-    provideBrewer(brewerId) {
-        fetchBrewers();
-    }
+  provideBrewer(brewerId) {
+    fetchBrewers();
+  }
 
-    provideBrewers() {
-        fetchBrewers();
-    }
+  provideBrewers() {
+    fetchBrewers();
+  }
 
-    // Methods
+  // Methods
 
-    getBrewer(brewerCodename) {
-        return brewers.find((brewer) => brewer.system.codename === brewerCodename);
-    }
+  getBrewer(brewerCodename) {
+    return brewers.find((brewer) => brewer.system.codename === brewerCodename);
+  }
 
-    getBrewers() {
-        return brewers;
-    }
+  getBrewers() {
+    return brewers;
+  }
 
-    getFilter() {
-        return brewerFilter;
-    }
+  getFilter() {
+    return brewerFilter;
+  }
 
-    setFilter(filter) {
-        brewerFilter = filter;
-        notifyChange();
-    }
+  setFilter(filter) {
+    brewerFilter = filter;
+    notifyChange();
+  }
 
-    // Listeners
+  // Listeners
 
-    addChangeListener(listener) {
-        changeListeners.push(listener);
-    }
+  addChangeListener(listener) {
+    changeListeners.push(listener);
+  }
 
-    removeChangeListener(listener) {
-        changeListeners = changeListeners.filter((element) => {
-            return element !== listener;
-        });
-    }
+  removeChangeListener(listener) {
+    changeListeners = changeListeners.filter((element) => {
+      return element !== listener;
+    });
+  }
 
 }
 
