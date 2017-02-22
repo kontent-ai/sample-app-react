@@ -1,4 +1,4 @@
-# Kentico Cloud sample single-page application
+# Kentico Cloud sample JavaScript single-page application
 
  Dancing Goat is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content.
 
