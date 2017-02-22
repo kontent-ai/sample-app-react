@@ -1,40 +1,46 @@
-# Dancing Goat SPA
+# Kentico Cloud sample single-page application
 
-## SUMMARY
+ Dancing Goat is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content.
 
-Dancing Goat Single Page Application is a sample website utilizing Kentico Deliver service to manage and retrieve content.
+## Prerequisites
 
-## PREREQUISITIES
+1. Latest version of NodeJS and npm. You can download both at https://nodejs.org/en/download/.
+2. A Kentico Cloud account. You can register at https://app.kenticocloud.com.
 
-1. Latest version of NodeJS and npm. Both of these components can downloaded here: https://nodejs.org/en/download/ .
-2. Account at https://app.kenticocloud.com with a sample project that is created automatically for every new subscription. You can read more about Kentico Deliver service activation here: https://kenticocloud.com/docs#enabling-kentico-deliver .
-
-## CONTENT ADMINISTRATION
+## Content administration
 
 1. Navigate to https://app.kenticocloud.com in your browser.
 2. Sign in with your credentials.
-3. You are redirected to content administration interface of your sample project. For more details about the content editing, please see https://kenticocloud.com/docs .
+3. Manage content in the content administration interface of your sample project.
 
-## APPLICATION SETUP
+You can learn more about content editing with Kentico Cloud in the [documentation](http://help.kenticocloud.com/).
 
-1. Copy the Project ID from the https://app.kenticocloud.com . More details about getting Project ID: https://kenticocloud.com/docs#getting-project-id .
-2. Insert the Project ID to the string value of the projectId constant in the 'src\Client.js' file. 
-2. Navigate to the root folder of the application in the command line.
-3. Type 'npm install' to install required npm packages.
-4. Type 'npm start' to start development server.
-5. The application should open in your browser.
+## Application setup
 
-## PREVIEW CONTENT
+1. In Kentico Cloud, navigate to the Development section and copy the ID of your project.
+2. Open the `src\Client.js` file.
+3. Find the `projectId` constant and paste the Project ID as its value.
+3. Save the changes.
+4. Navigate to the root folder of the application in the command line.
+5. Type `npm install` to install required npm packages.
+6. Type `npm start` to start a development server.
+7. The application opens in your browser at http://localhost:3000.
 
-1. To preview the unpublished content you need to provide the Preview API key to the application.
-2. Copy the Preview API key from the https://app.kenticocloud.com. For more details, please read: https://kenticocloud.com/docs#previewing-unpublished-content-using-deliver-api .
-3. Insert the Preview API key to the string value of the previewApiKey constant in the 'src\Client.js' file.
-4. If your application is running, you should immediately  see the unpublished version of the content. If not, please follow the **Application setup** section. 
+## Preview content
+For previewing content that is not yet published, you need to provide the Preview API key to the application.
 
-## CONTENT DELIVERY
+1. In Kentico Cloud, navigate to the Development section and copy the Preview API key for the Delivery API.
+2. Open the `src\Client.js` file.
+3. Find the `previewApiKey` constant and paste the Preview API key as its value.
+4. Save the changes.
+5. If the application is running, you will see the unpublished version of the content. If not, please follow the **Application setup** section.
 
-The content can be reached either through REST API on URL: http://deliver.kenticocloud.com/PROJECT_ID/items, or through Deliver SDKs.
+## Content delivery
 
-For more information about the Kentico Deliver REST API, please see http://docs.kenticodeliver.apiary.io .
+You can retrieve content either through the Kentico Cloud Delivery SDKs or the Kentico Cloud Delivery API:
+* For published content, use `https://deliver.kenticocloud.com/PROJECT_ID/items`.
+* For unpublished content, use `https://preview-deliver.kenticocloud.com/PROJECT_ID/items`.
 
-You can find Deliver SDKs repositories in our organization on Github: https://github.com/Kentico .
+For more info about the API, see the [API reference](http://docs.kenticodeliver.apiary.io).
+
+You can find the Delivery and other SDKs at https://github.com/Kentico.
