@@ -1,6 +1,6 @@
 # Kentico Cloud sample JavaScript single-page application
 
- This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content.
+ This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at https://app.kenticocloud.com.
 
 ## Application setup
 
@@ -27,7 +27,7 @@ To preview content in the sample application, follow these steps:
 6. Change the values of the constants using the Project ID and Preview API key you copied.
 7. Save the file.
 
-When you now run the application, you will see the unpublished version of content.
+When you now run the application, you will see all project content including the unpublished version of content items.
 
 ## Content administration
 
