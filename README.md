@@ -1,15 +1,15 @@
 # Kentico Cloud sample JavaScript single-page application
 
- This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at https://app.kenticocloud.com.
+ This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
 
 ## Application setup
 
-1. Install the latest version of NodeJS and npm. You can download both at https://nodejs.org/en/download/.
+1. Install the latest version of NodeJS and npm. You can download both at <https://nodejs.org/en/download/>.
 2. Clone the sample application repository.
-4. Navigate to the root folder of the application in the command line.
-5. Type `npm install` to install required npm packages.
-6. Type `npm start` to start a development server.
-7. The application opens in your browser at http://localhost:3000.
+3. Navigate to the root folder of the application in the command line.
+4. Type `npm install` to install required npm packages.
+5. Type `npm start` to start a development server.
+6. The application opens in your browser at <http://localhost:3000>.
 
 After starting, the sample application retrieves content from the default Kentico Cloud sample project.
 
@@ -31,7 +31,7 @@ When you now run the application, you will see all project content including the
 
 ## Content administration
 
-1. Navigate to https://app.kenticocloud.com in your browser.
+1. Navigate to <https://app.kenticocloud.com> in your browser.
 2. Sign in with your credentials.
 3. Manage content in the content administration interface of your sample project.
 
@@ -40,9 +40,10 @@ You can learn more about content editing with Kentico Cloud in the [documentatio
 ## Content delivery
 
 You can retrieve content either through the Kentico Cloud Delivery SDKs or the Kentico Cloud Delivery API:
+
 * For published content, use `https://deliver.kenticocloud.com/PROJECT_ID/items`.
 * For unpublished content, use `https://preview-deliver.kenticocloud.com/PROJECT_ID/items`.
 
-For more info about the API, see the [API reference](http://docs.kenticodeliver.apiary.io).
+For more info about the API, see the [API reference](https://developer.kenticocloud.com/reference).
 
-You can find the Delivery and other SDKs at https://github.com/Kentico.
+You can find the Delivery and other SDKs at <https://github.com/Kentico>.
