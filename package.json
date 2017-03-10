@@ -19,6 +19,6 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
+    "extends": "react-app"
   }
 }

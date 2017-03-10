@@ -62,8 +62,7 @@ class Article extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="article-detail-content" dangerouslySetInnerHTML={{ __html: content }}>
-            </div>
+            <div className="article-detail-content" dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </article>
       </div>
