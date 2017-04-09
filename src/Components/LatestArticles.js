@@ -49,7 +49,7 @@ class LatestArticles extends Component {
       let imageLink = e.teaser_image.value[0].url;
       let postDate = formatDate(e.post_date.value);
       let summary = e.summary.value;
-      let link = "/articles/" + article.system.codename;
+      let link = "/articles/" + article.elements.url_pattern.value;
 
       return (
         <div className="col-md-3" key={index}>
@@ -79,7 +79,7 @@ class LatestArticles extends Component {
     let imageLink = e.teaser_image.value[0].url;
     let postDate = formatDate(e.post_date.value);
     let summary = e.summary.value;
-    let link = "/articles/" + article.system.codename;
+    let link = "/articles/" + article.elements.url_pattern.value;
 
     return (
       <div className="row">

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import CoffeeStore from "../Stores/Coffee";
+import RichTextElement from '../Components/RichTextElement';
 
 let getState = (props) => {
   return {
-    coffee: CoffeeStore.getCoffee(props.params.coffeeCodename)
+    coffee: CoffeeStore.getCoffee(props.params.coffeeSlug)
   };
 };
 
@@ -18,7 +19,7 @@ class Coffee extends Component {
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
-    CoffeeStore.provideCoffee(this.props.params.coffeeId);
+    CoffeeStore.provideCoffee(this.props.params.coffeeSlug);
   }
 
   componentWillUnmount() {
@@ -39,10 +40,10 @@ class Coffee extends Component {
     let e = this.state.coffee.elements;
     let name = e.product_name.value;
     let imageLink = e.image.value[0].url;
-    let description = e.long_description.value;
+    let descriptionElement = e.long_description;
     let farm = e.farm.value;
     let variety = e.variety.value;
-    let processing = e.processing.value;
+    let processing = e.processing.value.length > 0 ? e.processing.value[0].name : "";
     let altitude = e.altitude.value + " feet";
 
     return (
@@ -61,7 +62,7 @@ class Coffee extends Component {
                 <img alt={name} className="" src={imageLink} title={name} />
               </figure>
               <div className="description">
-                <div dangerouslySetInnerHTML={{ __html: description }}></div>
+                <RichTextElement element={descriptionElement} />
                 <div className="product-detail-properties">
                   <h4>Parameters</h4>
                   <dl className="row">

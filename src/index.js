@@ -23,13 +23,13 @@ ReactDOM.render((
       <Route path="about" component={AboutPage} />
       <Route path="cafes" component={CafesPage} />
       <Route path="articles" component={ArticlesPage} />
-      <Route path="articles/:articleCodename" component={ArticlePage} />
+      <Route path="articles/:articleSlug" component={ArticlePage} />
       <Route path="store" component={StorePage}>
         <IndexRedirect to="coffees" />
         <Route path="coffees" component={CoffeeStore} />
-        <Route path="coffees/:coffeeCodename" component={CoffeePage} />
+        <Route path="coffees/:coffeeSlug" component={CoffeePage} />
         <Route path="brewers" component={BrewerStore} />
-        <Route path="brewers/:brewerCodename" component={BrewerPage} />
+        <Route path="brewers/:brewerSlug" component={BrewerPage} />
       </Route>
     </Route>
   </Router>

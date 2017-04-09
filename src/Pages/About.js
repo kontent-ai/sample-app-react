@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FactStore from '../Stores/Fact';
+import RichTextElement from '../Components/RichTextElement';
 
 let getState = () => {
   return {
@@ -32,7 +33,7 @@ class About extends Component {
     let facts = this.state.facts.map((fact, index) => {
       let e = fact.elements;
       let title = e.title.value;
-      let content = e.description.value;
+      let descriptionElement = e.description;
       let imageLink = e.image.value[0].url;
 
       if (index % 2 === 0) {
@@ -40,7 +41,7 @@ class About extends Component {
           <section className="row text-and-image" key={index}>
             <h2 className="col-lg-12">{title}</h2>
             <div className="col-md-6">
-              <div className="text-and-image-text" dangerouslySetInnerHTML={{ __html: content }}></div>
+              <RichTextElement className="text-and-image-text" element={descriptionElement} />
             </div>
             <div className="col-md-6">
               <img alt={title} className="img-responsive" src={imageLink} title={title} />
@@ -53,7 +54,7 @@ class About extends Component {
         <section className="row text-and-image" key={index}>
           <h2 className="col-lg-12">{title}</h2>
           <div className="col-md-6 col-md-push-6">
-            <div className="text-and-image-text-right" dangerouslySetInnerHTML={{ __html: content }}></div>
+            <RichTextElement className="text-and-image-text-right" element={descriptionElement} />
           </div>
           <div className="col-md-6 col-md-pull-6">
             <img alt={title} className="img-responsive" src={imageLink} title={title} />

@@ -42,7 +42,7 @@ class Cafes extends Component {
         country: cafe.elements.country.value,
         state: cafe.elements.state.value,
         phone: cafe.elements.phone.value,
-        link: "/cafes/" + cafe.system.codename,
+        link: "/cafes/" + cafe.elements.url_pattern.value,
       };
       model.dataAddress = model.city + ", " + model.street;
       model.countryWithState = model.country + (model.state ? ", " + model.state : "");

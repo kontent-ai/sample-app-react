@@ -52,7 +52,7 @@ class Articles extends Component {
       let imageLink = e.teaser_image.value[0].url;
       let postDate = formatDate(e.post_date.value);
       let summary = e.summary.value;
-      let link = "/articles/" + article.system.codename;
+      let link = "/articles/" + article.elements.url_pattern.value;
 
       result.push(
         <div className="col-md-3" key={counter++}>

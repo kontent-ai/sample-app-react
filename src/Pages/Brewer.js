@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import BrewerStore from "../Stores/Brewer";
+import RichTextElement from '../Components/RichTextElement';
 
 let getState = (props) => {
   return {
-    brewer: BrewerStore.getBrewer(props.params.brewerCodename)
+    brewer: BrewerStore.getBrewer(props.params.brewerSlug)
   };
 };
 
@@ -18,7 +19,7 @@ class Brewer extends Component {
 
   componentDidMount() {
     BrewerStore.addChangeListener(this.onChange);
-    BrewerStore.provideBrewer(this.props.params.brewerId);
+    BrewerStore.provideBrewer(this.props.params.brewerSlug);
   }
 
   componentWillUnmount() {
@@ -39,7 +40,7 @@ class Brewer extends Component {
     let e = this.state.brewer.elements;
     let name = e.product_name.value;
     let imageLink = e.image.value[0].url;
-    let description = e.long_description.value;
+    let descriptionElement = e.long_description;
 
     return (
       <div className="container">
@@ -57,7 +58,7 @@ class Brewer extends Component {
                 <img alt={name} className="" src={imageLink} title={name} />
               </figure>
               <div className="description">
-                <div dangerouslySetInnerHTML={{ __html: description }}></div>
+                <RichTextElement element={descriptionElement} />
               </div>
             </div>
           </div>
