@@ -63,7 +63,7 @@ class Coffees extends Component {
       let name = e.product_name.value;
       let imageLink = e.image.value[0].url;
       let status = renderProductStatus(e.product_status);
-      let link = "store/coffees/" + coffee.system.codename;
+      let link = "store/coffees/" + coffee.elements.url_pattern.value;
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

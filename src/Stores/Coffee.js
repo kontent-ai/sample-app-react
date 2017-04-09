@@ -1,8 +1,11 @@
 import Client from "../Client.js";
 
 let changeListeners = [];
-let initialized = false;
 let coffees = [];
+let processings = [];
+
+let coffeesPromise = null;
+let filterPropertiesPromise = null;
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -11,20 +14,29 @@ let notifyChange = () => {
 }
 
 let fetchCoffees = () => {
-  if (initialized) {
+  if (coffeesPromise) {
     return;
   }
 
-  Client.getItems({
+  coffeesPromise = Client.getItems({
     "system.type": "coffee",
     "order": "elements.product_name"
   }).then((response) => {
     coffees = response.items;
     notifyChange();
   });
-
-  initialized = true;
 }
+
+let fetchFilterProperties = () => {
+  if (filterPropertiesPromise) {
+    return;
+  }
+
+  filterPropertiesPromise = Client.getType("coffee").then((response) => {
+    processings = response.elements.processing.options;
+    notifyChange();
+  });
+};
 
 export class Filter {
   constructor() {
@@ -41,7 +53,10 @@ export class Filter {
       return true;
     }
 
-    return this.processings.indexOf(coffee.elements.processing.value) >= 0;
+    let value = coffee.elements.processing.value;
+    let processing = value.length > 0 ? value[0].codename : null;
+
+    return this.processings.indexOf(processing) >= 0;
   }
 
   toggleProcessing(processing) {
@@ -57,7 +72,7 @@ class CoffeeStore {
 
   // Actions
 
-  provideCoffee(coffeeId) {
+  provideCoffee(coffeeSlug) {
     fetchCoffees();
   }
 
@@ -65,14 +80,22 @@ class CoffeeStore {
     fetchCoffees();
   }
 
+  provideProcessings() {
+    fetchFilterProperties();
+  }
+
   // Methods
 
-  getCoffee(coffeeCodename) {
-    return coffees.find((coffee) => coffee.system.codename === coffeeCodename);
+  getCoffee(coffeeSlug) {
+    return coffees.find((coffee) => coffee.elements.url_pattern.value === coffeeSlug);
   }
 
   getCoffees() {
     return coffees;
+  }
+
+  getProcessings() {
+    return processings;
   }
 
   getFilter() {

@@ -18,14 +18,17 @@ class ArticleStore {
 
   // Actions
 
-  provideArticle(articleCodename) {
-    if (articleDetailsPromises[articleCodename]) {
+  provideArticle(articleSlug) {
+    if (articleDetailsPromises[articleSlug]) {
       return;
     }
 
-    articleDetailsPromises[articleCodename] = Client.getItem(articleCodename).then((response) => {
-      if (response.item.system) {
-        articleDetails[articleCodename] = response.item;
+    articleDetailsPromises[articleSlug] = Client.getItems({
+      "system.type": "article",
+      "elements.url_pattern": articleSlug
+    }).then((response) => {
+      if (response.items.length > 0) {
+        articleDetails[articleSlug] = response.items[0];
         notifyChange();
       }
     });
@@ -40,7 +43,7 @@ class ArticleStore {
 
     Client.getItems({
       "system.type": "article",
-      "elements": "title,teaser_image,post_date,summary",
+      "elements": "title,teaser_image,post_date,summary,url_pattern",
       "order": "elements.post_date[DESC]"
     }).then((response) => {
       articleList = response.items;
@@ -50,8 +53,8 @@ class ArticleStore {
 
   // Methods
 
-  getArticle(articleCodename) {
-    return articleDetails[articleCodename];
+  getArticle(articleSlug) {
+    return articleDetails[articleSlug];
   }
 
   getArticles(count) {

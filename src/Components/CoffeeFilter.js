@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import CoffeeStore from "../Stores/Coffee";
 
-let processings = [
-  "Washed",
-  "Semi-washed",
-  "Natural",
-];
-
 let getState = () => {
   return {
+    processings: CoffeeStore.getProcessings(),
     filter: CoffeeStore.getFilter()
   };
 };
@@ -23,6 +18,7 @@ class CoffeeFilter extends Component {
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
+    CoffeeStore.provideProcessings();
   }
 
   componentWillUnmount() {
@@ -34,6 +30,7 @@ class CoffeeFilter extends Component {
   }
 
   render() {
+    let processings = this.state.processings;
     let filter = this.state.filter;
 
     return (
@@ -48,7 +45,7 @@ class CoffeeFilter extends Component {
 const ProcessingFilter = (props) => {
   let filterItems = props.processings.map((processing, index) => {
     return (
-      <ProcessingFilterItem processing={processing} id={"Processing-" + index} filter={props.filter} key={index} />
+      <ProcessingFilterItem processing={processing} filter={props.filter} key={index} />
     );
   });
 
@@ -60,16 +57,17 @@ const ProcessingFilter = (props) => {
 }
 
 const ProcessingFilterItem = (props) => {
-  let checked = props.filter.processings.indexOf(props.processing) >= 0;
+  let codename = props.processing.codename;
+  let checked = props.filter.processings.indexOf(codename) >= 0;
   let onChange = () => {
-    props.filter.toggleProcessing(props.processing);
+    props.filter.toggleProcessing(codename);
     CoffeeStore.setFilter(props.filter);
   }
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
-      <label htmlFor={props.id}>{props.processing}</label>
+      <input id={codename} type="checkbox" checked={checked} onChange={onChange} />
+      <label htmlFor={codename}>{props.processing.name}</label>
     </span>
   );
 }

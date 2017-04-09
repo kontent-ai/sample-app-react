@@ -90,7 +90,7 @@ class BrewerStore {
 
   // Actions
 
-  provideBrewer(brewerId) {
+  provideBrewer(brewerSlug) {
     fetchBrewers();
   }
 
@@ -100,8 +100,8 @@ class BrewerStore {
 
   // Methods
 
-  getBrewer(brewerCodename) {
-    return brewers.find((brewer) => brewer.system.codename === brewerCodename);
+  getBrewer(brewerSlug) {
+    return brewers.find((brewer) => brewer.elements.url_pattern === brewerSlug);
   }
 
   getBrewers() {
