@@ -101,7 +101,7 @@ class BrewerStore {
   // Methods
 
   getBrewer(brewerSlug) {
-    return brewers.find((brewer) => brewer.elements.url_pattern === brewerSlug);
+    return brewers.find((brewer) => brewer.elements.url_pattern.value === brewerSlug);
   }
 
   getBrewers() {
