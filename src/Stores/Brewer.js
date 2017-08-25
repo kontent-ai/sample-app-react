@@ -15,15 +15,15 @@ let fetchBrewers = () => {
     return;
   }
 
-  Client.getItems({
-    "system.type": "brewer",
-    "order": "elements.product_name"
-  }).then((response) => {
+  Client.items()
+  .type('brewer')
+  .orderParameter('elements.product_name')
+  .get()
+  .subscribe(response => {
     brewers = response.items;
     notifyChange();
+    initialized = true;
   });
-
-  initialized = true;
 }
 
 export class Filter {
@@ -42,7 +42,7 @@ export class Filter {
       return true;
     }
 
-    return this.manufacturers.indexOf(brewer.elements.manufacturer.value) >= 0;
+    return this.manufacturers.indexOf(brewer.manufacturer.value) >= 0;
   }
 
   matchesPriceRanges(brewer) {
@@ -50,7 +50,7 @@ export class Filter {
       return true;
     }
 
-    let price = brewer.elements.price.value;
+    let price = brewer.price.value;
 
     return this.priceRanges.some((priceRange) => priceRange.min <= price && price <= priceRange.max);
   }
@@ -60,7 +60,7 @@ export class Filter {
       return true;
     }
 
-    let status = brewer.elements.product_status.value;
+    let status = brewer.productStatus.value;
 
     return status.some((x) => this.productStatuses.indexOf(x.name) >= 0);
   }
@@ -101,7 +101,7 @@ class BrewerStore {
   // Methods
 
   getBrewer(brewerSlug) {
-    return brewers.find((brewer) => brewer.elements.url_pattern.value === brewerSlug);
+    return brewers.find((brewer) => brewer.urlPattern.value === brewerSlug);
   }
 
   getBrewers() {

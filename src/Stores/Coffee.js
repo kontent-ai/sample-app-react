@@ -4,9 +4,6 @@ let changeListeners = [];
 let coffees = [];
 let processings = [];
 
-let coffeesPromise = null;
-let filterPropertiesPromise = null;
-
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
     listener();
@@ -14,28 +11,32 @@ let notifyChange = () => {
 }
 
 let fetchCoffees = () => {
-  if (coffeesPromise) {
-    return;
-  }
 
-  coffeesPromise = Client.getItems({
-    "system.type": "coffee",
-    "order": "elements.product_name"
-  }).then((response) => {
+  Client.items()
+  .type('coffee')
+  .orderParameter('elements.product_name')
+  .get()
+  .subscribe(response => {
     coffees = response.items;
     notifyChange();
   });
 }
 
 let fetchFilterProperties = () => {
-  if (filterPropertiesPromise) {
-    return;
-  }
-
-  filterPropertiesPromise = Client.getType("coffee").then((response) => {
-    processings = response.elements.processing.options;
-    notifyChange();
-  });
+  processings = [
+    {
+      "name": "Semi-dry",
+      "codename": "Semi-dry"
+    },
+    {
+      "name": "Wet (Washed)",
+      "codename": "Wet (Washed)"
+    },
+    {
+      "name": "Dry (Natural)",
+      "codename": "Dry (Natural)"
+    }
+  ];
 };
 
 export class Filter {
@@ -53,7 +54,7 @@ export class Filter {
       return true;
     }
 
-    let value = coffee.elements.processing.value;
+    let value = coffee.processing.value;
     let processing = value.length > 0 ? value[0].codename : null;
 
     return this.processings.indexOf(processing) >= 0;
@@ -87,7 +88,7 @@ class CoffeeStore {
   // Methods
 
   getCoffee(coffeeSlug) {
-    return coffees.find((coffee) => coffee.elements.url_pattern.value === coffeeSlug);
+    return coffees.find((coffee) => coffee.urlPattern.value === coffeeSlug);
   }
 
   getCoffees() {

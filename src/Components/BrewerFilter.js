@@ -15,7 +15,7 @@ let productStatuses = [
 let getState = () => {
   return {
     filter: BrewerStore.getFilter(),
-    manufacturers: BrewerStore.getBrewers().map((x) => x.elements.manufacturer.value).reduce((result, manufacturer) => {
+    manufacturers: BrewerStore.getBrewers().map((x) => x.manufacturer.value).reduce((result, manufacturer) => {
       if (manufacturer && result.indexOf(manufacturer) < 0) {
         result.push(manufacturer);
       }
@@ -112,7 +112,7 @@ const PriceRangeFilterItem = (props) => {
     return price.toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
-      maximumFractionDigits: 0
+      maximumFractionDigits: 2
     });
   };
   let onChange = () => {

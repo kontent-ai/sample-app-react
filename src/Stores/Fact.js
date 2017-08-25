@@ -15,12 +15,13 @@ let fetchFacts = () => {
     return;
   }
 
-  Client.getItem("about_us").then((response) => {
-    facts = response.item.elements.facts.value.map((codename) => response.modular_content[codename]);
-    notifyChange();
-  });
-
-  initialized = true;
+  Client.item('about_us')
+    .get()
+    .subscribe(response => {
+      facts = response.item.facts;
+      notifyChange(); 
+      initialized = true;
+      });  
 }
 
 class FactStore {

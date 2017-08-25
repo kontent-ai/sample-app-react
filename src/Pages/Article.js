@@ -44,11 +44,10 @@ class Article extends Component {
       return dateFormat(value, "dddd, mmmm d, yyyy");
     };
 
-    let e = article.elements;
-    let title = e.title.value;
-    let imageLink = e.teaser_image.value[0].url;
-    let postDate = formatDate(e.post_date.value);
-    let bodyCopyElement = e.body_copy;
+    let title = article.title.value;
+    let imageLink = article.teaserImage.value[0].url;
+    let postDate = formatDate(article.postDate.value);
+    let bodyCopyElement = article.bodyCopy;
 
     return (
       <div className="container">
