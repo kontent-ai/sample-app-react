@@ -32,7 +32,7 @@ class TasteOurCoffee extends Component {
   render() {
     let cafes = this.state.cafes.map((cafe, index) => {
       let name = cafe.system.name;
-      let imageLink = cafe.elements.photo.value[0].url;
+      let imageLink = cafe.photo.value[0].url;
 
       return (
         <div className="col-xs-6 col-md-3" key={index}>

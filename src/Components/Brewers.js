@@ -58,12 +58,11 @@ class Brewers extends Component {
     };
 
     let brewers = this.state.brewers.filter(filter).map((brewer, index) => {
-      let e = brewer.elements;
-      let price = formatPrice(e.price.value);
-      let name = e.product_name.value;
-      let imageLink = e.image.value[0].url;
-      let status = renderProductStatus(e.product_status);
-      let link = "store/brewers/" + brewer.elements.url_pattern.value;
+      let price = formatPrice(brewer.price.value);
+      let name = brewer.productName.value;
+      let imageLink = brewer.image.value[0].url;
+      let status = renderProductStatus(brewer.productStatus);
+      let link = "store/brewers/" + brewer.urlPattern.value;
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

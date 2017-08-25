@@ -4,7 +4,6 @@ let articleList = [];
 let articleListCapacity = 0;
 
 let articleDetails = {};
-let articleDetailsPromises = {};
 
 let changeListeners = [];
 
@@ -19,19 +18,17 @@ class ArticleStore {
   // Actions
 
   provideArticle(articleSlug) {
-    if (articleDetailsPromises[articleSlug]) {
-      return;
-    }
 
-    articleDetailsPromises[articleSlug] = Client.getItems({
-      "system.type": "article",
-      "elements.url_pattern": articleSlug
-    }).then((response) => {
+    Client.items()
+    .type('article')
+    .equalsFilter('elements.url_pattern', articleSlug)    
+    .get()
+    .subscribe(response => {
       if (response.items.length > 0) {
         articleDetails[articleSlug] = response.items[0];
         notifyChange();
       }
-    });
+    })
   }
 
   provideArticles(count) {
@@ -41,18 +38,18 @@ class ArticleStore {
 
     articleListCapacity = count;
 
-    Client.getItems({
-      "system.type": "article",
-      "elements": "title,teaser_image,post_date,summary,url_pattern",
-      "order": "elements.post_date[DESC]"
-    }).then((response) => {
-      articleList = response.items;
-      notifyChange();
-    });
+    Client.items()
+      .type('article')
+      .get()
+      .subscribe(response =>
+        {
+          articleList = response.items;
+          notifyChange();
+        });
   }
 
   // Methods
-
+  
   getArticle(articleSlug) {
     return articleDetails[articleSlug];
   }

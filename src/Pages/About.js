@@ -31,10 +31,9 @@ class About extends Component {
 
   render() {
     let facts = this.state.facts.map((fact, index) => {
-      let e = fact.elements;
-      let title = e.title.value;
-      let descriptionElement = e.description;
-      let imageLink = e.image.value[0].url;
+      let title = fact.title.value;
+      let descriptionElement = fact.description;
+      let imageLink = fact.image.value[0].url;
 
       if (index % 2 === 0) {
         return (

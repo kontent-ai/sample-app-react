@@ -3,10 +3,7 @@ import Client from "../Client.js";
 let changeListeners = [];
 let coffees = [];
 let processings = [];
-let productStatuses = [];
-let coffeesPromise = null;
-let processingPromise = null;
-let productStatusesPromise = null;
+let productStatuses =[];
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -15,36 +12,30 @@ let notifyChange = () => {
 }
 
 let fetchCoffees = () => {
-  if (coffeesPromise) {
-    return;
-  }
 
-  coffeesPromise = Client.getItems({
-    "system.type": "coffee",
-    "order": "elements.product_name"
-  }).then((response) => {
+  Client.items()
+  .type('coffee')
+  .orderParameter('elements.product_name')
+  .get()
+  .subscribe(response => {
     coffees = response.items;
     notifyChange();
   });
 }
 
 let fetchProcessings = () => {
-  if (processingPromise) {
-    return;
-  }
-
-  processingPromise = Client.getTaxonomy("processing").then((response) => {
-    processings = response.terms;
-    notifyChange();
+  Client.taxonomy("processing")
+    .get()
+    .subscribe(response => {
+      processings = response.terms;
+      notifyChange();
   });
 };
 
 let fetchProductStatuses = () => {
-  if (productStatusesPromise) {
-    return;
-  }
-
-    productStatusesPromise = Client.getTaxonomy("product_status").then((response) => {
+    Client.taxonomy("product_status")
+      .get()
+      .subscribe(response => {
         productStatuses = response.terms;
         notifyChange();
     });
@@ -118,7 +109,7 @@ class CoffeeStore {
   // Methods
 
   getCoffee(coffeeSlug) {
-    return coffees.find((coffee) => coffee.elements.url_pattern.value === coffeeSlug);
+    return coffees.find((coffee) => coffee.urlPattern.value === coffeeSlug);
   }
 
   getCoffees() {

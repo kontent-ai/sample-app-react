@@ -7,6 +7,9 @@ export class AboutUs extends ContentItem {
                 if (fieldName === 'url_pattern'){
                     return 'urlPattern';
                 }
+                if (fieldName === 'fact_about_us'){
+                    return 'factAboutUs';
+                }
             })
         })    
     }

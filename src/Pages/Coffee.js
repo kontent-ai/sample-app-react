@@ -37,14 +37,14 @@ class Coffee extends Component {
       );
     }
 
-    let e = this.state.coffee.elements;
-    let name = e.product_name.value;
-    let imageLink = e.image.value[0].url;
-    let descriptionElement = e.long_description;
-    let farm = e.farm.value;
-    let variety = e.variety.value;
-    let processing = e.processing_type.value.map(x => x.name).join(', ');
-    let altitude = e.altitude.value + " feet";
+    let coffee = this.state.coffee;
+    let name = coffee.productName.value;
+    let imageLink = coffee.image.value[0].url;
+    let descriptionElement = coffee.longDescription;
+    let farm = coffee.farm.value;
+    let variety = coffee.variety.value;
+    let processing = coffee.processing.value.length > 0 ? coffee.processing.value[0].name : "";
+    let altitude = coffee.altitude.value + " feet";
 
     return (
       <div className="container">
