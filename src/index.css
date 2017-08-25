@@ -5295,27 +5295,6 @@ dd.product-price--retail {
 .checkbox-list-horizontal label {
     margin-right: 16px;
 }
-.media-gallery {
-    margin-top: 2.5rem;
-}
-.media-gallery .media-item span {
-    visibility: hidden;
-}
-.media-gallery .media-item:hover span {
-    visibility: visible;
-}
-.media-gallery .ratio-4-3 {
-    width: 100%;
-    position: relative;
-    background: url() 50% 50% no-repeat;
-    background-size: cover;
-    background-clip: content-box;
-}
-.media-gallery .ratio-4-3:before {
-    display: block;
-    content: "";
-    padding-top: 75%;
-}
 .orders-table {
     width: 100%;
     margin-top: 15px;
