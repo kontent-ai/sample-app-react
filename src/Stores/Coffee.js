@@ -14,15 +14,26 @@ let notifyChange = () => {
 let fetchCoffees = () => {
 
   Client.items()
-  .type('coffee')
-  .orderParameter('elements.product_name')
-  .get()
-  .subscribe(response => {
-    coffees = response.items;
-    notifyChange();
-  });
+    .type('coffee')
+    .orderParameter('elements.product_name')
+    .get()
+    .subscribe(response => {
+      coffees = response.items;
+      notifyChange();
+    });
 }
 
+let fetchFilterProperties = () => {
+  Client
+    .type('coffee')
+    .get()
+    .subscribe(response => {
+      console.log(response);
+      processings = response
+        .type
+        .elements.find(element => element.codename === "processing")
+        .options;
+    });
 let fetchProcessings = () => {
   Client.taxonomy("processing")
     .get()
