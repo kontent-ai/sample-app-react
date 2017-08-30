@@ -13,30 +13,26 @@ let notifyChange = () => {
 let fetchCoffees = () => {
 
   Client.items()
-  .type('coffee')
-  .orderParameter('elements.product_name')
-  .get()
-  .subscribe(response => {
-    coffees = response.items;
-    notifyChange();
-  });
+    .type('coffee')
+    .orderParameter('elements.product_name')
+    .get()
+    .subscribe(response => {
+      coffees = response.items;
+      notifyChange();
+    });
 }
 
 let fetchFilterProperties = () => {
-  processings = [
-    {
-      "name": "Semi-dry",
-      "codename": "Semi-dry"
-    },
-    {
-      "name": "Wet (Washed)",
-      "codename": "Wet (Washed)"
-    },
-    {
-      "name": "Dry (Natural)",
-      "codename": "Dry (Natural)"
-    }
-  ];
+  Client
+    .type('coffee')
+    .get()
+    .subscribe(response => {
+      console.log(response);
+      processings = response
+        .type
+        .elements.find(element => element.codename === "processing")
+        .options;
+    });
 };
 
 export class Filter {
