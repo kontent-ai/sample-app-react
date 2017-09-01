@@ -20,15 +20,16 @@ class ArticleStore {
   provideArticle(articleSlug) {
 
     Client.items()
-    .type('article')
-    .equalsFilter('elements.url_pattern', articleSlug)    
-    .get()
-    .subscribe(response => {
-      if (response.items.length > 0) {
-        articleDetails[articleSlug] = response.items[0];
-        notifyChange();
-      }
-    })
+      .type('article')
+      .equalsFilter('elements.url_pattern', articleSlug)  
+      .elementsParameter(['title', 'teaser_image', 'post_date','body_copy'])
+      .get()
+      .subscribe(response => {
+        if (!response.isEmpty) {
+          articleDetails[articleSlug] = response.items[0];
+          notifyChange();
+        }
+      })
   }
 
   provideArticles(count) {
@@ -39,7 +40,7 @@ class ArticleStore {
     articleListCapacity = count;
 
     Client.items()
-      .type('article')
+      .type('article')         
       .get()
       .subscribe(response =>
         {
