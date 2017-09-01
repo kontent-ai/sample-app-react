@@ -28,7 +28,6 @@ let fetchFilterProperties = () => {
     .type('coffee')
     .get()
     .subscribe(response => {
-      console.log(response);
       processings = response
         .type
         .elements.find(element => element.codename === "processing")
