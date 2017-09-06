@@ -4,6 +4,12 @@ let changeListeners = [];
 let initialized = false;
 let brewers = [];
 
+let manufacturersInitialized = false;
+let manufacturers = [];
+
+let statusesInitialized = false;
+let statuses = [];
+
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
     listener();
@@ -26,6 +32,34 @@ let fetchBrewers = () => {
   initialized = true;
 }
 
+let fetchManufacturers = () => {
+  if (manufacturersInitialized) {
+    return;
+  }
+
+  Client.getTaxonomy("manufacturer_type")
+    .then((response) => {
+      manufacturers = response.terms;
+      notifyChange();
+    });
+
+  manufacturersInitialized = true;
+}
+
+let fetchStatuses = () => {
+  if (statusesInitialized) {
+    return;
+  }
+
+  Client.getTaxonomy("product_status")
+    .then((response) => {
+      statuses = response.terms;
+      notifyChange();
+    });
+
+  manufacturersInitialized = true;
+}
+
 export class Filter {
   constructor() {
     this.manufacturers = [];
@@ -42,7 +76,8 @@ export class Filter {
       return true;
     }
 
-    return this.manufacturers.indexOf(brewer.elements.manufacturer.value) >= 0;
+    let manufacturerCodenames = brewer.elements.manufacturer_type.value.map(x => x.codename);
+    return manufacturerCodenames.some(x => this.manufacturers.includes(x));
   }
 
   matchesPriceRanges(brewer) {
@@ -60,9 +95,8 @@ export class Filter {
       return true;
     }
 
-    let status = brewer.elements.product_status.value;
-
-    return status.some((x) => this.productStatuses.indexOf(x.name) >= 0);
+    let statusCodenames = brewer.elements.product_status.value.map(x => x.codename);
+    return statusCodenames.some((x) => this.productStatuses.includes(x));
   }
 
   toggleManufacturer(manufacturer) {
@@ -98,6 +132,14 @@ class BrewerStore {
     fetchBrewers();
   }
 
+  provideManufacturers() {
+    fetchManufacturers();
+  }
+
+  provideStatuses() {
+    fetchStatuses();
+  }
+
   // Methods
 
   getBrewer(brewerSlug) {
@@ -106,6 +148,14 @@ class BrewerStore {
 
   getBrewers() {
     return brewers;
+  }
+
+  getManufacturers() {
+    return manufacturers;
+  }
+
+  getStatuses() {
+    return statuses;
   }
 
   getFilter() {

@@ -7,21 +7,11 @@ let priceRanges = [
   { min: 250, max: 5000 },
 ];
 
-let productStatuses = [
-  "On sale",
-  "Bestseller",
-];
-
 let getState = () => {
   return {
     filter: BrewerStore.getFilter(),
-    manufacturers: BrewerStore.getBrewers().map((x) => x.elements.manufacturer.value).reduce((result, manufacturer) => {
-      if (manufacturer && result.indexOf(manufacturer) < 0) {
-        result.push(manufacturer);
-      }
-
-      return result;
-    }, []).sort()
+    manufacturers: BrewerStore.getManufacturers(),
+    statuses: BrewerStore.getStatuses()
   };
 };
 
@@ -36,6 +26,8 @@ class BrewerFilter extends Component {
   componentDidMount() {
     BrewerStore.addChangeListener(this.onChange);
     BrewerStore.provideBrewers();
+    BrewerStore.provideManufacturers();
+    BrewerStore.provideStatuses();
   }
 
   componentWillUnmount() {
@@ -49,24 +41,27 @@ class BrewerFilter extends Component {
   render() {
     let filter = this.state.filter;
     let manufacturers = this.state.manufacturers;
+    let statuses = this.state.statuses;
 
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
         <h4>Manufacturer</h4>
-        <ManufacturerFilter manufacturers={manufacturers} filter={filter} />
+        <ManufacturerFilter manufacturers={manufacturers} filter={filter}/>
         <h4>Price</h4>
-        <PriceRangeFilter priceRanges={priceRanges} filter={filter} />
+        <PriceRangeFilter priceRanges={priceRanges} filter={filter}/>
         <h4>Status</h4>
-        <ProductStatusFilter productStatuses={productStatuses} filter={filter} />
+        <ProductStatusFilter productStatuses={statuses} filter={filter}/>
       </aside>
     );
   }
 }
 
 const ManufacturerFilter = (props) => {
-  let filterItems = props.manufacturers.map((manufacturer, index) => {
+  let filterItems = props.manufacturers.map((manufacturer) => {
     return (
-      <ManufacturerFilterItem manufacturer={manufacturer} id={"Manufacturer-" + index} filter={props.filter} key={index} />
+      <ManufacturerFilterItem manufacturer={manufacturer} id={"Manufacturer-" + manufacturer.codename}
+                              filter={props.filter}
+                              key={manufacturer.codename}/>
     );
   });
 
@@ -78,16 +73,17 @@ const ManufacturerFilter = (props) => {
 }
 
 const ManufacturerFilterItem = (props) => {
-  let checked = props.filter.manufacturers.indexOf(props.manufacturer) >= 0;
+  let codename = props.manufacturer.codename;
+  let checked = props.filter.manufacturers.includes(codename);
   let onChange = () => {
-    props.filter.toggleManufacturer(props.manufacturer);
+    props.filter.toggleManufacturer(codename);
     BrewerStore.setFilter(props.filter);
-  }
+  };
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
-      <label htmlFor={props.id}>{props.manufacturer}</label>
+      <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
+      <label htmlFor={props.id}>{props.manufacturer.name}</label>
     </span>
   );
 }
@@ -95,7 +91,7 @@ const ManufacturerFilterItem = (props) => {
 const PriceRangeFilter = (props) => {
   let filterItems = props.priceRanges.map((priceRange, index) => {
     return (
-      <PriceRangeFilterItem priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index} />
+      <PriceRangeFilterItem priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index}/>
     );
   });
 
@@ -112,6 +108,7 @@ const PriceRangeFilterItem = (props) => {
     return price.toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
+      minimumFractionDigits: 0,
       maximumFractionDigits: 0
     });
   };
@@ -122,16 +119,18 @@ const PriceRangeFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
+      <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
       <label htmlFor={props.id}>{formatPrice(props.priceRange.min) + " – " + formatPrice(props.priceRange.max)}</label>
     </span>
   );
 }
 
 const ProductStatusFilter = (props) => {
-  let filterItems = props.productStatuses.map((productStatus, index) => {
+  let filterItems = props.productStatuses.map((productStatus) => {
     return (
-      <ProductStatusFilterItem productStatus={productStatus} id={"ProductStatus-" + index} filter={props.filter} key={index} />
+      <ProductStatusFilterItem productStatus={productStatus} id={"ProductStatus-" + productStatus.codename}
+                               filter={props.filter}
+                               key={productStatus.codename}/>
     );
   });
 
@@ -143,16 +142,17 @@ const ProductStatusFilter = (props) => {
 }
 
 const ProductStatusFilterItem = (props) => {
-  let checked = props.filter.productStatuses.indexOf(props.productStatus) >= 0;
+  let codename = props.productStatus.codename;
+  let checked = props.filter.productStatuses.includes(codename);
   let onChange = () => {
-    props.filter.toggleProductStatus(props.productStatus);
+    props.filter.toggleProductStatus(codename);
     BrewerStore.setFilter(props.filter);
-  }
+  };
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
-      <label htmlFor={props.id}>{props.productStatus}</label>
+      <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
+      <label htmlFor={props.id}>{props.productStatus.name}</label>
     </span>
   );
 }
