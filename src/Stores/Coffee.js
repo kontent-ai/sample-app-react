@@ -3,9 +3,10 @@ import Client from "../Client.js";
 let changeListeners = [];
 let coffees = [];
 let processings = [];
-
+let productStatuses = [];
 let coffeesPromise = null;
-let filterPropertiesPromise = null;
+let processingPromise = null;
+let statusesPromise = null;
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -27,16 +28,27 @@ let fetchCoffees = () => {
   });
 }
 
-let fetchFilterProperties = () => {
-  if (filterPropertiesPromise) {
+let fetchProcessings = () => {
+  if (processingPromise) {
     return;
   }
 
-  filterPropertiesPromise = Client.getType("coffee").then((response) => {
-    processings = response.elements.processing.options;
+  processingPromise = Client.getTaxonomy("processing_type").then((response) => {
+    processings = response.terms;
     notifyChange();
   });
 };
+
+let fetchStatuses = () => {
+  if (statusesPromise) {
+    return;
+  }
+
+    statusesPromise = Client.getTaxonomy("product_status").then((response) => {
+        productStatuses = response.terms;
+        notifyChange();
+    });
+}
 
 export class Filter {
   constructor() {
@@ -45,7 +57,7 @@ export class Filter {
   }
 
   matches(coffee) {
-    return this.matchesProcessings(coffee);
+    return this.matchesProcessings(coffee) && this.matchesProductStatuses(coffee);
   }
 
   matchesProcessings(coffee) {
@@ -53,16 +65,32 @@ export class Filter {
       return true;
     }
 
-    let value = coffee.elements.processing.value;
+    let value = coffee.elements.processing_type.value;
     let processing = value.length > 0 ? value[0].codename : null;
 
     return this.processings.indexOf(processing) >= 0;
+  }
+
+  matchesProductStatuses(cofee) {
+    if (this.productStatuses.length === 0) {
+      return true;
+    }
+
+    let statuses = cofee.elements.product_status.value.map(x => x.codename);
+
+    return this.productStatuses.some(x => statuses.includes(x));
   }
 
   toggleProcessing(processing) {
     let index = this.processings.indexOf(processing);
 
     if (index < 0) this.processings.push(processing); else this.processings.splice(index, 1);
+  }
+
+  toggleProductStatus(status) {
+    let index = this.productStatuses.indexOf(status);
+
+    if (index < 0) this.productStatuses.push(status); else this.productStatuses.splice(index, 1);
   }
 }
 
@@ -81,7 +109,11 @@ class CoffeeStore {
   }
 
   provideProcessings() {
-    fetchFilterProperties();
+    fetchProcessings();
+  }
+
+  provideProductStatuses() {
+    fetchStatuses();
   }
 
   // Methods
@@ -96,6 +128,10 @@ class CoffeeStore {
 
   getProcessings() {
     return processings;
+  }
+
+  getProductStatuses() {
+    return productStatuses;
   }
 
   getFilter() {

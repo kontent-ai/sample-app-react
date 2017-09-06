@@ -43,7 +43,7 @@ class Coffee extends Component {
     let descriptionElement = e.long_description;
     let farm = e.farm.value;
     let variety = e.variety.value;
-    let processing = e.processing.value.length > 0 ? e.processing.value[0].name : "";
+    let processing = e.processing_type.value.map(x => x.name).join(', ');
     let altitude = e.altitude.value + " feet";
 
     return (
