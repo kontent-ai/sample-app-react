@@ -63,6 +63,10 @@ class Client {
   getType(codename, options) {
     return getJsonContent("types/" + encodeURIComponent(codename), options);
   }
+
+  getTaxonomy(codename) {
+    return getJsonContent("taxonomies/" + encodeURIComponent(codename));
+  }
 }
 
 export default new Client();
