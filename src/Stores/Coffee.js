@@ -33,7 +33,7 @@ let fetchProcessings = () => {
     return;
   }
 
-  processingPromise = Client.getTaxonomy("processing_type").then((response) => {
+  processingPromise = Client.getTaxonomy("processing").then((response) => {
     processings = response.terms;
     notifyChange();
   });
@@ -65,7 +65,7 @@ export class Filter {
       return true;
     }
 
-    let value = coffee.elements.processing_type.value;
+    let value = coffee.elements.processing.value;
     let processing = value.length > 0 ? value[0].codename : null;
 
     return this.processings.indexOf(processing) >= 0;

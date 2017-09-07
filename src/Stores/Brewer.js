@@ -37,7 +37,7 @@ let fetchManufacturers = () => {
     return;
   }
 
-  Client.getTaxonomy("manufacturer_type")
+  Client.getTaxonomy("manufacturer")
     .then((response) => {
       manufacturers = response.terms;
       notifyChange();
@@ -76,7 +76,7 @@ export class Filter {
       return true;
     }
 
-    let manufacturerCodenames = brewer.elements.manufacturer_type.value.map(x => x.codename);
+    let manufacturerCodenames = brewer.elements.manufacturer.value.map(x => x.codename);
     return manufacturerCodenames.some(x => this.manufacturers.includes(x));
   }
 
