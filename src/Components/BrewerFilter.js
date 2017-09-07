@@ -11,7 +11,7 @@ let getState = () => {
   return {
     filter: BrewerStore.getFilter(),
     manufacturers: BrewerStore.getManufacturers(),
-    statuses: BrewerStore.getStatuses()
+    productStatuses: BrewerStore.getProductStatuses()
   };
 };
 
@@ -27,7 +27,7 @@ class BrewerFilter extends Component {
     BrewerStore.addChangeListener(this.onChange);
     BrewerStore.provideBrewers();
     BrewerStore.provideManufacturers();
-    BrewerStore.provideStatuses();
+    BrewerStore.provideProductStatuses();
   }
 
   componentWillUnmount() {
@@ -41,7 +41,7 @@ class BrewerFilter extends Component {
   render() {
     let filter = this.state.filter;
     let manufacturers = this.state.manufacturers;
-    let statuses = this.state.statuses;
+    let productStatuses = this.state.productStatuses;
 
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
@@ -50,7 +50,7 @@ class BrewerFilter extends Component {
         <h4>Price</h4>
         <PriceRangeFilter priceRanges={priceRanges} filter={filter}/>
         <h4>Status</h4>
-        <ProductStatusFilter productStatuses={statuses} filter={filter}/>
+        <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>
       </aside>
     );
   }

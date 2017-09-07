@@ -60,6 +60,10 @@ class Client {
     return getJsonContent("items", options);
   }
 
+  getType(codename, options) {
+    return getJsonContent("types/" + encodeURIComponent(codename), options);
+  }
+
   getTaxonomy(codename) {
     return getJsonContent("taxonomies/" + encodeURIComponent(codename));
   }

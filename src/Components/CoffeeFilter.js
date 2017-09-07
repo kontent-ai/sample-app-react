@@ -4,7 +4,7 @@ import CoffeeStore from "../Stores/Coffee";
 let getState = () => {
   return {
     processings: CoffeeStore.getProcessings(),
-    statuses: CoffeeStore.getProductStatuses(),
+    productStatuses: CoffeeStore.getProductStatuses(),
     filter: CoffeeStore.getFilter()
   };
 };
@@ -33,7 +33,7 @@ class CoffeeFilter extends Component {
 
   render() {
     let processings = this.state.processings;
-    let statuses = this.state.statuses;
+    let productStatuses = this.state.productStatuses;
     let filter = this.state.filter;
 
     return (
@@ -41,7 +41,7 @@ class CoffeeFilter extends Component {
         <h4>Coffee processing</h4>
         <ProcessingFilter processings={processings} filter={filter}/>
         <h4>Status</h4>
-        <ProductStatusFilter statuses={statuses} filter={filter}/>
+        <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>
       </aside>
     );
   }
@@ -78,9 +78,9 @@ const ProcessingFilterItem = (props) => {
 }
 
 const ProductStatusFilter = (props) => {
-  let filterItems = props.statuses.map((status) => {
+  let filterItems = props.productStatuses.map((productStatus) => {
     return (
-      <ProductStatusFilterItem status={status} filter={props.filter} key={status.codename}/>
+      <ProductStatusFilterItem productStatus={productStatus} filter={props.filter} key={productStatus.codename}/>
     );
   });
 
@@ -92,7 +92,7 @@ const ProductStatusFilter = (props) => {
 }
 
 const ProductStatusFilterItem = (props) => {
-  let codename = props.status.codename;
+  let codename = props.productStatus.codename;
   let checked = props.filter.productStatuses.includes(codename);
   let onChange = () => {
     props.filter.toggleProductStatus(codename);
@@ -102,7 +102,7 @@ const ProductStatusFilterItem = (props) => {
   return (
     <span className="checkbox js-postback">
       <input id={codename} type="checkbox" checked={checked} onChange={onChange}/>
-      <label htmlFor={codename}>{props.status.name}</label>
+      <label htmlFor={codename}>{props.productStatus.name}</label>
     </span>
   );
 }

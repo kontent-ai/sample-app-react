@@ -6,7 +6,7 @@ let processings = [];
 let productStatuses = [];
 let coffeesPromise = null;
 let processingPromise = null;
-let statusesPromise = null;
+let productStatusesPromise = null;
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -39,12 +39,12 @@ let fetchProcessings = () => {
   });
 };
 
-let fetchStatuses = () => {
-  if (statusesPromise) {
+let fetchProductStatuses = () => {
+  if (productStatusesPromise) {
     return;
   }
 
-    statusesPromise = Client.getTaxonomy("product_status").then((response) => {
+    productStatusesPromise = Client.getTaxonomy("product_status").then((response) => {
         productStatuses = response.terms;
         notifyChange();
     });
@@ -65,18 +65,17 @@ export class Filter {
       return true;
     }
 
-    let value = coffee.elements.processing.value;
-    let processing = value.length > 0 ? value[0].codename : null;
+    let processings = coffee.elements.processing.value.map(x => x.codename);
 
-    return this.processings.indexOf(processing) >= 0;
+    return this.processings.some(x => processings.includes(x));
   }
 
-  matchesProductStatuses(cofee) {
+  matchesProductStatuses(coffee) {
     if (this.productStatuses.length === 0) {
       return true;
     }
 
-    let statuses = cofee.elements.product_status.value.map(x => x.codename);
+    let statuses = coffee.elements.product_status.value.map(x => x.codename);
 
     return this.productStatuses.some(x => statuses.includes(x));
   }
@@ -113,7 +112,7 @@ class CoffeeStore {
   }
 
   provideProductStatuses() {
-    fetchStatuses();
+    fetchProductStatuses();
   }
 
   // Methods

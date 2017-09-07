@@ -7,8 +7,8 @@ let brewers = [];
 let manufacturersInitialized = false;
 let manufacturers = [];
 
-let statusesInitialized = false;
-let statuses = [];
+let productStatusesInitialized = false;
+let productStatuses = [];
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -46,18 +46,18 @@ let fetchManufacturers = () => {
   manufacturersInitialized = true;
 }
 
-let fetchStatuses = () => {
-  if (statusesInitialized) {
+let fetchProductStatuses = () => {
+  if (productStatusesInitialized) {
     return;
   }
 
   Client.getTaxonomy("product_status")
     .then((response) => {
-      statuses = response.terms;
+      productStatuses = response.terms;
       notifyChange();
     });
 
-  manufacturersInitialized = true;
+  productStatusesInitialized = true;
 }
 
 export class Filter {
@@ -136,8 +136,8 @@ class BrewerStore {
     fetchManufacturers();
   }
 
-  provideStatuses() {
-    fetchStatuses();
+  provideProductStatuses() {
+    fetchProductStatuses();
   }
 
   // Methods
@@ -154,8 +154,8 @@ class BrewerStore {
     return manufacturers;
   }
 
-  getStatuses() {
-    return statuses;
+  getProductStatuses() {
+    return productStatuses;
   }
 
   getFilter() {
