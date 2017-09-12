@@ -10,18 +10,8 @@ let priceRanges = [
 let getState = () => {
   return {
     filter: BrewerStore.getFilter(),
-<<<<<<< HEAD
     manufacturers: BrewerStore.getManufacturers(),
     productStatuses: BrewerStore.getProductStatuses()
-=======
-    manufacturers: BrewerStore.getBrewers().map((x) => x.manufacturer.value).reduce((result, manufacturer) => {
-      if (manufacturer && result.indexOf(manufacturer) < 0) {
-        result.push(manufacturer);
-      }
-
-      return result;
-    }, []).sort()
->>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
   };
 };
 
