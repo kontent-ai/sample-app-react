@@ -3,7 +3,10 @@ import Client from "../Client.js";
 let changeListeners = [];
 let coffees = [];
 let processings = [];
+<<<<<<< HEAD
 let productStatuses = [];
+=======
+>>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -23,12 +26,24 @@ let fetchCoffees = () => {
     });
 }
 
+<<<<<<< HEAD
 let fetchProcessings = () => {
   Client.taxonomy("processing")
     .get()
     .subscribe(response => {
       processings = response.terms;
       notifyChange();
+=======
+let fetchFilterProperties = () => {
+  Client
+    .type('coffee')
+    .get()
+    .subscribe(response => {
+      processings = response
+        .type
+        .elements.find(element => element.codename === "processing")
+        .options;
+>>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
     });
 };
 
@@ -56,7 +71,12 @@ export class Filter {
       return true;
     }
 
+<<<<<<< HEAD
     let processings = coffee.processing.value.map(x => x.codename);
+=======
+    let value = coffee.processing.value;
+    let processing = value.length > 0 ? value[0].codename : null;
+>>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
 
     return this.processings.some(x => processings.includes(x));
   }

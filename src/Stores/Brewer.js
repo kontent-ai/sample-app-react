@@ -22,6 +22,7 @@ let fetchBrewers = () => {
   }
 
   Client.items()
+<<<<<<< HEAD
     .type('brewer')
     .orderParameter('elements.product_name')
     .get()
@@ -58,6 +59,16 @@ let fetchProductStatuses = () => {
       notifyChange();
       productStatusesInitialized = true;
     });
+=======
+  .type('brewer')
+  .orderParameter('elements.product_name')
+  .get()
+  .subscribe(response => {
+    brewers = response.items;
+    notifyChange();
+    initialized = true;
+  });
+>>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
 }
 
 export class Filter {
@@ -76,8 +87,12 @@ export class Filter {
       return true;
     }
 
+<<<<<<< HEAD
     let manufacturerCodenames = brewer.manufacturer.value.map(x => x.codename);
     return manufacturerCodenames.some(x => this.manufacturers.includes(x));
+=======
+    return this.manufacturers.indexOf(brewer.manufacturer.value) >= 0;
+>>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
   }
 
   matchesPriceRanges(brewer) {
@@ -95,8 +110,14 @@ export class Filter {
       return true;
     }
 
+<<<<<<< HEAD
     let statusCodenames = brewer.productStatus.value.map(x => x.codename);
     return statusCodenames.some((x) => this.productStatuses.includes(x));
+=======
+    let status = brewer.productStatus.value;
+
+    return status.some((x) => this.productStatuses.indexOf(x.name) >= 0);
+>>>>>>> dfdf3cdf9c55f728201d18c9ed3d7c225a8f332c
   }
 
   toggleManufacturer(manufacturer) {
