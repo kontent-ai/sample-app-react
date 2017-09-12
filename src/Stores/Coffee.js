@@ -3,7 +3,7 @@ import Client from "../Client.js";
 let changeListeners = [];
 let coffees = [];
 let processings = [];
-let productStatuses =[];
+let productStatuses = [];
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -23,31 +23,21 @@ let fetchCoffees = () => {
     });
 }
 
-let fetchFilterProperties = () => {
-  Client
-    .type('coffee')
-    .get()
-    .subscribe(response => {
-      processings = response
-        .type
-        .elements.find(element => element.codename === "processing")
-        .options;
-    });
 let fetchProcessings = () => {
   Client.taxonomy("processing")
     .get()
     .subscribe(response => {
       processings = response.terms;
       notifyChange();
-  });
+    });
 };
 
 let fetchProductStatuses = () => {
-    Client.taxonomy("product_status")
-      .get()
-      .subscribe(response => {
-        productStatuses = response.terms;
-        notifyChange();
+  Client.taxonomy("product_status")
+    .get()
+    .subscribe(response => {
+      productStatuses = response.terms;
+      notifyChange();
     });
 }
 
@@ -66,7 +56,7 @@ export class Filter {
       return true;
     }
 
-    let processings = coffee.elements.processing.value.map(x => x.codename);
+    let processings = coffee.processing.value.map(x => x.codename);
 
     return this.processings.some(x => processings.includes(x));
   }
@@ -76,7 +66,7 @@ export class Filter {
       return true;
     }
 
-    let statuses = coffee.elements.product_status.value.map(x => x.codename);
+    let statuses = coffee.productStatus.value.map(x => x.codename);
 
     return this.productStatuses.some(x => statuses.includes(x));
   }
