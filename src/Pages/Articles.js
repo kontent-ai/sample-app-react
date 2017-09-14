@@ -47,12 +47,11 @@ class Articles extends Component {
         );
       }
 
-      let e = article.elements;
-      let title = e.title.value;
-      let imageLink = e.teaser_image.value[0].url;
-      let postDate = formatDate(e.post_date.value);
-      let summary = e.summary.value;
-      let link = "/articles/" + article.elements.url_pattern.value;
+      let title = article.title.value;
+      let imageLink = article.teaserImage.value[0].url;
+      let postDate = formatDate(article.postDate.value);
+      let summary = article.summary.value;
+      let link = "/articles/" + article.urlPattern.value;
 
       result.push(
         <div className="col-md-3" key={counter++}>

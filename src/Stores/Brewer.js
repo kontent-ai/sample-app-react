@@ -21,15 +21,15 @@ let fetchBrewers = () => {
     return;
   }
 
-  Client.getItems({
-    "system.type": "brewer",
-    "order": "elements.product_name"
-  }).then((response) => {
-    brewers = response.items;
-    notifyChange();
-  });
-
-  initialized = true;
+  Client.items()
+    .type('brewer')
+    .orderParameter('elements.product_name')
+    .get()
+    .subscribe(response => {
+      brewers = response.items;
+      notifyChange();
+      initialized = true;
+    });
 }
 
 let fetchManufacturers = () => {
@@ -37,13 +37,13 @@ let fetchManufacturers = () => {
     return;
   }
 
-  Client.getTaxonomy("manufacturer")
-    .then((response) => {
+  Client.taxonomy("manufacturer")
+    .get()
+    .subscribe(response => {
       manufacturers = response.terms;
       notifyChange();
+      manufacturersInitialized = true;
     });
-
-  manufacturersInitialized = true;
 }
 
 let fetchProductStatuses = () => {
@@ -51,13 +51,13 @@ let fetchProductStatuses = () => {
     return;
   }
 
-  Client.getTaxonomy("product_status")
-    .then((response) => {
+  Client.taxonomy("product_status")
+    .get()
+    .subscribe(response => {
       productStatuses = response.terms;
       notifyChange();
+      productStatusesInitialized = true;
     });
-
-  productStatusesInitialized = true;
 }
 
 export class Filter {
@@ -76,7 +76,7 @@ export class Filter {
       return true;
     }
 
-    let manufacturerCodenames = brewer.elements.manufacturer.value.map(x => x.codename);
+    let manufacturerCodenames = brewer.manufacturer.value.map(x => x.codename);
     return manufacturerCodenames.some(x => this.manufacturers.includes(x));
   }
 
@@ -85,7 +85,7 @@ export class Filter {
       return true;
     }
 
-    let price = brewer.elements.price.value;
+    let price = brewer.price.value;
 
     return this.priceRanges.some((priceRange) => priceRange.min <= price && price <= priceRange.max);
   }
@@ -95,7 +95,7 @@ export class Filter {
       return true;
     }
 
-    let statusCodenames = brewer.elements.product_status.value.map(x => x.codename);
+    let statusCodenames = brewer.productStatus.value.map(x => x.codename);
     return statusCodenames.some((x) => this.productStatuses.includes(x));
   }
 
@@ -143,7 +143,7 @@ class BrewerStore {
   // Methods
 
   getBrewer(brewerSlug) {
-    return brewers.find((brewer) => brewer.elements.url_pattern.value === brewerSlug);
+    return brewers.find((brewer) => brewer.urlPattern.value === brewerSlug);
   }
 
   getBrewers() {

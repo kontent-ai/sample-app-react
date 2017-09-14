@@ -58,12 +58,11 @@ class Coffees extends Component {
     };
 
     let coffees = this.state.coffees.filter(filter).map((coffee, index) => {
-      let e = coffee.elements;
-      let price = formatPrice(e.price.value);
-      let name = e.product_name.value;
-      let imageLink = e.image.value[0].url;
-      let status = renderProductStatus(e.product_status);
-      let link = "store/coffees/" + coffee.elements.url_pattern.value;
+      let price = formatPrice(coffee.price.value);
+      let name = coffee.productName.value;
+      let imageLink = coffee.image.value[0].url;
+      let status = renderProductStatus(coffee.productStatus);
+      let link = "store/coffees/" + coffee.urlPattern.value;
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>
