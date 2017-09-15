@@ -2,6 +2,7 @@
 import { DeliveryClient, DeliveryClientConfig, TypeResolver } from 'kentico-cloud-delivery-typescript-sdk';
 
 const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
+const previewApiKey = "";
 
 // models
 import { AboutUs } from './Models/AboutUs'
@@ -35,6 +36,16 @@ let typeResolvers = [
   new TypeResolver('tweet', () => new Tweet())
 ];
 
+
+function isPreview() {
+  return previewApiKey !== "";
+}
+
 export default new DeliveryClient(
-  new DeliveryClientConfig(projectId, typeResolvers)
+  new DeliveryClientConfig(projectId, typeResolvers,
+    {
+      enablePreviewMode: isPreview(),
+      previewApiKey: previewApiKey
+    }
+  )
 )
