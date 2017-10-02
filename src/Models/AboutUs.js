@@ -1,4 +1,5 @@
 import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import {  resolveContentLink } from '../Utilities/ContentLinks';
 
 export class AboutUs extends ContentItem {
     constructor(){
@@ -10,7 +11,8 @@ export class AboutUs extends ContentItem {
                 if (fieldName === 'fact_about_us'){
                     return 'factAboutUs';
                 }
-            })
+            }),
+            linkResolver: (link) => resolveContentLink(link)
         })    
     }
     

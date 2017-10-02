@@ -1,4 +1,5 @@
 import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import {  resolveContentLink } from '../Utilities/ContentLinks';
 
 export class Home extends ContentItem {
     
@@ -18,7 +19,8 @@ export class Home extends ContentItem {
                     return 'urlPattern';
                 }
 
-            })
+            }),
+            linkResolver: (link) => resolveContentLink(link)
         })    
     }
     
