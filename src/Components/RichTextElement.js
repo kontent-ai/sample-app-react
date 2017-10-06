@@ -20,7 +20,7 @@ function handleClick(element, router, e) {
 
 const RichTextElement = (props) => {
   return (
-    <div className={props.className} dangerouslySetInnerHTML={{ __html: props.element.value }} onClick={(e) => handleClick(props.element, props.router, e)} />
+    <div className={props.className} dangerouslySetInnerHTML={{ __html: props.element.getHtml() }} onClick={(e) => handleClick(props.element, props.router, e)} />
   );
 };
 
