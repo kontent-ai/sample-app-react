@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router'
 
+var LogClick = function(){
+      window.ket('action', 'Custom_Activity_Codename');
+}
+
 const Header = () => {
   return (
     <header className="header" role="banner">
