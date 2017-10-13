@@ -1,18 +1,18 @@
-import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
-import {  resolveContentLink } from '../Utilities/ContentLinks';
+import { ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import { resolveContentLink } from '../Utilities/ContentLinks';
 import TwitterWidgetsLoader from 'twitter-widgets';
 
 export class Tweet extends ContentItem {
-    constructor(){
+    constructor() {
         super({
-            richTextResolver: tweet => {                              
+            richTextResolver: tweet => {
                 let tweetLink = tweet.tweetLink.value;
                 let tweetID = tweetLink.match("^.*twitter.com/.*/(\\d+)/?.*$")[1];
-                                
+
                 TwitterWidgetsLoader.load(twitter => {
                     let selectedTheme = tweet.theme.value.pop().codename;
-                    selectedTheme = selectedTheme ? selectedTheme : 'light'; 
-                    twitter.widgets.createTweet(                        
+                    selectedTheme = selectedTheme ? selectedTheme : 'light';
+                    twitter.widgets.createTweet(
                         tweetID,
                         document.getElementById(`tweet${tweetID}`),
                         {
@@ -24,15 +24,15 @@ export class Tweet extends ContentItem {
             },
             propertyResolver: ((fieldName) => {
 
-                if (fieldName === 'tweet_link'){
+                if (fieldName === 'tweet_link') {
                     return 'tweetLink';
                 }
 
-                if (fieldName === 'display_options'){
+                if (fieldName === 'display_options') {
                     return 'displayOptions';
                 }
             }),
             linkResolver: (link) => resolveContentLink(link)
-        })    
+        })
     }
 }
