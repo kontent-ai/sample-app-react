@@ -1,4 +1,5 @@
 import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import {  resolveContentLink } from '../Utilities/ContentLinks';
 
 export class Office extends ContentItem {
 
@@ -10,7 +11,8 @@ export class Office extends ContentItem {
                     return 'zipCode';
                 }
 
-            })
+            }),
+            linkResolver: (link) => resolveContentLink(link)
         })    
     }
     

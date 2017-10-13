@@ -7,7 +7,7 @@ function handleClick(element, router, e) {
     e.preventDefault();
 
     const id = e.target.getAttribute("data-item-id");
-    const link = element.links[id];
+    const link = element.links.find(m => m.itemId === id);
 
     if (link) {
       const path = resolveContentLink(link);

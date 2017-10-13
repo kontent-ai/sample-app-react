@@ -1,4 +1,5 @@
-import { ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import {  resolveContentLink } from '../Utilities/ContentLinks';
 import TwitterWidgetsLoader from 'twitter-widgets';
 
 export class Tweet extends ContentItem {
@@ -30,7 +31,8 @@ export class Tweet extends ContentItem {
                 if (fieldName === 'display_options'){
                     return 'displayOptions';
                 }
-            })
-        })
+            }),
+            linkResolver: (link) => resolveContentLink(link)
+        })    
     }
 }
