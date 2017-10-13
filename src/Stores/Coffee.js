@@ -27,7 +27,7 @@ let fetchProcessings = () => {
   Client.taxonomy("processing")
     .get()
     .subscribe(response => {
-      processings = response.terms;
+      processings = response.taxonomy.terms;
       notifyChange();
     });
 };
@@ -36,7 +36,7 @@ let fetchProductStatuses = () => {
   Client.taxonomy("product_status")
     .get()
     .subscribe(response => {
-      productStatuses = response.terms;
+      productStatuses = response.taxonomy.terms;
       notifyChange();
     });
 }
