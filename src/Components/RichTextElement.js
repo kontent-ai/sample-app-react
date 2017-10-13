@@ -7,7 +7,7 @@ function handleClick(element, router, e) {
     e.preventDefault();
 
     const id = e.target.getAttribute("data-item-id");
-    const link = element.links[id];
+    const link = element.links.find(m => m.itemId === id);
 
     if (link) {
       const path = resolveContentLink(link);
@@ -20,7 +20,7 @@ function handleClick(element, router, e) {
 
 const RichTextElement = (props) => {
   return (
-    <div className={props.className} dangerouslySetInnerHTML={{ __html: props.element.value }} onClick={(e) => handleClick(props.element, props.router, e)} />
+    <div className={props.className} dangerouslySetInnerHTML={{ __html: props.element.getHtml() }} onClick={(e) => handleClick(props.element, props.router, e)} />
   );
 };
 
