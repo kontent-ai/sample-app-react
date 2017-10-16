@@ -40,7 +40,7 @@ let fetchManufacturers = () => {
   Client.taxonomy("manufacturer")
     .get()
     .subscribe(response => {
-      manufacturers = response.terms;
+      manufacturers = response.taxonomy.terms;
       notifyChange();
       manufacturersInitialized = true;
     });
@@ -54,7 +54,7 @@ let fetchProductStatuses = () => {
   Client.taxonomy("product_status")
     .get()
     .subscribe(response => {
-      productStatuses = response.terms;
+      productStatuses = response.taxonomy.terms;
       notifyChange();
       productStatusesInitialized = true;
     });
