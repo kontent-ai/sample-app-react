@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router'
-
-var LogClick = function(){
-      window.ket('action', 'Custom_Activity_Codename');
-}
+import { LogClick } from '../Utilities/ActivityLogging'
 
 const Header = () => {
   return (

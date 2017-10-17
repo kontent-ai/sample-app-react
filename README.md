@@ -56,11 +56,11 @@ In single-page applications you have to use custom activities to track visitor a
 2. Navigate to the Development > API keys.
 3. Copy your Project ID.
 4. Open the `public\index.html` file in the sample application folder.
-5. Find function `ket('start', '569030c7-52a5-44f5-a243-c5285b3eb24e');` and replace it's second parameter with your Project ID.
+5. Find function `ket('start', '975bf280-fd91-488c-994c-2f04416e5ee3');` and replace it's second parameter with your Project ID.
 6. Save the file.
 7. Go back to Kentico Cloud and navigate to Development > Tracking.
 8. Create a new custom activity and copy its codename.
-9. Open the `src\Components\Header.js` file in the sample application folder.
+9. Open the `src\Utilities\ActivityLogging.js` file in the sample application folder.
 10. Find `Custom_Activity_Codename` and replace it with the codename you copied.
 11. Save the file.
 
