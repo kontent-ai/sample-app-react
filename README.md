@@ -48,7 +48,7 @@ For more info about the API, see the [API reference](https://developer.kenticocl
 
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
-## Tracking visitors and their activity
+## Visitor activity tracking
 
 In single-page applications you have to use custom activities to track visitor activity. Here's an example of how to start tracking visits of About Us page:
 
