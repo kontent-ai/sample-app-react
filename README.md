@@ -50,18 +50,20 @@ You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
 ## Tracking visitors and their activity
 
-In single-page applications you have to use custom activities to track visitor activity. Here's an example of how to start tracking visits of About Us page:
+By default you can see sample visitor data in Kentico Cloud, even if you already feed the single-page application with your own content. Tracking real visitors needs to be set up separately and here's how to.
+
+In single-page applications you have to use custom activities to track visitor activity. This is how you set up tracking visits of About Us page:
 
 1. In Kentico Cloud, select your project.
 2. Navigate to the Development > API keys.
 3. Copy your Project ID.
 4. Open the `public\index.html` file in the sample application folder.
-5. Find function `ket('start', '975bf280-fd91-488c-994c-2f04416e5ee3');` and replace it's second parameter with your Project ID.
+5. Find function call `ket('start', '');` and use your Project ID as its second parameter.
 6. Save the file.
 7. Go back to Kentico Cloud and navigate to Development > Tracking.
 8. Create a new custom activity and copy its codename.
 9. Open the `src\Utilities\ActivityLogging.js` file in the sample application folder.
-10. Find `Custom_Activity_Codename` and replace it with the codename you copied.
+10. Find function call `window.ket('action', '');` and use the codename you copied as its second parameter.
 11. Save the file.
 
 When you now run the application and visit the About Us page, you should be able to see your visit in Analytics of Kentico Cloud. You can also create a new dynamic segment of people who did the custom activity you created and see that the segment is not empty. It should contain you as an anonymous visitor. You can learn more about creating segments with Kentico Cloud in the [documentation](https://help.kenticocloud.com/contact-tracking-and-content-personalization/segments/creating-segments-of-your-visitors).
