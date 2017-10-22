@@ -22,7 +22,7 @@ class ArticleStore {
     Client.items()
       .type('article')
       .equalsFilter('elements.url_pattern', articleSlug)  
-      .elementsParameter(['title', 'teaser_image', 'post_date','body_copy'])
+      .elementsParameter(['title', 'teaser_image', 'post_date','body_copy','video_host','video_id', 'tweet_link', 'theme', 'display_options'])
       .get()
       .subscribe(response => {
         if (!response.isEmpty) {
