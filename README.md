@@ -1,4 +1,4 @@
-# Kentico Cloud sample JavaScript single-page application
+# Kentico Cloud sample React single-page application
 [![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-js.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-js)
 [![Deploy Status](https://img.shields.io/badge/deploy-surge-brightgreen.svg)](http://kentico-cloud-sample-app-react.surge.sh)
 
