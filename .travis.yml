@@ -3,6 +3,11 @@ language: node_js
 node_js:
 - "stable"
 before_script:
-- npm install -g gulp
-- npm install -g cat
 - npm install
+before_deploy:
+- npm run build
+deploy:
+  provider: surge
+  project: ./build/
+  domain: lethal-beetle.surge.sh 
+  skip_cleanup: true
