@@ -9,5 +9,5 @@ before_deploy:
 deploy:
   provider: surge
   project: ./build/
-  domain: lethal-beetle.surge.sh 
+  domain: kentico-cloud-sample-app-react.surge.sh 
   skip_cleanup: true
