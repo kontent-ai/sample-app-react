@@ -1,6 +1,7 @@
 # Kentico Cloud sample JavaScript single-page application
+[![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-js.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-js)
 
- This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
+This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
 
 ## Application setup
 
