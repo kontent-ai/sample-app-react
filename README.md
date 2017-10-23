@@ -1,6 +1,8 @@
-# Kentico Cloud sample JavaScript single-page application
+# Kentico Cloud sample React single-page application
+[![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-js.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-js)
+[![Deploy Status](https://img.shields.io/badge/deploy-surge-brightgreen.svg)](http://kentico-cloud-sample-app-react.surge.sh)
 
- This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
+This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
 
 ## Application setup
 
@@ -47,3 +49,7 @@ You can retrieve content either through the Kentico Cloud Delivery SDKs or the K
 For more info about the API, see the [API reference](https://developer.kenticocloud.com/reference).
 
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
+
+## Deployment
+
+You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kenticocloud.com/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
