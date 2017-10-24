@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router'
+import { LogAboutUs } from '../Utilities/ActivityLogging'
 
 const Header = () => {
   return (
@@ -18,7 +19,7 @@ const Header = () => {
                 <Link to="/articles">Articles</Link>
               </li>
               <li>
-                <Link to="/about">About us</Link>
+                <Link to="/about" onClick={LogAboutUs}>About us</Link>
               </li>
               <li>
                 <Link to="/cafes">Cafes</Link>

@@ -1,6 +1,8 @@
-# Kentico Cloud sample JavaScript single-page application
+# Kentico Cloud sample React single-page application
+[![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-react.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-react)
+[![Deploy Status](https://img.shields.io/badge/deploy-surge-brightgreen.svg)](http://kentico-cloud-sample-app-react.surge.sh)
 
- This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
+This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
 
 ## Application setup
 
@@ -47,3 +49,27 @@ You can retrieve content either through the Kentico Cloud Delivery SDKs or the K
 For more info about the API, see the [API reference](https://developer.kenticocloud.com/reference).
 
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
+
+## Tracking visitors and their activity
+
+By default you can see sample visitor data in Kentico Cloud, even if you already feed the single-page application with your own content. Tracking real visitors needs to be set up separately and here's how to.
+
+In single-page applications you have to use custom activities to track visitor activity. This is how you set up tracking visits of About Us page:
+
+1. In Kentico Cloud, select your project.
+2. Navigate to the Development > API keys.
+3. Copy your Project ID.
+4. Open the `public\index.html` file in the sample application folder.
+5. Find function call `ket('start', '');` and use your Project ID as its second parameter.
+6. Save the file.
+7. Go back to Kentico Cloud and navigate to Development > Tracking.
+8. Create a new custom activity and copy its codename.
+9. Open the `src\Utilities\ActivityLogging.js` file in the sample application folder.
+10. Find function call `window.ket('action', '');` and use the codename you copied as its second parameter.
+11. Save the file.
+
+When you now run the application and visit the About Us page, you should be able to see your visit in Analytics of Kentico Cloud. You can also create a new dynamic segment of people who did the custom activity you created and see that the segment is not empty. It should contain you as an anonymous visitor. You can learn more about creating segments with Kentico Cloud in the [documentation](https://help.kenticocloud.com/contact-tracking-and-content-personalization/segments/creating-segments-of-your-visitors).
+
+## Deployment
+
+You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kenticocloud.com/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
