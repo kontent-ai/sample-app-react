@@ -1,0 +1,315 @@
+{
+    "items": [
+        {
+            "id": "e4bb42f6-ba73-4a93-8082-2edd891b40e4",
+            "name": "Chemex",
+            "codename": "chemex",
+            "type": {
+                "id": "7bc932b3-ce2a-4aa7-954e-04cbcbd214fc"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "0b7a84cd-8547-504e-b1aa-1ae8f7b6b675"
+                }
+            ],
+            "last_modified": "2017-04-04T13:48:32.6148549Z"
+        },
+        {
+            "id": "a815faa5-009e-489b-b8bb-a7f3dda0e047",
+            "name": "Office in Australia",
+            "codename": "office_in_australia",
+            "type": {
+                "id": "e097306b-3893-4a42-9973-2525fad14d66"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "aac5fdf9-5179-f788-8225-3bcee3093aa4"
+                },
+                {
+                    "id": "22110d88-4b92-32a0-db61-9b8dbe401920"
+                }
+            ],
+            "last_modified": "2016-10-20T10:50:51.0110853Z"
+        },
+        {
+            "id": "27382aa5-dd5b-4209-ae2f-e18ccae90771",
+            "name": "HQ in North America",
+            "codename": "hq_in_north_america",
+            "type": {
+                "id": "e097306b-3893-4a42-9973-2525fad14d66"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "aac5fdf9-5179-f788-8225-3bcee3093aa4"
+                },
+                {
+                    "id": "22110d88-4b92-32a0-db61-9b8dbe401920"
+                }
+            ],
+            "last_modified": "2016-10-20T10:50:55.9454989Z"
+        },
+        {
+            "id": "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc",
+            "name": "Melbourne",
+            "codename": "melbourne",
+            "type": {
+                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "a60fe91c-88ea-6990-fe3b-cf8f8504cd33"
+                },
+                {
+                    "id": "98c9e0f1-b6f7-510d-522a-0d39fc62aa1a"
+                }
+            ],
+            "last_modified": "2017-02-06T15:05:22.8910781Z"
+        },
+        {
+            "id": "e844a6aa-4dc4-464f-8ae9-f9f66cc6ab61",
+            "name": "Amsterdam",
+            "codename": "amsterdam",
+            "type": {
+                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "ef86a740-9e4c-0b33-4275-ae78558e71a7"
+                },
+                {
+                    "id": "a65962ef-fccc-2112-956b-e831bb86dec0"
+                },
+                {
+                    "id": "a60fe91c-88ea-6990-fe3b-cf8f8504cd33"
+                }
+            ],
+            "last_modified": "2016-09-01T08:25:04.4666023Z"
+        },
+        {
+            "id": "b96829e8-c00d-447f-8da8-cf4982f704fd",
+            "name": "Hario Skerton Hand Grinder",
+            "codename": "hario_skerton_hand_grinder",
+            "type": {
+                "id": "da4f1cb1-8a55-43e5-9fcc-67ad331c8888"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "8fdb2025-e240-1a17-df13-b5914a681730"
+                }
+            ],
+            "last_modified": "2017-04-04T13:52:11.7999903Z"
+        },
+        {
+            "id": "33389c83-dcfe-48f9-b0ee-f94aeabd2b08",
+            "name": "Brisbane",
+            "codename": "brisbane",
+            "type": {
+                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "a60fe91c-88ea-6990-fe3b-cf8f8504cd33"
+                },
+                {
+                    "id": "98c9e0f1-b6f7-510d-522a-0d39fc62aa1a"
+                }
+            ],
+            "last_modified": "2016-09-01T08:34:04.9408275Z"
+        },
+        {
+            "id": "93881880-ad7a-4976-ba56-6039dda07aea",
+            "name": "Office in Europe",
+            "codename": "office_in_europe",
+            "type": {
+                "id": "e097306b-3893-4a42-9973-2525fad14d66"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "aac5fdf9-5179-f788-8225-3bcee3093aa4"
+                },
+                {
+                    "id": "22110d88-4b92-32a0-db61-9b8dbe401920"
+                }
+            ],
+            "last_modified": "2016-10-20T10:51:00.162554Z"
+        },
+        {
+            "id": "70d07ed8-207e-41ca-b25d-cdfa3f941eb3",
+            "name": "Hario Vacuum Pot",
+            "codename": "hario_vacuum_pot",
+            "type": {
+                "id": "7bc932b3-ce2a-4aa7-954e-04cbcbd214fc"
+            },
+            "sitemap_locations": [],
+            "last_modified": "2017-10-18T08:13:52.2117746Z"
+        },
+        {
+            "id": "e9b81664-cbca-4f0e-b1c8-e7d862f4fd89",
+            "name": "A Chemex Method",
+            "codename": "a_chemex_method",
+            "type": {
+                "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0"
+            },
+            "sitemap_locations": [],
+            "last_modified": "2017-06-27T12:56:28.7877926Z"
+        },
+        {
+            "id": "ef23e568-6aa2-42cd-a120-7823c0ef19f7",
+            "name": "About us",
+            "codename": "about_us",
+            "type": {
+                "id": "b2c14f2c-6467-460b-a70b-bca17972a33a"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "398551ec-3f19-b177-2661-69bed4f35e20"
+                }
+            ],
+            "last_modified": "2017-04-04T13:33:25.0990741Z"
+        },
+        {
+            "id": "5d6167df-e39d-4877-999d-49e6e96fd8b0",
+            "name": "AeroPress",
+            "codename": "aeropress",
+            "type": {
+                "id": "7bc932b3-ce2a-4aa7-954e-04cbcbd214fc"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "0b7a84cd-8547-504e-b1aa-1ae8f7b6b675"
+                }
+            ],
+            "last_modified": "2017-04-04T13:48:16.8256609Z"
+        },
+        {
+            "id": "65832c4e-8e9c-445f-a001-b9528d13dac8",
+            "name": "AeroPress Filters",
+            "codename": "aeropress_filters",
+            "type": {
+                "id": "d9748663-f567-4c51-a922-c24a1d6b935a"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "fedea22c-4ab7-908e-6ac0-85b9730e3a6c"
+                },
+                {
+                    "id": "520cd789-9b80-8e92-e792-137797833c3c"
+                }
+            ],
+            "last_modified": "2017-04-04T13:38:32.4037189Z"
+        },
+        {
+            "id": "e81a0107-8e09-4f2e-b583-8869abe5952a",
+            "name": "Allendale",
+            "codename": "allendale",
+            "type": {
+                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "a60fe91c-88ea-6990-fe3b-cf8f8504cd33"
+                },
+                {
+                    "id": "6f648389-3bce-43ec-2529-e5ff3e12ebe7"
+                },
+                {
+                    "id": "6b6fd2b3-7e80-c7cf-72f7-f3a31626909c"
+                },
+                {
+                    "id": "63e2c1d0-bb5b-34f2-e901-adc61a76d3d9"
+                }
+            ],
+            "last_modified": "2016-09-05T14:13:52.934532Z"
+        },
+        {
+            "id": "1aa6d33b-7f7c-413c-b7fa-d22bf3b411fd",
+            "name": "Americano",
+            "codename": "americano",
+            "type": {
+                "id": "f808c142-4b62-43b0-8f4d-1cbf412580ab"
+            },
+            "sitemap_locations": [],
+            "last_modified": "2017-06-27T12:59:54.6737387Z"
+        },
+        {
+            "id": "028f0e05-9f17-45be-962d-62bebe6b6f53",
+            "name": "Boston",
+            "codename": "boston",
+            "type": {
+                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "a60fe91c-88ea-6990-fe3b-cf8f8504cd33"
+                },
+                {
+                    "id": "6f648389-3bce-43ec-2529-e5ff3e12ebe7"
+                },
+                {
+                    "id": "63e2c1d0-bb5b-34f2-e901-adc61a76d3d9"
+                }
+            ],
+            "last_modified": "2016-09-05T14:12:49.0914134Z"
+        },
+        {
+            "id": "0c9a11bb-6fc3-409c-b3cb-f0b797e15489",
+            "name": "Brazil Natural Barra Grande",
+            "codename": "brazil_natural_barra_grande",
+            "type": {
+                "id": "929985ac-4aa5-436b-85a2-94c2d4fbbebd"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "c6e04208-d6dd-1e25-f7ac-526daf042fb6"
+                }
+            ],
+            "last_modified": "2017-04-04T13:50:19.5103725Z"
+        },
+        {
+            "id": "cf106f4e-30a4-42ef-b313-b8ea3fd3e5c5",
+            "name": "Coffee Beverages Explained",
+            "codename": "coffee_beverages_explained",
+            "type": {
+                "id": "b7aa4a53-d9b1-48cf-b7a6-ed0b182c4b89"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "45a123f3-1c55-c697-7dae-78369c8f1e2c"
+                }
+            ],
+            "last_modified": "2017-04-04T13:40:00.1102334Z"
+        },
+        {
+            "id": "117cdfae-52cf-4885-b271-66aef6825612",
+            "name": "Coffee processing techniques",
+            "codename": "coffee_processing_techniques",
+            "type": {
+                "id": "b7aa4a53-d9b1-48cf-b7a6-ed0b182c4b89"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "45a123f3-1c55-c697-7dae-78369c8f1e2c"
+                }
+            ],
+            "last_modified": "2017-04-04T13:40:14.6418507Z"
+        },
+        {
+            "id": "baccdc8b-7dd1-40ea-98bb-6a992b0558df",
+            "name": "Colombia Carlos Imbachi",
+            "codename": "colombia_carlos_imbachi",
+            "type": {
+                "id": "929985ac-4aa5-436b-85a2-94c2d4fbbebd"
+            },
+            "sitemap_locations": [
+                {
+                    "id": "c6e04208-d6dd-1e25-f7ac-526daf042fb6"
+                }
+            ],
+            "last_modified": "2017-04-04T13:50:38.5480762Z"
+        }
+    ],
+    "pagination": {
+        "continuationToken": "MjA=",
+        "next_page": "https://manage.kenticocloud.com/projects/3b22d91e-5fd7-4a26-aeeb-a4c986bd53ca/items?continuationToken=MjA%3d"
+    }
+}
