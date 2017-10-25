@@ -15,6 +15,11 @@ This is a sample website written in JavaScript utilizing the Kentico Cloud Deliv
 
 After starting, the sample application retrieves content from the default Kentico Cloud sample project.
 
+## Get creative
+Deploy, explore and change the app directly in the browser.
+
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/kentico/cloud-sample-app-react)
+
 ## Preview content from your project
 
 If you already have a Kentico Cloud account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
