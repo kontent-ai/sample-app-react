@@ -78,3 +78,5 @@ When you now run the application and visit the About Us page, you should be able
 ## Deployment
 
 You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kenticocloud.com/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
+
+You can also use alternatives to surge eg. [stout.is](http://stout.is/) or [paperplane.io](https://www.paperplane.io/) to deploy your app live. See the detailed guide on [Airplane.io](http://blog.paperplane.io/).
