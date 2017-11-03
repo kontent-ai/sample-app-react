@@ -8,6 +8,8 @@
     "react-scripts": "0.9.0"
   },
   "dependencies": {
+    "google-maps-react": "^1.1.2",
+    "immutable": "^3.8.2",
     "kentico-cloud-delivery-typescript-sdk": "2.0.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
