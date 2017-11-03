@@ -1,0 +1,40 @@
+﻿[
+    {
+        "item":  {
+                     "id":  "93881880-ad7a-4976-ba56-6039dda07aea"
+                 },
+        "elements":  {
+                         "name":  "Oficina en Europa",
+                         "street":  "344 King\u0027s Road",
+                         "city":  "Londres",
+                         "country":  "Reino Unido",
+                         "state":  "",
+                         "zip_code":  "SW3 5UR",
+                         "phone":  "0173-733-6375",
+                         "email":  "London@localhost.local"
+                     },
+        "language":  {
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-07-20T11:47:07.1638879Z"
+    },
+    {
+        "item":  {
+                     "id":  "93881880-ad7a-4976-ba56-6039dda07aea"
+                 },
+        "elements":  {
+                         "name":  "Office in Europe",
+                         "street":  "344 King\u0027s Road",
+                         "city":  "London",
+                         "country":  "United Kingdom",
+                         "state":  "",
+                         "zip_code":  "SW3 5UR",
+                         "phone":  "0173-733-6375",
+                         "email":  "London@localhost.local"
+                     },
+        "language":  {
+                         "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2016-10-20T10:51:00.162554Z"
+    }
+]

@@ -1,0 +1,26 @@
+﻿[
+    {
+        "item":  {
+                     "id":  "ec14497e-11ae-4759-80e4-4282717dbc2c"
+                 },
+        "elements":  {
+                         "title":  "Roasting premium coffee"
+                     },
+        "language":  {
+                         "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2016-10-20T12:15:15.7357761Z"
+    },
+    {
+        "item":  {
+                     "id":  "ec14497e-11ae-4759-80e4-4282717dbc2c"
+                 },
+        "elements":  {
+                         "title":  "Café tostado premium"
+                     },
+        "language":  {
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-07-20T11:53:14.7977455Z"
+    }
+]

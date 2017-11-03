@@ -1,0 +1,34 @@
+﻿[
+    {
+        "item":  {
+                     "id":  "cf106f4e-30a4-42ef-b313-b8ea3fd3e5c5"
+                 },
+        "elements":  {
+                         "title":  "Tipos de café",
+                         "post_date":  "2014-11-18T00:00:00Z",
+                         "summary":  "De acuerdo al método de preparación, las dos categorías principales de café son espresso y filtrado. Aprenda acerca de los tipos individuales de café dentro de estas categorías.",
+                         "meta_keywords":  "\"café para principiantes\", café",
+                         "meta_description":  "Las dos categorías principales de café son espresso y filtrado. Aprenda acerca de los tipos individuales de café dentro de estas categorías."
+                     },
+        "language":  {
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-07-20T11:14:38.2709266Z"
+    },
+    {
+        "item":  {
+                     "id":  "cf106f4e-30a4-42ef-b313-b8ea3fd3e5c5"
+                 },
+        "elements":  {
+                         "title":  "Coffee Beverages Explained",
+                         "post_date":  "2014-11-18T00:00:00Z",
+                         "summary":  "Espresso and filtered coffee are the two main categories of coffee, based on the method of preparation. Learn about individual types of coffee that fall under these categories.",
+                         "meta_keywords":  "\"coffee beginner\", beverages",
+                         "meta_description":  "Espresso and filtered coffee are the two main categories of coffee. Learn about individual types of coffee that fall under these categories."
+                     },
+        "language":  {
+                         "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-09-29T13:01:15.5154483Z"
+    }
+]

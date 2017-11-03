@@ -1,0 +1,34 @@
+﻿[
+    {
+        "item":  {
+                     "id":  "b2fea94c-73fd-42ec-a22f-f409878de187"
+                 },
+        "elements":  {
+                         "title":  "Orígenes del Arábica Borbón",
+                         "post_date":  "2014-11-11T00:00:00Z",
+                         "summary":  "Este tipo particular de café, el Arábica Bourbon, se vende ahora sólo en Japón. Ha vuelto a la vida gracias a los aficionados luego de ser casi olvidado por cerca de sesenta años.",
+                         "meta_keywords":  "café, arábica",
+                         "meta_description":  "Arábica Bourbon, se vende ahora sólo en Japón. Ha vuelto a la vida gracias a entusiastas luego de ser casi olvidado por cerca de sesenta años."
+                     },
+        "language":  {
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-07-20T12:24:13.379713Z"
+    },
+    {
+        "item":  {
+                     "id":  "b2fea94c-73fd-42ec-a22f-f409878de187"
+                 },
+        "elements":  {
+                         "title":  "Origins of Arabica Bourbon",
+                         "post_date":  "2014-11-11T00:00:00Z",
+                         "summary":  "This one particular type of coffee, the Arabica Bourbon, is now sold only in Japan. It has been brought back to life by enthusiasts after being almost forgotten for nearly sixty years.",
+                         "meta_keywords":  "coffee, arabica",
+                         "meta_description":  "Arabica Bourbon, is now sold only in Japan. It has been brought back to life by enthusiasts after being almost forgotten for nearly sixty years."
+                     },
+        "language":  {
+                         "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-04-04T13:45:44.1533096Z"
+    }
+]

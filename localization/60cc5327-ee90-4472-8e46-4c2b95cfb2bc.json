@@ -1,0 +1,28 @@
+﻿[
+     {
+        "item":  {
+                 "id":  "60cc5327-ee90-4472-8e46-4c2b95cfb2bc"
+                 },
+        "elements":  {
+                     "product_name":  "Hario V60",
+                     "price":  15.9
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-09-07T08:18:38.0202397Z"
+    },
+     {
+        "item":  {
+                 "id":  "60cc5327-ee90-4472-8e46-4c2b95cfb2bc"
+                 },
+        "elements":  {
+                     "product_name":  "Hario V60",
+                     "price":  15.9
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-09-07T08:18:38.0202397Z"
+    }
+]
