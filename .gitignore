@@ -9,3 +9,7 @@ build
 # misc
 .DS_Store
 npm-debug.log
+
+# IDE
+.vs
+.vscode

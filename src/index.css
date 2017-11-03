@@ -5915,8 +5915,9 @@ footer {
 }
 /*# Map #*/
 .map {
-    height: 400px;
+    position: relative !important;
 }
+
 /*# Messages #*/
 .message,
 .ErrorLabel,

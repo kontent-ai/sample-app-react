@@ -11,6 +11,7 @@ import CafesPage from './Pages/Cafes';
 import StorePage from './Pages/Store';
 import CoffeePage from './Pages/Coffee';
 import BrewerPage from './Pages/Brewer';
+import ContactsPage from "./Pages/Contacts"
 import CoffeeStore from './Components/CoffeeStore';
 import BrewerStore from './Components/BrewerStore';
 
@@ -31,6 +32,7 @@ ReactDOM.render((
         <Route path="brewers" component={BrewerStore} />
         <Route path="brewers/:brewerSlug" component={BrewerPage} />
       </Route>
+      <Route path="contacts" component={ContactsPage} />
     </Route>
   </Router>
 ), document.getElementById("root"));
