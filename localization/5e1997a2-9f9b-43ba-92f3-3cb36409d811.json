@@ -1,0 +1,30 @@
+[
+    {
+        "item":  {
+                 "id":  "5e1997a2-9f9b-43ba-92f3-3cb36409d811"
+                 },
+        "elements":  {
+                     "product_name":  "Filtros de Papel para Chemex",
+                     "price":  4.5,
+                     "manufacturer":  "Chemex"
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-04-04T13:39:15.0306576Z"
+    },
+     {
+        "item":  {
+                 "id":  "5e1997a2-9f9b-43ba-92f3-3cb36409d811"
+                 },
+        "elements":  {
+                     "product_name":  "Paper Filters for Chemex",
+                     "price":  4.5,
+                     "manufacturer":  "Chemex"
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-04-04T13:39:15.0306576Z"
+    }
+]

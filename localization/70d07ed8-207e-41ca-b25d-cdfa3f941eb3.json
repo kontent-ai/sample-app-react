@@ -1,0 +1,29 @@
+[
+    {
+        "item":  {
+                 "id":  "70d07ed8-207e-41ca-b25d-cdfa3f941eb3"
+                 },
+        "elements":  {
+                     "product_name":  "Cafetera de Vacío Hario",
+                     "price":  64.9
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-10-24T07:20:07.0713864Z"
+    },
+    
+    {
+        "item":  {
+                 "id":  "70d07ed8-207e-41ca-b25d-cdfa3f941eb3"
+                 },
+        "elements":  {
+                     "product_name":  "Hario Vacuum Pot",
+                     "price":  64.9
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-10-24T07:20:07.0713864Z"
+    }
+]

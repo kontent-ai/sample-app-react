@@ -1,0 +1,30 @@
+﻿[
+     {
+        "item":  {
+                 "id":  "65832c4e-8e9c-445f-a001-b9528d13dac8"
+                 },
+        "elements":  {
+                     "product_name":  "Filtros AeroPress",
+                     "price":  4.9,
+                     "manufacturer":  "Aerobie"
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-04-04T13:38:32.4037189Z"
+    },
+    {
+        "item":  {
+                 "id":  "65832c4e-8e9c-445f-a001-b9528d13dac8"
+                 },
+        "elements":  {
+                     "product_name":  "AeroPress Filters",
+                     "price":  4.9,
+                     "manufacturer":  "Aerobie"
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-04-04T13:38:32.4037189Z"
+    }
+]

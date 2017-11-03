@@ -1,0 +1,31 @@
+[
+    {
+        "item":  {
+                 "id":  "b96829e8-c00d-447f-8da8-cf4982f704fd"
+                 },
+        "elements":  {
+                     "product_name":  "Molinillo de Mano Hario Skerton",
+                     "price":  37.9,
+                     "manufacturer":  "Hario"
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-04-04T13:52:11.7999903Z"
+    },
+    
+    {
+        "item":  {
+                 "id":  "b96829e8-c00d-447f-8da8-cf4982f704fd"
+                 },
+        "elements":  {
+                     "product_name":  "Hario Skerton Hand Grinder",
+                     "price":  37.9,
+                     "manufacturer":  "Hario"
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-04-04T13:52:11.7999903Z"
+    }
+]

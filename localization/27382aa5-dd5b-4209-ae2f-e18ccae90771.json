@@ -1,0 +1,40 @@
+﻿[
+    {
+        "item":  {
+                     "id":  "27382aa5-dd5b-4209-ae2f-e18ccae90771"
+                 },
+        "elements":  {
+                         "name":  "Oficina Central en Norteamérica",
+                         "street":  "27 Bowdoin St",
+                         "city":  "Boston",
+                         "country":  "USA",
+                         "state":  "Massachusetts",
+                         "zip_code":  "02114",
+                         "phone":  "617-600-225",
+                         "email":  "Boston@localhost.local"
+                     },
+        "language":  {
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-07-20T11:46:21.2117374Z"
+    },
+    {
+        "item":  {
+                     "id":  "27382aa5-dd5b-4209-ae2f-e18ccae90771"
+                 },
+        "elements":  {
+                         "name":  "HQ in North America",
+                         "street":  "27 Bowdoin St",
+                         "city":  "Boston",
+                         "country":  "USA",
+                         "state":  "Massachusetts",
+                         "zip_code":  "02114",
+                         "phone":  "617-600-225",
+                         "email":  "Boston@localhost.local"
+                     },
+        "language":  {
+                         "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2016-10-20T10:50:55.9454989Z"
+    }
+]

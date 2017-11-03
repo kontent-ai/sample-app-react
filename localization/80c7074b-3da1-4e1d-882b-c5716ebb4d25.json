@@ -1,0 +1,36 @@
+[
+    {
+        "item":  {
+                 "id":  "80c7074b-3da1-4e1d-882b-c5716ebb4d25"
+                 },
+        "elements":  {
+                     "product_name":  "Kenya Gakuyuni AA",
+                     "price":  10.5,
+                     "farm":  "Gakuyuni, Sociedad Cooperativa de Agricultures Thirikwa",
+                     "country":  "Kenia",
+                     "variety":  "SL28 / SL34",
+                     "altitude":  "5300"
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-09-07T08:21:23.9395073Z"
+    },
+{
+        "item":  {
+                 "id":  "80c7074b-3da1-4e1d-882b-c5716ebb4d25"
+                 },
+        "elements":  {
+                     "product_name":  "Kenya Gakuyuni AA",
+                     "price":  10.5,
+                     "farm":  "Gakuyuni, Thirikwa Farmers Cooperative Society",
+                     "country":  "Kenya",
+                     "variety":  "SL28 / SL34",
+                     "altitude":  "5300"
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-09-07T08:21:23.9395073Z"
+    }
+]

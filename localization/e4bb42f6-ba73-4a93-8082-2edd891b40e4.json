@@ -1,0 +1,28 @@
+[
+    {
+        "item":  {
+                 "id":  "e4bb42f6-ba73-4a93-8082-2edd891b40e4"
+             },
+       "elements":  {
+                     "product_name":  "Chemex",
+                     "price":  49.9
+                 },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                 },
+        "last_modified":  "2017-10-20T10:01:17.0328142Z"
+    },
+    {
+        "item":  {
+                 "id":  "e4bb42f6-ba73-4a93-8082-2edd891b40e4"
+                 },
+        "elements":  {
+                     "product_name":  "Chemex",
+                     "price":  49.9
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-10-20T10:01:17.0328142Z"
+    }    
+]

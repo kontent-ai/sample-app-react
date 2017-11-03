@@ -1,0 +1,36 @@
+[
+    {
+        "item":  {
+                 "id":  "baccdc8b-7dd1-40ea-98bb-6a992b0558df"
+                 },
+        "elements":  {
+                     "product_name":  "Colombia Carlos Imbachi",
+                     "price":  10.5,
+                     "farm":  "Finca Buenavista - Carlos Imbachi",
+                     "country":  "Colombia",
+                     "variety":  "Caturra",
+                     "altitude":  "5700"
+                     },
+        "language":  {
+                     "id":  "00000000-0000-0000-0000-000000000000"
+                     },
+        "last_modified":  "2017-09-07T08:21:37.8810621Z"
+    },
+ {
+        "item":  {
+                 "id":  "baccdc8b-7dd1-40ea-98bb-6a992b0558df"
+                 },
+        "elements":  {
+                     "product_name":  "Colombia Carlos Imbachi",
+                     "price":  10.5,
+                     "farm":  "Finca Buenavista - Carlos Imbachi",
+                     "country":  "Colombia",
+                     "variety":  "Caturra",
+                     "altitude":  "5700"
+                     },
+        "language":  {
+                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                     },
+        "last_modified":  "2017-09-07T08:21:37.8810621Z"
+    }
+]
