@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Immutable from 'immutable';
+import _ from 'lodash';
+import Scroll from 'react-scroll';
 
 
 export class MapContainer extends Component {
@@ -9,34 +12,92 @@ export class MapContainer extends Component {
         super();
         this.state = {
             markerLocations: Immutable.List([]),
-            reloadRequired: true
+            locationsCache: Immutable.Map({}),
+            reloadRequired: true,
+            scrollTo: undefined
         }
 
-        this.pushMarkerLocations = this.pushMarkerLocations.bind(this);
+        this.reloadMarkers = this.reloadMarkers.bind(this);
+        this.addMarker = this.addMarker.bind(this);
+        this.pushMarkerLocation = this.pushMarkerLocation.bind(this);
+        this.focusOnAddress = this.focusOnAddress.bind(this);
+        this.translateAddressAndFocus = this.translateAddressAndFocus.bind(this);
+        this.focusOnLocation = this.focusOnLocation.bind(this);
     }
 
     componentWillUpdate(nextProps, nextState) {
-        if (nextProps.loaded){
-            if(this.state.reloadRequired || this.props.cafesAddresses !== nextProps.cafesAddresses){                
-                let geocoder = new window.google.maps.Geocoder();
-                nextProps.cafesAddresses.forEach(address => {
-                    geocoder.geocode({ 'address': address }, this.pushMarkerLocations)
-                })
-                this.setState({
-                    reloadRequired: false
-                });
-            }
-        }      
+        if (!nextProps.loaded) {
+            return;
+        }
+
+        if (nextState.reloadRequired || !_.isEqual(this.props.cafesAddresses, nextProps.cafesAddresses)) {
+            this.reloadMarkers(nextProps.cafesAddresses);
+        }
+
+        this.focusOnAddress(nextProps.focusOnAddress);
     }
 
-    pushMarkerLocations = (results, status) => {
-        if (status === window.google.maps.GeocoderStatus.OK) {
+    reloadMarkers(cafesAddresses) {
+        cafesAddresses.forEach(this.addMarker);
+        this.setState({
+            reloadRequired: false
+        });
+    }
+
+    addMarker(address) {
+        let addressLocation = this.state.locationsCache.get(address);
+        if (addressLocation) {
             this.setState((previousState) => ({
-                markerLocations: previousState.markerLocations.push(results[0].geometry.location)
+                markerLocations: previousState.markerLocations.push(addressLocation)
+            }))
+        }
+        else {
+            let geocoder = new window.google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, this.pushMarkerLocation.bind(this, address))
+        }
+    }
+
+    pushMarkerLocation(inputAddress, results, status) {
+        if (status === window.google.maps.GeocoderStatus.OK) {
+            let location = results[0].geometry.location;
+            this.setState((previousState) => ({
+                markerLocations: previousState.markerLocations.push(location),
+                locationsCache: previousState.locationsCache.set(inputAddress, location)
             }))
         } else {
             console.warn('Geocode was not successful for the following reason: ' + status);
         }
+    }
+
+    focusOnAddress(address) {
+        if (address && address !== this.props.focusOnAddress) {
+            let addressLocation = this.state.locationsCache.get(address);
+            if (addressLocation) {
+                this.focusOnLocation(addressLocation);
+            }
+            else {
+                let geocoder = new window.google.maps.Geocoder();
+                geocoder.geocode({ 'address': address }, this.translateAddressAndFocus.bind(this, address));
+            }
+        }
+    }
+
+    translateAddressAndFocus(inputAddress, results, status) {
+        if (status === window.google.maps.GeocoderStatus.OK) {
+            let location = results[0].geometry.location;
+            this.setState({
+                locationsCache: this.state.locationsCache.set(inputAddress, location)
+            })
+            this.focusOnLocation(location);
+        } else {
+            console.warn('Geocode was not successful for the following reason: ' + status);
+        }
+    }
+
+    focusOnLocation(location) {
+        this.setState({
+            scrollTo: location
+        })
     }
 
     render() {
@@ -64,8 +125,23 @@ export class MapContainer extends Component {
                 zoom={4}
                 clickableIcons={false}>
                 {markers}
+                <MapScroller scrollTo={this.state.scrollTo} />
             </Map>
         );
+    }
+}
+
+class MapScroller extends Component {
+    componentWillUpdate(nextProps) {
+        if (nextProps.map && nextProps.scrollTo) {
+            let a = ReactDOM.findDOMNode(this);
+            Scroll.animateScroll.scrollTo(a.offsetTop)
+            nextProps.map.panTo(nextProps.scrollTo);
+            nextProps.map.setZoom(17);
+        }
+    }
+    render() {
+        return <a href="#mapanchor" />;
     }
 }
 

@@ -14,6 +14,7 @@ class Contacts extends Component {
         super(props);
         this.state = getState();
         this.onChange = this.onChange.bind(this);
+        this.selectAddress = this.selectAddress.bind(this);
     }
 
     componentDidMount() {
@@ -27,6 +28,12 @@ class Contacts extends Component {
 
     onChange() {
         this.setState(getState());
+    }
+
+    selectAddress(address) {
+        this.setState({
+            selectedAddress: address
+        });
     }
 
     render() {
@@ -54,7 +61,7 @@ class Contacts extends Component {
                         <li>{model.phone}</li>
                         <li><a href={"mailto:" + model.email} target="_top">{model.email}</a></li>
                         <li>
-                            <a data-address={model.dataAddress} className="js-scroll-to-map">{model.dataAddress},<br />
+                            <a onClick={() => this.selectAddress(model.dataAddress)} data-address={model.dataAddress} className="js-scroll-to-map">{model.dataAddress},<br />
                                 {model.zipCode}, {model.countryWithState}<br />
                             </a>
                         </li>
@@ -65,7 +72,7 @@ class Contacts extends Component {
 
         let cafes = this.state.cafes.map(createModel).map((model, index) => {
             return (<div className="col-md-6 col-lg-3" key={index}>
-                <div className="cafe-tile cursor-hand js-scroll-to-map" data-address={model.dataAddress}>
+                <div onClick={() => this.selectAddress(model.dataAddress)} className="cafe-tile cursor-hand js-scroll-to-map" data-address={model.dataAddress}>
                     <div className="cafe-tile-content">
                         <h3 className="cafe-tile-name">{model.name}</h3>
                         <address className="cafe-tile-address">
@@ -77,7 +84,7 @@ class Contacts extends Component {
                     </div>
                 </div>
             </div>)
-        });     
+        });
 
         let cafesAddresses = this.state.cafes.map((cafe) => {
             return `${cafe.city.value}, ${cafe.street.value}`;
@@ -91,7 +98,7 @@ class Contacts extends Component {
                     <div className="row">{cafes}</div>
                 </div>
                 <h2 className="map-title">Drop in</h2>
-                <ContactMap cafesAddresses={cafesAddresses} />
+                <ContactMap cafesAddresses={cafesAddresses} focusOnAddress={this.state.selectedAddress}/>
             </div>);
     }
 }
