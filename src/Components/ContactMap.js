@@ -134,8 +134,8 @@ export class MapContainer extends Component {
 class MapScroller extends Component {
     componentWillUpdate(nextProps) {
         if (nextProps.map && nextProps.scrollTo) {
-            let a = ReactDOM.findDOMNode(this);
-            Scroll.animateScroll.scrollTo(a.offsetTop)
+            let scrollAnchor = ReactDOM.findDOMNode(this);
+            Scroll.animateScroll.scrollTo(scrollAnchor.offsetTop)
             nextProps.map.panTo(nextProps.scrollTo);
             nextProps.map.setZoom(17);
         }
