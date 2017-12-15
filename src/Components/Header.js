@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router'
+import { Link } from 'react-router-dom'
 import { LogAboutUs } from '../Utilities/ActivityLogging'
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
           <nav role="navigation">
             <ul>
               <li>
-                <IndexLink to="/">Home</IndexLink>
+                <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/store">Product catalog</Link>
@@ -35,7 +35,7 @@ const Header = () => {
         <div className="container">
           <div className="col-xs-8 col-md-8 col-lg-4 logo">
             <h1 className="logo">
-              <IndexLink to="/" className="logo-link">Dancing Goat</IndexLink>
+              <Link to="/" className="logo-link">Dancing Goat</Link>
             </h1>
           </div>
         </div>

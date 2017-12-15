@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import BrewerStore from "../Stores/Brewer";
 
 let getState = () => {
@@ -62,7 +62,7 @@ class Brewers extends Component {
       let name = brewer.productName.value;
       let imageLink = brewer.image.value[0].url;
       let status = renderProductStatus(brewer.productStatus);
-      let link = "store/brewers/" + brewer.urlPattern.value;
+      let link = "/brewers/" + brewer.urlPattern.value;
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

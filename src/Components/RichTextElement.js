@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 
 function handleClick(element, router, e) {

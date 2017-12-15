@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Switch, Route, Link } from 'react-router-dom'
+
+import CoffeeStore from '../Components/CoffeeStore';
+import BrewerStore from '../Components/BrewerStore';
 
 const Store = (props) => {
   return (
@@ -17,7 +20,11 @@ const Store = (props) => {
             </ul>
           </div>
         </nav>
-        {props.children}
+        <Switch>
+          <Route exact path={`${props.match.url}`} render={() => <CoffeeStore />} />
+          <Route path={`${props.match.url}/coffees`} render={() => <CoffeeStore />} />          
+          <Route path={`${props.match.url}/brewers`} render={() => <BrewerStore />} />
+        </Switch>
       </div>
     </div>
   );

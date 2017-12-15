@@ -5,7 +5,7 @@ import dateFormat from 'dateformat';
 
 let getState = (props) => {
   return {
-    article: ArticleStore.getArticle(props.params.articleSlug)
+    article: ArticleStore.getArticle(props.match.params.articleSlug)
   };
 };
 
@@ -20,7 +20,7 @@ class Article extends Component {
 
   componentDidMount() {
     ArticleStore.addChangeListener(this.onChange);
-    ArticleStore.provideArticle(this.props.params.articleSlug);
+    ArticleStore.provideArticle(this.props.match.params.articleSlug);
   }
 
   componentWillUnmount() {

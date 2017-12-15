@@ -4,7 +4,7 @@ import RichTextElement from '../Components/RichTextElement';
 
 let getState = (props) => {
   return {
-    coffee: CoffeeStore.getCoffee(props.params.coffeeSlug)
+    coffee: CoffeeStore.getCoffee(props.match.params.coffeeSlug)
   };
 };
 
@@ -12,14 +12,13 @@ class Coffee extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
-    CoffeeStore.provideCoffee(this.props.params.coffeeSlug);
+    CoffeeStore.provideCoffee(this.props.match.params.coffeeSlug);
   }
 
   componentWillUnmount() {
