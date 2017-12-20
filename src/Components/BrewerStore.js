@@ -7,7 +7,7 @@ const BrewerStore = (props) => {
     <div className="product-page row">
       <div className="flex">
         <BrewerFilter />
-        <Brewers />
+        <Brewers language={props.language}/>
       </div>
     </div>
   );

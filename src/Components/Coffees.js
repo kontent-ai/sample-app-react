@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import CoffeeStore from "../Stores/Coffee";
 
-let getState = () => {
+let getState = (language) => {
   return {
     coffees: CoffeeStore.getCoffees(),
     filter: CoffeeStore.getFilter()
@@ -62,7 +62,7 @@ class Coffees extends Component {
       let name = coffee.productName.value;
       let imageLink = coffee.image.value[0].url;
       let status = renderProductStatus(coffee.productStatus);
-      let link = "/coffees/" + coffee.urlPattern.value;
+      let link = `/${this.props.language}/coffees/${coffee.urlPattern.value}`;
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

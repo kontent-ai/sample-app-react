@@ -12,18 +12,18 @@ const Store = (props) => {
           <div className="store-menu-list row">
             <ul>
               <li>
-                <Link to="/store/coffees">Coffees</Link>
+                <Link to={`${props.match.url}/coffees`}>Coffees</Link>
               </li>
               <li>
-                <Link to="/store/brewers">Brewers</Link>
+                <Link to={`${props.match.url}/brewers`}>Brewers</Link>
               </li>
             </ul>
           </div>
         </nav>
         <Switch>
-          <Route exact path={`${props.match.url}`} render={() => <CoffeeStore />} />
-          <Route path={`${props.match.url}/coffees`} render={() => <CoffeeStore />} />          
-          <Route path={`${props.match.url}/brewers`} render={() => <BrewerStore />} />
+          <Route exact path={`${props.match.url}`} render={() => <CoffeeStore language={props.language} />} />
+          <Route path={`${props.match.url}/coffees`} render={() => <CoffeeStore language={props.language} />} />
+          <Route path={`${props.match.url}/brewers`} render={() => <BrewerStore language={props.language} />} />
         </Switch>
       </div>
     </div>

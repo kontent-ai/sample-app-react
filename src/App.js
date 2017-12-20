@@ -15,17 +15,17 @@ import ContactsPage from "./Pages/Contacts"
 const App = (props) => {
   return (
     <div>
-      <Header />
+      <Header language={props.language} changeLanguage={props.changeLanguage}/>
       <Switch>
-        <Route exact path="/" render={(matchProps) => <HomePage {...matchProps} />} />
-        <Route path="/store" render={(matchProps) => <StorePage {...matchProps} />} />
-        <Route path="/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps} />} />
-        <Route path="/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} />} />
-        <Route exact path="/articles" render={(matchProps) => <ArticlesPage {...matchProps} />} />
-        <Route path="/articles/:articleSlug" render={(matchProps) => <ArticlePage {...matchProps} />} />
-        <Route path="/about" render={(matchProps) => <AboutPage {...matchProps} />} />
-        <Route path="/cafes" render={(matchProps) => <CafesPage {...matchProps} />} />        
-        <Route path="/contacts" render={(matchProps) => <ContactsPage {...matchProps} />} />
+        <Route path="/:lang?/store" render={(matchProps) => <StorePage {...matchProps} language={props.language} />} />
+        <Route path="/:lang?/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps}/>} />
+        <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps}/>} />
+        <Route exact path="/:lang?/articles" render={() => <ArticlesPage />} />
+        <Route path="/:lang?/articles/:articleSlug" render={(matchProps) => <ArticlePage {...matchProps}/>} />
+        <Route path="/:lang?/about" render={() => <AboutPage />} />
+        <Route path="/:lang?/cafes" render={() => <CafesPage />} />
+        <Route path="/:lang?/contacts" render={() => <ContactsPage />} />
+        <Route path="/:lang?" render={() => <HomePage />} />
       </Switch>
     </div>
   );
