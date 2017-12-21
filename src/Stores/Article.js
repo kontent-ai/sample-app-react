@@ -1,7 +1,13 @@
 import Client from "../Client.js";
+import { debounce } from "rxjs/operator/debounce";
 
-let articleList = [];
-let articleListCapacity = 0;
+import languageCodes from '../Utilities/LanguageCodes'
+
+
+let articleList = {};
+languageCodes.forEach(language => {
+  articleList[language] = [];
+})
 
 let articleDetails = {};
 
@@ -21,8 +27,8 @@ class ArticleStore {
 
     Client.items()
       .type('article')
-      .equalsFilter('elements.url_pattern', articleSlug)  
-      .elementsParameter(['title', 'teaser_image', 'post_date','body_copy','video_host','video_id', 'tweet_link', 'theme', 'display_options'])
+      .equalsFilter('elements.url_pattern', articleSlug)
+      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
       .get()
       .subscribe(response => {
         if (!response.isEmpty) {
@@ -32,35 +38,41 @@ class ArticleStore {
       })
   }
 
-  provideArticles(count) {
-    if (count <= articleListCapacity) {
-      return;
+  provideArticles(count, language) {
+
+    let query = Client.items()
+      .type('article');
+
+    if (language) {
+      query.languageParameter(language);
     }
 
-    articleListCapacity = count;
-
-    Client.items()
-      .type('article')         
-      .get()
-      .subscribe(response =>
-        {
-          articleList = response.items;
-          notifyChange();
-        });
+    query.get()
+      .subscribe(response => {
+        if (language) {
+          articleList[language] = response.items;
+        } else {
+          articleList[0] = response.items
+        }
+        notifyChange();
+      });
   }
 
   // Methods
-  
-  getArticle(articleSlug) {
+  getArticle(articleSlug, language) {
     return articleDetails[articleSlug];
   }
 
-  getArticles(count) {
-    return articleList.slice(0, count);
+  getArticles(count, language) {
+    if (language) {
+      return articleList[language].slice(0, count);
+    }
+    else {
+      return articleList[0].slice(0, count);
+    }
   }
 
   // Listeners
-
   addChangeListener(listener) {
     changeListeners.push(listener);
   }

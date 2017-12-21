@@ -25,7 +25,7 @@ const App = (props) => {
         <Route path="/:lang?/about" render={() => <AboutPage />} />
         <Route path="/:lang?/cafes" render={() => <CafesPage />} />
         <Route path="/:lang?/contacts" render={() => <ContactsPage />} />
-        <Route path="/:lang?" render={() => <HomePage />} />
+        <Route path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language}/>} />
       </Switch>
     </div>
   );

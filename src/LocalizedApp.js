@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import App from './App'
 import _ from 'lodash'
-
-const languageCodes = [
-    'en-US',
-    'es-ES'
-]
+import languageCodes from './Utilities/LanguageCodes'
 
 class LocalizedApp extends Component {
     constructor(props) {
