@@ -2,31 +2,36 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CafeStore from '../Stores/Cafe';
 
-let getState = () => {
+let getState = (props) => {
   return {
-    cafes: CafeStore.getCompanyCafes()
+    cafes: CafeStore.getCompanyCafes(props.language)
   };
 };
 
 class TasteOurCoffee extends Component {
   constructor(props) {
     super(props);
-
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     CafeStore.addChangeListener(this.onChange);
-    CafeStore.provideCompanyCafes();
+    CafeStore.provideCompanyCafes(this.props.language);
   }
 
   componentWillUnmount() {
     CafeStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      CafeStore.provideCompanyCafes(nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {
@@ -37,7 +42,7 @@ class TasteOurCoffee extends Component {
       return (
         <div className="col-xs-6 col-md-3" key={index}>
           <div>
-            <Link to="/cafes" className="ourcoffee-tile-link">
+            <Link to={`/${this.props.language}/cafes`} className="ourcoffee-tile-link">
               <h2 className="ourcoffee-tile-text center-text">{name}</h2>
               <span className="cafe-overlay"> </span>
               <img alt={name} className="ourcoffee-tile-image" src={imageLink} title={name} />

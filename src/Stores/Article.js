@@ -1,15 +1,9 @@
 import Client from "../Client.js";
-import { debounce } from "rxjs/operator/debounce";
 
-import languageCodes from '../Utilities/LanguageCodes'
+import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
-
-let articleList = {};
-languageCodes.forEach(language => {
-  articleList[language] = [];
-})
-
-let articleDetails = {};
+let articleList = initLanguageCodeObject();
+let articleDetails = initLanguageCodeObject();
 
 let changeListeners = [];
 
@@ -23,16 +17,26 @@ class ArticleStore {
 
   // Actions
 
-  provideArticle(articleSlug) {
+  provideArticle(articleSlug, language) {
 
-    Client.items()
+    let query = Client.items()
       .type('article')
       .equalsFilter('elements.url_pattern', articleSlug)
       .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
-      .get()
+
+    if (language) {
+      query.languageParameter(language);
+    }
+
+    query.get()
       .subscribe(response => {
         if (!response.isEmpty) {
-          articleDetails[articleSlug] = response.items[0];
+          if(language){
+            articleDetails[language][articleSlug] = response.items[0];            
+          }
+          else {
+            articleDetails[defaultLanguage][articleSlug] = response.items[0];                        
+          }
           notifyChange();
         }
       })
@@ -52,7 +56,7 @@ class ArticleStore {
         if (language) {
           articleList[language] = response.items;
         } else {
-          articleList[0] = response.items
+          articleList[defaultLanguage] = response.items
         }
         notifyChange();
       });
@@ -60,7 +64,12 @@ class ArticleStore {
 
   // Methods
   getArticle(articleSlug, language) {
-    return articleDetails[articleSlug];
+    if (language) {
+      return articleDetails[language][articleSlug];
+    } else {
+      return articleDetails[defaultLanguage][articleSlug];
+    }
+
   }
 
   getArticles(count, language) {
@@ -68,7 +77,7 @@ class ArticleStore {
       return articleList[language].slice(0, count);
     }
     else {
-      return articleList[0].slice(0, count);
+      return articleList[defaultLanguage].slice(0, count);
     }
   }
 

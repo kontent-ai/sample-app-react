@@ -5,9 +5,9 @@ import dateFormat from 'dateformat';
 
 let articleCount = 10;
 
-let getState = () => {
+let getState = (props) => {
   return {
-    articles: ArticleStore.getArticles(articleCount)
+    articles: ArticleStore.getArticles(articleCount, props.language)
   };
 };
 
@@ -16,21 +16,27 @@ class Articles extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     ArticleStore.addChangeListener(this.onChange);
-    ArticleStore.provideArticles(articleCount);
+    ArticleStore.provideArticles(articleCount, this.props.language);
   }
 
   componentWillUnmount() {
     ArticleStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      ArticleStore.provideArticles(articleCount, nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import CafeStore from '../Stores/Cafe';
 
-let getState = () => {
+let getState = (props) => {
   return {
-    companyCafes: CafeStore.getCompanyCafes(),
-    partnerCafes: CafeStore.getPartnerCafes()
+    companyCafes: CafeStore.getCompanyCafes(props.language),
+    partnerCafes: CafeStore.getPartnerCafes(props.language)
   };
 };
 
@@ -13,22 +13,29 @@ class Cafes extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     CafeStore.addChangeListener(this.onChange);
-    CafeStore.provideCompanyCafes();
-    CafeStore.providePartnerCafes();
+    CafeStore.provideCompanyCafes(this.props.language);
+    CafeStore.providePartnerCafes(this.props.language);
   }
 
   componentWillUnmount() {
     CafeStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      CafeStore.provideCompanyCafes(nextProps.language);
+      CafeStore.providePartnerCafes(nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {

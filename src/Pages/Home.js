@@ -13,7 +13,7 @@ const Home = (props) => {
       <LinkButton link={`/${props.language}/articles`} text="More articles" />
       <OurStory />
       <LinkButton link={`/${props.language}/about`} text="Read the whole story" />
-      <TasteOurCoffee />
+      <TasteOurCoffee language={props.language}/>
       <LinkButton link={`/${props.language}/cafes`} text="Find out more" />
     </div>
   );

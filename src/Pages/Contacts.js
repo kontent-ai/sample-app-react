@@ -3,31 +3,37 @@ import CafeStore from '../Stores/Cafe';
 import ContactMap from '../Components/ContactMap'
 
 
-let getState = () => {
+let getState = (props) => {
     return {
-        cafes: CafeStore.getCompanyCafes()
+        cafes: CafeStore.getCompanyCafes(props.language)
     };
 };
 
 class Contacts extends Component {
     constructor(props) {
         super(props);
-        this.state = getState();
+        this.state = getState(props);
         this.onChange = this.onChange.bind(this);
         this.selectAddress = this.selectAddress.bind(this);
     }
 
     componentDidMount() {
         CafeStore.addChangeListener(this.onChange);
-        CafeStore.provideCompanyCafes();
+        CafeStore.provideCompanyCafes(this.props.language);
     }
 
     componentWillUnmount() {
         CafeStore.removeChangeListener(this.onChange);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.language !== nextProps.language) {
+            CafeStore.provideCompanyCafes(this.props.language);
+        }
+    }
+
     onChange() {
-        this.setState(getState());
+        this.setState(getState(this.props));
     }
 
     selectAddress(address) {
@@ -98,7 +104,7 @@ class Contacts extends Component {
                     <div className="row">{cafes}</div>
                 </div>
                 <h2 className="map-title">Drop in</h2>
-                <ContactMap cafesAddresses={cafesAddresses} focusOnAddress={this.state.selectedAddress}/>
+                <ContactMap cafesAddresses={cafesAddresses} focusOnAddress={this.state.selectedAddress} />
             </div>);
     }
 }

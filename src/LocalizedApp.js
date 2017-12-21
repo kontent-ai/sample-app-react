@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import App from './App'
 import _ from 'lodash'
-import languageCodes from './Utilities/LanguageCodes'
+import { languageCodes } from './Utilities/LanguageCodes'
 
 class LocalizedApp extends Component {
     constructor(props) {
