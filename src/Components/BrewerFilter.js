@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { translate } from 'react-translate'
+
 import BrewerStore from "../Stores/Brewer";
 
 let priceRanges = [
@@ -45,11 +47,11 @@ class BrewerFilter extends Component {
 
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
-        <h4>Manufacturer</h4>
+        <h4>{this.props.t("manufacturerTitle")}</h4>
         <ManufacturerFilter manufacturers={manufacturers} filter={filter}/>
-        <h4>Price</h4>
+        <h4>{this.props.t("priceTitle")}</h4>
         <PriceRangeFilter priceRanges={priceRanges} filter={filter}/>
-        <h4>Status</h4>
+        <h4>{this.props.t("statusTitle")}</h4>
         <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>
       </aside>
     );
@@ -156,4 +158,4 @@ const ProductStatusFilterItem = (props) => {
   );
 }
 
-export default BrewerFilter;
+export default translate("BrewerFilter")(BrewerFilter);

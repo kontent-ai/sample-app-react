@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom'
+import { translate } from 'react-translate'
 
 import CoffeeStore from '../Components/CoffeeStore';
 import BrewerStore from '../Components/BrewerStore';
@@ -12,10 +13,10 @@ const Store = (props) => {
           <div className="store-menu-list row">
             <ul>
               <li>
-                <Link to={`${props.match.url}/coffees`}>Coffees</Link>
+                <Link to={`${props.match.url}/coffees`}>{props.t("coffeesLinkTitle")}</Link>
               </li>
               <li>
-                <Link to={`${props.match.url}/brewers`}>Brewers</Link>
+                <Link to={`${props.match.url}/brewers`}>{props.t("brewersLinkTitle")}</Link>
               </li>
             </ul>
           </div>
@@ -30,4 +31,4 @@ const Store = (props) => {
   );
 }
 
-export default Store;
+export default translate("Store")(Store);
