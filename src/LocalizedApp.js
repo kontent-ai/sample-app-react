@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import App from './App'
 import _ from 'lodash'
+import { TranslatorProvider } from "react-translate"
+
 import { languageCodes } from './Utilities/LanguageCodes'
+import { localizationObject } from './Utilities/LocalizationLoader'
+
 
 class LocalizedApp extends Component {
     constructor(props) {
@@ -9,7 +13,6 @@ class LocalizedApp extends Component {
         this.state = {
             language: this.getLanguageCode(props.match)
         }
-
         this.setLanguageCode = this.setLanguageCode.bind(this);
     }
 
@@ -28,7 +31,7 @@ class LocalizedApp extends Component {
 
     setLanguageCode(newLanguage) {
         if (this.state.language === newLanguage || languageCodes.indexOf(newLanguage) < 0) {
-            return
+            return;
         }
 
         let urlParts = this.props.location.pathname.split('/');
@@ -46,9 +49,12 @@ class LocalizedApp extends Component {
     }
 
     render() {
+        debugger;
         return (
             <div>
-                <App {...this.props} language={this.state.language} changeLanguage={this.setLanguageCode} />
+                <TranslatorProvider translations={localizationObject[this.state.language]}>
+                    <App {...this.props} language={this.state.language} changeLanguage={this.setLanguageCode} />
+                </TranslatorProvider>
             </div>
         );
     }
