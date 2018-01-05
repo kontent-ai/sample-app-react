@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { translate } from 'react-translate'
+
 import CafeStore from '../Stores/Cafe';
 
 let getState = (props) => {
@@ -102,11 +104,11 @@ class Cafes extends Component {
 
     return (
       <div className="container">
-        <h2>Our cafes</h2>
+        <h2>{this.props.t("ourCafesTitle")}</h2>
         <div className="row">
           {companyCafes}
         </div>
-        <h2>Other places where you can drink our coffee</h2>
+        <h2>{this.props.t("partnerCafesTitle")}</h2>
         <div className="row">
           {partnerCafes}
         </div>
@@ -115,4 +117,4 @@ class Cafes extends Component {
   }
 }
 
-export default Cafes;
+export default translate("Cafes")(Cafes);

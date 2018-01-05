@@ -39,5 +39,14 @@
         "manufacturerTitle": "Fabricante",
         "priceTitle": "Precio",
         "statusTitle": "Estado"
+    },
+    "Cafes": {
+        "ourCafesTitle" : "Nuestros cafés",
+        "partnerCafesTitle" : "Otros lugares donde puedes tomar nuestro café"
+    },
+    "Contacts": {
+        "roasteryTitle":"Roastery",
+        "ourCafesTitle": "Probar nuestro café",
+        "mapTitle": "Pase por nuestros cafés        "
     }
 }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { translate } from 'react-translate'
+
 import CafeStore from '../Stores/Cafe';
 import ContactMap from '../Components/ContactMap'
 
@@ -63,7 +65,7 @@ class Contacts extends Component {
         let roastery = this.state.cafes.map(createModel).map((model) => {
             return (
                 <div className="col-md-12">
-                    <h2 className="contact-title">Roastery</h2>
+                    <h2 className="contact-title">{this.props.t("roasteryTitle")}</h2>
                     <ul className="contact-info">
                         <li>{model.phone}</li>
                         <li><a href={"mailto:" + model.email} target="_top">{model.email}</a></li>
@@ -101,13 +103,13 @@ class Contacts extends Component {
             <div className="container" >
                 {roastery}
                 < div >
-                    <h2>Our cafes</h2>
+                    <h2>{this.props.t("ourCafesTitle")}</h2>
                     <div className="row">{cafes}</div>
                 </div>
-                <h2 className="map-title">Drop in</h2>
+                <h2 className="map-title">{this.props.t("mapTitle")}</h2>
                 <ContactMap cafesAddresses={cafesAddresses} focusOnAddress={this.state.selectedAddress} />
             </div>);
     }
 }
 
-export default Contacts;
+export default translate("Contacts")(Contacts);

@@ -40,7 +40,7 @@ class CoffeeFilter extends Component {
 
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
-        <h4>{this.props.t("coffeeProcesingTitle")}</h4>
+        <h4>{this.props.t("coffeeProcessingTitle")}</h4>
         <ProcessingFilter processings={processings} filter={filter}/>
         <h4>{this.props.t("statusTitle")}</h4>
         <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>

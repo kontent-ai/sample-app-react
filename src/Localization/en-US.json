@@ -39,5 +39,14 @@
         "manufacturerTitle": "Manufacturer",
         "priceTitle": "Price",
         "statusTitle": "Status"
+    },
+    "Cafes": {
+        "ourCafesTitle": "Our cafes",
+        "partnerCafesTitle": "Other places where you can drink our coffee"
+    },
+    "Contacts": {
+        "roasteryTitle": "Roastery",
+        "ourCafesTitle": "Our cafes",
+        "mapTitle": "Drop in"
     }
 }
