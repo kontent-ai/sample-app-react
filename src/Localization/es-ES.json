@@ -18,5 +18,13 @@
     },
     "TasteOurCoffee": {
         "title": "Probar nuestro café"
+    },
+    "Header" : {
+        "homeLinkTitle" : "Inicio",
+        "storeLinkTitle" : "Tienda",
+        "articlesLinkTitle" : "Artículos",
+        "aboutLinkTitle" : "Quiénes somos",
+        "cafesLinkTitle" : "Cafés",
+        "contactsLinkTitle" : "Contacto"
     }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { translate } from 'react-translate'
+
 import { LogAboutUs } from '../Utilities/ActivityLogging'
 
 const Header = (props) => {
@@ -10,22 +12,22 @@ const Header = (props) => {
           <nav role="navigation">
             <ul>
               <li>
-                <Link to={`/${props.language}`}>Home</Link>
+                <Link to={`/${props.language}`}>{props.t("homeLinkTitle")}</Link>
               </li>
               <li>
-                <Link to={`/${props.language}/store`}>Product catalog</Link>
+                <Link to={`/${props.language}/store`}>{props.t("storeLinkTitle")}</Link>
               </li>
               <li>
-                <Link to={`/${props.language}/articles`}>Articles</Link>
+                <Link to={`/${props.language}/articles`}>{props.t("articlesLinkTitle")}</Link>
               </li>
               <li>
-                <Link to={`/${props.language}/about`} onClick={LogAboutUs}>About us</Link>
+                <Link to={`/${props.language}/about`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
               </li>
               <li>
-                <Link to={`/${props.language}/cafes`}>Cafes</Link>
+                <Link to={`/${props.language}/cafes`}>{props.t("cafesLinkTitle")}</Link>
               </li>
               <li>
-                <Link to={`/${props.language}/contacts`}>Contact</Link>
+                <Link to={`/${props.language}/contacts`}>{props.t("contactsLinkTitle")}</Link>
               </li>
             </ul>
           </nav>
@@ -56,4 +58,4 @@ const Header = (props) => {
   );
 }
 
-export default Header;
+export default translate("Header")(Header);

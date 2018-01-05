@@ -18,5 +18,13 @@
     },
     "TasteOurCoffee": {
         "title": "Taste Our Coffee"
+    },
+    "Header" : {
+        "homeLinkTitle" : "Home",
+        "storeLinkTitle" : "Product catalog",
+        "articlesLinkTitle" : "Articles",
+        "aboutLinkTitle" : "About us",
+        "cafesLinkTitle" : "Cafes",
+        "contactsLinkTitle" : "Contact"
     }
 }
