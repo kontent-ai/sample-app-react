@@ -19,12 +19,25 @@
     "TasteOurCoffee": {
         "title": "Taste Our Coffee"
     },
-    "Header" : {
-        "homeLinkTitle" : "Home",
-        "storeLinkTitle" : "Product catalog",
-        "articlesLinkTitle" : "Articles",
-        "aboutLinkTitle" : "About us",
-        "cafesLinkTitle" : "Cafes",
-        "contactsLinkTitle" : "Contact"
+    "Header": {
+        "homeLinkTitle": "Home",
+        "storeLinkTitle": "Product catalog",
+        "articlesLinkTitle": "Articles",
+        "aboutLinkTitle": "About us",
+        "cafesLinkTitle": "Cafes",
+        "contactsLinkTitle": "Contact"
+    },
+    "Store": {
+        "coffeesLinkTitle": "Coffees",
+        "brewersLinkTitle": "Brewers"
+    },
+    "CoffeeFilter": {
+        "coffeeProcesingTitle": "Coffee processing",
+        "statusTitle": "Status"
+    },
+    "BrewerFilter": {
+        "manufacturerTitle": "Manufacturer",
+        "priceTitle": "Price",
+        "statusTitle": "Status"
     }
 }

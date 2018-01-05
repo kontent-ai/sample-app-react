@@ -19,12 +19,25 @@
     "TasteOurCoffee": {
         "title": "Probar nuestro café"
     },
-    "Header" : {
-        "homeLinkTitle" : "Inicio",
-        "storeLinkTitle" : "Tienda",
-        "articlesLinkTitle" : "Artículos",
-        "aboutLinkTitle" : "Quiénes somos",
-        "cafesLinkTitle" : "Cafés",
-        "contactsLinkTitle" : "Contacto"
+    "Header": {
+        "homeLinkTitle": "Inicio",
+        "storeLinkTitle": "Tienda",
+        "articlesLinkTitle": "Artículos",
+        "aboutLinkTitle": "Quiénes somos",
+        "cafesLinkTitle": "Cafés",
+        "contactsLinkTitle": "Contacto"
+    },
+    "Store": {
+        "coffeesLinkTitle": "Cafés",
+        "brewersLinkTitle": "Cerveceros"
+    },
+    "CoffeeFilter": {
+        "coffeeProcesingTitle": "Procesamiento del café",
+        "statusTitle": "Estado"
+    },
+    "BrewerFilter": {
+        "manufacturerTitle": "Fabricante",
+        "priceTitle": "Precio",
+        "statusTitle": "Estado"
     }
 }
