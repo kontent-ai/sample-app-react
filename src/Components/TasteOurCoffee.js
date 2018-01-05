@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { translate } from 'react-translate'          
+
 import CafeStore from '../Stores/Cafe';
 
 let getState = (props) => {
@@ -55,7 +57,7 @@ class TasteOurCoffee extends Component {
     return (
       <div className="row">
         <div>
-          <h1 className="title-tab">Taste Our Coffee</h1>
+          <h1 className="title-tab">{this.props.t("title")}</h1>
         </div>
         {cafes}
       </div>
@@ -63,4 +65,4 @@ class TasteOurCoffee extends Component {
   }
 }
 
-export default TasteOurCoffee;
+export default translate("TasteOurCoffee")(TasteOurCoffee);

@@ -7,13 +7,16 @@
     "LatestArticles": {
         "title": "Último artículo"
     },
-    "Home" : {
-        "moreArticles" : "Más artículos",
-        "aboutLinkText" : "Más artículos",
-        "cafesLinkText" : "Más cafés"
+    "Home": {
+        "moreArticles": "Más artículos",
+        "aboutLinkText": "Más artículos",
+        "cafesLinkText": "Más cafés"
     },
-    "OurStory" : {
-        "title" : "Nuestra historia",
-        "text" : "Dancing Goat originó en 1969 como una empresa de entusiastas del café. Nuestro principal objetivo siempre ha sido ofrecer una experiencia inolvidable a nuestros clientes. Conocemos a todos los agricultores personalmente y tenemos la calidad como la mayor exigencia. Con esta creencia nos hemos convertido en una marca reconocida y disfrutarda por todo el mundo."
+    "OurStory": {
+        "title": "Nuestra historia",
+        "text": "Dancing Goat originó en 1969 como una empresa de entusiastas del café. Nuestro principal objetivo siempre ha sido ofrecer una experiencia inolvidable a nuestros clientes. Conocemos a todos los agricultores personalmente y tenemos la calidad como la mayor exigencia. Con esta creencia nos hemos convertido en una marca reconocida y disfrutarda por todo el mundo."
+    },
+    "TasteOurCoffee": {
+        "title": "Probar nuestro café"
     }
 }
