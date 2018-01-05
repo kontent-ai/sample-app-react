@@ -31,11 +31,10 @@ class ArticleStore {
     query.get()
       .subscribe(response => {
         if (!response.isEmpty) {
-          if(language){
-            articleDetails[language][articleSlug] = response.items[0];            
-          }
-          else {
-            articleDetails[defaultLanguage][articleSlug] = response.items[0];                        
+          if (language) {
+            articleDetails[language][articleSlug] = response.items[0];
+          } else {
+            articleDetails[defaultLanguage][articleSlug] = response.items[0];
           }
           notifyChange();
         }

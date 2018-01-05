@@ -22,7 +22,7 @@ const App = (props) => {
         <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} />} />
         <Route exact path="/:lang?/articles" render={() => <ArticlesPage language={props.language} />} />
         <Route path="/:lang?/articles/:articleSlug" render={(matchProps) => <ArticlePage {...matchProps} language={props.language} />} />
-        <Route path="/:lang?/about" render={() => <AboutPage />} />
+        <Route path="/:lang?/about" render={() => <AboutPage language={props.language}/>} />
         <Route path="/:lang?/cafes" render={() => <CafesPage language={props.language} />} />
         <Route path="/:lang?/contacts" render={() => <ContactsPage language={props.language} />} />
         <Route path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language} />} />
