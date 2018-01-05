@@ -49,7 +49,6 @@ class LocalizedApp extends Component {
     }
 
     render() {
-        debugger;
         return (
             <div>
                 <TranslatorProvider translations={localizationObject[this.state.language]}>

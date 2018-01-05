@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ArticleStore from '../Stores/Article';
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat';
+import { translate } from 'react-translate'
+
+import { dateFormats } from '../Utilities/LanguageCodes'
 
 const articleCount = 5;
 
@@ -16,6 +19,7 @@ class LatestArticles extends Component {
     super(props);
     this.state = getState(props);
     this.onChange = this.onChange.bind(this);
+    dateFormat.i18n = dateFormats[props.language] || dateFormats[0];
   }
 
   componentDidMount() {
@@ -30,6 +34,7 @@ class LatestArticles extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       ArticleStore.provideArticles(articleCount, nextProps.language);
+      dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
     }
   }
 
@@ -83,10 +88,11 @@ class LatestArticles extends Component {
     let postDate = formatDate(article.postDate.value);
     let summary = article.summary.value;
     let link = "/articles/" + article.urlPattern.value;
+    let tabTitle = this.props.t("title");
 
     return (
       <div className="row">
-        <h1 className="title-tab">Latest article</h1>
+        <h1 className="title-tab">{tabTitle}</h1>
         <div className="article-tile article-tile-large">
           <div className="col-md-12 col-lg-6">
             <Link to={link}>
@@ -113,4 +119,4 @@ class LatestArticles extends Component {
   }
 }
 
-export default LatestArticles;
+export default translate("LatestArticles")(LatestArticles);
