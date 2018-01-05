@@ -1,20 +1,24 @@
 import Client from "../Client.js";
 
-import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
 
 let changeListeners = [];
-let initialized = false;
 let cafes = initLanguageCodeObject();
+let languageInitialized = {};
+languageCodes.forEach((language) => {
+  languageInitialized[language] = false;
+})
 
 
-let notifyChange = () => {
+let notifyChange = (newlanguage) => {
   changeListeners.forEach((listener) => {
-    listener();
+    listener(newlanguage);
   });
 }
 
 let fetchCafes = (language) => {
-  if (initialized) {
+  if(languageInitialized[language]){
+    notifyChange(language);
     return;
   }
 
@@ -32,8 +36,8 @@ let fetchCafes = (language) => {
       } else {
         cafes[defaultLanguage] = response.items;
       }
-      notifyChange();
-      initialized = true;
+      notifyChange(language);
+      languageInitialized[language] = true;
     });
 }
 

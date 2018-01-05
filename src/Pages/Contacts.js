@@ -3,16 +3,16 @@ import CafeStore from '../Stores/Cafe';
 import ContactMap from '../Components/ContactMap'
 
 
-let getState = (props) => {
+let getState = (language) => {
     return {
-        cafes: CafeStore.getCompanyCafes(props.language)
+        cafes: CafeStore.getCompanyCafes(language)
     };
 };
 
 class Contacts extends Component {
     constructor(props) {
         super(props);
-        this.state = getState(props);
+        this.state = getState(props.language);
         this.onChange = this.onChange.bind(this);
         this.selectAddress = this.selectAddress.bind(this);
     }
@@ -26,14 +26,15 @@ class Contacts extends Component {
         CafeStore.removeChangeListener(this.onChange);
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {        
         if (this.props.language !== nextProps.language) {
-            CafeStore.provideCompanyCafes(this.props.language);
+            CafeStore.provideCompanyCafes(nextProps.language);
+            this.selectAddress(undefined);
         }
     }
 
-    onChange() {
-        this.setState(getState(this.props));
+    onChange(language) {
+        this.setState(getState(language || this.props.language));
     }
 
     selectAddress(address) {
