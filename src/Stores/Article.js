@@ -1,4 +1,5 @@
 import Client from "../Client.js";
+import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk';
 
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
@@ -44,7 +45,8 @@ class ArticleStore {
   provideArticles(count, language) {
 
     let query = Client.items()
-      .type('article');
+      .type('article')
+      .orderParameter("elements.post_date", SortOrder.desc);
 
     if (language) {
       query.languageParameter(language);

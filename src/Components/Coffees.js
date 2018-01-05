@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import CoffeeStore from "../Stores/Coffee";
 
-let getState = (language) => {
+let getState = (props) => {
   return {
-    coffees: CoffeeStore.getCoffees(),
+    coffees: CoffeeStore.getCoffees(props.language),
     filter: CoffeeStore.getFilter()
   };
 };
@@ -14,21 +14,27 @@ class Coffees extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
-    CoffeeStore.provideCoffees();
+    CoffeeStore.provideCoffees(this.props.language);
   }
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      CoffeeStore.provideCoffees(nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {

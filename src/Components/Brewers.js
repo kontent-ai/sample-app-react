@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import BrewerStore from "../Stores/Brewer";
 
-let getState = () => {
+let getState = (props) => {
   return {
-    brewers: BrewerStore.getBrewers(),
+    brewers: BrewerStore.getBrewers(props.language),
     filter: BrewerStore.getFilter()
   };
 };
@@ -14,21 +14,27 @@ class Brewers extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     BrewerStore.addChangeListener(this.onChange);
-    BrewerStore.provideBrewers();
+    BrewerStore.provideBrewers(this.props.language);
   }
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      BrewerStore.provideBrewers(nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {

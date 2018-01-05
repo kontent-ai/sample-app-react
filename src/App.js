@@ -18,8 +18,8 @@ const App = (props) => {
       <Header language={props.language} changeLanguage={props.changeLanguage} />
       <Switch>
         <Route path="/:lang?/store" render={(matchProps) => <StorePage {...matchProps} language={props.language} />} />
-        <Route path="/:lang?/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps} />} />
-        <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} />} />
+        <Route path="/:lang?/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps} language={props.language}/>} />
+        <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} language={props.language}/>} />
         <Route exact path="/:lang?/articles" render={() => <ArticlesPage language={props.language} />} />
         <Route path="/:lang?/articles/:articleSlug" render={(matchProps) => <ArticlePage {...matchProps} language={props.language} />} />
         <Route path="/:lang?/about" render={() => <AboutPage language={props.language}/>} />
