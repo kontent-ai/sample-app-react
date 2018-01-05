@@ -6,5 +6,10 @@
     },
     "LatestArticles" : {
         "title" : "Latest articles"
+    },
+    "Home" : {
+        "moreArticles" : "More articles",
+        "aboutLinkText" : "Read the whole story",
+        "cafesLinkText" : "Find out more"
     }
 }

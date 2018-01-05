@@ -5,6 +5,11 @@
         "text": "Descubre el fascinante mundo de Dancing Goat café de la mas alta calidad. Nunca más perderás una sola oportunidad de disfrutar un buen café."
     },
     "LatestArticles": {
-        "title": "Último Artícuo"
+        "title": "Último artículo"
+    },
+    "Home" : {
+        "moreArticles" : "Más artículos",
+        "aboutLinkText" : "Más artículos",
+        "cafesLinkText" : "Más cafés"
     }
 }
