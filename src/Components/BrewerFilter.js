@@ -50,7 +50,7 @@ class BrewerFilter extends Component {
         <h4>{this.props.t("manufacturerTitle")}</h4>
         <ManufacturerFilter manufacturers={manufacturers} filter={filter}/>
         <h4>{this.props.t("priceTitle")}</h4>
-        <PriceRangeFilter priceRanges={priceRanges} filter={filter}/>
+        <PriceRangeFilter priceRanges={priceRanges} filter={filter} language={this.props.language}/>
         <h4>{this.props.t("statusTitle")}</h4>
         <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>
       </aside>
@@ -93,7 +93,7 @@ const ManufacturerFilterItem = (props) => {
 const PriceRangeFilter = (props) => {
   let filterItems = props.priceRanges.map((priceRange, index) => {
     return (
-      <PriceRangeFilterItem priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index}/>
+      <PriceRangeFilterItem language={props.language} priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index}/>
     );
   });
 
@@ -106,8 +106,8 @@ const PriceRangeFilter = (props) => {
 
 const PriceRangeFilterItem = (props) => {
   let checked = props.filter.priceRanges.findIndex((x) => x.min === props.priceRange.min && x.max === props.priceRange.max) >= 0;
-  let formatPrice = (price) => {
-    return price.toLocaleString("en-US", {
+  let formatPrice = (price, language) => {
+    return price.toLocaleString(language, {
       style: "currency",
       currency: "USD",
       maximumFractionDigits: 2
@@ -117,11 +117,10 @@ const PriceRangeFilterItem = (props) => {
     props.filter.togglePriceRange(props.priceRange);
     BrewerStore.setFilter(props.filter);
   }
-
   return (
     <span className="checkbox js-postback">
       <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
-      <label htmlFor={props.id}>{formatPrice(props.priceRange.min) + " – " + formatPrice(props.priceRange.max)}</label>
+      <label htmlFor={props.id}>{formatPrice(props.priceRange.min, props.language) + " – " + formatPrice(props.priceRange.max, props.language)}</label>
     </span>
   );
 }

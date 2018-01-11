@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+
+import Link from '../Components/LowerCaseUrlLink';
+
 
 const LinkButton = (props) => {
   return (

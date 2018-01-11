@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './Components/Header.js';
 import HomePage from './Pages/Home';
@@ -18,14 +18,15 @@ const App = (props) => {
       <Header language={props.language} changeLanguage={props.changeLanguage} />
       <Switch>
         <Route path="/:lang?/store" render={(matchProps) => <StorePage {...matchProps} language={props.language} />} />
-        <Route path="/:lang?/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps} language={props.language}/>} />
-        <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} language={props.language}/>} />
+        <Route path="/:lang?/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps} language={props.language} />} />
+        <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} language={props.language} />} />
         <Route exact path="/:lang?/articles" render={() => <ArticlesPage language={props.language} />} />
         <Route path="/:lang?/articles/:articleSlug" render={(matchProps) => <ArticlePage {...matchProps} language={props.language} />} />
-        <Route path="/:lang?/about" render={() => <AboutPage language={props.language}/>} />
+        <Route path="/:lang?/about" render={() => <AboutPage language={props.language} />} />
         <Route path="/:lang?/cafes" render={() => <CafesPage language={props.language} />} />
         <Route path="/:lang?/contacts" render={() => <ContactsPage language={props.language} />} />
-        <Route path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language} />} />
+        <Route exact path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language} />} />
+        <Route path="*" render={(props) => { return <Redirect to="/" push /> }} />
       </Switch>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { translate } from 'react-translate'
 
+import Link from '../Components/LowerCaseUrlLink';
 import { LogAboutUs } from '../Utilities/ActivityLogging'
 
 const Header = (props) => {

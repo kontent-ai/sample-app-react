@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import Link from '../Components/LowerCaseUrlLink';
 import CoffeeStore from "../Stores/Coffee";
 
 let getState = (props) => {
@@ -38,8 +38,8 @@ class Coffees extends Component {
   }
 
   render() {
-    let formatPrice = (price) => {
-      return price.toLocaleString("en-US", {
+    let formatPrice = (price, language) => {
+      return price.toLocaleString(language, {
         style: "currency",
         currency: "USD"
       });
@@ -64,7 +64,7 @@ class Coffees extends Component {
     };
 
     let coffees = this.state.coffees.filter(filter).map((coffee, index) => {
-      let price = formatPrice(coffee.price.value);
+      let price = formatPrice(coffee.price.value, this.props.language);
       let name = coffee.productName.value;
       let imageLink = coffee.image.value[0].url;
       let status = renderProductStatus(coffee.productStatus);

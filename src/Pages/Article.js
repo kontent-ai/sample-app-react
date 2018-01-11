@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import dateFormat from 'dateformat';
+
 import ArticleStore from '../Stores/Article';
 import RichTextElement from '../Components/RichTextElement';
-import dateFormat from 'dateformat';
+import { dateFormats } from '../Utilities/LanguageCodes'
 
 let getState = (props) => {
   return {
@@ -16,6 +18,7 @@ class Article extends Component {
 
     this.state = getState(props);
     this.onChange = this.onChange.bind(this);
+    dateFormat.i18n = dateFormats[props.language] || dateFormats[0];
   }
 
   componentDidMount() {
@@ -30,6 +33,7 @@ class Article extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       ArticleStore.provideArticle(this.props.match.params.articleSlug, nextProps.language);
+      dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
     }
   }
 

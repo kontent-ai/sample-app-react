@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ArticleStore from '../Stores/Article';
-import { Link } from 'react-router-dom'
+import Link from '../Components/LowerCaseUrlLink'
 import dateFormat from 'dateformat';
+
+import { dateFormats } from '../Utilities/LanguageCodes'
 
 let articleCount = 10;
 
@@ -18,6 +20,7 @@ class Articles extends Component {
 
     this.state = getState(props);
     this.onChange = this.onChange.bind(this);
+    dateFormat.i18n = dateFormats[props.language] || dateFormats[0];
   }
 
   componentDidMount() {
@@ -32,6 +35,7 @@ class Articles extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       ArticleStore.provideArticles(articleCount, nextProps.language);
+      dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
     }
   }
 
@@ -57,7 +61,7 @@ class Articles extends Component {
       let imageLink = article.teaserImage.value[0].url;
       let postDate = formatDate(article.postDate.value);
       let summary = article.summary.value;
-      let link = "/articles/" + article.urlPattern.value;
+      let link = `/${this.props.language}/articles/${article.urlPattern.value}`;
 
       result.push(
         <div className="col-md-3" key={counter++}>
@@ -82,7 +86,6 @@ class Articles extends Component {
 
       return result;
     }, []);
-
     return (
       <div className="container">
         {articles}

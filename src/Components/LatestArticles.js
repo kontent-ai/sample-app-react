@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ArticleStore from '../Stores/Article';
-import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat';
 import { translate } from 'react-translate'
 
 import { dateFormats } from '../Utilities/LanguageCodes'
+import Link from '../Components/LowerCaseUrlLink';
+
 
 const articleCount = 5;
 
@@ -58,7 +59,7 @@ class LatestArticles extends Component {
       let imageLink = article.teaserImage.value[0].url;
       let postDate = formatDate(article.postDate.value);
       let summary = article.summary.value;
-      let link = "/articles/" + article.urlPattern.value;
+      let link = `/${this.props.language.toLowerCase()}/articles/${article.urlPattern.value}`;
 
       return (
         <div className="col-md-3" key={index}>
@@ -87,7 +88,7 @@ class LatestArticles extends Component {
     let imageLink = article.teaserImage.value[0].url;
     let postDate = formatDate(article.postDate.value);
     let summary = article.summary.value;
-    let link = "/articles/" + article.urlPattern.value;
+    let link = `/${this.props.language.toLowerCase()}/articles/${article.urlPattern.value}`;
     let tabTitle = this.props.t("title");
 
     return (

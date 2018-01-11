@@ -1,7 +1,11 @@
+import _ from 'lodash'
+
 const languageCodes = [
     'en-US', // default languages
     'es-ES'
 ];
+
+const languageCodesLowerCase = languageCodes.map(code => code.toLowerCase());
 
 const dateFormats = {
     'en-US': {
@@ -46,10 +50,25 @@ const initLanguageCodeObject = (object) => {
     return object
 }
 
+const getLanguageCode = (match) => {
+    const languageCode = languageCodes[0];
+    if (!_.has(match, ['params', 'lang'])) {
+        return languageCode;
+    }
+
+    const languageParameter = _.get(match, ['params', 'lang']);
+    if (languageCodesLowerCase.indexOf(languageParameter.toLowerCase()) > -1) {
+        return languageCodes[languageCodesLowerCase.indexOf(languageParameter.toLowerCase())];
+    }
+    return defaultLanguage;
+}
+
 module.exports = {
     languageCodes,
+    languageCodesLowerCase,
     dateFormats,
     defaultLanguage,
-    initLanguageCodeObject
+    initLanguageCodeObject,
+    getLanguageCode
 };
 export default languageCodes;

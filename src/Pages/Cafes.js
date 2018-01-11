@@ -68,9 +68,9 @@ class Cafes extends Component {
             <div className="cafe-image-tile-content">
               <h3 className="cafe-image-tile-name">{model.name}</h3>
               <address className="cafe-tile-address">
-                <a name={model.name} className="cafe-tile-address-anchor">
+                <span name={model.name} className="cafe-tile-address-anchor">
                   {model.street}, {model.city}<br />{model.zipCode}, {model.countryWithState}
-                </a>
+                </span>
               </address>
               <p>{model.phone}</p>
             </div>
