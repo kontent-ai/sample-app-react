@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "item":  {
                      "id":  "de4bfc43-0daf-4aed-960d-49ad4d8f95ad"
@@ -10,7 +10,12 @@
                          "state":  "California",
                          "zip_code":  "90210",
                          "phone":  "213-326-4224",
-                         "email":  "LosAngeles@localhost.local"
+                         "email":  "LosAngeles@localhost.local",
+                         "photo":  [
+                                       {
+                                           "id":  "8858d272-777b-43bd-93be-53a98be97569"
+                                       }
+                                   ]
                      },
         "language":  {
                          "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
@@ -28,7 +33,12 @@
                          "state":  "California",
                          "zip_code":  "90210",
                          "phone":  "213-326-4224",
-                         "email":  "LosAngeles@localhost.local"
+                         "email":  "LosAngeles@localhost.local",
+                         "photo":  [
+                                       {
+                                           "id":  "8858d272-777b-43bd-93be-53a98be97569"
+                                       }
+                                   ]
                      },
         "language":  {
                          "id":  "00000000-0000-0000-0000-000000000000"
