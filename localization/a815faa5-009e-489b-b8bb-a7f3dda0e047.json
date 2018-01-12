@@ -1,40 +1,40 @@
 [
-    {
-        "item":  {
-                     "id":  "a815faa5-009e-489b-b8bb-a7f3dda0e047"
-                 },
-        "elements":  {
-                         "name":  "Office in Australia",
-                         "street":  "152 Hay St",
-                         "city":  "Sydney",
-                         "country":  "Australia",
-                         "state":  "",
-                         "zip_code":  "NSW 2000",
-                         "phone":  "07-3403-8884",
-                         "email":  "Sydney@localhost.local"
-                     },
-        "language":  {
-                         "id":  "00000000-0000-0000-0000-000000000000"
-                     },
-        "last_modified":  "2016-10-20T10:50:51.0110853Z"
+  {
+    "item": {
+      "id": "a815faa5-009e-489b-b8bb-a7f3dda0e047"
     },
-    {
-        "item":  {
-                     "id":  "a815faa5-009e-489b-b8bb-a7f3dda0e047"
-                 },
-        "elements":  {
-                         "name":  "Oficina en Australia",
-                         "street":  "152 Hay St",
-                         "city":  "Sídney",
-                         "country":  "Australia",
-                         "state":  "",
-                         "zip_code":  "NSW 2000",
-                         "phone":  "07-3403-8884",
-                         "email":  "Sydney@localhost.local"
-                     },
-        "language":  {
-                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
-                     },
-        "last_modified":  "2017-07-20T11:46:49.8619942Z"
-    }
+    "elements": {
+      "name": "Office in Australia",
+      "street": "152 Hay St",
+      "city": "Sydney",
+      "country": "Australia",
+      "state": "",
+      "zip_code": "NSW 2000",
+      "phone": "07-3403-8884",
+      "email": "Sydney@localhost.local"
+    },
+    "language": {
+      "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "last_modified": "2016-10-20T10:50:51.0110853Z"
+  },
+  {
+    "item": {
+      "id": "a815faa5-009e-489b-b8bb-a7f3dda0e047"
+    },
+    "elements": {
+      "name": "Office in Australia",
+      "street": "152 Hay St",
+      "city": "Sydney",
+      "country": "Australia",
+      "state": "",
+      "zip_code": "NSW 2000",
+      "phone": "07-3403-8884",
+      "email": "Sydney@localhost.local"
+    },
+    "language": {
+      "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+    },
+    "last_modified": "2017-07-20T11:46:49.8619942Z"
+  }
 ]

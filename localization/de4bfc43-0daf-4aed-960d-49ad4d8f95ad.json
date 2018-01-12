@@ -1,48 +1,48 @@
 [
-    {
-        "item":  {
-                     "id":  "de4bfc43-0daf-4aed-960d-49ad4d8f95ad"
-                 },
-        "elements":  {
-                         "street":  "9076 Sunset Boulevard",
-                         "city":  "Los Ángeles",
-                         "country":  "USA",
-                         "state":  "California",
-                         "zip_code":  "90210",
-                         "phone":  "213-326-4224",
-                         "email":  "LosAngeles@localhost.local",
-                         "photo":  [
-                                       {
-                                           "id":  "8858d272-777b-43bd-93be-53a98be97569"
-                                       }
-                                   ]
-                     },
-        "language":  {
-                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
-                     },
-        "last_modified":  "2017-07-27T11:24:41.9398203Z"
+  {
+    "item": {
+      "id": "de4bfc43-0daf-4aed-960d-49ad4d8f95ad"
     },
-    {
-        "item":  {
-                     "id":  "de4bfc43-0daf-4aed-960d-49ad4d8f95ad"
-                 },
-        "elements":  {
-                         "street":  "9076 Sunset Boulevard",
-                         "city":  "Los Angeles",
-                         "country":  "USA",
-                         "state":  "California",
-                         "zip_code":  "90210",
-                         "phone":  "213-326-4224",
-                         "email":  "LosAngeles@localhost.local",
-                         "photo":  [
-                                       {
-                                           "id":  "8858d272-777b-43bd-93be-53a98be97569"
-                                       }
-                                   ]
-                     },
-        "language":  {
-                         "id":  "00000000-0000-0000-0000-000000000000"
-                     },
-        "last_modified":  "2016-09-05T14:14:00.6640656Z"
-    }
+    "elements": {
+      "street": "9076 Sunset Boulevard",
+      "city": "Los Angeles",
+      "country": "USA",
+      "state": "California",
+      "zip_code": "90210",
+      "phone": "213-326-4224",
+      "email": "LosAngeles@localhost.local",
+      "photo": [
+        {
+          "id": "8858d272-777b-43bd-93be-53a98be97569"
+        }
+      ]
+    },
+    "language": {
+      "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+    },
+    "last_modified": "2017-07-27T11:24:41.9398203Z"
+  },
+  {
+    "item": {
+      "id": "de4bfc43-0daf-4aed-960d-49ad4d8f95ad"
+    },
+    "elements": {
+      "street": "9076 Sunset Boulevard",
+      "city": "Los Angeles",
+      "country": "USA",
+      "state": "California",
+      "zip_code": "90210",
+      "phone": "213-326-4224",
+      "email": "LosAngeles@localhost.local",
+      "photo": [
+        {
+          "id": "8858d272-777b-43bd-93be-53a98be97569"
+        }
+      ]
+    },
+    "language": {
+      "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "last_modified": "2016-09-05T14:14:00.6640656Z"
+  }
 ]

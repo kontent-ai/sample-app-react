@@ -1,48 +1,48 @@
 [
-    {
-        "item":  {
-                     "id":  "f7ed29df-c6f6-4bfe-bc83-6cc8f718c281"
-                 },
-        "elements":  {
-                         "street":  "138-152 Hay St",
-                         "city":  "Sydney",
-                         "country":  "Australia",
-                         "state":  "",
-                         "zip_code":  "NSW 2000",
-                         "phone":  "02-9800-2873",
-                         "email":  "Sydney@localhost.local",
-                         "photo":  [
-                                       {
-                                           "id":  "5c3c4ed8-8f54-4b16-8846-a13db48da7e1"
-                                       }
-                                   ]
-                     },
-        "language":  {
-                         "id":  "00000000-0000-0000-0000-000000000000"
-                     },
-        "last_modified":  "2016-09-01T08:37:14.7642887Z"
+  {
+    "item": {
+      "id": "f7ed29df-c6f6-4bfe-bc83-6cc8f718c281"
     },
-    {
-        "item":  {
-                     "id":  "f7ed29df-c6f6-4bfe-bc83-6cc8f718c281"
-                 },
-        "elements":  {
-                         "street":  "138-152 Hay St",
-                         "city":  "Sídney",
-                         "country":  "Australia",
-                         "state":  "",
-                         "zip_code":  "NSW 2000",
-                         "phone":  "02-9800-2873",
-                         "email":  "Sydney@localhost.local",
-                         "photo":  [
-                                       {
-                                           "id":  "5c3c4ed8-8f54-4b16-8846-a13db48da7e1"
-                                       }
-                                   ]
-                     },
-        "language":  {
-                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
-                     },
-        "last_modified":  "2016-09-01T08:37:14.7642887Z"
-    }
+    "elements": {
+      "street": "138-152 Hay St",
+      "city": "Sydney",
+      "country": "Australia",
+      "state": "",
+      "zip_code": "NSW 2000",
+      "phone": "02-9800-2873",
+      "email": "Sydney@localhost.local",
+      "photo": [
+        {
+          "id": "5c3c4ed8-8f54-4b16-8846-a13db48da7e1"
+        }
+      ]
+    },
+    "language": {
+      "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "last_modified": "2016-09-01T08:37:14.7642887Z"
+  },
+  {
+    "item": {
+      "id": "f7ed29df-c6f6-4bfe-bc83-6cc8f718c281"
+    },
+    "elements": {
+      "street": "138-152 Hay St",
+      "city": "Sydney",
+      "country": "Australia",
+      "state": "",
+      "zip_code": "NSW 2000",
+      "phone": "02-9800-2873",
+      "email": "Sydney@localhost.local",
+      "photo": [
+        {
+          "id": "5c3c4ed8-8f54-4b16-8846-a13db48da7e1"
+        }
+      ]
+    },
+    "language": {
+      "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+    },
+    "last_modified": "2016-09-01T08:37:14.7642887Z"
+  }
 ]

@@ -1,23 +1,48 @@
-{
-    "item":  {
-                 "id":  "33389c83-dcfe-48f9-b0ee-f94aeabd2b08"
-             },
-    "elements":  {
-                     "street":  "141 Sydney St",
-                     "city":  "Brisbane",
-                     "country":  "Australia",
-                     "state":  "",
-                     "zip_code":  "QLD 4005",
-                     "phone":  "07-3403-8884",
-                     "email":  "Brisbane@localhost.local",
-                     "photo":  [
-                                   {
-                                       "id":  "8fad2e2c-1351-4bfc-be12-007582d61c48"
-                                   }
-                               ]
-                 },
-    "language":  {
-                     "id":  "00000000-0000-0000-0000-000000000000"
-                 },
-    "last_modified":  "2016-09-01T08:34:04.9408275Z"
-}
+[
+  {
+    "item": {
+      "id": "33389c83-dcfe-48f9-b0ee-f94aeabd2b08"
+    },
+    "elements": {
+      "street": "141 Sydney St",
+      "city": "Brisbane",
+      "country": "Australia",
+      "state": "",
+      "zip_code": "QLD 4005",
+      "phone": "07-3403-8884",
+      "email": "Brisbane@localhost.local",
+      "photo": [
+        {
+          "id": "8fad2e2c-1351-4bfc-be12-007582d61c48"
+        }
+      ]
+    },
+    "language": {
+      "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "last_modified": "2016-09-01T08:34:04.9408275Z"
+  },
+  {
+    "item": {
+      "id": "33389c83-dcfe-48f9-b0ee-f94aeabd2b08"
+    },
+    "elements": {
+      "street": "141 Sydney St",
+      "city": "Brisbane",
+      "country": "Australia",
+      "state": "",
+      "zip_code": "QLD 4005",
+      "phone": "07-3403-8884",
+      "email": "Brisbane@localhost.local",
+      "photo": [
+        {
+          "id": "8fad2e2c-1351-4bfc-be12-007582d61c48"
+        }
+      ]
+    },
+    "language": {
+      "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+    },
+    "last_modified": "2016-09-01T08:34:04.9408275Z"
+  }
+]
