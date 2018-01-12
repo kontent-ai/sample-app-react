@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "item":  {
                      "id":  "3eb5191f-4ce1-4965-bffb-87d8f3cdca08"
@@ -10,8 +10,7 @@
                          "state":  "New York",
                          "zip_code":  "10001",
                          "phone":  "646-555-0150",
-                         "email":  "NewYork@localhost.local",
-                         "photo":  ""
+                         "email":  "NewYork@localhost.local"
                      },
         "language":  {
                          "id":  "00000000-0000-0000-0000-000000000000"
@@ -29,8 +28,7 @@
                          "state":  "Nueva York",
                          "zip_code":  "10001",
                          "phone":  "646-555-0150",
-                         "email":  "NewYork@localhost.local",
-                         "photo":  ""
+                         "email":  "NewYork@localhost.local"
                      },
         "language":  {
                          "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"

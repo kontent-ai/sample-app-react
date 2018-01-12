@@ -1,12 +1,10 @@
-[
+﻿[
     {
         "item":  {
                      "id":  "ec14497e-11ae-4759-80e4-4282717dbc2c"
                  },
         "elements":  {
-                         "title":  "Roasting premium coffee",
-                         "image":  "",
-                         "marketing_message":  "\u003cp\u003eDiscover the fascinating world of Dancing Goat high-quality coffee and you will never miss a single coffee break again.\u003c/p\u003e"
+                         "title":  "Roasting premium coffee"
                      },
         "language":  {
                          "id":  "00000000-0000-0000-0000-000000000000"
@@ -18,9 +16,7 @@
                      "id":  "ec14497e-11ae-4759-80e4-4282717dbc2c"
                  },
         "elements":  {
-                         "title":  "Café tostado premium",
-                         "image":  "",
-                         "marketing_message":  "\u003cp\u003eDiscover the fascinating world of Dancing Goat high-quality coffee and you will never miss a single coffee break again.\u003c/p\u003e"
+                         "title":  "Café tostado premium"
                      },
         "language":  {
                          "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
