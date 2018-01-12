@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "item":  {
                      "id":  "92e7260d-d65a-45f1-8a1e-aad8162f209c"
@@ -10,7 +10,8 @@
                          "state":  "",
                          "zip_code":  "28014",
                          "phone":  "915-546-202",
-                         "email":  "Madrid@localhost.local"
+                         "email":  "Madrid@localhost.local",
+                         "photo":  ""
                      },
         "language":  {
                          "id":  "00000000-0000-0000-0000-000000000000"
@@ -28,7 +29,8 @@
                          "state":  "",
                          "zip_code":  "28014",
                          "phone":  "915-546-202",
-                         "email":  "Madrid@localhost.local"
+                         "email":  "Madrid@localhost.local",
+                         "photo":  ""
                      },
         "language":  {
                          "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"

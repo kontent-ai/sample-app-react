@@ -1,10 +1,12 @@
-﻿[
+[
     {
         "item":  {
                      "id":  "18689ab0-e5ff-4ca5-bd13-ae3b5997c2d9"
                  },
         "elements":  {
-                         "title":  "How we source our coffees"
+                         "title":  "How we source our coffees",
+                         "description":  "\u003cp\u003eEvery coffee has a story to share. We want this story to reach you in the most unaltered manner possible.\u003c/p\u003e\n\u003cp\u003eWith estate coffees and micro lots from diverse varietals located all over the globe, you can taste the world with Dancing Goat.\u003c/p\u003e\n\u003cp\u003eWe know all our farmers personally. These are mostly family businesses that have been up and running for decades. They do what they love, and hand pick their produce with care. We make sure they get as much from our relationships as we and you do.\u003c/p\u003e\n\u003cp\u003eEvery bean in our stock is 100% traceable to its source. Clean both for the eye and the environment, our beans are always of the latest season — we never store more coffee than we have to.\u003c/p\u003e",
+                         "image":  ""
                      },
         "language":  {
                          "id":  "00000000-0000-0000-0000-000000000000"
@@ -16,7 +18,9 @@
                      "id":  "18689ab0-e5ff-4ca5-bd13-ae3b5997c2d9"
                  },
         "elements":  {
-                         "title":  "Cómo abastecemos nuestros cafés"
+                         "title":  "Cómo abastecemos nuestros cafés",
+                         "description":  "\u003cp\u003eEvery coffee has a story to share. We want this story to reach you in the most unaltered manner possible.\u003c/p\u003e\n\u003cp\u003eWith estate coffees and micro lots from diverse varietals located all over the globe, you can taste the world with Dancing Goat.\u003c/p\u003e\n\u003cp\u003eWe know all our farmers personally. These are mostly family businesses that have been up and running for decades. They do what they love, and hand pick their produce with care. We make sure they get as much from our relationships as we and you do.\u003c/p\u003e\n\u003cp\u003eEvery bean in our stock is 100% traceable to its source. Clean both for the eye and the environment, our beans are always of the latest season — we never store more coffee than we have to.\u003c/p\u003e",
+                         "image":  ""
                      },
         "language":  {
                          "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"

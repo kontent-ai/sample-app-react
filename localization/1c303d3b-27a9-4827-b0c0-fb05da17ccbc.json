@@ -1,10 +1,12 @@
-﻿[
+[
     {
         "item":  {
                      "id":  "1c303d3b-27a9-4827-b0c0-fb05da17ccbc"
                  },
         "elements":  {
-                         "title":  "How we roast our coffees"
+                         "title":  "How we roast our coffees",
+                         "description":  "\u003cp\u003eWe operate our own roasteries, one on every continent we cover, from where we distribute right to the shops. This allows you to experience every cup as if you were right at the very farm it originated from. To achieve this, we use a refurbished 1920s Probat coffee roasters.\u003c/p\u003e\n\u003cp\u003eWe know that roasting is something you must keep on constantly perfecting. Each coffee requires a different roast to get the aroma and taste just right. That’s why our experts fine tune \u003ca data-item-id=\"f4b3fc05-e988-4dae-9ac1-a94aba566474\"\u003ethe way we roast coffees\u003c/a\u003e every day. It’s a constant struggle.\u003c/p\u003e",
+                         "image":  ""
                      },
         "language":  {
                          "id":  "00000000-0000-0000-0000-000000000000"
@@ -16,7 +18,9 @@
                      "id":  "1c303d3b-27a9-4827-b0c0-fb05da17ccbc"
                  },
         "elements":  {
-                         "title":  "Cómo tostamos nuestros cafés"
+                         "title":  "Cómo tostamos nuestros cafés",
+                         "description":  "\u003cp\u003eWe operate our own roasteries, one on every continent we cover, from where we distribute right to the shops. This allows you to experience every cup as if you were right at the very farm it originated from. To achieve this, we use a refurbished 1920s Probat coffee roasters.\u003c/p\u003e\n\u003cp\u003eWe know that roasting is something you must keep on constantly perfecting. Each coffee requires a different roast to get the aroma and taste just right. That’s why our experts fine tune \u003ca data-item-id=\"f4b3fc05-e988-4dae-9ac1-a94aba566474\"\u003ethe way we roast coffees\u003c/a\u003e every day. It’s a constant struggle.\u003c/p\u003e",
+                         "image":  ""
                      },
         "language":  {
                          "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"

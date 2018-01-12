@@ -1,28 +1,59 @@
 [
     {
         "item":  {
-                 "id":  "70d07ed8-207e-41ca-b25d-cdfa3f941eb3"
+                     "id":  "70d07ed8-207e-41ca-b25d-cdfa3f941eb3"
                  },
         "elements":  {
-                     "product_name":  "Cafetera de Vacío Hario",
-                     "price":  64.9
+                         "product_name":  "Cafetera de Vacío Hario",
+                         "price":  64.9,
+                         "image":  "@{id=542ea709-63a8-4413-ae03-dd9c681efbf2}",
+                         "long_description":  "\u003cp\u003eAnother Hario product in our store. This is a classic, but it takes a little while to master. The results, however, are more than worth it. Perfect when you want a specialty device that allows you to experiment with different techniques, tastes, and strengths in a novel way. Your friends will think you\u0027re a born alchemist.\u003c/p\u003e",
+                         "manufacturer":  "@{id=6fde9724-5b72-8bc9-6da0-4f0573a54532}",
+                         "metadata__meta_description":  "A specialty device for experimenting. Perfect when you want a device that allows you to try out different techniques!",
+                         "metadata__meta_title":  "Hario Vacuum Pot",
+                         "metadata__og_description":  "A specialty device for experimenting. Perfect when you want a device that allows you to try out different techniques!",
+                         "metadata__og_image":  "@{id=542ea709-63a8-4413-ae03-dd9c681efbf2}",
+                         "metadata__og_title":  "Hario Vacuum Pot",
+                         "metadata__twitter_creator":  "@kenticoCloud",
+                         "metadata__twitter_description":  "A specialty device for experimenting. Perfect when you want a specialty device that allows you to experiment with different techniques!",
+                         "metadata__twitter_image":  "@{id=542ea709-63a8-4413-ae03-dd9c681efbf2}",
+                         "metadata__twitter_site":  "Dancing Goat",
+                         "metadata__twitter_title":  "Hario Vacuum Pot",
+                         "product_status":  "",
+                         "short_description":  "\u003cp\u003eA specialty device for experimenting.\u003c/p\u003e",
+                         "url_pattern":  "hario-vacuum-pot"
                      },
         "language":  {
-                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
                      },
         "last_modified":  "2017-10-24T07:20:07.0713864Z"
     },
-    
     {
         "item":  {
-                 "id":  "70d07ed8-207e-41ca-b25d-cdfa3f941eb3"
+                     "id":  "70d07ed8-207e-41ca-b25d-cdfa3f941eb3"
                  },
         "elements":  {
-                     "product_name":  "Hario Vacuum Pot",
-                     "price":  64.9
+                         "product_name":  "Hario Vacuum Pot",
+                         "price":  64.9,
+                         "image":  "@{id=542ea709-63a8-4413-ae03-dd9c681efbf2}",
+                         "long_description":  "\u003cp\u003eAnother Hario product in our store. This is a classic, but it takes a little while to master. The results, however, are more than worth it. Perfect when you want a specialty device that allows you to experiment with different techniques, tastes, and strengths in a novel way. Your friends will think you\u0027re a born alchemist.\u003c/p\u003e",
+                         "manufacturer":  "@{id=6fde9724-5b72-8bc9-6da0-4f0573a54532}",
+                         "metadata__meta_description":  "A specialty device for experimenting. Perfect when you want a device that allows you to try out different techniques!",
+                         "metadata__meta_title":  "Hario Vacuum Pot",
+                         "metadata__og_description":  "A specialty device for experimenting. Perfect when you want a device that allows you to try out different techniques!",
+                         "metadata__og_image":  "@{id=542ea709-63a8-4413-ae03-dd9c681efbf2}",
+                         "metadata__og_title":  "Hario Vacuum Pot",
+                         "metadata__twitter_creator":  "@kenticoCloud",
+                         "metadata__twitter_description":  "A specialty device for experimenting. Perfect when you want a specialty device that allows you to experiment with different techniques!",
+                         "metadata__twitter_image":  "@{id=542ea709-63a8-4413-ae03-dd9c681efbf2}",
+                         "metadata__twitter_site":  "Dancing Goat",
+                         "metadata__twitter_title":  "Hario Vacuum Pot",
+                         "product_status":  "",
+                         "short_description":  "\u003cp\u003eA specialty device for experimenting.\u003c/p\u003e",
+                         "url_pattern":  "hario-vacuum-pot"
                      },
         "language":  {
-                     "id":  "00000000-0000-0000-0000-000000000000"
+                         "id":  "00000000-0000-0000-0000-000000000000"
                      },
         "last_modified":  "2017-10-24T07:20:07.0713864Z"
     }

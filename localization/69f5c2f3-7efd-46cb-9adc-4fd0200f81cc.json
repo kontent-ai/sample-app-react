@@ -1,38 +1,40 @@
-﻿[
-     {
+[
+    {
         "item":  {
-                 "id":  "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc"
+                     "id":  "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc"
                  },
         "elements":  {
-                     "street":  "58 Clarendon St, Melbourne Oriental",
-                     "city":  "Melbourne",
-                     "country":  "Australia",
-                     "state":  "",
-                     "zip_code":  "VIC 3002",
-                     "phone":  "03-9297-1622",
-                     "email":  "Melbourne@localhost.local"
+                         "street":  "58 Clarendon St, Melbourne Oriental",
+                         "city":  "Melbourne",
+                         "country":  "Australia",
+                         "state":  "",
+                         "zip_code":  "VIC 3002",
+                         "phone":  "03-9297-1622",
+                         "email":  "Melbourne@localhost.local",
+                         "photo":  "@{id=a8d0a4d4-4f74-4514-b2d1-3189d81e7e23}"
                      },
         "language":  {
-                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
                      },
         "last_modified":  "2017-02-06T15:05:22.8910781Z"
     },
     {
         "item":  {
-                 "id":  "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc"
+                     "id":  "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc"
                  },
         "elements":  {
-                     "street":  "58 Clarendon St, East Melbourne",
-                     "city":  "Melbourne",
-                     "country":  "Australia",
-                     "state":  "",
-                     "zip_code":  "VIC 3002",
-                     "phone":  "03-9297-1622",
-                     "email":  "Melbourne@localhost.local"
+                         "street":  "58 Clarendon St, East Melbourne",
+                         "city":  "Melbourne",
+                         "country":  "Australia",
+                         "state":  "",
+                         "zip_code":  "VIC 3002",
+                         "phone":  "03-9297-1622",
+                         "email":  "Melbourne@localhost.local",
+                         "photo":  "@{id=a8d0a4d4-4f74-4514-b2d1-3189d81e7e23}"
                      },
         "language":  {
-                     "id":  "00000000-0000-0000-0000-000000000000"
+                         "id":  "00000000-0000-0000-0000-000000000000"
                      },
         "last_modified":  "2017-02-06T15:05:22.8910781Z"
-    } 
+    }
 ]

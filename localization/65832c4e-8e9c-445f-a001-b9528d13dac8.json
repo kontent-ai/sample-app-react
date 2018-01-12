@@ -1,29 +1,59 @@
-﻿[
-     {
+[
+    {
         "item":  {
-                 "id":  "65832c4e-8e9c-445f-a001-b9528d13dac8"
+                     "id":  "65832c4e-8e9c-445f-a001-b9528d13dac8"
                  },
         "elements":  {
-                     "product_name":  "Filtros AeroPress",
-                     "price":  4.9,
-                     "manufacturer":  "Aerobie"
+                         "product_name":  "Filtros AeroPress",
+                         "price":  4.9,
+                         "manufacturer":  "Aerobie",
+                         "image":  "@{id=fdd5befd-e730-4c74-a128-b5404ccb7640}",
+                         "long_description":  "\u003cp\u003eBleached paper filters 1.5\" (3.8 cm) wide for AeroPress\u0026nbsp;coffee makers.\u003c/p\u003e\u003cp\u003eA new and clean filter that gives you a wonderful taste of coffee. These paper filters allow the coffee to flow through the filter while at the same time trapping the coffee grounds inside.\u003c/p\u003e",
+                         "metadata__meta_description":  "Bleached paper filters 1.5\" (3.8 cm) wide for AeroPress coffee makers. A new and clean filter that gives you a wonderful taste of coffee.",
+                         "metadata__meta_title":  "AeroPress Filters",
+                         "metadata__og_description":  "Bleached paper filters 1.5\" (3.8 cm) wide for AeroPress coffee makers. A new and clean filter that gives you a wonderful taste of coffee.",
+                         "metadata__og_image":  "@{id=fdd5befd-e730-4c74-a128-b5404ccb7640}",
+                         "metadata__og_title":  "AeroPress Filters",
+                         "metadata__twitter_creator":  "@kenticoCloud",
+                         "metadata__twitter_description":  "Bleached paper filters 1.5\" (3.8 cm) wide for AeroPress coffee makers. A new and clean filter that gives you a wonderful taste of coffee.",
+                         "metadata__twitter_image":  "@{id=fdd5befd-e730-4c74-a128-b5404ccb7640}",
+                         "metadata__twitter_site":  "Dancing Goat",
+                         "metadata__twitter_title":  "AeroPress Filters",
+                         "product_status":  "",
+                         "short_description":  "\u003cp\u003eBleached paper filters for AeroPress coffee makers. \u0026nbsp;\u003c/p\u003e",
+                         "url_pattern":  "aeropress-filters"
                      },
         "language":  {
-                     "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                         "id":  "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
                      },
         "last_modified":  "2017-04-04T13:38:32.4037189Z"
     },
     {
         "item":  {
-                 "id":  "65832c4e-8e9c-445f-a001-b9528d13dac8"
+                     "id":  "65832c4e-8e9c-445f-a001-b9528d13dac8"
                  },
         "elements":  {
-                     "product_name":  "AeroPress Filters",
-                     "price":  4.9,
-                     "manufacturer":  "Aerobie"
+                         "product_name":  "AeroPress Filters",
+                         "price":  4.9,
+                         "manufacturer":  "Aerobie",
+                         "image":  "@{id=fdd5befd-e730-4c74-a128-b5404ccb7640}",
+                         "long_description":  "\u003cp\u003eBleached paper filters 1.5\" (3.8 cm) wide for AeroPress\u0026nbsp;coffee makers.\u003c/p\u003e\u003cp\u003eA new and clean filter that gives you a wonderful taste of coffee. These paper filters allow the coffee to flow through the filter while at the same time trapping the coffee grounds inside.\u003c/p\u003e",
+                         "metadata__meta_description":  "Bleached paper filters 1.5\" (3.8 cm) wide for AeroPress coffee makers. A new and clean filter that gives you a wonderful taste of coffee.",
+                         "metadata__meta_title":  "AeroPress Filters",
+                         "metadata__og_description":  "Bleached paper filters 1.5\" (3.8 cm) wide for AeroPress coffee makers. A new and clean filter that gives you a wonderful taste of coffee.",
+                         "metadata__og_image":  "@{id=fdd5befd-e730-4c74-a128-b5404ccb7640}",
+                         "metadata__og_title":  "AeroPress Filters",
+                         "metadata__twitter_creator":  "@kenticoCloud",
+                         "metadata__twitter_description":  "Bleached paper filters 1.5\" (3.8 cm) wide for AeroPress coffee makers. A new and clean filter that gives you a wonderful taste of coffee.",
+                         "metadata__twitter_image":  "@{id=fdd5befd-e730-4c74-a128-b5404ccb7640}",
+                         "metadata__twitter_site":  "Dancing Goat",
+                         "metadata__twitter_title":  "AeroPress Filters",
+                         "product_status":  "",
+                         "short_description":  "\u003cp\u003eBleached paper filters for AeroPress coffee makers. \u0026nbsp;\u003c/p\u003e",
+                         "url_pattern":  "aeropress-filters"
                      },
         "language":  {
-                     "id":  "00000000-0000-0000-0000-000000000000"
+                         "id":  "00000000-0000-0000-0000-000000000000"
                      },
         "last_modified":  "2017-04-04T13:38:32.4037189Z"
     }
