@@ -82,7 +82,8 @@ class Footer extends Component {
             class="container copyright"
             style={{
               background: '#1D1D1D',
-              color: '#fff'
+              color: '#fff',
+              textAlign: 'center'
             }}
           >
             Copyright &copy; 2016 Dancing Goat. All rights reserved.
