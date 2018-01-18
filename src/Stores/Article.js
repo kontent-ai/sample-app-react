@@ -1,9 +1,10 @@
 import Client from "../Client.js";
+import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk';
 
-let articleList = [];
-let articleListCapacity = 0;
+import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
-let articleDetails = {};
+let articleList = initLanguageCodeObject();
+let articleDetails = initLanguageCodeObject();
 
 let changeListeners = [];
 
@@ -17,50 +18,71 @@ class ArticleStore {
 
   // Actions
 
-  provideArticle(articleSlug) {
+  provideArticle(articleSlug, language) {
 
-    Client.items()
+    let query = Client.items()
       .type('article')
-      .equalsFilter('elements.url_pattern', articleSlug)  
-      .elementsParameter(['title', 'teaser_image', 'post_date','body_copy','video_host','video_id', 'tweet_link', 'theme', 'display_options'])
-      .get()
+      .equalsFilter('elements.url_pattern', articleSlug)
+      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
+
+    if (language) {
+      query.languageParameter(language);
+    }
+
+    query.get()
       .subscribe(response => {
         if (!response.isEmpty) {
-          articleDetails[articleSlug] = response.items[0];
+          if (language) {
+            articleDetails[language][articleSlug] = response.items[0];
+          } else {
+            articleDetails[defaultLanguage][articleSlug] = response.items[0];
+          }
           notifyChange();
         }
       })
   }
 
-  provideArticles(count) {
-    if (count <= articleListCapacity) {
-      return;
+  provideArticles(count, language) {
+
+    let query = Client.items()
+      .type('article')
+      .orderParameter("elements.post_date", SortOrder.desc);
+
+    if (language) {
+      query.languageParameter(language);
     }
 
-    articleListCapacity = count;
-
-    Client.items()
-      .type('article')         
-      .get()
-      .subscribe(response =>
-        {
-          articleList = response.items;
-          notifyChange();
-        });
+    query.get()
+      .subscribe(response => {
+        if (language) {
+          articleList[language] = response.items;
+        } else {
+          articleList[defaultLanguage] = response.items
+        }
+        notifyChange();
+      });
   }
 
   // Methods
-  
-  getArticle(articleSlug) {
-    return articleDetails[articleSlug];
+  getArticle(articleSlug, language) {
+    if (language) {
+      return articleDetails[language][articleSlug];
+    } else {
+      return articleDetails[defaultLanguage][articleSlug];
+    }
+
   }
 
-  getArticles(count) {
-    return articleList.slice(0, count);
+  getArticles(count, language) {
+    if (language) {
+      return articleList[language].slice(0, count);
+    }
+    else {
+      return articleList[defaultLanguage].slice(0, count);
+    }
   }
 
   // Listeners
-
   addChangeListener(listener) {
     changeListeners.push(listener);
   }

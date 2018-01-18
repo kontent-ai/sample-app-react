@@ -1,5 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Switch, Route, Link } from 'react-router-dom'
+import { translate } from 'react-translate'
+
+import CoffeeStore from '../Components/CoffeeStore';
+import BrewerStore from '../Components/BrewerStore';
 
 const Store = (props) => {
   return (
@@ -9,18 +13,22 @@ const Store = (props) => {
           <div className="store-menu-list row">
             <ul>
               <li>
-                <Link to="/store/coffees">Coffees</Link>
+                <Link to={`${props.match.url}/coffees`}>{props.t("coffeesLinkTitle")}</Link>
               </li>
               <li>
-                <Link to="/store/brewers">Brewers</Link>
+                <Link to={`${props.match.url}/brewers`}>{props.t("brewersLinkTitle")}</Link>
               </li>
             </ul>
           </div>
         </nav>
-        {props.children}
+        <Switch>
+          <Route exact path={`${props.match.url}`} render={() => <CoffeeStore language={props.language} />} />
+          <Route path={`${props.match.url}/coffees`} render={() => <CoffeeStore language={props.language} />} />
+          <Route path={`${props.match.url}/brewers`} render={() => <BrewerStore language={props.language} />} />
+        </Switch>
       </div>
     </div>
   );
 }
 
-export default Store;
+export default translate("Store")(Store);

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+
+import Link from '../Components/LowerCaseUrlLink';
+import { resolveContentLink } from '../Utilities/ContentLinks'
 import BrewerStore from "../Stores/Brewer";
 
-let getState = () => {
+let getState = (props) => {
   return {
-    brewers: BrewerStore.getBrewers(),
+    brewers: BrewerStore.getBrewers(props.language),
     filter: BrewerStore.getFilter()
   };
 };
@@ -14,26 +16,32 @@ class Brewers extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     BrewerStore.addChangeListener(this.onChange);
-    BrewerStore.provideBrewers();
+    BrewerStore.provideBrewers(this.props.language);
   }
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      BrewerStore.provideBrewers(nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {
-    let formatPrice = (price) => {
-      return price.toLocaleString("en-US", {
+    let formatPrice = (price, language) => {
+      return price.toLocaleString(language, {
         style: "currency",
         currency: "USD"
       });
@@ -58,11 +66,11 @@ class Brewers extends Component {
     };
 
     let brewers = this.state.brewers.filter(filter).map((brewer, index) => {
-      let price = formatPrice(brewer.price.value);
+      let price = formatPrice(brewer.price.value, this.props.language);
       let name = brewer.productName.value;
       let imageLink = brewer.image.value[0].url;
       let status = renderProductStatus(brewer.productStatus);
-      let link = "store/brewers/" + brewer.urlPattern.value;
+      let link = resolveContentLink({ type: 'brewer', url_slug: brewer.urlPattern.value }, this.props.language);
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
+import { translate } from 'react-translate'
+
 import CafeStore from '../Stores/Cafe';
 import ContactMap from '../Components/ContactMap'
 
 
-let getState = () => {
+let getState = (language) => {
     return {
-        cafes: CafeStore.getCompanyCafes()
+        cafes: CafeStore.getCompanyCafes(language)
     };
 };
 
 class Contacts extends Component {
     constructor(props) {
         super(props);
-        this.state = getState();
+        this.state = getState(props.language);
         this.onChange = this.onChange.bind(this);
         this.selectAddress = this.selectAddress.bind(this);
     }
 
     componentDidMount() {
         CafeStore.addChangeListener(this.onChange);
-        CafeStore.provideCompanyCafes();
+        CafeStore.provideCompanyCafes(this.props.language);
     }
 
     componentWillUnmount() {
         CafeStore.removeChangeListener(this.onChange);
     }
 
-    onChange() {
-        this.setState(getState());
+    componentWillReceiveProps(nextProps) {        
+        if (this.props.language !== nextProps.language) {
+            CafeStore.provideCompanyCafes(nextProps.language);
+            this.selectAddress(undefined);
+        }
+    }
+
+    onChange(language) {
+        this.setState(getState(language || this.props.language));
     }
 
     selectAddress(address) {
@@ -56,7 +65,7 @@ class Contacts extends Component {
         let roastery = this.state.cafes.map(createModel).map((model) => {
             return (
                 <div className="col-md-12">
-                    <h2 className="contact-title">Roastery</h2>
+                    <h2 className="contact-title">{this.props.t("roasteryTitle")}</h2>
                     <ul className="contact-info">
                         <li>{model.phone}</li>
                         <li><a href={"mailto:" + model.email} target="_top">{model.email}</a></li>
@@ -94,13 +103,13 @@ class Contacts extends Component {
             <div className="container" >
                 {roastery}
                 < div >
-                    <h2>Our cafes</h2>
+                    <h2>{this.props.t("ourCafesTitle")}</h2>
                     <div className="row">{cafes}</div>
                 </div>
-                <h2 className="map-title">Drop in</h2>
-                <ContactMap cafesAddresses={cafesAddresses} focusOnAddress={this.state.selectedAddress}/>
+                <h2 className="map-title">{this.props.t("mapTitle")}</h2>
+                <ContactMap cafesAddresses={cafesAddresses} focusOnAddress={this.state.selectedAddress} />
             </div>);
     }
 }
 
-export default Contacts;
+export default translate("Contacts")(Contacts);

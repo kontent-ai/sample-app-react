@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import Link from '../Components/LowerCaseUrlLink';
 import CoffeeStore from "../Stores/Coffee";
 
-let getState = () => {
+let getState = (props) => {
   return {
-    coffees: CoffeeStore.getCoffees(),
+    coffees: CoffeeStore.getCoffees(props.language),
     filter: CoffeeStore.getFilter()
   };
 };
@@ -14,26 +14,32 @@ class Coffees extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
-    CoffeeStore.provideCoffees();
+    CoffeeStore.provideCoffees(this.props.language);
   }
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      CoffeeStore.provideCoffees(nextProps.language);
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {
-    let formatPrice = (price) => {
-      return price.toLocaleString("en-US", {
+    let formatPrice = (price, language) => {
+      return price.toLocaleString(language, {
         style: "currency",
         currency: "USD"
       });
@@ -58,11 +64,11 @@ class Coffees extends Component {
     };
 
     let coffees = this.state.coffees.filter(filter).map((coffee, index) => {
-      let price = formatPrice(coffee.price.value);
+      let price = formatPrice(coffee.price.value, this.props.language);
       let name = coffee.productName.value;
       let imageLink = coffee.image.value[0].url;
       let status = renderProductStatus(coffee.productStatus);
-      let link = "store/coffees/" + coffee.urlPattern.value;
+      let link = `/${this.props.language}/coffees/${coffee.urlPattern.value}`;
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>
