@@ -4,7 +4,7 @@ import RichTextElement from '../Components/RichTextElement';
 
 let getState = (props) => {
   return {
-    brewer: BrewerStore.getBrewer(props.params.brewerSlug)
+    brewer: BrewerStore.getBrewer(props.match.params.brewerSlug, props.language)
   };
 };
 
@@ -19,11 +19,17 @@ class Brewer extends Component {
 
   componentDidMount() {
     BrewerStore.addChangeListener(this.onChange);
-    BrewerStore.provideBrewer(this.props.params.brewerSlug);
+    BrewerStore.provideBrewer(this.props.match.params.brewerSlug, this.props.language);
   }
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language || this.props.match.params.brewerSlug !== nextProps.match.params.brewerSlug) {
+      BrewerStore.provideBrewer(this.props.match.params.brewerSlug, nextProps.language);
+    }
   }
 
   onChange() {

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import ArticleStore from '../Stores/Article';
-import { Link } from 'react-router'
+import Link from '../Components/LowerCaseUrlLink'
 import dateFormat from 'dateformat';
+
+import { dateFormats } from '../Utilities/LanguageCodes'
 
 let articleCount = 10;
 
-let getState = () => {
+let getState = (props) => {
   return {
-    articles: ArticleStore.getArticles(articleCount)
+    articles: ArticleStore.getArticles(articleCount, props.language)
   };
 };
 
@@ -16,21 +18,29 @@ class Articles extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getState();
+    this.state = getState(props);
     this.onChange = this.onChange.bind(this);
+    dateFormat.i18n = dateFormats[props.language] || dateFormats[0];
   }
 
   componentDidMount() {
     ArticleStore.addChangeListener(this.onChange);
-    ArticleStore.provideArticles(articleCount);
+    ArticleStore.provideArticles(articleCount, this.props.language);
   }
 
   componentWillUnmount() {
     ArticleStore.removeChangeListener(this.onChange);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.language !== nextProps.language) {
+      ArticleStore.provideArticles(articleCount, nextProps.language);
+      dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
+    }
+  }
+
   onChange() {
-    this.setState(getState());
+    this.setState(getState(this.props));
   }
 
   render() {
@@ -51,7 +61,7 @@ class Articles extends Component {
       let imageLink = article.teaserImage.value[0].url;
       let postDate = formatDate(article.postDate.value);
       let summary = article.summary.value;
-      let link = "/articles/" + article.urlPattern.value;
+      let link = `/${this.props.language}/articles/${article.urlPattern.value}`;
 
       result.push(
         <div className="col-md-3" key={counter++}>
@@ -76,7 +86,6 @@ class Articles extends Component {
 
       return result;
     }, []);
-
     return (
       <div className="container">
         {articles}

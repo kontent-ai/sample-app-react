@@ -1,8 +1,9 @@
 import Client from "../Client.js";
 
+import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+
 let changeListeners = [];
-let initialized = false;
-let facts = [];
+let facts = initLanguageCodeObject();
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -10,32 +11,36 @@ let notifyChange = () => {
   });
 }
 
-let fetchFacts = () => {
-  if (initialized) {
-    return;
+let fetchFacts = (language) => {
+  var query = Client.item('about_us')
+
+  if (language) {
+    query.languageParameter(language);
   }
 
-  Client.item('about_us')
-    .get()
+  query.get()
     .subscribe(response => {
-      facts = response.item.facts;
-      notifyChange(); 
-      initialized = true;
-      });  
+      if(language){
+        facts[language] = response.item.facts;
+      } else {
+        facts[defaultLanguage] = response.item.facts;        
+      }
+      notifyChange();
+    });
 }
 
 class FactStore {
 
   // Actions
 
-  provideFacts() {
-    fetchFacts();
+  provideFacts(language) {
+    fetchFacts(language);
   }
 
   // Methods
 
-  getFacts() {
-    return facts;
+  getFacts(language) {
+    return facts[language];
   }
 
   // Listeners

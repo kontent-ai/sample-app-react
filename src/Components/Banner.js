@@ -1,15 +1,17 @@
 import React from 'react';
+import { translate } from 'react-translate'
+
 import BackgroundImage from '../Images/banner-default.jpg';
 
 const Banner = (props) => {
   return (
     <section className="banner-section" style={{ backgroundImage: "url(" + BackgroundImage + ")" }}>
-      <h2 className="banner-heading">Roasting premium coffee</h2>
+      <h2 className="banner-heading">{props.t('heading')}</h2>
       <p className="banner-text">
-        Discover the fascinating world of Dancing Goat high-quality coffee and you will never miss a single coffee break again.
+        {props.t('text')}
             </p>
     </section>
   );
 }
 
-export default Banner;
+export default translate("Banner")(Banner);
