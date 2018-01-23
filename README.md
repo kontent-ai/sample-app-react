@@ -78,3 +78,11 @@ When you now run the application and visit the About Us page, you should be able
 ## Deployment
 
 You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kenticocloud.com/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
+
+## Wall of Fame
+
+We would like to express our thanks to the following people who contributed and made the project possible:
+
+* [Bee Martinez](https://github.com/beemtz)
+
+Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/cloud-sample-app-react/issues) and send us a pull request!
