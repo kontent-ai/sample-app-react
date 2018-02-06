@@ -5410,7 +5410,7 @@ body {
 }
 .page-wrap,
 .footer-wrapper {
-    display: table-row;
+    
     height: 100%;
 }
 /*# Header #*/
@@ -5848,7 +5848,7 @@ footer {
 }
 @media (min-width: 768px) {
     /* md size */
-    
+
     .cafe-image-tile {
         height: 220px;
     }
@@ -5862,7 +5862,7 @@ footer {
 }
 @media (min-width: 1112px) {
     /* lg size */
-    
+
     .cafe-image-tile {
         height: 200px;
     }
@@ -5983,7 +5983,7 @@ footer {
 }
 @media (min-width: 768px) {
     /* md size */
-    
+
     .search-tile-content {
         padding-left: 1rem;
     }
