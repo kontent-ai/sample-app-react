@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './Components/Header.js';
+import Footer from './Components/Footer.js'
 import HomePage from './Pages/Home';
 import ArticlesPage from './Pages/Articles';
 import ArticlePage from './Pages/Article';
@@ -28,6 +29,7 @@ const App = (props) => {
         <Route exact path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language} />} />
         <Route path="*" render={(props) => { return <Redirect to="/" push /> }} />
       </Switch>
+      <Footer language={props.language} changeLanguage={props.changeLanguage} />
     </div>
   );
 }
