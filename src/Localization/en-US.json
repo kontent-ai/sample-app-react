@@ -48,5 +48,13 @@
         "roasteryTitle": "Roastery",
         "ourCafesTitle": "Our cafes",
         "mapTitle": "Drop in"
+    },
+    "Footer": {
+      "followUs": "Follow us",
+      "followUsOnFacebook": "Follow us on Facebook",
+      "followUsOnTwitter": "Follow us on Twitter",
+      "contact": "Contact",
+      "cityStateZip": "Illinois 60601, USA",
+      "allRightsReserved": "All rights reserved."
     }
 }

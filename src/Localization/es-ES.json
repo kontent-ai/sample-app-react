@@ -48,5 +48,13 @@
         "roasteryTitle":"Roastery",
         "ourCafesTitle": "Probar nuestro café",
         "mapTitle": "Pase por nuestros cafés        "
+    },
+    "Footer": {
+      "followUs": "Síguenos",
+      "followUsOnFacebook": "Síguenos en Facebook",
+      "followUsOnTwitter": "Síganos en Twitter",
+      "contact": "Contacto",
+      "cityStateZip": "Illinois 60601, EE.UU.",
+      "allRightsReserved": "Todos los derechos reservados."
     }
 }
