@@ -5,7 +5,7 @@ export class Article extends ContentItem {
    constructor(){
         super({
             propertyResolver: ((fieldName) => {
-                
+
                 if (fieldName === 'teaser_image'){
                     return 'teaserImage';
                 }
@@ -22,20 +22,12 @@ export class Article extends ContentItem {
                     return 'relatedArticles';
                 }
 
-                if (fieldName === 'meta_keywords'){
-                    return 'metaKeywords';
-                }
-
-                if (fieldName === 'meta_description'){
-                    return 'metaDescription';
-                }
-
                 if (fieldName === 'url_pattern'){
                     return 'urlPattern';
                 }
             }),
             linkResolver: (link) => resolveContentLink(link)
-        })    
+        })
     }
-    
+
 }
