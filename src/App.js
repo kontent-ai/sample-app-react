@@ -29,7 +29,7 @@ const App = (props) => {
         <Route exact path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language} />} />
         <Route path="*" render={(props) => { return <Redirect to="/" push /> }} />
       </Switch>
-      <Footer language={props.language} changeLanguage={props.changeLanguage} />
+      <Footer language={props.language} />
     </div>
   );
 }
