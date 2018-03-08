@@ -61,7 +61,7 @@ class Articles extends Component {
       let imageLink = article.teaserImage.value[0].url;
       let postDate = formatDate(article.postDate.value);
       let summary = article.summary.value;
-      let link = `/${this.props.language}/articles/${article.urlPattern.value}`;
+      let link = `/${this.props.language}/articles/${article.system.id}`;
 
       result.push(
         <div className="col-md-3" key={counter++}>

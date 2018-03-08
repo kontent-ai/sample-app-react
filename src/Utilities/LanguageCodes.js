@@ -5,6 +5,9 @@ const languageCodes = [
     'es-ES'
 ];
 
+const englishCode = languageCodes[0].toLowerCase();
+const spanishCode = languageCodes[1].toLowerCase();
+
 const languageCodesLowerCase = languageCodes.map(code => code.toLowerCase());
 
 const dateFormats = {
@@ -69,6 +72,8 @@ module.exports = {
     dateFormats,
     defaultLanguage,
     initLanguageCodeObject,
-    getLanguageCode
+    getLanguageCode,
+    englishCode,
+    spanishCode
 };
 export default languageCodes;

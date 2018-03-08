@@ -7,7 +7,7 @@ import { dateFormats } from '../Utilities/LanguageCodes'
 
 let getState = (props) => {
   return {
-    article: ArticleStore.getArticle(props.match.params.articleSlug, props.language)
+    article: ArticleStore.getArticle(props.match.params.articleId, props.language)
   };
 };
 
@@ -23,7 +23,7 @@ class Article extends Component {
 
   componentDidMount() {
     ArticleStore.addChangeListener(this.onChange);
-    ArticleStore.provideArticle(this.props.match.params.articleSlug, this.props.language);
+    ArticleStore.provideArticle(this.props.match.params.articleId, this.props.language);
   }
 
   componentWillUnmount() {
@@ -32,7 +32,7 @@ class Article extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
-      ArticleStore.provideArticle(this.props.match.params.articleSlug, nextProps.language);
+      ArticleStore.provideArticle(this.props.match.params.articleId, nextProps.language);
       dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
     }
   }

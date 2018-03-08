@@ -18,11 +18,11 @@ class ArticleStore {
 
   // Actions
 
-  provideArticle(articleSlug, language) {
+  provideArticle(articleId, language) {
 
     let query = Client.items()
       .type('article')
-      .equalsFilter('elements.url_pattern', articleSlug)
+      .equalsFilter('system.id', articleId)
       .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
 
     if (language) {
@@ -33,9 +33,9 @@ class ArticleStore {
       .subscribe(response => {
         if (!response.isEmpty) {
           if (language) {
-            articleDetails[language][articleSlug] = response.items[0];
+            articleDetails[language][articleId] = response.items[0];
           } else {
-            articleDetails[defaultLanguage][articleSlug] = response.items[0];
+            articleDetails[defaultLanguage][articleId] = response.items[0];
           }
           notifyChange();
         }
@@ -64,11 +64,11 @@ class ArticleStore {
   }
 
   // Methods
-  getArticle(articleSlug, language) {
+  getArticle(articleId, language) {
     if (language) {
-      return articleDetails[language][articleSlug];
+      return articleDetails[language][articleId];
     } else {
-      return articleDetails[defaultLanguage][articleSlug];
+      return articleDetails[defaultLanguage][articleId];
     }
 
   }

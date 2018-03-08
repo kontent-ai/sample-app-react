@@ -2,6 +2,8 @@ import React from 'react';
 import { translate } from 'react-translate'
 
 import Link from '../Components/LowerCaseUrlLink';
+
+import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 import { LogAboutUs } from '../Utilities/ActivityLogging'
 
 const Header = (props) => {
@@ -20,9 +22,17 @@ const Header = (props) => {
               <li>
                 <Link to={`/${props.language}/articles`}>{props.t("articlesLinkTitle")}</Link>
               </li>
-              <li>
-                <Link to={`/${props.language}/about`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
-              </li>
+              {
+                props.language.toLowerCase() === englishCode ?
+                  <li>
+                    <Link to={`/${props.language}/about-us`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
+                  </li>
+                  : props.language.toLowerCase() === spanishCode ?
+                    <li>
+                      <Link to={`/${props.language}/acerca-de`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
+                    </li>
+                    : null
+              }
               <li>
                 <Link to={`/${props.language}/cafes`}>{props.t("cafesLinkTitle")}</Link>
               </li>
@@ -35,10 +45,14 @@ const Header = (props) => {
             <nav role="navigation">
               <ul className="dropdown-items-list dropdown-desktop-visible">
                 <li>
-                  <a onClick={() => props.changeLanguage("en-US")}>English</a>
+                  <a onClick={() =>
+                    location.pathname.endsWith('acerca-de') ? props.changeLanguage("en-US", "/about-us") : props.changeLanguage("en-US")
+                  }>English</a>
                 </li>
                 <li>
-                  <a onClick={() => props.changeLanguage("es-ES")}>Español</a>
+                  <a onClick={() =>
+                    location.pathname.endsWith('about-us') ? props.changeLanguage("es-ES", "/acerca-de") : props.changeLanguage("es-ES")
+                  }>Español</a>
                 </li>
               </ul>
             </nav>

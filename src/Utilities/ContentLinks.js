@@ -2,7 +2,7 @@ export function resolveContentLink(link, language) {
   let resultLink;
   switch (link.type) {
     case "article":
-      resultLink = `/articles/${link.url_slug}`;
+      resultLink = `/articles/${link.itemId}`;
       break;
     case "coffee":
       resultLink = `/coffees/${link.url_slug}`;

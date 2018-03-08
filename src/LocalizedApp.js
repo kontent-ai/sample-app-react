@@ -16,9 +16,7 @@ class LocalizedApp extends Component {
         this.setLanguageCode = this.setLanguageCode.bind(this);
     }
 
-    
-
-    setLanguageCode(newLanguage) {
+    setLanguageCode(newLanguage, newUrl) {
         if (this.state.language === newLanguage || languageCodes.indexOf(newLanguage) < 0) {
             return;
         }
@@ -34,7 +32,11 @@ class LocalizedApp extends Component {
         this.setState({
             language: newLanguage
         });
-        this.props.history.push(urlParts.join('/'))
+        if (newUrl) {
+            this.props.history.push(urlParts.splice(0, 2).join('/') + newUrl)
+        } else {
+            this.props.history.push(urlParts.join('/'))
+        }
     }
 
     render() {
