@@ -1,8 +1,8 @@
 // kentico cloud
 import { DeliveryClient, DeliveryClientConfig, TypeResolver } from 'kentico-cloud-delivery-typescript-sdk';
 
-const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
-const previewApiKey = "";
+const projectId = '5e7a9870-093b-4fb0-8e22-2f6da714ca99';
+const previewApiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzNDg4MDhhNzlmNDY0YTNiOTYyODM4N2QzYjY1M2U1YyIsImlhdCI6IjE1MjE2NjM2MTUiLCJleHAiOiIxODY3MjYzNjE1IiwicHJvamVjdF9pZCI6IjVlN2E5ODcwMDkzYjRmYjA4ZTIyMmY2ZGE3MTRjYTk5IiwidmVyIjoiMS4wLjAiLCJhdWQiOiJwcmV2aWV3LmRlbGl2ZXIua2VudGljb2Nsb3VkLmNvbSJ9.tt7mErgvxy6ExwGc0Gbg0vq5lSciyE20YpSQNr8VV9M";
 
 // models
 import { AboutUs } from './Models/AboutUs'
