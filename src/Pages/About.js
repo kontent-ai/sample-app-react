@@ -18,7 +18,7 @@ class About extends Component {
 
   componentDidMount() {
     FactStore.addChangeListener(this.onChange);
-    FactStore.provideFacts(this.props.language);
+    FactStore.provideFacts(this.props.language, this.props.match.params.urlSlug);
   }
 
   componentWillUnmount() {
@@ -27,7 +27,7 @@ class About extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
-      FactStore.provideFacts(nextProps.language);
+      FactStore.provideFacts(nextProps.language, nextProps.match.params.urlSlug);
     }
   }
 
