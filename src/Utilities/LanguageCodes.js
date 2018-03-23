@@ -5,8 +5,8 @@ const languageCodes = [
     'es-ES'
 ];
 
-const englishCode = languageCodes[0].toLowerCase();
-const spanishCode = languageCodes[1].toLowerCase();
+const englishCode = languageCodes[0];
+const spanishCode = languageCodes[1];
 
 const languageCodesLowerCase = languageCodes.map(code => code.toLowerCase());
 

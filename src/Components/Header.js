@@ -23,11 +23,11 @@ const Header = (props) => {
                 <Link to={`/${props.language}/articles`}>{props.t("articlesLinkTitle")}</Link>
               </li>
               {
-                props.language.toLowerCase() === englishCode ?
+                props.language.toLowerCase() === englishCode.toLowerCase() ?
                   <li>
                     <Link to={`/${props.language}/about-us`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
                   </li>
-                  : props.language.toLowerCase() === spanishCode ?
+                  : props.language.toLowerCase() === spanishCode.toLowerCase() ?
                     <li>
                       <Link to={`/${props.language}/acerca-de`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
                     </li>
@@ -46,12 +46,12 @@ const Header = (props) => {
               <ul className="dropdown-items-list dropdown-desktop-visible">
                 <li>
                   <a onClick={() =>
-                    location.pathname.endsWith('acerca-de') ? props.changeLanguage("en-US", "/about-us") : props.changeLanguage("en-US")
+                    location.pathname.endsWith('acerca-de') ? props.changeLanguage(englishCode, "/about-us") : props.changeLanguage(englishCode)
                   }>English</a>
                 </li>
                 <li>
                   <a onClick={() =>
-                    location.pathname.endsWith('about-us') ? props.changeLanguage("es-ES", "/acerca-de") : props.changeLanguage("es-ES")
+                    location.pathname.endsWith('about-us') ? props.changeLanguage(spanishCode, "/acerca-de") : props.changeLanguage(spanishCode)
                   }>Español</a>
                 </li>
               </ul>
