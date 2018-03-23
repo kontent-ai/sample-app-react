@@ -23,10 +23,10 @@ const App = (props) => {
         <Route path="/:lang?/brewers/:brewerSlug" render={(matchProps) => <BrewerPage {...matchProps} language={props.language} />} />
         <Route exact path="/:lang?/articles" render={() => <ArticlesPage language={props.language} />} />
         <Route path="/:lang?/articles/:articleId" render={(matchProps) => <ArticlePage {...matchProps} language={props.language} />} />
-        <Route path="/:lang?/:urlSlug" render={(matchProps) => <AboutPage {...matchProps} language={props.language} />} />                
         <Route path="/:lang?/cafes" render={() => <CafesPage language={props.language} />} />
         <Route path="/:lang?/contacts" render={() => <ContactsPage language={props.language} />} />
         <Route exact path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={props.language} />} />
+        <Route path="/:lang?/:urlSlug?" render={(matchProps) => <AboutPage {...matchProps} language={props.language} />} />                
         <Route path="*" render={(props) => { return <Redirect to="/" push /> }} />
       </Switch>
       <Footer language={props.language} />
