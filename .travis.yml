@@ -11,4 +11,4 @@ deploy:
   project: ./build/
   domain: kentico-cloud-sample-app-react.surge.sh 
   skip_cleanup: true
-after_failure: "cat /home/travis/builds/evantahler/cloud-sample-app-react/npm-debug.log"
+after_failure: "npm-debug.log"
