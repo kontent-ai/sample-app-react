@@ -59,7 +59,7 @@ class LatestArticles extends Component {
       let imageLink = article.teaserImage.value[0].url;
       let postDate = formatDate(article.postDate.value);
       let summary = article.summary.value;
-      let link = `/${this.props.language.toLowerCase()}/articles/${article.urlPattern.value}`;
+      let link = `/${this.props.language.toLowerCase()}/articles/${article.system.id}`;
 
       return (
         <div className="col-md-3" key={index}>
@@ -88,7 +88,7 @@ class LatestArticles extends Component {
     let imageLink = article.teaserImage.value[0].url;
     let postDate = formatDate(article.postDate.value);
     let summary = article.summary.value;
-    let link = `/${this.props.language.toLowerCase()}/articles/${article.urlPattern.value}`;
+    let link = `/${this.props.language.toLowerCase()}/articles/${article.system.id}`;
     let tabTitle = this.props.t("title");
 
     return (
