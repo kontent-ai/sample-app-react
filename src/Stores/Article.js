@@ -1,5 +1,5 @@
 import Client from "../Client.js";
-import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk';
+import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk/_bundles';
 
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 

@@ -1,4 +1,4 @@
-import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk';
+import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk/_bundles';
 import {  resolveContentLink } from '../Utilities/ContentLinks';
 
 export class Coffee extends ContentItem {
