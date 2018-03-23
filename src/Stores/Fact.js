@@ -11,19 +11,24 @@ let notifyChange = () => {
   });
 }
 
-let fetchFacts = (language) => {
-  var query = Client.item('about_us')
+let fetchFacts = (language, urlSlug) => {
+  let query = Client.items()
+    .type('about_us');
 
   if (language) {
     query.languageParameter(language);
   }
 
+  if (urlSlug) {
+    query.equalsFilter('elements.url_pattern', urlSlug);
+  }
+
   query.get()
     .subscribe(response => {
-      if(language){
-        facts[language] = response.item.facts;
+      if (language) {
+        facts[language] = response.items[0].facts;
       } else {
-        facts[defaultLanguage] = response.item.facts;        
+        facts[defaultLanguage] = response.items[0].facts;
       }
       notifyChange();
     });
@@ -33,8 +38,8 @@ class FactStore {
 
   // Actions
 
-  provideFacts(language) {
-    fetchFacts(language);
+  provideFacts(language, urlSlug) {
+    fetchFacts(language, urlSlug);
   }
 
   // Methods
