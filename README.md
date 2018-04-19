@@ -27,8 +27,8 @@ If you already have a Kentico Cloud account and you want to connect the sample a
 
 To preview content in the sample application, follow these steps:
 
-1. In Kentico Cloud, select your project.
-2. Navigate to the Development section.
+1. In Kentico Cloud, choose Project settings from the app menu.
+2. Under Development, choose API keys.
 3. Copy your Project ID and Preview API key.
 4. Open the `src\Client.js` file in the sample application folder.
 5. Find the `projectId` and `previewApiKey` constants.
@@ -68,11 +68,12 @@ In single-page applications you have to use custom activities to track visitor a
 4. Open the `public\index.html` file in the sample application folder.
 5. Find function call `ket('start', '');` and use your Project ID as its second parameter.
 6. Save the file.
-7. Go back to Kentico Cloud and navigate to Development > Tracking.
-8. Create a new custom activity and copy its codename.
-9. Open the `src\Utilities\ActivityLogging.js` file in the sample application folder.
-10. Find function call `window.ket('action', '');` and use the codename you copied as its second parameter.
-11. Save the file.
+7. Go back to your Project settings in Kentico Cloud
+8. Under Development, choose Activity tracking.
+9. Create a new custom activity and copy its codename.
+10. Open the `src\Utilities\ActivityLogging.js` file in the sample application folder.
+11. Find function call `window.ket('action', '');` and use the codename you copied as its second parameter.
+12. Save the file.
 
 When you now run the application and visit the About Us page, you should be able to see your visit in Analytics of Kentico Cloud. You can also create a new dynamic segment of people who did the custom activity you created and see that the segment is not empty. It should contain you as an anonymous visitor. You can learn more about creating segments with Kentico Cloud in the [documentation](https://help.kenticocloud.com/contact-tracking-and-content-personalization/segments/creating-segments-of-your-visitors).
 
