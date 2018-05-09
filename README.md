@@ -13,8 +13,15 @@ This is a sample website written in JavaScript utilizing the Kentico Cloud Deliv
 4. Type `npm install` to install required npm packages.
 5. Type `npm start` to start a development server.
 6. The application opens in your browser at <http://localhost:3000>.
+    * After starting, the sample application retrieves content from the **default** Kentico Cloud sample project. If you want to change the source project identitier, follow these steps:
+        1. In Kentico Cloud, choose Project settings from the app menu.
+        2. Under Development, choose API keys.
+        3. Copy your Project ID
+        4. Open the `src\Client.js` file in the sample application folder.
+        5. Find the `projectId` constant.
+        6. Change the values of the constant using the Project ID key you copied.
+        7. Save the file.
 
-After starting, the sample application retrieves content from the default Kentico Cloud sample project.
 
 ## Get creative
 Deploy, explore and change the app directly in the browser.
