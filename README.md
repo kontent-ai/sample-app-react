@@ -13,22 +13,29 @@ This is a sample website written in JavaScript utilizing the Kentico Cloud Deliv
 4. Type `npm install` to install required npm packages.
 5. Type `npm start` to start a development server.
 6. The application opens in your browser at <http://localhost:3000>.
-7. After starting, the sample application retrieves content from the **default** Kentico Cloud sample project. If you want to change the source project identifier, follow these steps:
-    1. In Kentico Cloud, choose Project settings from the app menu.
-    2. Under Development, choose API keys.
-    3. Copy your Project ID
-    4. Open the `src\Client.js` file in the sample application folder.
-    5. Find the `projectId` constant.
-    6. Change the values of the constant using the Project ID key you copied.
-    7. Save the file.
 
+After starting, the sample application retrieves content from the **default** Kentico Cloud sample project.
+
+### Connecting your project
+
+If you want to change the source Kentico Cloud project, follow these steps:
+ 
+1. In Kentico Cloud, choose Project settings from the app menu.
+2. Under Development, choose API keys.
+3. Copy your Project ID
+4. Open the `src\Client.js` file in the sample application folder.
+5. Find the `projectId` constant.
+6. Change the values of the constant using the Project ID key you copied.
+7. Save the file.
+
+When you now run the sample application, the application retrieves content from your project.
 
 ## Get creative
 Deploy, explore and change the app directly in the browser.
 
 [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/kentico/cloud-sample-app-react)
 
-## Preview content from your project
+## Previewing content from your project
 
 If you already have a Kentico Cloud account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
 
@@ -69,8 +76,8 @@ By default you can see sample visitor data in Kentico Cloud, even if you already
 
 In single-page applications you have to use custom activities to track visitor activity. This is how you set up tracking visits of About Us page:
 
-1. In Kentico Cloud, select your project.
-2. Navigate to the Development > API keys.
+1. In Kentico Cloud, choose Project settings from the app menu.
+2. Under Development, choose API keys.
 3. Copy your Project ID.
 4. Open the `public\index.html` file in the sample application folder.
 5. Find function call `ket('start', '');` and use your Project ID as its second parameter.
