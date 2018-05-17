@@ -1,23 +1,23 @@
 // kentico cloud
-import { DeliveryClient, DeliveryClientConfig, TypeResolver } from 'kentico-cloud-delivery-typescript-sdk/_bundles';
+import { DeliveryClient, TypeResolver } from 'kentico-cloud-delivery';
 
 const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
-const previewApiKey = "";
+const previewApiKey = '';
 
 // models
-import { AboutUs } from './Models/AboutUs'
-import { Accessory } from './Models/Accessory'
-import { Article } from './Models/Article'
-import { Brewer } from './Models/Brewer'
-import { Cafe } from './Models/Cafe'
-import { Coffee } from './Models/Coffee'
-import { FactAboutUs } from './Models/FactAboutUs'
-import { Grinder } from './Models/Grinder'
-import { HeroUnit } from './Models/HeroUnit'
-import { Home } from './Models/Home'
-import { HostedVideo } from './Models/HostedVideo'
-import { Office } from './Models/Office'
-import { Tweet } from './Models/Tweet'
+import { AboutUs } from './Models/AboutUs';
+import { Accessory } from './Models/Accessory';
+import { Article } from './Models/Article';
+import { Brewer } from './Models/Brewer';
+import { Cafe } from './Models/Cafe';
+import { Coffee } from './Models/Coffee';
+import { FactAboutUs } from './Models/FactAboutUs';
+import { Grinder } from './Models/Grinder';
+import { HeroUnit } from './Models/HeroUnit';
+import { Home } from './Models/Home';
+import { HostedVideo } from './Models/HostedVideo';
+import { Office } from './Models/Office';
+import { Tweet } from './Models/Tweet';
 
 // configure type resolvers
 let typeResolvers = [
@@ -36,16 +36,12 @@ let typeResolvers = [
   new TypeResolver('tweet', () => new Tweet())
 ];
 
-
 function isPreview() {
-  return previewApiKey !== "";
+  return previewApiKey !== '';
 }
 
-export default new DeliveryClient(
-  new DeliveryClientConfig(projectId, typeResolvers,
-    {
-      enablePreviewMode: isPreview(),
-      previewApiKey: previewApiKey
-    }
-  )
-)
+export default new DeliveryClient({
+  projectId: projectId,
+  typeResolvers: typeResolvers,
+  previewApiKey: previewApiKey
+});

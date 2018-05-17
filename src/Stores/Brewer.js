@@ -28,7 +28,7 @@ let fetchBrewers = (language) => {
     query.languageParameter(language);
   }
 
-  query.get()
+  query.getObservable()
     .subscribe(response => {
       if (language) {
         brewers[language] = response.items;
@@ -59,7 +59,7 @@ let fetchProductStatuses = () => {
   }
 
   Client.taxonomy("product_status")
-    .get()
+    .getObservable()
     .subscribe(response => {
       productStatuses = response.taxonomy.terms;
       notifyChange();

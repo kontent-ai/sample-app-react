@@ -1,5 +1,5 @@
-import Client from "../Client.js";
-import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk/_bundles';
+import Client from '../Client.js';
+import { SortOrder } from 'kentico-cloud-delivery';
 
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
@@ -23,13 +23,13 @@ class ArticleStore {
     let query = Client.items()
       .type('article')
       .equalsFilter('system.id', articleId)
-      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
+      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options']);
 
     if (language) {
       query.languageParameter(language);
     }
 
-    query.get()
+    query.getObservable()
       .subscribe(response => {
         if (!response.isEmpty) {
           if (language) {
@@ -52,7 +52,7 @@ class ArticleStore {
       query.languageParameter(language);
     }
 
-    query.get()
+    query.getObservable()
       .subscribe(response => {
         if (language) {
           articleList[language] = response.items;

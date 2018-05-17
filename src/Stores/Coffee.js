@@ -36,7 +36,7 @@ let fetchCoffees = (language) => {
 
 let fetchProcessings = () => {
   Client.taxonomy("processing")
-    .get()
+    .getObservable()
     .subscribe(response => {
       processings = response.taxonomy.terms;
       notifyChange();
@@ -45,7 +45,7 @@ let fetchProcessings = () => {
 
 let fetchProductStatuses = () => {
   Client.taxonomy("product_status")
-    .get()
+    .getObservable()
     .subscribe(response => {
       productStatuses = response.taxonomy.terms;
       notifyChange();
