@@ -36,10 +36,6 @@ let typeResolvers = [
   new TypeResolver('tweet', () => new Tweet())
 ];
 
-function isPreview() {
-  return previewApiKey !== '';
-}
-
 export default new DeliveryClient({
   projectId: projectId,
   typeResolvers: typeResolvers,
