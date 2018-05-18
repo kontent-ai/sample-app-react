@@ -23,7 +23,7 @@ let fetchFacts = (language, urlSlug) => {
     query.equalsFilter('elements.url_pattern', urlSlug);
   }
 
-  query.get()
+  query.getObservable()
     .subscribe(response => {
       if (language) {
         facts[language] = response.items[0].facts;

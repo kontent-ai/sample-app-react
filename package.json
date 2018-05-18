@@ -10,14 +10,14 @@
   "dependencies": {
     "google-maps-react": "^1.1.2",
     "immutable": "^3.8.2",
-    "kentico-cloud-delivery-typescript-sdk": "3.0.1",
+    "kentico-cloud-delivery": "^4.0.1",
     "lodash": "^4.17.4",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router-dom": "^4.2.2",
     "react-scroll": "^1.6.4",
     "react-translate": "^6.0.0",
-    "rxjs": "^5.5.7",
+    "rxjs": "^6.1.0",
     "twitter-widgets": "^1.0.0"
   },
   "scripts": {

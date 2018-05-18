@@ -1,4 +1,4 @@
-import {  ContentItem } from 'kentico-cloud-delivery-typescript-sdk/_bundles';
+import {  ContentItem } from 'kentico-cloud-delivery';
 
 export class Article extends ContentItem {
    constructor(){

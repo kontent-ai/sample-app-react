@@ -29,7 +29,7 @@ let fetchCafes = (language) => {
     query.languageParameter(language);
   }
 
-  query.get()
+  query.getObservable()
     .subscribe(response => {
       if (language) {
         cafes[language] = response.items;
