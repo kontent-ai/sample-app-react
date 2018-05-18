@@ -45,7 +45,7 @@ let fetchManufacturers = () => {
   }
 
   Client.taxonomy("manufacturer")
-    .get()
+    .getObservable()
     .subscribe(response => {
       manufacturers = response.taxonomy.terms;
       notifyChange();
