@@ -18,11 +18,12 @@
     "react-scroll": "^1.6.4",
     "react-translate": "^6.0.0",
     "rxjs": "^6.1.0",
-    "twitter-widgets": "^1.0.0"
+    "twitter-widgets": "^1.0.0",
+    "cpy-cli": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env CI=true react-scripts build",
+    "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
