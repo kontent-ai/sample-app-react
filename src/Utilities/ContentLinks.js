@@ -5,10 +5,10 @@ export function resolveContentLink(link, language) {
       resultLink = `/articles/${link.itemId}`;
       break;
     case "coffee":
-      resultLink = `/coffees/${link.url_slug}`;
+      resultLink = `/coffees/${link.urlSlug}`;
       break;
     case "brewer":
-      resultLink = `/brewers/${link.url_slug}`; 
+      resultLink = `/brewers/${link.urlSlug}`; 
       break;
     default:
       resultLink = "";

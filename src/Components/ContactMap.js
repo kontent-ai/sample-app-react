@@ -147,7 +147,7 @@ class MapScroller extends Component {
         }
     }
     render() {
-        return <a href="#mapanchor" />;
+        return <a href="#mapanchor" style={{display: 'None'}}>Map anchor</a>;
     }
 }
 
