@@ -1,9 +1,6 @@
 // kentico cloud
 import { DeliveryClient, TypeResolver } from 'kentico-cloud-delivery';
 
-const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
-const previewApiKey = '';
-
 // models
 import { AboutUs } from './Models/AboutUs';
 import { Accessory } from './Models/Accessory';
@@ -18,6 +15,9 @@ import { Home } from './Models/Home';
 import { HostedVideo } from './Models/HostedVideo';
 import { Office } from './Models/Office';
 import { Tweet } from './Models/Tweet';
+
+const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
+const previewApiKey = '';
 
 // configure type resolvers
 let typeResolvers = [
