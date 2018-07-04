@@ -12,36 +12,24 @@ let getState = (language) => {
 };
 
 class Contacts extends Component {
-
-
     constructor(props) {
-        console.log('Constructor');
         super(props);
-        this.state = {
-            cafes : getState(props.language).cafes,
-            loading : true
-        };
-        console.log('cafes');
-        console.log(this.state.cafes);
+        this.state = getState(props.language);
         this.onChange = this.onChange.bind(this);
         this.selectAddress = this.selectAddress.bind(this);
     }
 
     componentDidMount() {
-		console.log('componentDidMount');
         CafeStore.addChangeListener(this.onChange);
         CafeStore.provideCompanyCafes(this.props.language);
-
     }
 
     componentWillUnmount() {
-		console.log('componentWillUnmount');
         CafeStore.removeChangeListener(this.onChange);
 		CafeStore.unsubscribe();
     }
 
-    componentWillReceiveProps(nextProps) {
-		console.log('componentWillReceiveProps');
+    componentWillReceiveProps(nextProps) {        
         if (this.props.language !== nextProps.language) {
             CafeStore.provideCompanyCafes(nextProps.language);
             this.selectAddress(undefined);
@@ -49,9 +37,7 @@ class Contacts extends Component {
     }
 
     onChange(language) {
-		console.log('onChange');
         this.setState(getState(language || this.props.language));
-		this.setState({loading: false});
     }
 
     selectAddress(address) {
@@ -61,13 +47,6 @@ class Contacts extends Component {
     }
 
     render() {
-
-        if(this.state.loading) {
-            return (
-                <div>Loading</div>
-            );
-        }
-
         let createModel = (cafe) => {
             let model = {
                 name: cafe.system.name,
