@@ -40,6 +40,7 @@ class LocalizedApp extends Component {
     }
 
     render() {
+        require('./index.css')
         if (this.props.location.pathname !== this.props.location.pathname.toLowerCase()) {
             return <Redirect to={this.props.location.pathname.toLowerCase()} />;
         }
