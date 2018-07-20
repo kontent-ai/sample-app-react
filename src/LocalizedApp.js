@@ -9,7 +9,7 @@ import { localizationObject } from './Utilities/LocalizationLoader'
 
 class LocalizedApp extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             language: getLanguageCode(props.match)
         }
@@ -40,7 +40,6 @@ class LocalizedApp extends Component {
     }
 
     render() {
-        require('./index.css')
         if (this.props.location.pathname !== this.props.location.pathname.toLowerCase()) {
             return <Redirect to={this.props.location.pathname.toLowerCase()} />;
         }
