@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FactStore from '../Stores/Fact';
+import { FactStore } from '../Stores/Fact';
 import RichTextElement from '../Components/RichTextElement';
 
 let getState = (props) => {

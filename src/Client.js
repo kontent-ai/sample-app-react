@@ -1,3 +1,6 @@
+import Cookies from 'universal-cookie';
+import { selectedProjectCookieName, defaultProjectId } from './Utilities/SelectedProject';
+
 // kentico cloud
 import { DeliveryClient, TypeResolver } from 'kentico-cloud-delivery';
 
@@ -16,7 +19,6 @@ import { HostedVideo } from './Models/HostedVideo';
 import { Office } from './Models/Office';
 import { Tweet } from './Models/Tweet';
 
-const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
 const previewApiKey = '';
 
 // configure type resolvers
@@ -36,8 +38,26 @@ let typeResolvers = [
   new TypeResolver('tweet', () => new Tweet())
 ];
 
-export default new DeliveryClient({
+const cookies = new Cookies(document.cookies);
+const projectId = cookies.get(selectedProjectCookieName) || defaultProjectId;
+
+let Client = new DeliveryClient({
   projectId: projectId,
   typeResolvers: typeResolvers,
   previewApiKey: previewApiKey
 });
+
+const resetClient = (newProjectId) => {
+  Client = new DeliveryClient({
+    projectId: newProjectId,
+    typeResolvers: typeResolvers,
+    previewApiKey: previewApiKey
+  });
+  const cookies = new Cookies(document.cookies);
+  cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
+}
+
+export {
+  Client,
+  resetClient
+};

@@ -2,9 +2,41 @@ import React, { Component } from 'react';
 import { defaultProjectId, selectedProjectCookieName } from '../../Utilities/SelectedProject';
 import { withCookies } from 'react-cookie';
 
+import { resetStores } from '../../Utilities/StoreManager';
+
 import './Admin.css';
+import { resetClient } from '../../Client';
 
 class Configuration extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentProjectId: this.props.cookies.get(selectedProjectCookieName)
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.setNewProjectId = this.setNewProjectId.bind(this);
+
+
+  }
+
+  handleChange(event) {
+    this.setState({ currentProjectId: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const newProjectId = event.target[0].value;
+    this.setNewProjectId(newProjectId);
+  }
+
+  setNewProjectId(newProjectId) {
+    resetClient(newProjectId);
+    resetStores();
+    this.props.history.push('/');
+  }
+
   render() {
     return (
       <div className="project-configuration-section">
@@ -39,19 +71,26 @@ class Configuration extends Component {
             <h2>Set A Project ID Manually</h2>
             <p>Alternatively, you can configure your app manually by submitting a project ID below.</p>
             <div className="inline-controls">
-
-              <div className="form-group">
-                <div className="form-group-label">
-                  <label htmlFor="ProjectGuid">ProjectGuid</label>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <div className="form-group-label">
+                    <label htmlFor="ProjectGuid">ProjectGuid</label>
+                  </div>
+                  <div className="form-group-input">
+                    <input
+                      id="ProjectGuid"
+                      name="ProjectGuid"
+                      placeholder="ProjectGuid"
+                      type="text"
+                      value={this.state.currentProjectId}
+                      onChange={this.handleChange} />
+                  </div>
+                  <div className="message-validation">
+                    <span className="field-validation-valid"></span>
+                  </div>
                 </div>
-                <div className="form-group-input">
-                  <input id="ProjectGuid" name="ProjectGuid" placeholder="ProjectGuid" type="text" value="" />
-                </div>
-                <div className="message-validation">
-                  <span className="field-validation-valid"></span>
-                </div>
-              </div>
-              <input type="submit" className="button-secondary" value="Submit" />
+                <input type="submit" className="button-secondary" value="Submit" />
+              </form>
             </div>
           </section>
           <section className="section-secondary">
@@ -62,10 +101,7 @@ class Configuration extends Component {
               type="submit"
               className="button-secondary"
               value="Use the shared project"
-              onClick={() => {
-                this.props.cookies.set(selectedProjectCookieName, defaultProjectId);
-                this.props.history.push('/');
-              }} />
+              onClick={() => this.setNewProjectId(defaultProjectId)} />
           </section>
         </div>
       </div >

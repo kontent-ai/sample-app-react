@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BrewerStore from "../Stores/Brewer";
+import { BrewerStore } from "../Stores/Brewer";
 import RichTextElement from '../Components/RichTextElement';
 
 let getState = (props) => {

@@ -1,9 +1,12 @@
-import Client from "../Client.js";
+import { Client } from "../Client.js";
 
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
 let changeListeners = [];
-let facts = initLanguageCodeObject();
+const resetStore = () => ({
+  facts: initLanguageCodeObject()
+});
+let { facts } = resetStore();
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -34,7 +37,7 @@ let fetchFacts = (language, urlSlug) => {
     });
 }
 
-class FactStore {
+class Fact {
 
   // Actions
 
@@ -59,7 +62,11 @@ class FactStore {
       return element !== listener;
     });
   }
-
 }
 
-export default new FactStore();
+let FactStore = new Fact();
+
+export {
+  FactStore,
+  resetStore
+}

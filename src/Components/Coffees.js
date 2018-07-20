@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from '../Components/LowerCaseUrlLink';
-import CoffeeStore from "../Stores/Coffee";
+import { CoffeeStore } from "../Stores/Coffee";
 
 let getState = (props) => {
   return {

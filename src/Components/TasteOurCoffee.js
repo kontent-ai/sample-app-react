@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { translate } from 'react-translate'          
+import { translate } from 'react-translate'
 
 import Link from '../Components/LowerCaseUrlLink';
-import CafeStore from '../Stores/Cafe';
+import { CafeStore } from '../Stores/Cafe';
 
 let getState = (props) => {
   return {

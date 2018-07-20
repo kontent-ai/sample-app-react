@@ -20,7 +20,8 @@
     "react-scroll": "^1.6.4",
     "react-translate": "^6.0.0",
     "rxjs": "^6.1.0",
-    "twitter-widgets": "^1.0.0"
+    "twitter-widgets": "^1.0.0",
+    "universal-cookie": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

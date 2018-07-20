@@ -1,10 +1,13 @@
-import Client from '../Client.js';
+import { Client } from '../Client.js';
 import { SortOrder } from 'kentico-cloud-delivery';
 
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
-let articleList = initLanguageCodeObject();
-let articleDetails = initLanguageCodeObject();
+const resetStore = () => ({
+  articleList: initLanguageCodeObject(),
+  articleDetails: initLanguageCodeObject()
+});
+let { articleList, articleDetails } = resetStore();
 
 let changeListeners = [];
 
@@ -14,7 +17,7 @@ let notifyChange = () => {
   });
 }
 
-class ArticleStore {
+class Article {
 
   // Actions
 
@@ -95,4 +98,9 @@ class ArticleStore {
 
 }
 
-export default new ArticleStore();
+let ArticleStore = new Article();
+
+export {
+  ArticleStore,
+  resetStore
+}

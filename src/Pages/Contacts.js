@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-translate'
 
-import CafeStore from '../Stores/Cafe';
+import { CafeStore } from '../Stores/Cafe';
 import ContactMap from '../Components/ContactMap'
 
 
@@ -28,7 +28,7 @@ class Contacts extends Component {
         CafeStore.removeChangeListener(this.onChange);
     }
 
-    componentWillReceiveProps(nextProps) {        
+    componentWillReceiveProps(nextProps) {
         if (this.props.language !== nextProps.language) {
             CafeStore.provideCompanyCafes(nextProps.language);
             this.selectAddress(undefined);

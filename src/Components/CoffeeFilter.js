@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-translate'
 
-import CoffeeStore from "../Stores/Coffee";
+import { CoffeeStore } from "../Stores/Coffee";
 
 let getState = () => {
   return {
@@ -41,9 +41,9 @@ class CoffeeFilter extends Component {
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
         <h4>{this.props.t("coffeeProcessingTitle")}</h4>
-        <ProcessingFilter processings={processings} filter={filter}/>
+        <ProcessingFilter processings={processings} filter={filter} />
         <h4>{this.props.t("statusTitle")}</h4>
-        <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>
+        <ProductStatusFilter productStatuses={productStatuses} filter={filter} />
       </aside>
     );
   }
@@ -52,7 +52,7 @@ class CoffeeFilter extends Component {
 const ProcessingFilter = (props) => {
   let filterItems = props.processings.map((processing) => {
     return (
-      <ProcessingFilterItem processing={processing} filter={props.filter} key={processing.codename}/>
+      <ProcessingFilterItem processing={processing} filter={props.filter} key={processing.codename} />
     );
   });
 
@@ -73,7 +73,7 @@ const ProcessingFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={codename} type="checkbox" checked={checked} onChange={onChange}/>
+      <input id={codename} type="checkbox" checked={checked} onChange={onChange} />
       <label htmlFor={codename}>{props.processing.name}</label>
     </span>
   );
@@ -82,7 +82,7 @@ const ProcessingFilterItem = (props) => {
 const ProductStatusFilter = (props) => {
   let filterItems = props.productStatuses.map((productStatus) => {
     return (
-      <ProductStatusFilterItem productStatus={productStatus} filter={props.filter} key={productStatus.codename}/>
+      <ProductStatusFilterItem productStatus={productStatus} filter={props.filter} key={productStatus.codename} />
     );
   });
 
@@ -103,7 +103,7 @@ const ProductStatusFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={codename} type="checkbox" checked={checked} onChange={onChange}/>
+      <input id={codename} type="checkbox" checked={checked} onChange={onChange} />
       <label htmlFor={codename}>{props.productStatus.name}</label>
     </span>
   );

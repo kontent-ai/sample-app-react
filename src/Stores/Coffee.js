@@ -1,11 +1,14 @@
-import Client from "../Client.js";
+import { Client } from "../Client.js";
 
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
 let changeListeners = [];
-let coffees = initLanguageCodeObject();
-let processings = [];
-let productStatuses = [];
+const resetStore = () => ({
+  coffees: initLanguageCodeObject(),
+  processings: [],
+  productStatuses: []
+});
+let { coffees, processings, productStatuses } = resetStore();
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -97,7 +100,7 @@ export class Filter {
 
 let coffeeFilter = new Filter();
 
-class CoffeeStore {
+class Coffee {
 
   // Actions
 
@@ -159,4 +162,9 @@ class CoffeeStore {
 
 }
 
-export default new CoffeeStore();
+let CoffeeStore = new Coffee();
+
+export {
+  CoffeeStore,
+  resetStore
+};
