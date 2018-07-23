@@ -1,43 +1,147 @@
 import React, { Component } from 'react';
-import { defaultProjectId, selectedProjectCookieName } from '../../Utilities/SelectedProject';
 import { withCookies } from 'react-cookie';
+import { isUUID } from 'validator';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
+import { resetClient, Client } from '../../Client';
+import SpinnerBox from '../../Components/SpinnerBox';
+import { defaultProjectId, selectedProjectCookieName, SAMPLE_PROJECT_ITEM_COUNT } from '../../Utilities/SelectedProject';
 import { resetStores } from '../../Utilities/StoreManager';
 
 import './Admin.css';
-import { resetClient } from '../../Client';
+
+const getWindowCenterPosition = (windowWidth, windowHeight) => {
+  const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+  const dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+  const screenWidth = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : window.screen.width;
+  const screenHeight = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : window.screen.height;
+  const left = ((screenWidth / 2) - (windowWidth / 2)) + dualScreenLeft;
+  const top = ((screenHeight / 2) - (windowHeight / 2)) + dualScreenTop;
+  return { left, top };
+}
 
 class Configuration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProjectId: this.props.cookies.get(selectedProjectCookieName)
+      currentProjectInputValue: this.props.cookies.get(selectedProjectCookieName),
+      preparingProject : false,
+      unsubscribe: new Subject()
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleProjectInputChange = this.handleProjectInputChange.bind(this);
+    this.handleSetProjectSubmit = this.handleSetProjectSubmit.bind(this);
     this.setNewProjectId = this.setNewProjectId.bind(this);
-
-
+    this.receiveMessage = this.receiveMessage.bind(this);
+    this.unsubscribe = this.unsubscribe.bind(this);
+    this.waitUntilProjectAccessible = this.waitUntilProjectAccessible.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ currentProjectId: event.target.value });
+  componentDidMount() {
+    window.addEventListener("message", this.receiveMessage, false);
   }
 
-  handleSubmit(event) {
+  componentWillUnmount() {
+    window.removeEventListener("message", this.receiveMessage);
+    this.unsubscribe();
+  }
+
+  handleProjectInputChange(event) {
+    this.setState({ currentProjectInputValue: event.target.value });
+  }
+
+  handleSetProjectSubmit(event) {
     event.preventDefault();
     const newProjectId = event.target[0].value;
     this.setNewProjectId(newProjectId);
   }
 
-  setNewProjectId(newProjectId) {
+  setNewProjectId(newProjectId, newlyGeneratedProject) {
+    if (!isUUID(newProjectId)) {
+      const message = `Selected project (${newProjectId}) is not a valid GUID`;
+      console.error(message);
+      alert(message);
+      this.setState({
+        currentProjectInputValue: this.props.cookies.get(selectedProjectCookieName)
+      });
+      return;
+    }
+
     resetClient(newProjectId);
     resetStores();
-    this.props.history.push('/');
+    newlyGeneratedProject = true;
+    if (newlyGeneratedProject) {
+      this.waitUntilProjectAccessible(newProjectId);
+      this.setState({
+        preparingProject : true
+      });
+      return;
+    };
+
+    this.redirectToHome(newProjectId);
+  }
+
+  waitUntilProjectAccessible(newProjectId) {
+    setTimeout(() => {
+      // TODO: what element use for projection? 
+      Client.items()
+        .elementsParameter(['id'])
+        .depthParameter(0)
+        .getObservable()
+        .pipe(takeUntil(this.state.unsubscribe))
+        .subscribe(response => {
+          if (response.items.length === SAMPLE_PROJECT_ITEM_COUNT) {
+            this.setState({
+              preparingProject : false
+            });
+            this.redirectToHome(newProjectId);
+          } else {
+            this.waitUntilProjectAccessible(newProjectId);
+          }
+        });
+    }, 2000);
+  }
+
+  unsubscribe() {
+    this.state.unsubscribe.next();
+    this.state.unsubscribe.complete();
+    this.setState({
+      unsubscribe: new Subject()
+    });
+  }
+
+  redirectToHome(newProjectId) {
+    const infoMessage = newProjectId === defaultProjectId ?
+      `You've configured your app to with a project ID of a shared Kentico Cloud project.` :
+      `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://app.kenticocloud.com/.`;
+    this.props.history.push(`/?infoMessage=${infoMessage}`);
+  }
+
+  openKenticoCloudProjectSelector(event) {
+    event.preventDefault();
+    const windowWidth = 800;
+    const windowHeight = 800;
+    const { left, top } = getWindowCenterPosition(windowWidth, windowHeight);
+
+    window.open("https://app.kenticocloud.com/sample-site-configuration", "Kentico Cloud",
+      `status=no,width=${windowWidth},height=${windowHeight},resizable=yes,left=
+      ${left},top=${top},toolbar=no,menubar=no,location=no,directories=no`);
+  }
+
+  receiveMessage(event) {
+    if (event.origin.toLowerCase() !== "https://app.kenticocloud.com")
+      return;
+
+    if (!event.data.projectGuid) {
+      return;
+    }
+
+    this.setNewProjectId(event.data.projectGuid, event.data.newlyGeneratedProject);
   }
 
   render() {
+    const message = this.state.preparingProject && <SpinnerBox message="Waiting for the sample project to become ready..."/>;
     return (
       <div className="project-configuration-section">
         <div className="logotype-row">
@@ -59,19 +163,22 @@ class Configuration extends Component {
           <div className="content">
             <h1>Sample Site—Configuration</h1>
             <p>For your sample app to work, you should have a Kentico Cloud project containing content. Your app should be then configured with its project ID. You can either get it by signing in using your Kentico Cloud credentials or by signing up for a trial. Later, it will be converted to a free plan.</p>
+            {message}
           </div>
         </header>
         <section>
           <h2>Get a Project ID</h2>
           <p>You may wish to either select from existing projects or create a new sample project. The app will be configured with its project ID.</p>
-          <input type="submit" className="button-secondary" value="Get Project ID from Kentico Cloud" />
+          <form onSubmit={this.openKenticoCloudProjectSelector}>
+            <input type="submit" className="button-secondary" value="Get Project ID from Kentico Cloud" />
+          </form>
         </section>
         <div className="content sections-secondary divided">
           <section className="section-secondary">
             <h2>Set A Project ID Manually</h2>
             <p>Alternatively, you can configure your app manually by submitting a project ID below.</p>
             <div className="inline-controls">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSetProjectSubmit}>
                 <div className="form-group">
                   <div className="form-group-label">
                     <label htmlFor="ProjectGuid">ProjectGuid</label>
@@ -82,8 +189,8 @@ class Configuration extends Component {
                       name="ProjectGuid"
                       placeholder="ProjectGuid"
                       type="text"
-                      value={this.state.currentProjectId}
-                      onChange={this.handleChange} />
+                      value={this.state.currentProjectInputValue}
+                      onChange={this.handleProjectInputChange} />
                   </div>
                   <div className="message-validation">
                     <span className="field-validation-valid"></span>
@@ -104,7 +211,7 @@ class Configuration extends Component {
               onClick={() => this.setNewProjectId(defaultProjectId)} />
           </section>
         </div>
-      </div >
+      </div>
     );
   }
 };

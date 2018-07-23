@@ -13,6 +13,7 @@
     "immutable": "^3.8.2",
     "kentico-cloud-delivery": "^4.0.2",
     "lodash": "^4.17.4",
+    "query-string": "^6.1.0",
     "react": "^15.3.1",
     "react-cookie": "^2.2.0",
     "react-dom": "^15.3.1",
@@ -21,7 +22,8 @@
     "react-translate": "^6.0.0",
     "rxjs": "^6.1.0",
     "twitter-widgets": "^1.0.0",
-    "universal-cookie": "^2.2.0"
+    "universal-cookie": "^2.2.0",
+    "validator": "^10.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
