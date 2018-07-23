@@ -438,21 +438,33 @@ body {
   margin-left: -26px;
   margin-top: -26px;
 }
-.project-configuration-section .spinner {
-  position: fixed;
-  left: 50%;
-  top: 50%;
+
+.project-configuration-section .spinner-box {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.project-configuration-section span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.project-configuration-section .spinner-box .spinner {
   animation: spin 2s linear infinite;
-  border: 16px solid #ebebeb;
+  border: .5em solid #ebebeb;
   border-radius: 50%;
-  border-top: 16px solid #008ae1;
-  height: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
+  border-top: .5em solid #008ae1;
+  height: 1em;
   overflow: auto;
-  width: 50px;
+  width: 1em;
+  animation: spin 2s linear infinite;
   -webkit-animation: spin 2s linear infinite;
 }
+
+.project-configuration-section .spinner-box .spinner-message {
+  padding-left: 1em;
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

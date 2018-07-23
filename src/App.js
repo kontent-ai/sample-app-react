@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { withCookies } from 'react-cookie';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import queryString from 'query-string';
 
 import Header from './Components/Header.js';
 import Footer from './Components/Footer.js'
@@ -13,7 +15,6 @@ import CoffeePage from './Pages/Coffee';
 import BrewerPage from './Pages/Brewer';
 import ContactsPage from "./Pages/Contacts"
 
-import { withCookies } from 'react-cookie';
 import { selectedProjectCookieName, projectConfigurationPath } from './Utilities/SelectedProject';
 
 class App extends Component {
@@ -24,10 +25,11 @@ class App extends Component {
       return <Redirect to={projectConfigurationPath} />;
     }
 
-    const {language, changeLanguage} = this.props;
+    const { language, changeLanguage, location } = this.props;
+    const infoMessage = queryString.parse(location.search).infoMessage;
     return (
       <div className="application-content">
-        <Header language={language} changeLanguage={changeLanguage} />
+        <Header language={language} changeLanguage={changeLanguage} message={infoMessage} />
         <Switch>
           <Route path="/:lang?/store" render={(matchProps) => <StorePage {...matchProps} language={language} />} />
           <Route path="/:lang?/coffees/:coffeeSlug" render={(matchProps) => <CoffeePage {...matchProps} language={language} />} />

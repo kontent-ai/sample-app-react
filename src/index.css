@@ -6081,3 +6081,37 @@ body {
   background-color: transparent;
   color: #fff;
 }
+
+.application-content .user-message {
+  background-repeat: no-repeat;
+  background-position: 28px 28px;
+  background-size: 2em 2em;
+  border-collapse: separate;
+  color: #FFFFFF;
+  padding: 2em;
+  width: 100%;
+}
+.application-content .message-info {
+  background-color: #89CFFA;
+}
+
+.application-content .message-content {
+  width: 100%;
+  text-align: left;
+}
+
+.application-content .message-icon {
+  width: 50px;
+}
+
+.application-content .user-message img,
+.application-content .user-message p {
+  margin: 0;
+}
+.application-content .user-message p {
+  padding: 0 0 0 20px;
+}
+
+.application-content table.user-message td {
+  vertical-align: top;
+}

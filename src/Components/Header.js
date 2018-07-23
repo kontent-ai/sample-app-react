@@ -2,11 +2,12 @@ import React from 'react';
 import { translate } from 'react-translate'
 
 import Link from '../Components/LowerCaseUrlLink';
-
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
-import { LogAboutUs } from '../Utilities/ActivityLogging'
+import { LogAboutUs } from '../Utilities/ActivityLogging';
+import MessageBox from './MessageBox';
 
 const Header = (props) => {
+  const messageBox = props.message && <MessageBox message={props.message} />;
   return (
     <header className="header" role="banner">
       <div className="menu">
@@ -59,6 +60,7 @@ const Header = (props) => {
           </div>
         </div>
       </div>
+      {messageBox}
       <div className="header-row">
         <div className="container">
           <div className="col-xs-8 col-md-8 col-lg-4 logo">
