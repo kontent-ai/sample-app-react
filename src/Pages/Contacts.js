@@ -26,6 +26,7 @@ class Contacts extends Component {
 
     componentWillUnmount() {
         CafeStore.removeChangeListener(this.onChange);
+		CafeStore.unsubscribe();
     }
 
     componentWillReceiveProps(nextProps) {        

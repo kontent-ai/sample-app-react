@@ -1,7 +1,9 @@
 import Client from "../Client.js";
-
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
 
+const unsubscribe = new Subject();
 let changeListeners = [];
 let cafes = initLanguageCodeObject();
 let languageInitialized = {};
@@ -30,6 +32,7 @@ let fetchCafes = (language) => {
   }
 
   query.getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
         cafes[language] = response.items;
@@ -73,6 +76,11 @@ class CafeStore {
     changeListeners = changeListeners.filter((element) => {
       return element !== listener;
     });
+  }
+
+  unsubscribe() {
+    unsubscribe.next();
+    unsubscribe.complete();
   }
 
 }
