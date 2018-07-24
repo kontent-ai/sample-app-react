@@ -19,6 +19,7 @@ import { HostedVideo } from './Models/HostedVideo';
 import { Office } from './Models/Office';
 import { Tweet } from './Models/Tweet';
 
+const projectId = '';
 const previewApiKey = '';
 
 // configure type resolvers
@@ -39,10 +40,15 @@ let typeResolvers = [
 ];
 
 const cookies = new Cookies(document.cookies);
-const projectId = cookies.get(selectedProjectCookieName) || defaultProjectId;
+let currentProjectId = projectId || cookies.get(selectedProjectCookieName);
+if (currentProjectId) {
+  cookies.set(selectedProjectCookieName, currentProjectId, { path: '/' });
+} else {
+  currentProjectId = defaultProjectId;
+}
 
 let Client = new DeliveryClient({
-  projectId: projectId,
+  projectId: currentProjectId,
   typeResolvers: typeResolvers,
   previewApiKey: previewApiKey
 });

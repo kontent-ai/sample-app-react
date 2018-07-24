@@ -10,7 +10,7 @@ const resetStore = () => {
   languageCodes.forEach((language) => {
     languageInitialized[language] = false;
   });
-  
+
   return {
     cafes: initLanguageCodeObject(),
     languageInitialized: languageInitialized
@@ -52,49 +52,48 @@ let fetchCafes = (language) => {
 
 class Cafe {
 
-    // Actions
+  // Actions
 
-    providePartnerCafes(language) {
-        fetchCafes(language);
-    }
+  providePartnerCafes(language) {
+    fetchCafes(language);
+  }
 
-    provideCompanyCafes(language) {
-        fetchCafes(language);
-    }
+  provideCompanyCafes(language) {
+    fetchCafes(language);
+  }
 
-    // Methods
+  // Methods
 
-    getPartnerCafes(language) {
-        return cafes[language].filter((cafe) => cafe.country.value !== "USA");
-    }
+  getPartnerCafes(language) {
+    return cafes[language].filter((cafe) => cafe.country.value !== "USA");
+  }
 
-    getCompanyCafes(language) {
-        return cafes[language].filter((cafe) => cafe.country.value === "USA");
-    }
+  getCompanyCafes(language) {
+    return cafes[language].filter((cafe) => cafe.country.value === "USA");
+  }
 
-    // Listeners
+  // Listeners
 
-    addChangeListener(listener) {
-        changeListeners.push(listener);
-    }
+  addChangeListener(listener) {
+    changeListeners.push(listener);
+  }
 
-    removeChangeListener(listener) {
-        changeListeners = changeListeners.filter((element) => {
-            return element !== listener;
-        });
-    }
+  removeChangeListener(listener) {
+    changeListeners = changeListeners.filter((element) => {
+      return element !== listener;
+    });
+  }
 
-    unsubscribe() {
-        unsubscribe.next();
-        unsubscribe.complete();
-        unsubscribe = new Subject();
-    }
+  unsubscribe() {
+    unsubscribe.next();
+    unsubscribe.complete();
+    unsubscribe = new Subject();
+  }
 }
-
 let CafeStore = new Cafe();
 
 export {
   CafeStore,
   resetStore
-}
+};
 

@@ -84,7 +84,6 @@ class Configuration extends Component {
 
   waitUntilProjectAccessible(newProjectId) {
     setTimeout(() => {
-      // TODO: what element use for projection? 
       Client.items()
         .elementsParameter(['id'])
         .depthParameter(0)

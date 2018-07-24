@@ -4,13 +4,13 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes';
 
+let unsubscribe = new Subject();
 const resetStore = () => ({
   articleList: initLanguageCodeObject(),
   articleDetails: initLanguageCodeObject()
 });
 let { articleList, articleDetails } = resetStore();
 
-let unsubscribe = new Subject();
 let changeListeners = [];
 
 let notifyChange = () => {
