@@ -1,7 +1,6 @@
+import { Client } from "../Client.js";
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Client } from "../Client.js";
-
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
 let unsubscribe = new Subject();

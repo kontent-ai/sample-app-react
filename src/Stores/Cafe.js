@@ -1,7 +1,6 @@
+import { Client } from "../Client.js";
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Client } from "../Client.js";
-
 import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
 
 let unsubscribe = new Subject();
@@ -11,7 +10,7 @@ const resetStore = () => {
   languageCodes.forEach((language) => {
     languageInitialized[language] = false;
   });
-  
+
   return {
     cafes: initLanguageCodeObject(),
     languageInitialized: languageInitialized

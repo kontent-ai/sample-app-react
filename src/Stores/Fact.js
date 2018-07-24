@@ -71,7 +71,6 @@ class Fact {
     unsubscribe.complete();
     unsubscribe = new Subject();
   }
-
 }
 
 let FactStore = new Fact();

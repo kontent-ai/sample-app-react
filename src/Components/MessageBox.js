@@ -24,6 +24,7 @@ const MessageBox = (props) => {
           </tbody>
         </table>
       </section>
+
     </div>
   );
 }
