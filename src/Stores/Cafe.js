@@ -1,16 +1,22 @@
-import Client from "../Client.js";
+import { Client } from "../Client.js";
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
 
 let unsubscribe = new Subject();
 let changeListeners = [];
-let cafes = initLanguageCodeObject();
-let languageInitialized = {};
-languageCodes.forEach((language) => {
-  languageInitialized[language] = false;
-})
-
+const resetStore = () => {
+  let languageInitialized = {};
+  languageCodes.forEach((language) => {
+    languageInitialized[language] = false;
+  });
+  
+  return {
+    cafes: initLanguageCodeObject(),
+    languageInitialized: languageInitialized
+  }
+};
+let { cafes, languageInitialized } = resetStore();
 
 let notifyChange = (newlanguage) => {
   changeListeners.forEach((listener) => {
@@ -19,7 +25,7 @@ let notifyChange = (newlanguage) => {
 }
 
 let fetchCafes = (language) => {
-  if(languageInitialized[language]){
+  if (languageInitialized[language]) {
     notifyChange(language);
     return;
   }
@@ -44,46 +50,51 @@ let fetchCafes = (language) => {
     });
 }
 
-class CafeStore {
+class Cafe {
 
-  // Actions
+    // Actions
 
-  providePartnerCafes(language) {
-    fetchCafes(language);
-  }
+    providePartnerCafes(language) {
+        fetchCafes(language);
+    }
 
-  provideCompanyCafes(language) {
-    fetchCafes(language);
-  }
+    provideCompanyCafes(language) {
+        fetchCafes(language);
+    }
 
-  // Methods
+    // Methods
 
-  getPartnerCafes(language) {
-    return cafes[language].filter((cafe) => cafe.country.value !== "USA");
-  }
+    getPartnerCafes(language) {
+        return cafes[language].filter((cafe) => cafe.country.value !== "USA");
+    }
 
-  getCompanyCafes(language) {
-    return cafes[language].filter((cafe) => cafe.country.value === "USA");
-  }
+    getCompanyCafes(language) {
+        return cafes[language].filter((cafe) => cafe.country.value === "USA");
+    }
 
-  // Listeners
+    // Listeners
 
-  addChangeListener(listener) {
-    changeListeners.push(listener);
-  }
+    addChangeListener(listener) {
+        changeListeners.push(listener);
+    }
 
-  removeChangeListener(listener) {
-    changeListeners = changeListeners.filter((element) => {
-      return element !== listener;
-    });
-  }
+    removeChangeListener(listener) {
+        changeListeners = changeListeners.filter((element) => {
+            return element !== listener;
+        });
+    }
 
-  unsubscribe() {
-    unsubscribe.next();
-    unsubscribe.complete();
-    unsubscribe = new Subject();
-  }
-
+    unsubscribe() {
+        unsubscribe.next();
+        unsubscribe.complete();
+        unsubscribe = new Subject();
+    }
 }
 
-export default new CafeStore();
+let CafeStore = new Cafe();
+
+export {
+  CafeStore,
+  resetStore
+}
+

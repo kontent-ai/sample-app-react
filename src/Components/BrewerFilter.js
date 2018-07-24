@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-translate'
 
-import BrewerStore from "../Stores/Brewer";
+import { BrewerStore } from "../Stores/Brewer";
 
 let priceRanges = [
   { min: 0, max: 50 },
@@ -49,11 +49,11 @@ class BrewerFilter extends Component {
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
         <h4>{this.props.t("manufacturerTitle")}</h4>
-        <ManufacturerFilter manufacturers={manufacturers} filter={filter}/>
+        <ManufacturerFilter manufacturers={manufacturers} filter={filter} />
         <h4>{this.props.t("priceTitle")}</h4>
-        <PriceRangeFilter priceRanges={priceRanges} filter={filter} language={this.props.language}/>
+        <PriceRangeFilter priceRanges={priceRanges} filter={filter} language={this.props.language} />
         <h4>{this.props.t("statusTitle")}</h4>
-        <ProductStatusFilter productStatuses={productStatuses} filter={filter}/>
+        <ProductStatusFilter productStatuses={productStatuses} filter={filter} />
       </aside>
     );
   }
@@ -63,8 +63,8 @@ const ManufacturerFilter = (props) => {
   let filterItems = props.manufacturers.map((manufacturer) => {
     return (
       <ManufacturerFilterItem manufacturer={manufacturer} id={"Manufacturer-" + manufacturer.codename}
-                              filter={props.filter}
-                              key={manufacturer.codename}/>
+        filter={props.filter}
+        key={manufacturer.codename} />
     );
   });
 
@@ -85,7 +85,7 @@ const ManufacturerFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
+      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
       <label htmlFor={props.id}>{props.manufacturer.name}</label>
     </span>
   );
@@ -94,7 +94,7 @@ const ManufacturerFilterItem = (props) => {
 const PriceRangeFilter = (props) => {
   let filterItems = props.priceRanges.map((priceRange, index) => {
     return (
-      <PriceRangeFilterItem language={props.language} priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index}/>
+      <PriceRangeFilterItem language={props.language} priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index} />
     );
   });
 
@@ -120,7 +120,7 @@ const PriceRangeFilterItem = (props) => {
   }
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
+      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
       <label htmlFor={props.id}>{formatPrice(props.priceRange.min, props.language) + " – " + formatPrice(props.priceRange.max, props.language)}</label>
     </span>
   );
@@ -130,8 +130,8 @@ const ProductStatusFilter = (props) => {
   let filterItems = props.productStatuses.map((productStatus) => {
     return (
       <ProductStatusFilterItem productStatus={productStatus} id={"ProductStatus-" + productStatus.codename}
-                               filter={props.filter}
-                               key={productStatus.codename}/>
+        filter={props.filter}
+        key={productStatus.codename} />
     );
   });
 
@@ -152,7 +152,7 @@ const ProductStatusFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange}/>
+      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
       <label htmlFor={props.id}>{props.productStatus.name}</label>
     </span>
   );

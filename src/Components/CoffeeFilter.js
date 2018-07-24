@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-translate'
 
-import CoffeeStore from "../Stores/Coffee";
+import { CoffeeStore } from "../Stores/Coffee";
 
 let getState = () => {
   return {
