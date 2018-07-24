@@ -1,12 +1,17 @@
-import Client from '../Client.js';
+import { Client } from '../Client.js';
 import { SortOrder } from 'kentico-cloud-delivery';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes';
 
-let articleList = initLanguageCodeObject();
-let articleDetails = initLanguageCodeObject();
-let unsubscribe = new Subject();
+import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+
+const resetStore = () => ({
+  articleList: initLanguageCodeObject(),
+  articleDetails: initLanguageCodeObject()
+});
+let { articleList, articleDetails } = resetStore();
+
 let changeListeners = [];
 
 let notifyChange = () => {
@@ -15,7 +20,7 @@ let notifyChange = () => {
   });
 }
 
-class ArticleStore {
+class Article {
 
   // Actions
 
@@ -104,4 +109,9 @@ class ArticleStore {
 
 }
 
-export default new ArticleStore();
+let ArticleStore = new Article();
+
+export {
+  ArticleStore,
+  resetStore
+}

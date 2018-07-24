@@ -1,11 +1,15 @@
-import Client from "../Client.js";
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Client } from "../Client.js";
+
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
 let unsubscribe = new Subject();
 let changeListeners = [];
-let brewers = initLanguageCodeObject();
+const resetStore = () => ({
+  brewers: initLanguageCodeObject()
+});
+let { brewers } = resetStore();
 
 let manufacturersInitialized = false;
 let manufacturers = [];
@@ -131,7 +135,7 @@ export class Filter {
 
 let brewerFilter = new Filter();
 
-class BrewerStore {
+class Brewer {
 
   // Actions
 
@@ -198,4 +202,9 @@ class BrewerStore {
 
 }
 
-export default new BrewerStore();
+let BrewerStore = new Brewer();
+
+export {
+  BrewerStore,
+  resetStore
+}

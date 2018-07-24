@@ -9,7 +9,7 @@ import { localizationObject } from './Utilities/LocalizationLoader'
 
 class LocalizedApp extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             language: getLanguageCode(props.match)
         }

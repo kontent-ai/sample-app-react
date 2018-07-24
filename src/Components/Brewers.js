@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Link from '../Components/LowerCaseUrlLink';
 import { resolveContentLink } from '../Utilities/ContentLinks'
-import BrewerStore from "../Stores/Brewer";
+import { BrewerStore } from "../Stores/Brewer";
 
 let getState = (props) => {
   return {

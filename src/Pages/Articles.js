@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticleStore from '../Stores/Article';
+import { ArticleStore } from '../Stores/Article';
 import Link from '../Components/LowerCaseUrlLink'
 import dateFormat from 'dateformat';
 

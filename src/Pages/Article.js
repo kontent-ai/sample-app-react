@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 
-import ArticleStore from '../Stores/Article';
+import { ArticleStore } from '../Stores/Article';
 import RichTextElement from '../Components/RichTextElement';
 import { dateFormats } from '../Utilities/LanguageCodes'
 
