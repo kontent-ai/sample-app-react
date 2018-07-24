@@ -3,7 +3,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
-const unsubscribe = new Subject();
+let unsubscribe = new Subject();
 let changeListeners = [];
 let facts = initLanguageCodeObject();
 
@@ -66,6 +66,7 @@ class FactStore {
   unsubscribe() {
     unsubscribe.next();
     unsubscribe.complete();
+    unsubscribe = new Subject();
   }
 
 }

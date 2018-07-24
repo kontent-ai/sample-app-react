@@ -6,7 +6,7 @@ import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCo
 
 let articleList = initLanguageCodeObject();
 let articleDetails = initLanguageCodeObject();
-const unsubscribe = new Subject();
+let unsubscribe = new Subject();
 let changeListeners = [];
 
 let notifyChange = () => {
@@ -99,6 +99,7 @@ class ArticleStore {
   unsubscribe() {
     unsubscribe.next();
     unsubscribe.complete();
+    unsubscribe = new Subject();
   }
 
 }

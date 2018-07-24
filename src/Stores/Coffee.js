@@ -3,7 +3,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
 
-const unsubscribe = new Subject();
+let unsubscribe = new Subject();
 let changeListeners = [];
 let coffees = initLanguageCodeObject();
 let processings = [];
@@ -165,6 +165,7 @@ class CoffeeStore {
   unsubscribe() {
     unsubscribe.next();
     unsubscribe.complete();
+    unsubscribe = new Subject();
   }
 
 }
