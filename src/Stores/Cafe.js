@@ -90,6 +90,11 @@ class Cafe {
     unsubscribe.complete();
     unsubscribe = new Subject();
   }
-
 }
+let CafeStore = new Cafe();
+
+export {
+  CafeStore,
+  resetStore
+};
 
