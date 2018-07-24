@@ -34,6 +34,7 @@ class BrewerFilter extends Component {
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
+    BrewerStore.unsubscribe();
   }
 
   onChange() {

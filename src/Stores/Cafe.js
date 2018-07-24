@@ -1,7 +1,9 @@
 import { Client } from "../Client.js";
-
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
 
+let unsubscribe = new Subject();
 let changeListeners = [];
 const resetStore = () => {
   let languageInitialized = {};
@@ -36,6 +38,7 @@ let fetchCafes = (language) => {
   }
 
   query.getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
         cafes[language] = response.items;
@@ -49,38 +52,43 @@ let fetchCafes = (language) => {
 
 class Cafe {
 
-  // Actions
+    // Actions
 
-  providePartnerCafes(language) {
-    fetchCafes(language);
-  }
+    providePartnerCafes(language) {
+        fetchCafes(language);
+    }
 
-  provideCompanyCafes(language) {
-    fetchCafes(language);
-  }
+    provideCompanyCafes(language) {
+        fetchCafes(language);
+    }
 
-  // Methods
+    // Methods
 
-  getPartnerCafes(language) {
-    return cafes[language].filter((cafe) => cafe.country.value !== "USA");
-  }
+    getPartnerCafes(language) {
+        return cafes[language].filter((cafe) => cafe.country.value !== "USA");
+    }
 
-  getCompanyCafes(language) {
-    return cafes[language].filter((cafe) => cafe.country.value === "USA");
-  }
+    getCompanyCafes(language) {
+        return cafes[language].filter((cafe) => cafe.country.value === "USA");
+    }
 
-  // Listeners
+    // Listeners
 
-  addChangeListener(listener) {
-    changeListeners.push(listener);
-  }
+    addChangeListener(listener) {
+        changeListeners.push(listener);
+    }
 
-  removeChangeListener(listener) {
-    changeListeners = changeListeners.filter((element) => {
-      return element !== listener;
-    });
-  }
+    removeChangeListener(listener) {
+        changeListeners = changeListeners.filter((element) => {
+            return element !== listener;
+        });
+    }
 
+    unsubscribe() {
+        unsubscribe.next();
+        unsubscribe.complete();
+        unsubscribe = new Subject();
+    }
 }
 
 let CafeStore = new Cafe();
