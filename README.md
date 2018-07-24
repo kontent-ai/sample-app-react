@@ -24,7 +24,7 @@ If you want to change the source Kentico Cloud project, follow these steps:
 1. In Kentico Cloud, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID
-4. Open the `src\Client.js` file in the sample application folder.
+4. Open the [`src\Client.js`](https://github.com/Kentico/cloud-sample-app-react/blob/master/src/Client.js) file in the sample application folder.
 5. Find the `projectId` constant.
 6. Change the values of the constant using the Project ID key you copied.
 7. Save the file.
