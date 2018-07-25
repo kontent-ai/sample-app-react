@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import queryString from 'query-string';
+import qs from 'qs';
 
 import Header from './Components/Header.js';
 import Footer from './Components/Footer.js'
@@ -26,7 +26,8 @@ class App extends Component {
     }
 
     const { language, changeLanguage, location } = this.props;
-    const infoMessage = queryString.parse(location.search).infoMessage;
+    // slice(1) removes the `?` at the beginning of `location.search`
+    const infoMessage = qs.parse(location.search.slice(1)).infoMessage;
     return (
       <div className="application-content">
         <Header language={language} changeLanguage={changeLanguage} message={infoMessage} />
