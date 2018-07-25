@@ -70,7 +70,6 @@ class Configuration extends Component {
 
     resetClient(newProjectId);
     resetStores();
-    newlyGeneratedProject = true;
     if (newlyGeneratedProject) {
       this.waitUntilProjectAccessible(newProjectId);
       this.setState({
