@@ -47,17 +47,22 @@ if (currentProjectId) {
   currentProjectId = defaultProjectId;
 }
 
+const isPreview = () => previewApiKey !== "";
+
 let Client = new DeliveryClient({
   projectId: currentProjectId,
   typeResolvers: typeResolvers,
-  previewApiKey: previewApiKey
+  previewApiKey: previewApiKey,
+  enablePreviewMode: isPreview()
 });
+
 
 const resetClient = (newProjectId) => {
   Client = new DeliveryClient({
     projectId: newProjectId,
     typeResolvers: typeResolvers,
-    previewApiKey: previewApiKey
+    previewApiKey: previewApiKey,
+    enablePreviewMode: isPreview()
   });
   const cookies = new Cookies(document.cookies);
   cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
