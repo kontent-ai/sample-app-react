@@ -17,7 +17,13 @@ This is a sample website written in JavaScript utilizing the Kentico Cloud Deliv
 
 After starting, the sample application retrieves content from the **default** Kentico Cloud sample project.
 
-### Connecting your project
+### Connecting to your sample project
+
+At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kentico Cloud project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
+
+Alternatively, you can connect your project manually as per the chapter below.
+
+#### Connecting to your project manually
 
 If you want to change the source Kentico Cloud project, follow these steps:
  
