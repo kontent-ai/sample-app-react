@@ -4,7 +4,8 @@
 [![Forums](https://img.shields.io/badge/chat-on%20forums-orange.svg)](https://forums.kenticocloud.com)
 [![Analytics](https://ga-beacon.appspot.com/UA-69014260-4/Kentico/cloud-sample-app-react?pixel)](https://github.com/igrigorik/ga-beacon)
 
-This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>.
+This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>. For a brief walkthrough, read [Running the React sample app](https://developer.kenticocloud.com/v1/docs/running-react-sample-app) on our Developer Hub.
+
 
 ## Application setup
 
@@ -17,7 +18,13 @@ This is a sample website written in JavaScript utilizing the Kentico Cloud Deliv
 
 After starting, the sample application retrieves content from the **default** Kentico Cloud sample project.
 
-### Connecting your project
+### Connecting to your sample project
+
+At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kentico Cloud project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
+
+Alternatively, you can connect your project manually as per the chapter below.
+
+#### Connecting to your project manually
 
 If you want to change the source Kentico Cloud project, follow these steps:
  
