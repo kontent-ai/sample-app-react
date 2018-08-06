@@ -32,10 +32,15 @@ class Article extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.language !== nextProps.language) {
-      ArticleStore.provideArticle(this.props.match.params.articleId, nextProps.language);
-      dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
-    }
+    // if ((this.props.language !== nextProps.language) && (this.props.match.params.articleId == nextProps.match.params.articleId)) {
+    //   ArticleStore.provideArticle(this.props.match.params.articleId, nextProps.language);
+    //   dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
+    // } else  {
+    //   ArticleStore.provideArticle(nextProps.match.params.articleId, nextProps.language);
+    //   dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
+    // }
+    ArticleStore.provideArticle(nextProps.match.params.articleId, nextProps.language);
+    dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
   }
 
   onChange() {
