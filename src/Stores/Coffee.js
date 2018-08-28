@@ -2,6 +2,7 @@ import { Client } from "../Client.js";
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+import { spinnerService } from '@chevtek/react-spinners';
 
 let unsubscribe = new Subject();
 let changeListeners = [];
@@ -110,37 +111,52 @@ class Coffee {
   // Actions
 
   provideCoffee(coffeeSlug, language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchCoffees(language);
   }
 
   provideCoffees(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchCoffees(language);
   }
 
   provideProcessings() {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchProcessings();
   }
 
   provideProductStatuses() {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchProductStatuses();
   }
 
   // Methods
 
   getCoffee(coffeeSlug, language) {
-    ;
+    spinnerService.hide('apiSpinner');
     return coffees[language || defaultLanguage].find((coffee) => coffee.urlPattern.value === coffeeSlug);
   }
 
   getCoffees(language) {
+    spinnerService.hide('apiSpinner');
     return coffees[language];
   }
 
   getProcessings() {
+    spinnerService.hide('apiSpinner');
     return processings;
   }
 
   getProductStatuses() {
+    spinnerService.hide('apiSpinner');
     return productStatuses;
   }
 
