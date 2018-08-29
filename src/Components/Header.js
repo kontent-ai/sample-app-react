@@ -46,13 +46,17 @@ const Header = (props) => {
             <nav>
               <ul className="dropdown-items-list dropdown-desktop-visible">
                 <li>
-                  <a href="/" onClick={() =>
-                    window.location.pathname.endsWith('acerca-de') ? props.changeLanguage(englishCode, "/about-us") : props.changeLanguage(englishCode)
+                  <a href="/#" onClick={(e) => {
+                      e.preventDefault();
+                      window.location.pathname.endsWith('acerca-de') ? props.changeLanguage(englishCode, "/about-us") : props.changeLanguage(englishCode);
+                    }
                   }>English</a>
                 </li>
                 <li>
-                  <a href="/" onClick={() =>
-                    window.location.pathname.endsWith('about-us') ? props.changeLanguage(spanishCode, "/acerca-de") : props.changeLanguage(spanishCode)
+                  <a href="/#" onClick={(e) => {
+                      e.preventDefault();
+                      window.location.pathname.endsWith('about-us') ? props.changeLanguage(spanishCode, "/acerca-de") : props.changeLanguage(spanishCode);
+                    }
                   }>Español</a>
                 </li>
               </ul>
