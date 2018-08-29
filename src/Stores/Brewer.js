@@ -139,7 +139,7 @@ class Brewer {
 
   // Actions
 
-  provideBrewer(brewerSlug, language) {
+  provideBrewer(language) {
     if (spinnerService.isShowing('apiSpinner') === false) {
       spinnerService.show('apiSpinner');
     }

@@ -47,7 +47,7 @@ class App extends Component {
           <Route path="/:lang?/contacts" render={() => <ContactsPage language={language} />} />
           <Route exact path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={language} />} />
           <Route path="/:lang?/:urlSlug?" render={(matchProps) => <AboutPage {...matchProps} language={language} />} />
-          <Route path="*" render={(props) => { return <Redirect to="/" push /> }} />
+          <Route path="*" render={() => { return <Redirect to="/" push /> }} />
         </Switch>
         <Footer language={language} />
       </div>

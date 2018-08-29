@@ -110,7 +110,7 @@ class Coffee {
 
   // Actions
 
-  provideCoffee(coffeeSlug, language) {
+  provideCoffee(language) {
     if (spinnerService.isShowing('apiSpinner') === false) {
       spinnerService.show('apiSpinner');
     }

@@ -18,7 +18,7 @@ class Coffee extends Component {
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
-    CoffeeStore.provideCoffee(this.props.match.params.coffeeSlug, this.props.language);
+    CoffeeStore.provideCoffee( this.props.language);
   }
 
   componentWillUnmount() {
@@ -26,9 +26,10 @@ class Coffee extends Component {
     CoffeeStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language || this.props.match.params.coffeeSlug !== nextProps.match.params.coffeeSlug) {
-      CoffeeStore.provideCoffee(nextProps.match.params.coffeeSlug, nextProps.language);
+      CoffeeStore.provideCoffee(nextProps.language);
     }
   }
 

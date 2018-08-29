@@ -53,7 +53,7 @@ class Article {
       })
   }
 
-  provideArticles(count, language) {
+  provideArticles(language) {
 
     let query = Client.items()
       .type('article')

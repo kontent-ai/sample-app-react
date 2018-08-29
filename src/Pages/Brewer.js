@@ -19,7 +19,7 @@ class Brewer extends Component {
 
   componentDidMount() {
     BrewerStore.addChangeListener(this.onChange);
-    BrewerStore.provideBrewer(this.props.match.params.brewerSlug, this.props.language);
+    BrewerStore.provideBrewer(this.props.language);
   }
 
   componentWillUnmount() {
@@ -27,9 +27,10 @@ class Brewer extends Component {
     BrewerStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language || this.props.match.params.brewerSlug !== nextProps.match.params.brewerSlug) {
-      BrewerStore.provideBrewer(this.props.match.params.brewerSlug, nextProps.language);
+      BrewerStore.provideBrewer(nextProps.language);
     }
   }
 

@@ -26,7 +26,8 @@ class About extends Component {
     FactStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       FactStore.provideFacts(nextProps.language, nextProps.match.params.urlSlug);
     }
