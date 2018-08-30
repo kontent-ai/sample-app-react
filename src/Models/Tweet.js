@@ -9,7 +9,11 @@ export class Tweet extends ContentItem {
                 let tweetLink = tweet.tweetLink.value;
                 let tweetID = tweetLink.match("^.*twitter.com/.*/(\\d+)/?.*$")[1];
 
-                TwitterWidgetsLoader.load(twitter => {
+                TwitterWidgetsLoader.load((err, twitter) => {
+                    if (err) {
+                        return `<a href="${tweetLink}">${tweetLink}</a>`;
+                    }
+
                     let selectedTheme = tweet.theme.value.pop().codename;
                     selectedTheme = selectedTheme ? selectedTheme : 'light';
                     twitter.widgets.createTweet(
