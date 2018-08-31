@@ -6115,3 +6115,32 @@ body {
 .application-content table.user-message td {
   vertical-align: top;
 }
+
+.loader-bg {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(226, 226, 226, 0.5);
+}
+
+.loader {
+  border: solid 15px transparent;
+  border-bottom-color: #1D1D1D;
+  border-radius: 50%;
+  content: "";
+  height: 10em;
+  width: 10em;
+  animation: spin 1s infinite linear;
+}
+
+/* Not a fan of this, but 'react-spinners' plugin doesn't let you change the inline style of inline-block or set a className to override */
+.application-content > div:first-child {
+  display: block !important;
+}

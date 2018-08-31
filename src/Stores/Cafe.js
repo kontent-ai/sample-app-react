@@ -2,6 +2,7 @@ import { Client } from "../Client.js";
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
+import { spinnerService } from '@chevtek/react-spinners';
 
 let unsubscribe = new Subject();
 let changeListeners = [];
@@ -55,20 +56,28 @@ class Cafe {
   // Actions
 
   providePartnerCafes(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchCafes(language);
   }
 
   provideCompanyCafes(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchCafes(language);
   }
 
   // Methods
 
   getPartnerCafes(language) {
+    spinnerService.hide('apiSpinner');
     return cafes[language].filter((cafe) => cafe.country.value !== "USA");
   }
 
   getCompanyCafes(language) {
+    spinnerService.hide('apiSpinner');
     return cafes[language].filter((cafe) => cafe.country.value === "USA");
   }
 

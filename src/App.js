@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import qs from 'qs';
+import { Spinner } from '@chevtek/react-spinners';
 
 import Header from './Components/Header.js';
 import Footer from './Components/Footer.js'
@@ -30,6 +31,11 @@ class App extends Component {
     const infoMessage = qs.parse(location.search.slice(1)).infoMessage;
     return (
       <div className="application-content">
+        <Spinner name="apiSpinner">
+          <div className="loader-bg">
+            <div className="loader"></div>
+          </div>
+        </Spinner>
         <Header language={language} changeLanguage={changeLanguage} message={infoMessage} />
         <Switch>
           <Route path="/:lang?/store" render={(matchProps) => <StorePage {...matchProps} language={language} />} />
@@ -41,7 +47,7 @@ class App extends Component {
           <Route path="/:lang?/contacts" render={() => <ContactsPage language={language} />} />
           <Route exact path="/:lang?" render={(matchProps) => <HomePage  {...matchProps} language={language} />} />
           <Route path="/:lang?/:urlSlug?" render={(matchProps) => <AboutPage {...matchProps} language={language} />} />
-          <Route path="*" render={(props) => { return <Redirect to="/" push /> }} />
+          <Route path="*" render={() => { return <Redirect to="/" push /> }} />
         </Switch>
         <Footer language={language} />
       </div>
