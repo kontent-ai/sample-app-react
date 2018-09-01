@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from '../Components/LowerCaseUrlLink';
+import { resolveContentLink } from '../Utilities/ContentLinks'
 import { CoffeeStore } from "../Stores/Coffee";
 
 let getState = (props) => {
@@ -70,7 +71,7 @@ class Coffees extends Component {
       let name = coffee.productName.value;
       let imageLink = coffee.image.value[0].url;
       let status = renderProductStatus(coffee.productStatus);
-      let link = `/${this.props.language}/coffees/${coffee.urlPattern.value}`;
+      let link = resolveContentLink({ type: 'coffee', urlSlug: coffee.urlPattern.value }, this.props.language);
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

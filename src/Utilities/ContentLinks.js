@@ -8,7 +8,7 @@ export function resolveContentLink(link, language) {
       resultLink = `/coffees/${link.urlSlug}`;
       break;
     case "brewer":
-      resultLink = `/brewers/${link.urlSlug}`; 
+      resultLink = `/brewers/${link.urlSlug}`;
       break;
     default:
       resultLink = "";

@@ -72,7 +72,7 @@ class Brewers extends Component {
       let name = brewer.productName.value;
       let imageLink = brewer.image.value[0].url;
       let status = renderProductStatus(brewer.productStatus);
-      let link = resolveContentLink({ type: 'brewer', url_slug: brewer.urlPattern.value }, this.props.language);
+      let link = resolveContentLink({ type: 'brewer', urlSlug: brewer.urlPattern.value }, this.props.language);
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>
