@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CoffeeStore } from "../Stores/Coffee";
 import RichTextElement from '../Components/RichTextElement';
+import Metadata from '../Components/Metadata';
 
 let getState = (props) => {
   return {
@@ -55,6 +56,18 @@ class Coffee extends Component {
 
     return (
       <div className="container">
+        <Metadata
+          title={coffee.metadataMetaTitle}
+          description={coffee.metadataMetaDescription}
+          ogTitle={coffee.metadataOgTitle}
+          ogImage={coffee.metadataOgImage}
+          ogDescription={coffee.metadataOgDescription}
+          twitterTitle={coffee.metadataMetaTitle}
+          twitterSite={coffee.metadataTwitterSite}
+          twitterCreator={coffee.metadataTwitterCreator}
+          twitterDescription={coffee.metadataTwitterDescription}
+          twitterImage={coffee.metadataTwitterImage}
+        />
         <article className="product-detail">
           <div className="row">
             <div className="col-md-12">
