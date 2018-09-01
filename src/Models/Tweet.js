@@ -1,9 +1,10 @@
+
 import { ContentItem } from 'kentico-cloud-delivery';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import TwitterWidgetsLoader from 'twitter-widgets';
 
 export class Tweet extends ContentItem {
-    constructor() {
+        constructor() {
         super({
             richTextResolver: tweet => {
                 let tweetLink = tweet.tweetLink.value;
@@ -27,16 +28,15 @@ export class Tweet extends ContentItem {
                 return `<div id="tweet${tweetID}"></div>`;
             },
             propertyResolver: ((fieldName) => {
-
                 if (fieldName === 'tweet_link') {
                     return 'tweetLink';
                 }
-
                 if (fieldName === 'display_options') {
                     return 'displayOptions';
                 }
+                return fieldName;
             }),
             linkResolver: (link) => resolveContentLink(link)
-        })
+        });
     }
 }

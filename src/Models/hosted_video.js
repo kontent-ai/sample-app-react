@@ -1,14 +1,14 @@
-import {  ContentItem } from 'kentico-cloud-delivery';
-import {  resolveContentLink } from '../Utilities/ContentLinks';
+
+import { ContentItem } from 'kentico-cloud-delivery';
+import { resolveContentLink } from '../Utilities/ContentLinks';
 
 export class HostedVideo extends ContentItem {
-    
-    constructor(){
+        constructor() {
         super({
-            richTextResolver: video => {               
+            richTextResolver: video => {
                 if (video.videoHost.value.find(item => item.codename === "vimeo")) {
                     return `<iframe class="hosted-video__wrapper"
-                                src="https://player.vimeo.com/video/${video.videoId.value}?title =0&byline =0&portrait =0"
+                                src="https://player.vimeo.com/video/${video.videoId.value}?title=0&byline=0&portrait=0"
                                 width="640"
                                 height="360"
                                 frameborder="0"
@@ -27,20 +27,18 @@ export class HostedVideo extends ContentItem {
                                 allowfullscreen
                                 >
                         </iframe>`;
-                }                
+                }
             },
-            propertyResolver: (fieldName => {
-                
-                if (fieldName === 'video_id'){
+            propertyResolver: ((fieldName) => {
+                if (fieldName === 'video_id') {
                     return 'videoId';
                 }
-
-                if (fieldName === 'video_host'){
+                if (fieldName === 'video_host') {
                     return 'videoHost';
                 }
+                return fieldName;
             }),
             linkResolver: (link) => resolveContentLink(link)
-        })    
+        });
     }
-    
 }
