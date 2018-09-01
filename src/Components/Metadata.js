@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const Metadata = (props) => {
   return (
     <Helmet>
-      {!props.title ? null : <title>{props.title.value.trim()}</title>}
+      {!props.title ? <title>Dancing Goat</title> : <title>{props.title.value.trim()}</title>}
       {!props.description ? null : <meta name="description" content={props.description.value.trim()} />}
 
       {!props.ogTitle ? null : <meta property="og:title" content={props.ogTitle.value.trim()} />}

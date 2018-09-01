@@ -3,6 +3,7 @@ import { withCookies } from 'react-cookie';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import qs from 'qs';
 import { Spinner } from '@chevtek/react-spinners';
+import Metadata from './Components/Metadata';
 
 import Header from './Components/Header.js';
 import Footer from './Components/Footer.js'
@@ -31,6 +32,7 @@ class App extends Component {
     const infoMessage = qs.parse(location.search.slice(1)).infoMessage;
     return (
       <div className="application-content">
+        <Metadata />
         <Spinner name="apiSpinner">
           <div className="loader-bg">
             <div className="loader"></div>
