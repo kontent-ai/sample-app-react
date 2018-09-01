@@ -29,7 +29,16 @@ class Article {
     let query = Client.items()
       .type('article')
       .equalsFilter('system.id', articleId)
-      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options']);
+      .elementsParameter(
+        [
+          'title', 'teaser_image', 'post_date', 'body_copy', 'video_host',
+          'video_id', 'tweet_link', 'theme', 'display_options',
+          'metadata__meta_title', 'metadata__meta_description',
+          'metadata__og_title', 'metadata__og_description', 'metadata__og_image',
+          'metadata__twitter_title', 'metadata__twitter_site', 'metadata__twitter_creator',
+          'metadata__twitter_description', 'metadata__twitter_image',
+        ]
+      );
 
     if (language) {
       query.languageParameter(language);
