@@ -1,10 +1,15 @@
-import Client from "../Client.js";
-
+import { Client } from "../Client.js";
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+import { spinnerService } from '@chevtek/react-spinners';
 
-
+let unsubscribe = new Subject();
 let changeListeners = [];
-let brewers = initLanguageCodeObject();
+const resetStore = () => ({
+  brewers: initLanguageCodeObject()
+});
+let { brewers } = resetStore();
 
 let manufacturersInitialized = false;
 let manufacturers = [];
@@ -28,7 +33,8 @@ let fetchBrewers = (language) => {
     query.languageParameter(language);
   }
 
-  query.get()
+  query.getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
         brewers[language] = response.items;
@@ -45,7 +51,8 @@ let fetchManufacturers = () => {
   }
 
   Client.taxonomy("manufacturer")
-    .get()
+    .getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       manufacturers = response.taxonomy.terms;
       notifyChange();
@@ -59,7 +66,8 @@ let fetchProductStatuses = () => {
   }
 
   Client.taxonomy("product_status")
-    .get()
+    .getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       productStatuses = response.taxonomy.terms;
       notifyChange();
@@ -127,45 +135,62 @@ export class Filter {
 
 let brewerFilter = new Filter();
 
-class BrewerStore {
+class Brewer {
 
   // Actions
 
-  provideBrewer(brewerSlug, language) {
+  provideBrewer(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchBrewers(language);
   }
 
   provideBrewers(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchBrewers(language);
   }
 
   provideManufacturers() {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchManufacturers();
   }
 
   provideProductStatuses() {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchProductStatuses();
   }
 
   // Methods
 
   getBrewer(brewerSlug, language) {
+    spinnerService.hide('apiSpinner');
     return brewers[language || defaultLanguage].find((brewer) => brewer.urlPattern.value === brewerSlug);
   }
 
   getBrewers(language) {
+    spinnerService.hide('apiSpinner');
     return brewers[language];
   }
 
   getManufacturers() {
+    spinnerService.hide('apiSpinner');
     return manufacturers;
   }
 
   getProductStatuses() {
+    spinnerService.hide('apiSpinner');
     return productStatuses;
   }
 
   getFilter() {
+    spinnerService.hide('apiSpinner');
     return brewerFilter;
   }
 
@@ -186,6 +211,17 @@ class BrewerStore {
     });
   }
 
+  unsubscribe() {
+    unsubscribe.next();
+    unsubscribe.complete();
+    unsubscribe = new Subject();
+  }
+
 }
 
-export default new BrewerStore();
+let BrewerStore = new Brewer();
+
+export {
+  BrewerStore,
+  resetStore
+}

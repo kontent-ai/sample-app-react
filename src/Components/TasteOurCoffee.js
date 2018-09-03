@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { translate } from 'react-translate'          
+import { translate } from 'react-translate'
 
 import Link from '../Components/LowerCaseUrlLink';
-import CafeStore from '../Stores/Cafe';
+import { CafeStore } from '../Stores/Cafe';
 
 let getState = (props) => {
   return {
@@ -24,9 +24,11 @@ class TasteOurCoffee extends Component {
 
   componentWillUnmount() {
     CafeStore.removeChangeListener(this.onChange);
+    CafeStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       CafeStore.provideCompanyCafes(nextProps.language);
     }

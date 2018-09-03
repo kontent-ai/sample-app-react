@@ -1,10 +1,16 @@
-import Client from "../Client.js";
-import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk/_bundles';
+import { Client } from '../Client.js';
+import { SortOrder } from 'kentico-cloud-delivery';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes';
+import { spinnerService } from '@chevtek/react-spinners';
 
-import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
-
-let articleList = initLanguageCodeObject();
-let articleDetails = initLanguageCodeObject();
+let unsubscribe = new Subject();
+const resetStore = () => ({
+  articleList: initLanguageCodeObject(),
+  articleDetails: initLanguageCodeObject()
+});
+let { articleList, articleDetails } = resetStore();
 
 let changeListeners = [];
 
@@ -14,7 +20,7 @@ let notifyChange = () => {
   });
 }
 
-class ArticleStore {
+class Article {
 
   // Actions
 
@@ -23,13 +29,27 @@ class ArticleStore {
     let query = Client.items()
       .type('article')
       .equalsFilter('system.id', articleId)
-      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
+      .elementsParameter(
+        [
+          'title', 'teaser_image', 'post_date', 'body_copy', 'video_host',
+          'video_id', 'tweet_link', 'theme', 'display_options',
+          'metadata__meta_title', 'metadata__meta_description',
+          'metadata__og_title', 'metadata__og_description', 'metadata__og_image',
+          'metadata__twitter_title', 'metadata__twitter_site', 'metadata__twitter_creator',
+          'metadata__twitter_description', 'metadata__twitter_image',
+        ]
+      );
 
     if (language) {
       query.languageParameter(language);
     }
 
-    query.get()
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
+
+    query.getObservable()
+      .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (!response.isEmpty) {
           if (language) {
@@ -42,7 +62,7 @@ class ArticleStore {
       })
   }
 
-  provideArticles(count, language) {
+  provideArticles(language) {
 
     let query = Client.items()
       .type('article')
@@ -52,7 +72,12 @@ class ArticleStore {
       query.languageParameter(language);
     }
 
-    query.get()
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
+
+    query.getObservable()
+      .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (language) {
           articleList[language] = response.items;
@@ -65,15 +90,16 @@ class ArticleStore {
 
   // Methods
   getArticle(articleId, language) {
+    spinnerService.hide('apiSpinner');
     if (language) {
       return articleDetails[language][articleId];
     } else {
       return articleDetails[defaultLanguage][articleId];
     }
-
   }
 
   getArticles(count, language) {
+    spinnerService.hide('apiSpinner');
     if (language) {
       return articleList[language].slice(0, count);
     }
@@ -93,6 +119,17 @@ class ArticleStore {
     });
   }
 
+  unsubscribe() {
+    unsubscribe.next();
+    unsubscribe.complete();
+    unsubscribe = new Subject();
+  }
+
 }
 
-export default new ArticleStore();
+let ArticleStore = new Article();
+
+export {
+  ArticleStore,
+  resetStore
+}

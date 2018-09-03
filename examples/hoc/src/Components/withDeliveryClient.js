@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DeliveryClient } from "kentico-cloud-delivery-typescript-sdk";
+import { DeliveryClient } from "kentico-cloud-delivery";
 
 
 export default function withDeliveryClient(config) {

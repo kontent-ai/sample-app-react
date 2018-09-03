@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CoffeeStore from "../Stores/Coffee";
+import { CoffeeStore } from "../Stores/Coffee";
 import RichTextElement from '../Components/RichTextElement';
+import Metadata from '../Components/Metadata';
 
 let getState = (props) => {
   return {
@@ -18,16 +19,18 @@ class Coffee extends Component {
 
   componentDidMount() {
     CoffeeStore.addChangeListener(this.onChange);
-    CoffeeStore.provideCoffee(this.props.match.params.coffeeSlug, this.props.language);
+    CoffeeStore.provideCoffee( this.props.language);
   }
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
+    CoffeeStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language || this.props.match.params.coffeeSlug !== nextProps.match.params.coffeeSlug) {
-      CoffeeStore.provideCoffee(nextProps.match.params.coffeeSlug, nextProps.language);
+      CoffeeStore.provideCoffee(nextProps.language);
     }
   }
 
@@ -53,6 +56,18 @@ class Coffee extends Component {
 
     return (
       <div className="container">
+        <Metadata
+          title={coffee.metadataMetaTitle}
+          description={coffee.metadataMetaDescription}
+          ogTitle={coffee.metadataOgTitle}
+          ogImage={coffee.metadataOgImage}
+          ogDescription={coffee.metadataOgDescription}
+          twitterTitle={coffee.metadataMetaTitle}
+          twitterSite={coffee.metadataTwitterSite}
+          twitterCreator={coffee.metadataTwitterCreator}
+          twitterDescription={coffee.metadataTwitterDescription}
+          twitterImage={coffee.metadataTwitterImage}
+        />
         <article className="product-detail">
           <div className="row">
             <div className="col-md-12">

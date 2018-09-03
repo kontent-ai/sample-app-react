@@ -2,16 +2,17 @@ import React from 'react';
 import { translate } from 'react-translate'
 
 import Link from '../Components/LowerCaseUrlLink';
-
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
-import { LogAboutUs } from '../Utilities/ActivityLogging'
+import { LogAboutUs } from '../Utilities/ActivityLogging';
+import MessageBox from './MessageBox';
 
 const Header = (props) => {
+  const messageBox = props.message && <MessageBox message={props.message} />;
   return (
     <header className="header" role="banner">
       <div className="menu">
         <div className="container">
-          <nav role="navigation">
+          <nav>
             <ul>
               <li>
                 <Link to={`/${props.language}`}>{props.t("homeLinkTitle")}</Link>
@@ -42,16 +43,20 @@ const Header = (props) => {
             </ul>
           </nav>
           <div className="additional-menu-buttons user-menu">
-            <nav role="navigation">
+            <nav>
               <ul className="dropdown-items-list dropdown-desktop-visible">
                 <li>
-                  <a onClick={() =>
-                    location.pathname.endsWith('acerca-de') ? props.changeLanguage(englishCode, "/about-us") : props.changeLanguage(englishCode)
+                  <a href="/#" onClick={(e) => {
+                      e.preventDefault();
+                      window.location.pathname.endsWith('acerca-de') ? props.changeLanguage(englishCode, "/about-us") : props.changeLanguage(englishCode);
+                    }
                   }>English</a>
                 </li>
                 <li>
-                  <a onClick={() =>
-                    location.pathname.endsWith('about-us') ? props.changeLanguage(spanishCode, "/acerca-de") : props.changeLanguage(spanishCode)
+                  <a href="/#" onClick={(e) => {
+                      e.preventDefault();
+                      window.location.pathname.endsWith('about-us') ? props.changeLanguage(spanishCode, "/acerca-de") : props.changeLanguage(spanishCode);
+                    }
                   }>Español</a>
                 </li>
               </ul>
@@ -59,6 +64,7 @@ const Header = (props) => {
           </div>
         </div>
       </div>
+      {messageBox}
       <div className="header-row">
         <div className="container">
           <div className="col-xs-8 col-md-8 col-lg-4 logo">

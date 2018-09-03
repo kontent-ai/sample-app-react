@@ -1,11 +1,17 @@
-import Client from "../Client.js";
-
+import { Client } from "../Client.js";
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+import { spinnerService } from '@chevtek/react-spinners';
 
+let unsubscribe = new Subject();
 let changeListeners = [];
-let coffees = initLanguageCodeObject();
-let processings = [];
-let productStatuses = [];
+const resetStore = () => ({
+  coffees: initLanguageCodeObject(),
+  processings: [],
+  productStatuses: []
+});
+let { coffees, processings, productStatuses } = resetStore();
 
 let notifyChange = () => {
   changeListeners.forEach((listener) => {
@@ -23,7 +29,8 @@ let fetchCoffees = (language) => {
     query.languageParameter(language);
   }
 
-  query.get()
+  query.getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
         coffees[language] = response.items;
@@ -36,7 +43,8 @@ let fetchCoffees = (language) => {
 
 let fetchProcessings = () => {
   Client.taxonomy("processing")
-    .get()
+    .getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       processings = response.taxonomy.terms;
       notifyChange();
@@ -45,7 +53,8 @@ let fetchProcessings = () => {
 
 let fetchProductStatuses = () => {
   Client.taxonomy("product_status")
-    .get()
+    .getObservable()
+    .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       productStatuses = response.taxonomy.terms;
       notifyChange();
@@ -97,42 +106,57 @@ export class Filter {
 
 let coffeeFilter = new Filter();
 
-class CoffeeStore {
+class Coffee {
 
   // Actions
 
-  provideCoffee(coffeeSlug, language) {
+  provideCoffee(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchCoffees(language);
   }
 
   provideCoffees(language) {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchCoffees(language);
   }
 
   provideProcessings() {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchProcessings();
   }
 
   provideProductStatuses() {
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
     fetchProductStatuses();
   }
 
   // Methods
 
   getCoffee(coffeeSlug, language) {
-    ;
+    spinnerService.hide('apiSpinner');
     return coffees[language || defaultLanguage].find((coffee) => coffee.urlPattern.value === coffeeSlug);
   }
 
   getCoffees(language) {
+    spinnerService.hide('apiSpinner');
     return coffees[language];
   }
 
   getProcessings() {
+    spinnerService.hide('apiSpinner');
     return processings;
   }
 
   getProductStatuses() {
+    spinnerService.hide('apiSpinner');
     return productStatuses;
   }
 
@@ -157,6 +181,17 @@ class CoffeeStore {
     });
   }
 
+  unsubscribe() {
+    unsubscribe.next();
+    unsubscribe.complete();
+    unsubscribe = new Subject();
+  }
+
 }
 
-export default new CoffeeStore();
+let CoffeeStore = new Coffee();
+
+export {
+  CoffeeStore,
+  resetStore
+};

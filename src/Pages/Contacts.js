@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-translate'
 
-import CafeStore from '../Stores/Cafe';
+import { CafeStore } from '../Stores/Cafe';
 import ContactMap from '../Components/ContactMap'
 
 
@@ -26,9 +26,11 @@ class Contacts extends Component {
 
     componentWillUnmount() {
         CafeStore.removeChangeListener(this.onChange);
+        CafeStore.unsubscribe();
     }
 
-    componentWillReceiveProps(nextProps) {        
+    //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.language !== nextProps.language) {
             CafeStore.provideCompanyCafes(nextProps.language);
             this.selectAddress(undefined);
@@ -70,7 +72,11 @@ class Contacts extends Component {
                         <li>{model.phone}</li>
                         <li><a href={"mailto:" + model.email} target="_top">{model.email}</a></li>
                         <li>
-                            <a onClick={() => this.selectAddress(model.dataAddress)} data-address={model.dataAddress} className="js-scroll-to-map">{model.dataAddress},<br />
+                            <a href="/#" onClick={(e) => {
+                                e.preventDefault();
+                                this.selectAddress(model.dataAddress)
+                            }}
+                            data-address={model.dataAddress} className="js-scroll-to-map">{model.dataAddress},<br />
                                 {model.zipCode}, {model.countryWithState}<br />
                             </a>
                         </li>
@@ -85,7 +91,7 @@ class Contacts extends Component {
                     <div className="cafe-tile-content">
                         <h3 className="cafe-tile-name">{model.name}</h3>
                         <address className="cafe-tile-address">
-                            <a name={model.name} className="cafe-tile-address-anchor">
+                            <a href="/#" name={model.name} className="cafe-tile-address-anchor" onClick={(e) => e.preventDefault()}>
                                 {model.street}, {model.city}<br />{model.zipCode}, {model.countryWithState}
                             </a>
                         </address>

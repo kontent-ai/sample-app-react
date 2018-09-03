@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-translate'
 
-import CoffeeStore from "../Stores/Coffee";
+import { CoffeeStore } from "../Stores/Coffee";
 
 let getState = () => {
   return {
@@ -27,6 +27,7 @@ class CoffeeFilter extends Component {
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
+    CoffeeStore.unsubscribe();
   }
 
   onChange() {

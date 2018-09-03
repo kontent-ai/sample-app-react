@@ -9,7 +9,7 @@ const Store = (props) => {
   return (
     <div className="container">
       <div className="container product-page-container">
-        <nav role="navigation" className="sub-menu row">
+        <nav className="sub-menu row">
           <div className="store-menu-list row">
             <ul>
               <li>

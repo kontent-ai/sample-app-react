@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Link from '../Components/LowerCaseUrlLink';
-import CoffeeStore from "../Stores/Coffee";
+import { resolveContentLink } from '../Utilities/ContentLinks'
+import { CoffeeStore } from "../Stores/Coffee";
 
 let getState = (props) => {
   return {
@@ -25,9 +26,11 @@ class Coffees extends Component {
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
+    CoffeeStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  // Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       CoffeeStore.provideCoffees(nextProps.language);
     }
@@ -68,7 +71,7 @@ class Coffees extends Component {
       let name = coffee.productName.value;
       let imageLink = coffee.image.value[0].url;
       let status = renderProductStatus(coffee.productStatus);
-      let link = `/${this.props.language}/coffees/${coffee.urlPattern.value}`;
+      let link = resolveContentLink({ type: 'coffee', urlSlug: coffee.urlPattern.value }, this.props.language);
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Link from '../Components/LowerCaseUrlLink';
 import { resolveContentLink } from '../Utilities/ContentLinks'
-import BrewerStore from "../Stores/Brewer";
+import { BrewerStore } from "../Stores/Brewer";
 
 let getState = (props) => {
   return {
@@ -27,9 +27,11 @@ class Brewers extends Component {
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
+    BrewerStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  // Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
       BrewerStore.provideBrewers(nextProps.language);
     }
@@ -70,7 +72,7 @@ class Brewers extends Component {
       let name = brewer.productName.value;
       let imageLink = brewer.image.value[0].url;
       let status = renderProductStatus(brewer.productStatus);
-      let link = resolveContentLink({ type: 'brewer', url_slug: brewer.urlPattern.value }, this.props.language);
+      let link = resolveContentLink({ type: 'brewer', urlSlug: brewer.urlPattern.value }, this.props.language);
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>

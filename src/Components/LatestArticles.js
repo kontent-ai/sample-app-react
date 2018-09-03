@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticleStore from '../Stores/Article';
+import { ArticleStore } from '../Stores/Article';
 import dateFormat from 'dateformat';
 import { translate } from 'react-translate'
 
@@ -25,16 +25,18 @@ class LatestArticles extends Component {
 
   componentDidMount() {
     ArticleStore.addChangeListener(this.onChange);
-    ArticleStore.provideArticles(articleCount, this.props.language);
+    ArticleStore.provideArticles(this.props.language);
   }
 
   componentWillUnmount() {
     ArticleStore.removeChangeListener(this.onChange);
+    ArticleStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
-      ArticleStore.provideArticles(articleCount, nextProps.language);
+      ArticleStore.provideArticles(nextProps.language);
       dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
     }
   }
