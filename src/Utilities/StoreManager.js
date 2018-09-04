@@ -16,6 +16,4 @@ const allStores = [
 
 const resetStores = () => allStores.forEach(store => store.resetStore());
 
-export {
-  resetStores
-}
+export { resetStores };

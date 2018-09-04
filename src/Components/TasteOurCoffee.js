@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { translate } from 'react-translate'
+import { translate } from 'react-translate';
 
 import Link from '../Components/LowerCaseUrlLink';
 import { CafeStore } from '../Stores/Cafe';
 
-let getState = (props) => {
+let getState = props => {
   return {
     cafes: CafeStore.getCompanyCafes(props.language)
   };
@@ -46,10 +46,18 @@ class TasteOurCoffee extends Component {
       return (
         <div className="col-xs-6 col-md-3" key={index}>
           <div>
-            <Link to={`/${this.props.language}/cafes`} className="ourcoffee-tile-link">
+            <Link
+              to={`/${this.props.language}/cafes`}
+              className="ourcoffee-tile-link"
+            >
               <h2 className="ourcoffee-tile-text center-text">{name}</h2>
               <span className="cafe-overlay"> </span>
-              <img alt={name} className="ourcoffee-tile-image" src={imageLink} title={name} />
+              <img
+                alt={name}
+                className="ourcoffee-tile-image"
+                src={imageLink}
+                title={name}
+              />
             </Link>
           </div>
         </div>
@@ -59,7 +67,7 @@ class TasteOurCoffee extends Component {
     return (
       <div className="row">
         <div>
-          <h1 className="title-tab">{this.props.t("title")}</h1>
+          <h1 className="title-tab">{this.props.t('title')}</h1>
         </div>
         {cafes}
       </div>
@@ -67,4 +75,4 @@ class TasteOurCoffee extends Component {
   }
 }
 
-export default translate("TasteOurCoffee")(TasteOurCoffee);
+export default translate('TasteOurCoffee')(TasteOurCoffee);

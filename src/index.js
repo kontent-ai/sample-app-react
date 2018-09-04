@@ -9,15 +9,18 @@ import { projectConfigurationPath } from './Utilities/SelectedProject';
 import './index.css';
 
 const application = (
-    <CookiesProvider>
-        <Router>
-            <Switch>
-                <Route path={projectConfigurationPath} render={matchProps => <Configuration {...matchProps} />} />
-                <Route path="/:lang" render={matchProps => <App {...matchProps} />} />
-                <Route path="/" render={matchProps => <App {...matchProps} />} />
-            </Switch>
-        </Router>
-    </CookiesProvider>
+  <CookiesProvider>
+    <Router>
+      <Switch>
+        <Route
+          path={projectConfigurationPath}
+          render={matchProps => <Configuration {...matchProps} />}
+        />
+        <Route path="/:lang" render={matchProps => <App {...matchProps} />} />
+        <Route path="/" render={matchProps => <App {...matchProps} />} />
+      </Switch>
+    </Router>
+  </CookiesProvider>
 );
 
-ReactDOM.render(application, document.getElementById("root"));
+ReactDOM.render(application, document.getElementById('root'));

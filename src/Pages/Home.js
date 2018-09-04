@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { translate } from 'react-translate'
+import { translate } from 'react-translate';
 
 import { HomeStore } from '../Stores/Home';
 import Banner from '../Components/Banner.js';
@@ -11,9 +11,9 @@ import Metadata from '../Components/Metadata';
 
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 
-let getState = (props) => {
+let getState = props => {
   return {
-    metaData: HomeStore.getMetaData(props.language),
+    metaData: HomeStore.getMetaData(props.language)
   };
 };
 
@@ -65,20 +65,32 @@ class Home extends Component {
         />
         <Banner />
         <LatestArticles language={this.props.language} />
-        <LinkButton link={`/${this.props.language}/articles`} text={this.props.t("moreArticles")} />
+        <LinkButton
+          link={`/${this.props.language}/articles`}
+          text={this.props.t('moreArticles')}
+        />
         <OurStory />
-        {
-          this.props.language && this.props.language.toLowerCase() === englishCode.toLowerCase() ?
-            <LinkButton link={`/${this.props.language}/about-us`} text={this.props.t("aboutLinkText")} />
-            : this.props.language && this.props.language.toLowerCase() === spanishCode.toLowerCase() ?
-              <LinkButton link={`/${this.props.language}/acerca-de`} text={this.props.t("aboutLinkText")} />
-              : null
-        }
+        {this.props.language &&
+        this.props.language.toLowerCase() === englishCode.toLowerCase() ? (
+          <LinkButton
+            link={`/${this.props.language}/about-us`}
+            text={this.props.t('aboutLinkText')}
+          />
+        ) : this.props.language &&
+        this.props.language.toLowerCase() === spanishCode.toLowerCase() ? (
+          <LinkButton
+            link={`/${this.props.language}/acerca-de`}
+            text={this.props.t('aboutLinkText')}
+          />
+        ) : null}
         <TasteOurCoffee language={this.props.language} />
-        <LinkButton link={`/${this.props.language}/cafes`} text={this.props.t("cafesLinkText")} />
+        <LinkButton
+          link={`/${this.props.language}/cafes`}
+          text={this.props.t('cafesLinkText')}
+        />
       </div>
     );
   }
 }
 
-export default translate("Home")(Home);
+export default translate('Home')(Home);

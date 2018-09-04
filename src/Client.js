@@ -1,5 +1,8 @@
 import Cookies from 'universal-cookie';
-import { selectedProjectCookieName, defaultProjectId } from './Utilities/SelectedProject';
+import {
+  selectedProjectCookieName,
+  defaultProjectId
+} from './Utilities/SelectedProject';
 
 // kentico cloud
 import { DeliveryClient, TypeResolver } from 'kentico-cloud-delivery';
@@ -11,7 +14,7 @@ import { Article } from './Models/article';
 import { Brewer } from './Models/brewer';
 import { Cafe } from './Models/cafe';
 import { Coffee } from './Models/coffee';
-import { FactAboutUs } from './Models/fact_about_us'
+import { FactAboutUs } from './Models/fact_about_us';
 import { Grinder } from './Models/grinder';
 import { HeroUnit } from './Models/hero_unit';
 import { Home } from './Models/home';
@@ -47,7 +50,7 @@ if (currentProjectId) {
   currentProjectId = defaultProjectId;
 }
 
-const isPreview = () => previewApiKey !== "";
+const isPreview = () => previewApiKey !== '';
 
 let Client = new DeliveryClient({
   projectId: currentProjectId,
@@ -56,8 +59,7 @@ let Client = new DeliveryClient({
   enablePreviewMode: isPreview()
 });
 
-
-const resetClient = (newProjectId) => {
+const resetClient = newProjectId => {
   Client = new DeliveryClient({
     projectId: newProjectId,
     typeResolvers: typeResolvers,
@@ -66,9 +68,6 @@ const resetClient = (newProjectId) => {
   });
   const cookies = new Cookies(document.cookies);
   cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
-}
-
-export {
-  Client,
-  resetClient
 };
+
+export { Client, resetClient };

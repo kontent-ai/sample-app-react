@@ -1,12 +1,12 @@
 import React from 'react';
-import { translate } from 'react-translate'
+import { translate } from 'react-translate';
 
 import Link from '../Components/LowerCaseUrlLink';
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 import { LogAboutUs } from '../Utilities/ActivityLogging';
 import MessageBox from './MessageBox';
 
-const Header = (props) => {
+const Header = props => {
   const messageBox = props.message && <MessageBox message={props.message} />;
   return (
     <header className="header" role="banner">
@@ -15,30 +15,45 @@ const Header = (props) => {
           <nav>
             <ul>
               <li>
-                <Link to={`/${props.language}`}>{props.t("homeLinkTitle")}</Link>
+                <Link to={`/${props.language}`}>
+                  {props.t('homeLinkTitle')}
+                </Link>
               </li>
               <li>
-                <Link to={`/${props.language}/store`}>{props.t("storeLinkTitle")}</Link>
+                <Link to={`/${props.language}/store`}>
+                  {props.t('storeLinkTitle')}
+                </Link>
               </li>
               <li>
-                <Link to={`/${props.language}/articles`}>{props.t("articlesLinkTitle")}</Link>
+                <Link to={`/${props.language}/articles`}>
+                  {props.t('articlesLinkTitle')}
+                </Link>
               </li>
-              {
-                props.language.toLowerCase() === englishCode.toLowerCase() ?
-                  <li>
-                    <Link to={`/${props.language}/about-us`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
-                  </li>
-                  : props.language.toLowerCase() === spanishCode.toLowerCase() ?
-                    <li>
-                      <Link to={`/${props.language}/acerca-de`} onClick={LogAboutUs}>{props.t("aboutLinkTitle")}</Link>
-                    </li>
-                    : null
-              }
+              {props.language.toLowerCase() === englishCode.toLowerCase() ? (
+                <li>
+                  <Link to={`/${props.language}/about-us`} onClick={LogAboutUs}>
+                    {props.t('aboutLinkTitle')}
+                  </Link>
+                </li>
+              ) : props.language.toLowerCase() === spanishCode.toLowerCase() ? (
+                <li>
+                  <Link
+                    to={`/${props.language}/acerca-de`}
+                    onClick={LogAboutUs}
+                  >
+                    {props.t('aboutLinkTitle')}
+                  </Link>
+                </li>
+              ) : null}
               <li>
-                <Link to={`/${props.language}/cafes`}>{props.t("cafesLinkTitle")}</Link>
+                <Link to={`/${props.language}/cafes`}>
+                  {props.t('cafesLinkTitle')}
+                </Link>
               </li>
               <li>
-                <Link to={`/${props.language}/contacts`}>{props.t("contactsLinkTitle")}</Link>
+                <Link to={`/${props.language}/contacts`}>
+                  {props.t('contactsLinkTitle')}
+                </Link>
               </li>
             </ul>
           </nav>
@@ -46,18 +61,30 @@ const Header = (props) => {
             <nav>
               <ul className="dropdown-items-list dropdown-desktop-visible">
                 <li>
-                  <a href="/#" onClick={(e) => {
+                  <a
+                    href="/#"
+                    onClick={e => {
                       e.preventDefault();
-                      window.location.pathname.endsWith('acerca-de') ? props.changeLanguage(englishCode, "/about-us") : props.changeLanguage(englishCode);
-                    }
-                  }>English</a>
+                      window.location.pathname.endsWith('acerca-de')
+                        ? props.changeLanguage(englishCode, '/about-us')
+                        : props.changeLanguage(englishCode);
+                    }}
+                  >
+                    English
+                  </a>
                 </li>
                 <li>
-                  <a href="/#" onClick={(e) => {
+                  <a
+                    href="/#"
+                    onClick={e => {
                       e.preventDefault();
-                      window.location.pathname.endsWith('about-us') ? props.changeLanguage(spanishCode, "/acerca-de") : props.changeLanguage(spanishCode);
-                    }
-                  }>Español</a>
+                      window.location.pathname.endsWith('about-us')
+                        ? props.changeLanguage(spanishCode, '/acerca-de')
+                        : props.changeLanguage(spanishCode);
+                    }}
+                  >
+                    Español
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -69,13 +96,15 @@ const Header = (props) => {
         <div className="container">
           <div className="col-xs-8 col-md-8 col-lg-4 logo">
             <h1 className="logo">
-              <Link to={`/${props.language}`} className="logo-link">Dancing Goat</Link>
+              <Link to={`/${props.language}`} className="logo-link">
+                Dancing Goat
+              </Link>
             </h1>
           </div>
         </div>
       </div>
     </header>
   );
-}
+};
 
-export default translate("Header")(Header);
+export default translate('Header')(Header);

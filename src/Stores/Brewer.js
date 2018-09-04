@@ -1,7 +1,10 @@
-import { Client } from "../Client.js";
+import { Client } from '../Client.js';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
+import {
+  initLanguageCodeObject,
+  defaultLanguage
+} from '../Utilities/LanguageCodes';
 import { spinnerService } from '@chevtek/react-spinners';
 
 let unsubscribe = new Subject();
@@ -18,13 +21,12 @@ let productStatusesInitialized = false;
 let productStatuses = [];
 
 let notifyChange = () => {
-  changeListeners.forEach((listener) => {
+  changeListeners.forEach(listener => {
     listener();
   });
-}
+};
 
-let fetchBrewers = (language) => {
-
+let fetchBrewers = language => {
   var query = Client.items()
     .type('brewer')
     .orderParameter('elements.product_name');
@@ -33,7 +35,8 @@ let fetchBrewers = (language) => {
     query.languageParameter(language);
   }
 
-  query.getObservable()
+  query
+    .getObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
@@ -43,14 +46,14 @@ let fetchBrewers = (language) => {
       }
       notifyChange();
     });
-}
+};
 
 let fetchManufacturers = () => {
   if (manufacturersInitialized) {
     return;
   }
 
-  Client.taxonomy("manufacturer")
+  Client.taxonomy('manufacturer')
     .getObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
@@ -58,14 +61,14 @@ let fetchManufacturers = () => {
       notifyChange();
       manufacturersInitialized = true;
     });
-}
+};
 
 let fetchProductStatuses = () => {
   if (productStatusesInitialized) {
     return;
   }
 
-  Client.taxonomy("product_status")
+  Client.taxonomy('product_status')
     .getObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
@@ -73,7 +76,7 @@ let fetchProductStatuses = () => {
       notifyChange();
       productStatusesInitialized = true;
     });
-}
+};
 
 export class Filter {
   constructor() {
@@ -83,7 +86,11 @@ export class Filter {
   }
 
   matches(brewer) {
-    return this.matchesManufacturers(brewer) && this.matchesPriceRanges(brewer) && this.matchesProductStatuses(brewer);
+    return (
+      this.matchesManufacturers(brewer) &&
+      this.matchesPriceRanges(brewer) &&
+      this.matchesProductStatuses(brewer)
+    );
   }
 
   matchesManufacturers(brewer) {
@@ -102,7 +109,9 @@ export class Filter {
 
     let price = brewer.price.value;
 
-    return this.priceRanges.some((priceRange) => priceRange.min <= price && price <= priceRange.max);
+    return this.priceRanges.some(
+      priceRange => priceRange.min <= price && price <= priceRange.max
+    );
   }
 
   matchesProductStatuses(brewer) {
@@ -111,32 +120,36 @@ export class Filter {
     }
 
     let statusCodenames = brewer.productStatus.value.map(x => x.codename);
-    return statusCodenames.some((x) => this.productStatuses.includes(x));
+    return statusCodenames.some(x => this.productStatuses.includes(x));
   }
 
   toggleManufacturer(manufacturer) {
     let index = this.manufacturers.indexOf(manufacturer);
 
-    if (index < 0) this.manufacturers.push(manufacturer); else this.manufacturers.splice(index, 1);
+    if (index < 0) this.manufacturers.push(manufacturer);
+    else this.manufacturers.splice(index, 1);
   }
 
   togglePriceRange(priceRange) {
-    let index = this.priceRanges.findIndex((x) => x.min === priceRange.min && x.max === priceRange.max);
+    let index = this.priceRanges.findIndex(
+      x => x.min === priceRange.min && x.max === priceRange.max
+    );
 
-    if (index < 0) this.priceRanges.push(priceRange); else this.priceRanges.splice(index, 1);
+    if (index < 0) this.priceRanges.push(priceRange);
+    else this.priceRanges.splice(index, 1);
   }
 
   toggleProductStatus(productStatus) {
     let index = this.productStatuses.indexOf(productStatus);
 
-    if (index < 0) this.productStatuses.push(productStatus); else this.productStatuses.splice(index, 1);
+    if (index < 0) this.productStatuses.push(productStatus);
+    else this.productStatuses.splice(index, 1);
   }
 }
 
 let brewerFilter = new Filter();
 
 class Brewer {
-
   // Actions
 
   provideBrewer(language) {
@@ -171,7 +184,9 @@ class Brewer {
 
   getBrewer(brewerSlug, language) {
     spinnerService.hide('apiSpinner');
-    return brewers[language || defaultLanguage].find((brewer) => brewer.urlPattern.value === brewerSlug);
+    return brewers[language || defaultLanguage].find(
+      brewer => brewer.urlPattern.value === brewerSlug
+    );
   }
 
   getBrewers(language) {
@@ -206,7 +221,7 @@ class Brewer {
   }
 
   removeChangeListener(listener) {
-    changeListeners = changeListeners.filter((element) => {
+    changeListeners = changeListeners.filter(element => {
       return element !== listener;
     });
   }
@@ -216,12 +231,8 @@ class Brewer {
     unsubscribe.complete();
     unsubscribe = new Subject();
   }
-
 }
 
 let BrewerStore = new Brewer();
 
-export {
-  BrewerStore,
-  resetStore
-}
+export { BrewerStore, resetStore };

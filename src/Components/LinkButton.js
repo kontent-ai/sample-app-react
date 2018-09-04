@@ -2,8 +2,7 @@ import React from 'react';
 
 import Link from '../Components/LowerCaseUrlLink';
 
-
-const LinkButton = (props) => {
+const LinkButton = props => {
   return (
     <div className="row">
       <div className="clear center-text">

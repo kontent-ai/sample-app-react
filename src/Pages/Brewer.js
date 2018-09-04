@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { BrewerStore } from "../Stores/Brewer";
+import { BrewerStore } from '../Stores/Brewer';
 import RichTextElement from '../Components/RichTextElement';
 import Metadata from '../Components/Metadata';
 
-let getState = (props) => {
+let getState = props => {
   return {
     brewer: BrewerStore.getBrewer(props.match.params.brewerSlug, props.language)
   };
 };
 
 class Brewer extends Component {
-
   constructor(props) {
     super(props);
 
@@ -30,7 +29,10 @@ class Brewer extends Component {
 
   //TODO: Method will be removed in React 17, will need to be rewritten if still required.
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.language !== nextProps.language || this.props.match.params.brewerSlug !== nextProps.match.params.brewerSlug) {
+    if (
+      this.props.language !== nextProps.language ||
+      this.props.match.params.brewerSlug !== nextProps.match.params.brewerSlug
+    ) {
       BrewerStore.provideBrewer(nextProps.language);
     }
   }
@@ -41,9 +43,7 @@ class Brewer extends Component {
 
   render() {
     if (!this.state.brewer) {
-      return (
-        <div className="container"></div>
-      );
+      return <div className="container" />;
     }
 
     let brewer = this.state.brewer;

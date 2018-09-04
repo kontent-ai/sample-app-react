@@ -1,31 +1,29 @@
-import {  ContentItem } from 'kentico-cloud-delivery';
+import { ContentItem } from 'kentico-cloud-delivery';
 
 export class Article extends ContentItem {
-   constructor(){
-        super({
-            propertyResolver: ((fieldName) => {
+  constructor() {
+    super({
+      propertyResolver: fieldName => {
+        if (fieldName === 'teaser_image') {
+          return 'teaserImage';
+        }
 
-                if (fieldName === 'teaser_image'){
-                    return 'teaserImage';
-                }
+        if (fieldName === 'post_date') {
+          return 'postDate';
+        }
 
-                if (fieldName === 'post_date'){
-                    return 'postDate';
-                }
+        if (fieldName === 'body_copy') {
+          return 'bodyCopy';
+        }
 
-                if (fieldName === 'body_copy'){
-                    return 'bodyCopy';
-                }
+        if (fieldName === 'related_articles') {
+          return 'relatedArticles';
+        }
 
-                if (fieldName === 'related_articles'){
-                    return 'relatedArticles';
-                }
-
-                if (fieldName === 'url_pattern'){
-                    return 'urlPattern';
-                }
-            }),
-        })
-    }
-
+        if (fieldName === 'url_pattern') {
+          return 'urlPattern';
+        }
+      }
+    });
+  }
 }

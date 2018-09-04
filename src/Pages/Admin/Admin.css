@@ -19,7 +19,7 @@ body {
   background-position: 28px 28px;
   background-size: 2em 2em;
   border-collapse: separate;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 2em;
 }
 .project-configuration-section .message-info {
@@ -74,7 +74,7 @@ body {
 }
 .project-configuration-section header a:link,
 .project-configuration-section header a:visited {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .project-configuration-section a:active,
 .project-configuration-section a:hover,
@@ -90,7 +90,7 @@ body {
 }
 .project-configuration-section header {
   background-color: #008ae1;
-  color: #FFFFFF;
+  color: #ffffff;
   overflow: auto;
   padding-bottom: 4em;
 }
@@ -110,7 +110,7 @@ body {
 }
 .project-configuration-section .sections-secondary::after,
 .project-configuration-section .inline-controls::after {
-  content: "";
+  content: '';
   clear: both;
   display: block;
 }
@@ -138,7 +138,7 @@ body {
 }
 .project-configuration-section .logotype-row {
   background-color: #008ae1;
-  color: #FFFFFF;
+  color: #ffffff;
   overflow: auto;
 }
 .project-configuration-section .logotype {
@@ -158,7 +158,7 @@ body {
   display: block;
   float: left;
 }
-.project-configuration-section input[type="submit"] {
+.project-configuration-section input[type='submit'] {
   border-width: 0;
   font-size: 0.888em;
   font-weight: 300;
@@ -170,50 +170,50 @@ body {
   margin: 0.55em 0 0.55em 0;
   text-transform: uppercase;
 }
-.project-configuration-section input[type="submit"].button-primary {
+.project-configuration-section input[type='submit'].button-primary {
   background-color: #ef5a22;
   border-color: #db531f;
 }
-.project-configuration-section input[type="submit"].button-primary:active,
-.project-configuration-section input[type="submit"].button-primary:hover,
-.project-configuration-section input[type="submit"].button-primary:focus {
+.project-configuration-section input[type='submit'].button-primary:active,
+.project-configuration-section input[type='submit'].button-primary:hover,
+.project-configuration-section input[type='submit'].button-primary:focus {
   background-color: #db531f;
   border-color: #db531f;
 }
-.project-configuration-section input[type="submit"].button-secondary {
+.project-configuration-section input[type='submit'].button-secondary {
   background-color: #008ae1;
   border-color: #0077c2;
 }
-.project-configuration-section input[type="submit"].button-secondary:active,
-.project-configuration-section input[type="submit"].button-secondary:hover,
-.project-configuration-section input[type="submit"].button-secondary:focus {
+.project-configuration-section input[type='submit'].button-secondary:active,
+.project-configuration-section input[type='submit'].button-secondary:hover,
+.project-configuration-section input[type='submit'].button-secondary:focus {
   background-color: #0077c2;
   border-color: #0077c2;
 }
-.project-configuration-section input[type="submit"].button-tertiary {
+.project-configuration-section input[type='submit'].button-tertiary {
   background-color: #79b751;
   border-color: #62a644;
 }
-.project-configuration-section input[type="submit"].button-tertiary:active,
-.project-configuration-section input[type="submit"].button-tertiary:hover,
-.project-configuration-section input[type="submit"].button-tertiary:focus {
+.project-configuration-section input[type='submit'].button-tertiary:active,
+.project-configuration-section input[type='submit'].button-tertiary:hover,
+.project-configuration-section input[type='submit'].button-tertiary:focus {
   background-color: #62a644;
   border-color: #62a644;
 }
 .project-configuration-section .text-gray {
   color: #4f4d4b;
 }
-.project-configuration-section input[type="email"],
-.project-configuration-section input[type="file"],
-.project-configuration-section input[type="month"],
-.project-configuration-section input[type="number"],
-.project-configuration-section input[type="password"],
-.project-configuration-section input[type="search"],
-.project-configuration-section input[type="tel"],
-.project-configuration-section input[type="text"],
-.project-configuration-section input[type="time"],
-.project-configuration-section input[type="url"],
-.project-configuration-section input[type="week"],
+.project-configuration-section input[type='email'],
+.project-configuration-section input[type='file'],
+.project-configuration-section input[type='month'],
+.project-configuration-section input[type='number'],
+.project-configuration-section input[type='password'],
+.project-configuration-section input[type='search'],
+.project-configuration-section input[type='tel'],
+.project-configuration-section input[type='text'],
+.project-configuration-section input[type='time'],
+.project-configuration-section input[type='url'],
+.project-configuration-section input[type='week'],
 .project-configuration-section textarea {
   border-width: 0;
   font-size: 0.888em;
@@ -227,29 +227,29 @@ body {
   border-color: #ebebeb;
   color: #4f4d4b;
 }
-.project-configuration-section input[type="email"]:focus,
-.project-configuration-section input[type="file"]:focus,
-.project-configuration-section input[type="month"]:focus,
-.project-configuration-section input[type="number"]:focus,
-.project-configuration-section input[type="password"]:focus,
-.project-configuration-section input[type="search"]:focus,
-.project-configuration-section input[type="tel"]:focus,
-.project-configuration-section input[type="text"]:focus,
-.project-configuration-section input[type="time"]:focus,
-.project-configuration-section input[type="url"]:focus,
-.project-configuration-section input[type="week"]:focus,
+.project-configuration-section input[type='email']:focus,
+.project-configuration-section input[type='file']:focus,
+.project-configuration-section input[type='month']:focus,
+.project-configuration-section input[type='number']:focus,
+.project-configuration-section input[type='password']:focus,
+.project-configuration-section input[type='search']:focus,
+.project-configuration-section input[type='tel']:focus,
+.project-configuration-section input[type='text']:focus,
+.project-configuration-section input[type='time']:focus,
+.project-configuration-section input[type='url']:focus,
+.project-configuration-section input[type='week']:focus,
 .project-configuration-section textarea {
   border-left-color: #008ae1;
 }
 .project-configuration-section .styled-checkbox,
 .project-configuration-section .styled-radio {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin: 1em 0 1em 0;
   padding: 0 1em 0 1em;
   vertical-align: top;
 }
-.project-configuration-section .styled-checkbox > input[type="checkbox"],
-.project-configuration-section .styled-radio > input[type="radio"] {
+.project-configuration-section .styled-checkbox > input[type='checkbox'],
+.project-configuration-section .styled-radio > input[type='radio'] {
   position: absolute;
   left: -999em;
 }
@@ -262,7 +262,10 @@ body {
   position: relative;
   top: -10px;
 }
-.project-configuration-section .styled-checkbox > input[type="checkbox"] + span {
+.project-configuration-section
+  .styled-checkbox
+  > input[type='checkbox']
+  + span {
   background-position: left top;
   background-repeat: no-repeat;
   display: block;
@@ -275,7 +278,10 @@ body {
   width: 18px;
   background-image: url(../../Images/Admin/checkbox-unchecked.svg);
 }
-.project-configuration-section .styled-checkbox > input[type="checkbox"]:checked + span {
+.project-configuration-section
+  .styled-checkbox
+  > input[type='checkbox']:checked
+  + span {
   background-position: left top;
   background-repeat: no-repeat;
   display: block;
@@ -288,7 +294,7 @@ body {
   width: 18px;
   background-image: url(../../Images/Admin/checkbox-checked.svg);
 }
-.project-configuration-section .styled-radio > input[type="radio"] + span {
+.project-configuration-section .styled-radio > input[type='radio'] + span {
   background-position: left top;
   background-repeat: no-repeat;
   display: block;
@@ -301,7 +307,10 @@ body {
   width: 18px;
   background-image: url(../../Images/Admin/radio-button.svg);
 }
-.project-configuration-section .styled-radio > input[type="radio"]:checked + span {
+.project-configuration-section
+  .styled-radio
+  > input[type='radio']:checked
+  + span {
   background-position: left top;
   background-repeat: no-repeat;
   display: block;
@@ -340,7 +349,7 @@ body {
   background-color: #e5e5e5;
 }
 .project-configuration-section .tab-active {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .project-configuration-section .form-panel-tabs h1 a,
 .project-configuration-section .form-panel-tabs h2 a,
@@ -352,20 +361,20 @@ body {
 }
 .project-configuration-section .form-panels,
 .project-configuration-section .form-panel-tabs {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: block;
   margin: 0;
   min-width: 20em;
   padding: 0;
 }
 .project-configuration-section .form-panels {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   overflow: visible;
 }
 .project-configuration-section .form-panel {
   padding: 2em;
 }
-.project-configuration-section .form-panel input:not([type="submit"]) {
+.project-configuration-section .form-panel input:not([type='submit']) {
   width: 90%;
 }
 .project-configuration-section .form-group {
@@ -382,7 +391,7 @@ body {
   max-height: 50em;
   overflow: auto;
 }
-.project-configuration-section #selectProject input[type="submit"] {
+.project-configuration-section #selectProject input[type='submit'] {
   margin-top: 2em;
 }
 .project-configuration-section label:not(.visible) {
@@ -396,7 +405,7 @@ body {
 }
 .project-configuration-section .divided::before {
   background-color: #e5e5e5;
-  content: "";
+  content: '';
   display: block;
   height: 2px;
   margin: 0 auto 0 auto;
@@ -416,7 +425,7 @@ body {
   height: 100%;
 }
 .project-configuration-section .spinner-overlay {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   left: 0;
   overflow: hidden;
@@ -429,7 +438,7 @@ body {
   position: fixed;
   left: 50%;
   top: 50%;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   vertical-align: middle;
   line-height: 82px;
@@ -451,9 +460,9 @@ body {
 
 .project-configuration-section .spinner-box .spinner {
   animation: spin 2s linear infinite;
-  border: .5em solid #ebebeb;
+  border: 0.5em solid #ebebeb;
   border-radius: 50%;
-  border-top: .5em solid #008ae1;
+  border-top: 0.5em solid #008ae1;
   height: 1em;
   overflow: auto;
   width: 1em;
