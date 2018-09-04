@@ -1,50 +1,57 @@
 @font-face {
-    font-family: 'PT Serif';
-    font-style: normal;
-    font-weight: 700;
-    src: local('PT Serif Bold'), local('PTSerif-Bold'), url(./Fonts/PTSerif-Bold.woff) format('woff');
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT Serif Bold'), local('PTSerif-Bold'),
+    url(./Fonts/PTSerif-Bold.woff) format('woff');
 }
 @font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(./Fonts/SourceSansPro-Light.woff) format('woff');
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
+    url(./Fonts/SourceSansPro-Light.woff) format('woff');
 }
 @font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(./Fonts/SourceSansPro-Regular.woff) format('woff');
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
+    url(./Fonts/SourceSansPro-Regular.woff) format('woff');
 }
 @font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(./Fonts/SourceSansPro-Bold.woff) format('woff');
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+    url(./Fonts/SourceSansPro-Bold.woff) format('woff');
 }
 @font-face {
-    font-family: 'Core-icons';
-    src: url(./Fonts/Core-icons.eot);
-    src: url(./Fonts/Core-icons.svg#Core-icons) format('svg'), url(./Fonts/Core-icons.eot?#iefix) format('embedded-opentype'), url(./Fonts/Core-icons.woff) format('woff'), url(./Fonts/Core-icons.ttf) format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Core-icons';
+  src: url(./Fonts/Core-icons.eot);
+  src: url(./Fonts/Core-icons.svg#Core-icons) format('svg'),
+    url(./Fonts/Core-icons.eot?#iefix) format('embedded-opentype'),
+    url(./Fonts/Core-icons.woff) format('woff'),
+    url(./Fonts/Core-icons.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
-    font-family: sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body {
-    margin: 0;
+  margin: 0;
 }
 .application-content {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #1C1C1C;
-    background-color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #1c1c1c;
+  background-color: #ffffff;
 }
 .application-content article,
 .application-content aside,
@@ -156,9 +163,9 @@ body {
   text-transform: none;
 }
 .application-content button,
-.application-content html input[type="button"],
-.application-content input[type="reset"],
-.application-content input[type="submit"] {
+.application-content html input[type='button'],
+.application-content input[type='reset'],
+.application-content input[type='submit'] {
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -174,35 +181,35 @@ body {
 .application-content input {
   line-height: normal;
 }
-.application-content input[type="text"],
-.application-content input[type="email"],
+.application-content input[type='text'],
+.application-content input[type='email'],
 .application-content textarea {
-  border: 1px solid #BEBEBE;
+  border: 1px solid #bebebe;
 }
-.application-content input[type="text"]:focus,
-.application-content input[type="email"]:focus,
+.application-content input[type='text']:focus,
+.application-content input[type='email']:focus,
 .application-content textarea:focus {
   outline: 0;
   box-shadow: 0 0 1px #08768c;
   border: 1px solid #08768c;
 }
-.application-content input[type="checkbox"],
-.application-content input[type="radio"] {
+.application-content input[type='checkbox'],
+.application-content input[type='radio'] {
   box-sizing: border-box;
   padding: 0;
 }
-.application-content input[type="number"]::-webkit-inner-spin-button,
-.application-content input[type="number"]::-webkit-outer-spin-button {
+.application-content input[type='number']::-webkit-inner-spin-button,
+.application-content input[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
-.application-content input[type="search"] {
+.application-content input[type='search'] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
-.application-content input[type="search"]::-webkit-search-cancel-button,
-.application-content input[type="search"]::-webkit-search-decoration {
+.application-content input[type='search']::-webkit-search-cancel-button,
+.application-content input[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 .application-content fieldset {
@@ -249,12 +256,12 @@ body {
   line-height: inherit;
 }
 .application-content a {
-  color: #08768C;
+  color: #08768c;
   text-decoration: underline;
 }
 .application-content a:hover,
 .application-content a:focus {
-  color: #08768C;
+  color: #08768c;
   text-decoration: none;
 }
 .application-content h1 a,
@@ -1118,7 +1125,7 @@ body {
 .application-content .container:after,
 .application-content .row:before,
 .application-content .row:after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 .application-content .clearfix:after,
@@ -1140,12 +1147,12 @@ body {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 .application-content .menu {
   display: block;
-  background: #B24143;
+  background: #b24143;
   text-transform: uppercase;
   line-height: 3rem;
 }
@@ -1155,18 +1162,18 @@ body {
 }
 .application-content .menu li:first-child > a:focus,
 .application-content .menu li:first-child > a:hover {
-  background-color: #BA5455;
+  background-color: #ba5455;
 }
 .application-content .menu .CMSListMenuHighlightedLI > a,
 .application-content .menu a:focus,
 .application-content .menu a:hover {
-  background-color: #BA5455;
+  background-color: #ba5455;
 }
 .application-content .menu a,
 .application-content .menu a:hover,
 .application-content .menu a:focus {
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
 .application-content .menu ul {
   list-style: none;
@@ -1180,7 +1187,7 @@ body {
   float: left;
 }
 .application-content .menu li > a {
-  padding: 0 .625rem;
+  padding: 0 0.625rem;
 }
 .application-content #mobile-menu-btn {
   line-height: 3rem;
@@ -1192,7 +1199,7 @@ body {
 }
 .application-content #mobile-menu-btn:focus,
 .application-content #mobile-menu-btn:hover {
-  background-color: #BA5455;
+  background-color: #ba5455;
   outline: none;
 }
 .application-content #mobile-menu-btn a:focus,
@@ -1207,26 +1214,26 @@ body {
   vertical-align: middle;
 }
 .application-content .mobile-menu {
-  background: #B24143;
+  background: #b24143;
   text-transform: uppercase;
   line-height: 3rem;
 }
 .application-content .mobile-menu li:first-child > a:focus,
 .application-content .mobile-menu li:first-child > a:hover {
-  background-color: #BA5455;
+  background-color: #ba5455;
   outline: none;
 }
 .application-content .mobile-menu .CMSListMenuHighlightedLI > a,
 .application-content .mobile-menu a:focus,
 .application-content .mobile-menu a:hover {
-  background-color: #BA5455;
+  background-color: #ba5455;
   outline: none;
 }
 .application-content .mobile-menu a,
 .application-content .mobile-menu a:hover,
 .application-content .mobile-menu a:focus {
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
 .application-content .mobile-menu ul {
   list-style: none;
@@ -1242,7 +1249,7 @@ body {
   display: block;
 }
 .application-content .store-menu-list {
-  background: #1D1D1D;
+  background: #1d1d1d;
 }
 .application-content .sub-menu {
   font-size: 1.25rem;
@@ -1264,7 +1271,7 @@ body {
 .application-content .sub-menu a:hover,
 .application-content .sub-menu a:focus {
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
 .application-content .sub-menu .sub-menu-item-selected {
   background-color: #333;
@@ -1330,7 +1337,9 @@ body {
   padding: 0 1rem;
   text-align: left;
 }
-.application-content .mobile-menu ul.dropdown-items-list.dropdown-items-list-mobile {
+.application-content
+  .mobile-menu
+  ul.dropdown-items-list.dropdown-items-list-mobile {
   display: none;
 }
 .application-content .mobile-menu ul.dropdown-items-list-mobile a {
@@ -1355,7 +1364,7 @@ body {
   text-align: center;
   position: relative;
   display: block;
-  margin: .5rem;
+  margin: 0.5rem;
   padding-top: 15%;
   padding-bottom: 25%;
 }
@@ -1364,7 +1373,7 @@ body {
   width: 100%;
 }
 .application-content .product-tile-image.notavailable img {
-  opacity: .4;
+  opacity: 0.4;
   filter: alpha(opacity=40);
 }
 .application-content .product-tile-info {
@@ -1373,10 +1382,10 @@ body {
   bottom: 0;
 }
 .application-content .product-tile .product-tile-status {
-  background-color: #B24143;
+  background-color: #b24143;
   margin-top: 25%;
-  color: #FFF;
-  padding: .5rem 1.25rem;
+  color: #fff;
+  padding: 0.5rem 1.25rem;
   margin-top: 20%;
   position: absolute;
   z-index: 2;
@@ -1395,7 +1404,7 @@ body {
 }
 .application-content .product-tile {
   overflow: hidden;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #e5e5e5;
   margin: 0 0 -2px -2px;
 }
 .application-content .product-tile .product-heading {
@@ -1421,7 +1430,7 @@ body {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  border: 2px solid #08768C;
+  border: 2px solid #08768c;
   text-transform: uppercase;
 }
 .application-content .featured-product .product-tile-image {
@@ -1439,15 +1448,15 @@ body {
 }
 .application-content .featured-product .product-tile .product-banner {
   position: absolute;
-  padding: .5rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   text-align: center;
   font-size: 1.375rem;
   text-transform: uppercase;
   top: 42%;
   left: 15%;
   right: 15%;
-  background-color: #08768C;
-  color: #FFF;
+  background-color: #08768c;
+  color: #fff;
   z-index: 2;
 }
 .application-content .featured-product .product-tile-info {
@@ -1461,7 +1470,7 @@ body {
   position: inherit;
   padding: 0;
   padding-top: 0.75rem;
-  margin: .5rem 1.25rem 1rem 1.25rem;
+  margin: 0.5rem 1.25rem 1rem 1.25rem;
   text-align: center;
   font-size: 1rem;
   font-weight: normal;
@@ -1518,7 +1527,7 @@ body {
 }
 .application-content .product-detail .product-status.bestseller,
 .application-content .product-detail .product-status.onsale {
-  background-color: #B24143;
+  background-color: #b24143;
 }
 .application-content .product-detail-properties dt,
 .application-content .product-detail-properties dd {
@@ -1529,7 +1538,7 @@ body {
   color: #aaa;
 }
 .application-content .product-detail-properties dl:after {
-  content: ".";
+  content: '.';
   display: block;
   height: 0;
   clear: both;
@@ -1538,17 +1547,17 @@ body {
 .application-content .product-detail-properties {
   margin-top: 1.25rem;
 }
-.application-content .product-detail input[type=text],
+.application-content .product-detail input[type='text'],
 .application-content .product-detail textarea,
 .application-content .product-detail select {
-  border: 2px solid #BDBBBB;
+  border: 2px solid #bdbbbb;
   padding: 5px 7px;
 }
-.application-content .product-detail input[type=radio],
-.application-content .product-detail input[type=checkbox] {
+.application-content .product-detail input[type='radio'],
+.application-content .product-detail input[type='checkbox'] {
   margin-right: 5px !important;
 }
-.application-content .product-detail .cart-item-selector input[type=text],
+.application-content .product-detail .cart-item-selector input[type='text'],
 .application-content .product-detail .cart-item-selector textarea,
 .application-content .product-detail .cart-item-selector select {
   width: 99%;
@@ -1557,10 +1566,10 @@ body {
   padding: 0.5rem 0rem;
 }
 .application-content .product-detail option.fade {
-  color: #BBBBBB;
+  color: #bbbbbb;
 }
 .application-content .product-detail .option-category-name {
-  font-family: "Source Sans Pro";
+  font-family: 'Source Sans Pro';
   font-size: 1.375rem;
   font-weight: 400;
 }
@@ -1594,8 +1603,8 @@ body {
   width: 100%;
 }
 .application-content .product-tile .product-tile-stock.notavailable {
-  background-color: #BEBEBE;
-  padding: .7rem 1rem .7rem 1rem;
+  background-color: #bebebe;
+  padding: 0.7rem 1rem 0.7rem 1rem;
   position: absolute;
   top: 45%;
   left: 15%;
@@ -1609,26 +1618,26 @@ body {
   padding: 0;
 }
 .application-content .product-detail .unavailable {
-  color: #B24143;
-  border-bottom: 1px solid #B24143;
+  color: #b24143;
+  border-bottom: 1px solid #b24143;
 }
 .application-content .product-detail .available {
-  color: #397C39;
-  border-bottom: 1px solid #397C39;
+  color: #397c39;
+  border-bottom: 1px solid #397c39;
 }
 .application-content .product-detail .cart-item-selector-container {
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   padding: 0.5rem 0rem;
 }
 .application-content .product-detail .cart-item-selector-container::after {
-  content: ".";
+  content: '.';
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
 .application-content .product-detail .product-detail-prices:after {
-  content: ".";
+  content: '.';
   display: block;
   height: 0;
   clear: both;
@@ -1640,7 +1649,7 @@ body {
 }
 .application-content .product-detail .product-price {
   padding: 0.5rem 1rem;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
 }
 .application-content .product-detail-prices dt,
 .application-content .product-detail-prices dd {
@@ -1681,8 +1690,8 @@ body {
 }
 .application-content .product-detail .add-to-cart-textbox {
   width: 3rem;
-  line-height: 2.000rem;
-  height: 2.850rem;
+  line-height: 2rem;
+  height: 2.85rem;
   display: block;
   float: left !important;
   text-align: center;
@@ -1694,7 +1703,7 @@ body {
   clear: both;
 }
 .application-content .product-detail .total-price-container:before {
-  content: ".";
+  content: '.';
   display: block;
   height: 0;
   clear: both;
@@ -1702,7 +1711,10 @@ body {
   margin-top: 1.25rem;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .application-content .product-detail .stock-with-price-saving .total-price-container:before {
+  .application-content
+    .product-detail
+    .stock-with-price-saving
+    .total-price-container:before {
     margin-top: 7.75rem;
   }
 }
@@ -1712,7 +1724,7 @@ body {
   font-size: 1.375rem;
 }
 .application-content .product-detail .total-price-label::after {
-  content: ".";
+  content: '.';
   display: block;
   height: 0;
   clear: both;
@@ -1724,7 +1736,7 @@ body {
   font-size: 1.375rem;
 }
 .application-content .product-detail .total-price::after {
-  content: ".";
+  content: '.';
   display: block;
   height: 0;
   clear: both;
@@ -1732,7 +1744,7 @@ body {
 }
 .application-content .product-detail-right {
   margin-top: 1rem;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   padding-bottom: 1rem;
   overflow: auto;
 }
@@ -1746,7 +1758,7 @@ body {
 .application-content .product-filter label {
   padding-left: 0.25rem;
 }
-.application-content .product-filter input[type="checkbox"] {
+.application-content .product-filter input[type='checkbox'] {
   margin: 0;
   padding: 0;
 }
@@ -1763,18 +1775,18 @@ body {
   margin-left: 1rem;
   margin-top: 0.5rem;
 }
-.application-content .checkout-container input[type="text"],
-.application-content .checkout-container input[type="email"],
-.application-content .checkout-container input[type="tel"],
+.application-content .checkout-container input[type='text'],
+.application-content .checkout-container input[type='email'],
+.application-content .checkout-container input[type='tel'],
 .application-content .checkout-container select {
   width: 100%;
   height: 2.6rem;
   margin-top: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  border: 2px solid #BEBEBE;
+  border: 2px solid #bebebe;
 }
-.application-content .checkout-container input[type="checkbox"] {
+.application-content .checkout-container input[type='checkbox'] {
   height: 1rem;
   width: 1rem;
   margin-right: 0.15rem;
@@ -1789,12 +1801,12 @@ body {
   clear: both;
 }
 .application-content .checkout-container select:disabled {
-  background: #AAAAAA;
+  background: #aaaaaa;
 }
 .application-content .checkout-top-header {
-  background: #B24143;
+  background: #b24143;
   padding: 0.8125rem 0px;
-  color: #FFF;
+  color: #fff;
 }
 .application-content .checkout-container .customer-details h4:first-of-type,
 .application-content .checkout-container .gray-box {
@@ -1805,7 +1817,7 @@ body {
   font-weight: bold;
 }
 .application-content .checkout-container .gray-box {
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   padding: 1rem;
 }
 .application-content .checkout-container h4 {
@@ -1839,16 +1851,16 @@ body {
   padding-bottom: 14px;
   min-height: 3.5rem;
 }
-.application-content .cart-item-amount input[type="text"] {
+.application-content .cart-item-amount input[type='text'] {
   width: 3rem;
   float: left;
   text-align: center;
   margin-top: 0;
-  border: 2px solid #BEBEBE;
+  border: 2px solid #bebebe;
 }
-.application-content .cart-item-amount input[type="submit"] {
+.application-content .cart-item-amount input[type='submit'] {
   border: none;
-  padding: .625rem .425rem;
+  padding: 0.625rem 0.425rem;
   height: 100%;
   font-weight: bold;
   text-decoration: none;
@@ -1904,10 +1916,10 @@ body {
   font-weight: bold;
 }
 .application-content .green {
-  color: #397C39;
+  color: #397c39;
 }
 .application-content .red {
-  color: #B24143;
+  color: #b24143;
 }
 .application-content .cart-item-discount-info {
   background-color: #e7e7e7;
@@ -1924,7 +1936,7 @@ body {
   width: 100%;
   text-align: center;
 }
-.application-content .cart-coupon-input input[type="text"] {
+.application-content .cart-coupon-input input[type='text'] {
   float: left;
   margin-right: 0.5rem;
   width: 69%;
@@ -1963,12 +1975,12 @@ body {
   float: left;
 }
 .application-content .cart-coupon-input .error {
-  color: #B24143;
+  color: #b24143;
   font-size: 0.9rem;
   float: left;
 }
 .application-content .cart-right-panel {
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   padding: 1.25rem;
 }
 .application-content .cart > h1 {
@@ -1990,7 +2002,7 @@ body {
   margin-bottom: 1.25rem;
   padding: 1rem;
   background-color: #b24143;
-  color: #FFF;
+  color: #fff;
   font-size: 1.375rem;
   font-family: 'pt serif';
   line-height: 1.4em;
@@ -2002,21 +2014,25 @@ body {
   padding-right: 0.3rem;
   color: #6badba;
 }
-.application-content .shopping-cart-mini-preview .shopping-cart-mini-preview-label {
+.application-content
+  .shopping-cart-mini-preview
+  .shopping-cart-mini-preview-label {
   float: left;
-  background-color: #08768C;
+  background-color: #08768c;
   color: white;
   padding: 0.75rem;
   text-transform: uppercase;
 }
-.application-content .shopping-cart-mini-preview .shopping-cart-mini-preview-value {
+.application-content
+  .shopping-cart-mini-preview
+  .shopping-cart-mini-preview-value {
   float: left;
   background-color: #208397;
   color: white;
   padding: 0.75rem;
 }
-.application-content [class^="icon-"],
-.application-content [class*=" icon-"] {
+.application-content [class^='icon-'],
+.application-content [class*=' icon-'] {
   font-family: 'Core-icons';
   display: inline-block;
   speak: none;
@@ -2030,3091 +2046,3091 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: none;
 }
-.application-content [class^="icon-"]:before {
-  content: "\e619";
+.application-content [class^='icon-']:before {
+  content: '\e619';
 }
 .application-content .icon-only:before {
   content: none;
 }
 .application-content .icon-dots-vertical:before {
-  content: "\e75d";
+  content: '\e75d';
 }
 .application-content .icon-chain:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-chain-slash:before {
-  content: "\e691";
+  content: '\e691';
 }
 .application-content .icon-list-bullets:before {
-  content: "\e754";
+  content: '\e754';
 }
 .application-content .icon-list-numbers:before {
-  content: "\e75b";
+  content: '\e75b';
 }
 .application-content .icon-eye-slash:before {
-  content: "\e75c";
+  content: '\e75c';
 }
 .application-content .icon-arrow-u-right:before {
-  content: "\e703";
+  content: '\e703';
 }
 .application-content .icon-arrow-u-left:before {
-  content: "\e677";
+  content: '\e677';
 }
 .application-content .icon-arrow-down:before {
-  content: "\e682";
+  content: '\e682';
 }
 .application-content .icon-arrow-up:before {
-  content: "\e64c";
+  content: '\e64c';
 }
 .application-content .icon-arrow-left:before {
-  content: "\e6dc";
+  content: '\e6dc';
 }
 .application-content .icon-arrow-right:before {
-  content: "\e6da";
+  content: '\e6da';
 }
 .application-content .icon-arrow-down-circle:before {
-  content: "\e6ae";
+  content: '\e6ae';
 }
 .application-content .icon-arrow-left-circle:before {
-  content: "\e6af";
+  content: '\e6af';
 }
 .application-content .icon-arrow-right-circle:before {
-  content: "\e6b1";
+  content: '\e6b1';
 }
 .application-content .icon-arrow-up-circle:before {
-  content: "\e6bf";
+  content: '\e6bf';
 }
 .application-content .icon-arrow-left-rect:before {
-  content: "\e6db";
+  content: '\e6db';
 }
 .application-content .icon-arrow-right-rect:before {
-  content: "\e6d9";
+  content: '\e6d9';
 }
 .application-content .icon-arrow-crooked-left:before {
-  content: "\e6e0";
+  content: '\e6e0';
 }
 .application-content .icon-arrow-crooked-right:before {
-  content: "\e6e1";
+  content: '\e6e1';
 }
 .application-content .icon-arrow-double-left:before {
-  content: "\e6df";
+  content: '\e6df';
 }
 .application-content .icon-arrow-double-right:before {
-  content: "\e6de";
+  content: '\e6de';
 }
 .application-content .icon-arrow-down-line:before {
-  content: "\e6dd";
+  content: '\e6dd';
 }
 .application-content .icon-arrow-up-line:before {
-  content: "\e6d3";
+  content: '\e6d3';
 }
 .application-content .icon-arrows:before {
-  content: "\e6d7";
+  content: '\e6d7';
 }
 .application-content .icon-arrows-h:before {
-  content: "\e6d5";
+  content: '\e6d5';
 }
 .application-content .icon-arrows-v:before {
-  content: "\e6d4";
+  content: '\e6d4';
 }
 .application-content .icon-magnifier:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-magnifier-minus:before {
-  content: "\e656";
+  content: '\e656';
 }
 .application-content .icon-magnifier-plus:before {
-  content: "\e655";
+  content: '\e655';
 }
 .application-content .icon-minus:before {
-  content: "\e73f";
+  content: '\e73f';
 }
 .application-content .icon-loop:before {
-  content: "\e600";
+  content: '\e600';
 }
 .application-content .icon-merge:before {
-  content: "\e709";
+  content: '\e709';
 }
 .application-content .icon-separate:before {
-  content: "\e70a";
+  content: '\e70a';
 }
 .application-content .icon-scheme-circles-triangle:before {
-  content: "\e73e";
+  content: '\e73e';
 }
 .application-content .icon-market:before {
-  content: "\e68e";
+  content: '\e68e';
 }
 .application-content .icon-bubble-o:before {
-  content: "\e6f3";
+  content: '\e6f3';
 }
 .application-content .icon-bubble-times:before {
-  content: "\e6f2";
+  content: '\e6f2';
 }
 .application-content .icon-clapperboard:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-collapse:before {
-  content: "\e745";
+  content: '\e745';
 }
 .application-content .icon-collapse-scheme:before {
-  content: "\e700";
+  content: '\e700';
 }
 .application-content .icon-dialog-window:before {
-  content: "\e6ff";
+  content: '\e6ff';
 }
 .application-content .icon-dialog-window-cogwheel:before {
-  content: "\e71a";
+  content: '\e71a';
 }
 .application-content .icon-doc-ban-sign:before {
-  content: "\e6ef";
+  content: '\e6ef';
 }
 .application-content .icon-doc-o:before {
-  content: "\e69c";
+  content: '\e69c';
 }
 .application-content .icon-doc-user:before {
-  content: "\e714";
+  content: '\e714';
 }
 .application-content .icon-expand:before {
-  content: "\e744";
+  content: '\e744';
 }
 .application-content .icon-file:before {
-  content: "\e719";
+  content: '\e719';
 }
 .application-content .icon-folder-belt:before {
-  content: "\e715";
+  content: '\e715';
 }
 .application-content .icon-folder-o:before {
-  content: "\e68b";
+  content: '\e68b';
 }
 .application-content .icon-hat-moustache:before {
-  content: "\e75a";
+  content: '\e75a';
 }
 .application-content .icon-key:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-rectangle-a:before {
-  content: "\e61e";
+  content: '\e61e';
 }
 .application-content .icon-rectangle-a-o:before {
-  content: "\e623";
+  content: '\e623';
 }
 .application-content .icon-rectangle-o-h:before {
-  content: "\e758";
+  content: '\e758';
 }
 .application-content .icon-rectangle-o-v:before {
-  content: "\e759";
+  content: '\e759';
 }
 .application-content .icon-rectangle-paragraph:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-tab:before {
-  content: "\e6fb";
+  content: '\e6fb';
 }
 .application-content .icon-file-pdf:before {
-  content: "\e6a3";
+  content: '\e6a3';
 }
 .application-content .icon-graduate-cap:before {
-  content: "\e713";
+  content: '\e713';
 }
 .application-content .icon-clipboard-list:before {
-  content: "\e6a9";
+  content: '\e6a9';
 }
 .application-content .icon-user-checkbox:before {
-  content: "\e603";
+  content: '\e603';
 }
 .application-content .icon-box-cart:before {
-  content: "\e6cd";
+  content: '\e6cd';
 }
 .application-content .icon-bubble-censored:before {
-  content: "\e6c2";
+  content: '\e6c2';
 }
 .application-content .icon-drawers:before {
-  content: "\e699";
+  content: '\e699';
 }
 .application-content .icon-earth:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-form:before {
-  content: "\e689";
+  content: '\e689';
 }
 .application-content .icon-invoice:before {
-  content: "\e660";
+  content: '\e660';
 }
 .application-content .icon-mug:before {
-  content: "\e644";
+  content: '\e644';
 }
 .application-content .icon-square-dashed-line:before {
-  content: "\e617";
+  content: '\e617';
 }
 .application-content .icon-briefcase:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-funnel:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-map:before {
-  content: "\e654";
+  content: '\e654';
 }
 .application-content .icon-notebook:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-piechart:before {
-  content: "\e631";
+  content: '\e631';
 }
 .application-content .icon-user-frame:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-clipboard-checklist:before {
-  content: "\e6aa";
+  content: '\e6aa';
 }
 .application-content .icon-pictures:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-flag:before {
-  content: "\e68f";
+  content: '\e68f';
 }
 .application-content .icon-folder:before {
-  content: "\e68d";
+  content: '\e68d';
 }
 .application-content .icon-folder-opened:before {
-  content: "\e68a";
+  content: '\e68a';
 }
 .application-content .icon-picture:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-bin:before {
-  content: "\e6d0";
+  content: '\e6d0';
 }
 .application-content .icon-bubble:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-doc:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-doc-move:before {
-  content: "\e69d";
+  content: '\e69d';
 }
 .application-content .icon-edit:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-menu:before {
-  content: "\e650";
+  content: '\e650';
 }
 .application-content .icon-message:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-user:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-monitor-broken:before {
-  content: "\e70b";
+  content: '\e70b';
 }
 .application-content .icon-monitor:before {
-  content: "\e646";
+  content: '\e646';
 }
 .application-content .icon-chevron-down-line:before {
-  content: "\e6c0";
+  content: '\e6c0';
 }
 .application-content .icon-chevron-left-line:before {
-  content: "\e6d6";
+  content: '\e6d6';
 }
 .application-content .icon-chevron-right-line:before {
-  content: "\e6e2";
+  content: '\e6e2';
 }
 .application-content .icon-chevron-up-line:before {
-  content: "\e6ee";
+  content: '\e6ee';
 }
 .application-content .icon-pin-o:before {
-  content: "\e705";
+  content: '\e705';
 }
 .application-content .icon-brand-sharepoint:before {
-  content: "\e707";
+  content: '\e707';
 }
 .application-content .icon-heartshake:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-pin:before {
-  content: "\e71e";
+  content: '\e71e';
 }
 .application-content .icon-checklist:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-watch:before {
-  content: "\e601";
+  content: '\e601';
 }
 .application-content .icon-permission-list:before {
-  content: "\e634";
+  content: '\e634';
 }
 .application-content .icon-users:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-brand-youtube:before {
-  content: "\e659";
+  content: '\e659';
 }
 .application-content .icon-brand-pinterest:before {
-  content: "\e6e3";
+  content: '\e6e3';
 }
 .application-content .icon-brand-open-id:before {
-  content: "\e6e4";
+  content: '\e6e4';
 }
 .application-content .icon-two-rectangles-v:before {
-  content: "\e606";
+  content: '\e606';
 }
 .application-content .icon-brand-linkedin:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-two-rectangles-h:before {
-  content: "\e607";
+  content: '\e607';
 }
 .application-content .icon-brand-google-plus:before {
-  content: "\e6e6";
+  content: '\e6e6';
 }
 .application-content .icon-t-shirt:before {
-  content: "\e608";
+  content: '\e608';
 }
 .application-content .icon-xml-tag:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-truck:before {
-  content: "\e609";
+  content: '\e609';
 }
 .application-content .icon-trophy:before {
-  content: "\e60a";
+  content: '\e60a';
 }
 .application-content .icon-rss:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-triangle-right:before {
-  content: "\e60b";
+  content: '\e60b';
 }
 .application-content .icon-restriction-list:before {
-  content: "\e6ea";
+  content: '\e6ea';
 }
 .application-content .icon-translate:before {
-  content: "\e60c";
+  content: '\e60c';
 }
 .application-content .icon-qr-code:before {
-  content: "\e6eb";
+  content: '\e6eb';
 }
 .application-content .icon-times-circle:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-lock-unlocked:before {
-  content: "\e6ec";
+  content: '\e6ec';
 }
 .application-content .icon-times:before {
-  content: "\e60e";
+  content: '\e60e';
 }
 .application-content .icon-dollar-sign:before {
-  content: "\e6ed";
+  content: '\e6ed';
 }
 .application-content .icon-tag:before {
-  content: "\e60f";
+  content: '\e60f';
 }
 .application-content .icon-tablet:before {
-  content: "\e610";
+  content: '\e610';
 }
 .application-content .icon-cb-check-disabled:before {
-  content: "\e6f0";
+  content: '\e6f0';
 }
 .application-content .icon-table:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-carousel:before {
-  content: "\e6f1";
+  content: '\e6f1';
 }
 .application-content .icon-star-full:before {
-  content: "\e614";
+  content: '\e614';
 }
 .application-content .icon-star-semi:before {
-  content: "\e613";
+  content: '\e613';
 }
 .application-content .icon-star-empty:before {
-  content: "\e615";
+  content: '\e615';
 }
 .application-content .icon-arrows-crooked:before {
-  content: "\e6f4";
+  content: '\e6f4';
 }
 .application-content .icon-staging-scheme:before {
-  content: "\e616";
+  content: '\e616';
 }
 .application-content .icon-shopping-cart:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 .application-content .icon-highlighter:before {
-  content: "\e6f6";
+  content: '\e6f6';
 }
 .application-content .icon-square-dashed:before {
-  content: "\e618";
+  content: '\e618';
 }
 .application-content .icon-cookie:before {
-  content: "\e6f7";
+  content: '\e6f7';
 }
 .application-content .icon-square:before {
-  content: "\e619";
+  content: '\e619';
 }
 .application-content .icon-software-package:before {
-  content: "\e61c";
+  content: '\e61c';
 }
 .application-content .icon-smartphone:before {
-  content: "\e61d";
+  content: '\e61d';
 }
 .application-content .icon-scissors:before {
-  content: "\e61f";
+  content: '\e61f';
 }
 .application-content .icon-rotate-right:before {
-  content: "\e620";
+  content: '\e620';
 }
 .application-content .icon-rotate-left:before {
-  content: "\e621";
+  content: '\e621';
 }
 .application-content .icon-rotate-double-right:before {
-  content: "\e622";
+  content: '\e622';
 }
 .application-content .icon-ribbon:before {
-  content: "\e624";
+  content: '\e624';
 }
 .application-content .icon-rb-uncheck:before {
-  content: "\e626";
+  content: '\e626';
 }
 .application-content .icon-rb-check-sign:before {
-  content: "\e627";
+  content: '\e627';
 }
 .application-content .icon-question-circle:before {
-  content: "\e629";
+  content: '\e629';
 }
 .application-content .icon-project-scheme:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 .application-content .icon-process-scheme:before {
-  content: "\e62c";
+  content: '\e62c';
 }
 .application-content .icon-plus-square:before {
-  content: "\e62d";
+  content: '\e62d';
 }
 .application-content .icon-plus-circle:before {
-  content: "\e62e";
+  content: '\e62e';
 }
 .application-content .icon-plus:before {
-  content: "\e62f";
+  content: '\e62f';
 }
 .application-content .icon-placeholder:before {
-  content: "\e630";
+  content: '\e630';
 }
 .application-content .icon-perfume:before {
-  content: "\e635";
+  content: '\e635';
 }
 .application-content .icon-percent-sign:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-pda:before {
-  content: "\e639";
+  content: '\e639';
 }
 .application-content .icon-pc:before {
-  content: "\e63a";
+  content: '\e63a';
 }
 .application-content .icon-pause:before {
-  content: "\e63b";
+  content: '\e63b';
 }
 .application-content .icon-parent-children-scheme:before {
-  content: "\e63c";
+  content: '\e63c';
 }
 .application-content .icon-paperclip:before {
-  content: "\e63d";
+  content: '\e63d';
 }
 .application-content .icon-pants:before {
-  content: "\e63e";
+  content: '\e63e';
 }
 .application-content .icon-palette:before {
-  content: "\e63f";
+  content: '\e63f';
 }
 .application-content .icon-organisational-scheme:before {
-  content: "\e640";
+  content: '\e640';
 }
 .application-content .icon-newspaper:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-monitor-smartphone:before {
-  content: "\e645";
+  content: '\e645';
 }
 .application-content .icon-modal-question:before {
-  content: "\e647";
+  content: '\e647';
 }
 .application-content .icon-modal-minimize:before {
-  content: "\e648";
+  content: '\e648';
 }
 .application-content .icon-modal-maximize:before {
-  content: "\e649";
+  content: '\e649';
 }
 .application-content .icon-modal-close:before {
-  content: "\e64a";
+  content: '\e64a';
 }
 .application-content .icon-minus-circle:before {
-  content: "\e64b";
+  content: '\e64b';
 }
 .application-content .icon-microphone:before {
-  content: "\e64d";
+  content: '\e64d';
 }
 .application-content .icon-messages:before {
-  content: "\e64e";
+  content: '\e64e';
 }
 .application-content .icon-media-player:before {
-  content: "\e651";
+  content: '\e651';
 }
 .application-content .icon-mask:before {
-  content: "\e652";
+  content: '\e652';
 }
 .application-content .icon-map-marker:before {
-  content: "\e653";
+  content: '\e653';
 }
 .application-content .icon-lock:before {
-  content: "\e658";
+  content: '\e658';
 }
 .application-content .icon-life-belt:before {
-  content: "\e65a";
+  content: '\e65a';
 }
 .application-content .icon-laptop:before {
-  content: "\e65d";
+  content: '\e65d';
 }
 .application-content .icon-kentico:before {
-  content: "\e65f";
+  content: '\e65f';
 }
 .application-content .icon-integration-scheme:before {
-  content: "\e661";
+  content: '\e661';
 }
 .application-content .icon-i-circle:before {
-  content: "\e664";
+  content: '\e664';
 }
 .application-content .icon-chevron-up-square:before {
-  content: "\e665";
+  content: '\e665';
 }
 .application-content .icon-chevron-up-circle:before {
-  content: "\e666";
+  content: '\e666';
 }
 .application-content .icon-chevron-up:before {
-  content: "\e667";
+  content: '\e667';
 }
 .application-content .icon-chevron-right-square:before {
-  content: "\e668";
+  content: '\e668';
 }
 .application-content .icon-chevron-right:before {
-  content: "\e669";
+  content: '\e669';
 }
 .application-content .icon-chevron-left-square:before {
-  content: "\e66a";
+  content: '\e66a';
 }
 .application-content .icon-chevron-left-circle:before {
-  content: "\e66b";
+  content: '\e66b';
 }
 .application-content .icon-chevron-left:before {
-  content: "\e66c";
+  content: '\e66c';
 }
 .application-content .icon-chevron-down-square:before {
-  content: "\e66d";
+  content: '\e66d';
 }
 .application-content .icon-chevron-down-circle:before {
-  content: "\e66e";
+  content: '\e66e';
 }
 .application-content .icon-chevron-down:before {
-  content: "\e66f";
+  content: '\e66f';
 }
 .application-content .icon-chevron-double-up:before {
-  content: "\e670";
+  content: '\e670';
 }
 .application-content .icon-chevron-double-right:before {
-  content: "\e671";
+  content: '\e671';
 }
 .application-content .icon-chevron-double-left:before {
-  content: "\e672";
+  content: '\e672';
 }
 .application-content .icon-chevron-double-down:before {
-  content: "\e673";
+  content: '\e673';
 }
 .application-content .icon-checklist2:before {
-  content: "\e674";
+  content: '\e674';
 }
 .application-content .icon-check-circle:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-check:before {
-  content: "\e676";
+  content: '\e676';
 }
 .application-content .icon-tags:before {
-  content: "\e678";
+  content: '\e678';
 }
 .application-content .icon-shoe-women:before {
-  content: "\e679";
+  content: '\e679';
 }
 .application-content .icon-printer:before {
-  content: "\e67a";
+  content: '\e67a';
 }
 .application-content .icon-parent-child-scheme:before {
-  content: "\e67b";
+  content: '\e67b';
 }
 .application-content .icon-minus-square:before {
-  content: "\e67c";
+  content: '\e67c';
 }
 .application-content .icon-light-bulb:before {
-  content: "\e67d";
+  content: '\e67d';
 }
 .application-content .icon-chevron-right-circle:before {
-  content: "\e67e";
+  content: '\e67e';
 }
 .application-content .icon-home:before {
-  content: "\e680";
+  content: '\e680';
 }
 .application-content .icon-half-arrows-right-left:before {
-  content: "\e683";
+  content: '\e683';
 }
 .application-content .icon-graph:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-factory:before {
-  content: "\e690";
+  content: '\e690';
 }
 .application-content .icon-exclamation-triangle:before {
-  content: "\e693";
+  content: '\e693';
 }
 .application-content .icon-ellipsis:before {
-  content: "\e694";
+  content: '\e694';
 }
 .application-content .icon-ekg-line:before {
-  content: "\e695";
+  content: '\e695';
 }
 .application-content .icon-doc-paste:before {
-  content: "\e69a";
+  content: '\e69a';
 }
 .application-content .icon-doc-copy:before {
-  content: "\e69e";
+  content: '\e69e';
 }
 .application-content .icon-database:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-cup:before {
-  content: "\e6a2";
+  content: '\e6a2';
 }
 .application-content .icon-compass:before {
-  content: "\e6a4";
+  content: '\e6a4';
 }
 .application-content .icon-cogwheel-square:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-cogwheels:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-cogwheel:before {
-  content: "\e6a7";
+  content: '\e6a7';
 }
 .application-content .icon-circle-square:before {
-  content: "\e6ab";
+  content: '\e6ab';
 }
 .application-content .icon-circle:before {
-  content: "\e6ac";
+  content: '\e6ac';
 }
 .application-content .icon-cb-uncheck:before {
-  content: "\e6ad";
+  content: '\e6ad';
 }
 .application-content .icon-cb-check-sign:before {
-  content: "\e6b0";
+  content: '\e6b0';
 }
 .application-content .icon-caret-up:before {
-  content: "\e6b2";
+  content: '\e6b2';
 }
 .application-content .icon-caret-right-down:before {
-  content: "\e6b3";
+  content: '\e6b3';
 }
 .application-content .icon-caret-right:before {
-  content: "\e6b4";
+  content: '\e6b4';
 }
 .application-content .icon-caret-left:before {
-  content: "\e6b5";
+  content: '\e6b5';
 }
 .application-content .icon-caret-down:before {
-  content: "\e6b6";
+  content: '\e6b6';
 }
 .application-content .icon-camera:before {
-  content: "\e6b7";
+  content: '\e6b7';
 }
 .application-content .icon-calendar-number:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-calendar:before {
-  content: "\e6b9";
+  content: '\e6b9';
 }
 .application-content .icon-bullseye:before {
-  content: "\e6ba";
+  content: '\e6ba';
 }
 .application-content .icon-building-block:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-building:before {
-  content: "\e6bc";
+  content: '\e6bc';
 }
 .application-content .icon-bug:before {
-  content: "\e6bd";
+  content: '\e6bd';
 }
 .application-content .icon-bucket-shovel:before {
-  content: "\e6be";
+  content: '\e6be';
 }
 .application-content .icon-bubbles:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-brush:before {
-  content: "\e6c4";
+  content: '\e6c4';
 }
 .application-content .icon-broom:before {
-  content: "\e6c5";
+  content: '\e6c5';
 }
 .application-content .icon-brand-twitter:before {
-  content: "\e6c7";
+  content: '\e6c7';
 }
 .application-content .icon-brand-google:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-brand-facebook:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-brand-bing:before {
-  content: "\e6ca";
+  content: '\e6ca';
 }
 .application-content .icon-braces:before {
-  content: "\e6cb";
+  content: '\e6cb';
 }
 .application-content .icon-boxes:before {
-  content: "\e6cc";
+  content: '\e6cc';
 }
 .application-content .icon-box:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-ban-sign:before {
-  content: "\e6d1";
+  content: '\e6d1';
 }
 .application-content .icon-badge:before {
-  content: "\e6d2";
+  content: '\e6d2';
 }
 .application-content .icon-arrow-right-top-square:before {
-  content: "\e6d8";
+  content: '\e6d8';
 }
 .application-content .icon-breadcrumb:before {
-  content: "\e6f9";
+  content: '\e6f9';
 }
 .application-content .icon-clock:before {
-  content: "\e6a8";
+  content: '\e6a8';
 }
 .application-content .icon-cloud:before {
-  content: "\e701";
+  content: '\e701';
 }
 .application-content .icon-cb-check-preview:before {
-  content: "\e702";
+  content: '\e702';
 }
 .application-content .icon-accordion:before {
-  content: "\e704";
+  content: '\e704';
 }
 .application-content .icon-two-squares-line:before {
-  content: "\e706";
+  content: '\e706';
 }
 .application-content .icon-money-bill:before {
-  content: "\e708";
+  content: '\e708';
 }
 .application-content .icon-puzzle:before {
-  content: "\e62a";
+  content: '\e62a';
 }
 .application-content .icon-wizard-stick:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-lines-rectangle-o:before {
-  content: "\e6fd";
+  content: '\e6fd';
 }
 .application-content .icon-doc-arrows:before {
-  content: "\e6fe";
+  content: '\e6fe';
 }
 .application-content .icon-l-text-col:before {
-  content: "\e685";
+  content: '\e685';
 }
 .application-content .icon-l-menu-text-col:before {
-  content: "\e69b";
+  content: '\e69b';
 }
 .application-content .icon-l-menu-cols-3:before {
-  content: "\e6e8";
+  content: '\e6e8';
 }
 .application-content .icon-l-logotype-menu-v-col:before {
-  content: "\e6fc";
+  content: '\e6fc';
 }
 .application-content .icon-l-logotype-menu-h-col:before {
-  content: "\e70c";
+  content: '\e70c';
 }
 .application-content .icon-l-header-cols-3-footer:before {
-  content: "\e70d";
+  content: '\e70d';
 }
 .application-content .icon-l-cols-80-20:before {
-  content: "\e70e";
+  content: '\e70e';
 }
 .application-content .icon-l-cols-20-80:before {
-  content: "\e70f";
+  content: '\e70f';
 }
 .application-content .icon-l-cols-4:before {
-  content: "\e710";
+  content: '\e710';
 }
 .application-content .icon-l-cols-3:before {
-  content: "\e711";
+  content: '\e711';
 }
 .application-content .icon-l-cols-2:before {
-  content: "\e712";
+  content: '\e712';
 }
 .application-content .icon-bezier-scheme:before {
-  content: "\e717";
+  content: '\e717';
 }
 .application-content .icon-note:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-piechart-lines:before {
-  content: "\e71d";
+  content: '\e71d';
 }
 .application-content .icon-l-article-map:before {
-  content: "\e721";
+  content: '\e721';
 }
 .application-content .icon-l-calendar-number-article:before {
-  content: "\e722";
+  content: '\e722';
 }
 .application-content .icon-l-forms-2:before {
-  content: "\e723";
+  content: '\e723';
 }
 .application-content .icon-l-header-cols-2-footer:before {
-  content: "\e724";
+  content: '\e724';
 }
 .application-content .icon-l-header-list-img:before {
-  content: "\e725";
+  content: '\e725';
 }
 .application-content .icon-l-header-menu-text:before {
-  content: "\e726";
+  content: '\e726';
 }
 .application-content .icon-l-header-text:before {
-  content: "\e727";
+  content: '\e727';
 }
 .application-content .icon-l-list-article:before {
-  content: "\e728";
+  content: '\e728';
 }
 .application-content .icon-l-lightbox:before {
-  content: "\e729";
+  content: '\e729';
 }
 .application-content .icon-l-img-3-cols-3:before {
-  content: "\e72a";
+  content: '\e72a';
 }
 .application-content .icon-l-img-2-cols-3:before {
-  content: "\e72b";
+  content: '\e72b';
 }
 .application-content .icon-l-text:before {
-  content: "\e72c";
+  content: '\e72c';
 }
 .application-content .icon-l-rows-4:before {
-  content: "\e72d";
+  content: '\e72d';
 }
 .application-content .icon-l-rows-3:before {
-  content: "\e72e";
+  content: '\e72e';
 }
 .application-content .icon-l-rows-2:before {
-  content: "\e72f";
+  content: '\e72f';
 }
 .application-content .icon-l-menu-text-col-bottom:before {
-  content: "\e730";
+  content: '\e730';
 }
 .application-content .icon-l-menu-text:before {
-  content: "\e731";
+  content: '\e731';
 }
 .application-content .icon-l-menu-list-img-col:before {
-  content: "\e732";
+  content: '\e732';
 }
 .application-content .icon-l-menu-list-img:before {
-  content: "\e733";
+  content: '\e733';
 }
 .application-content .icon-l-menu-list:before {
-  content: "\e734";
+  content: '\e734';
 }
 .application-content .icon-l-menu-cols-2:before {
-  content: "\e735";
+  content: '\e735';
 }
 .application-content .icon-l-logotype-menu-col-footer:before {
-  content: "\e736";
+  content: '\e736';
 }
 .application-content .icon-l-list-title:before {
-  content: "\e737";
+  content: '\e737';
 }
 .application-content .icon-l-list-img-article:before {
-  content: "\e738";
+  content: '\e738';
 }
 .application-content .icon-l-list-article-col:before {
-  content: "\e739";
+  content: '\e739';
 }
 .application-content .icon-tree-structure:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-vb:before {
-  content: "\e716";
+  content: '\e716';
 }
 .application-content .icon-crosshair-o:before {
-  content: "\e71b";
+  content: '\e71b';
 }
 .application-content .icon-crosshair-f:before {
-  content: "\e71f";
+  content: '\e71f';
 }
 .application-content .icon-caret-right-aligned-left:before {
-  content: "\e720";
+  content: '\e720';
 }
 .application-content .icon-caret-left-aligned-right:before {
-  content: "\e73b";
+  content: '\e73b';
 }
 .application-content .icon-gauge:before {
-  content: "\e686";
+  content: '\e686';
 }
 .application-content .icon-c-sharp:before {
-  content: "\e718";
+  content: '\e718';
 }
 .application-content .icon-tab-vertical:before {
-  content: "\e73c";
+  content: '\e73c';
 }
 .application-content .icon-right-double-quotation-mark:before {
-  content: "\e73d";
+  content: '\e73d';
 }
 .application-content .icon-braces-octothorpe:before {
-  content: "\e740";
+  content: '\e740';
 }
 .application-content .icon-outdent:before {
-  content: "\e741";
+  content: '\e741';
 }
 .application-content .icon-indent:before {
-  content: "\e742";
+  content: '\e742';
 }
 .application-content .icon-i:before {
-  content: "\e743";
+  content: '\e743';
 }
 .application-content .icon-b:before {
-  content: "\e746";
+  content: '\e746';
 }
 .application-content .icon-u:before {
-  content: "\e747";
+  content: '\e747';
 }
 .application-content .icon-s:before {
-  content: "\e748";
+  content: '\e748';
 }
 .application-content .icon-x:before {
-  content: "\e749";
+  content: '\e749';
 }
 .application-content .icon-t-f:before {
-  content: "\e74a";
+  content: '\e74a';
 }
 .application-content .icon-t:before {
-  content: "\e74b";
+  content: '\e74b';
 }
 .application-content .icon-parent-child-scheme-2:before {
-  content: "\e74c";
+  content: '\e74c';
 }
 .application-content .icon-parent-child-scheme2:before {
-  content: "\e74d";
+  content: '\e74d';
 }
 .application-content .icon-doc-torn:before {
-  content: "\e750";
+  content: '\e750';
 }
 .application-content .icon-f:before {
-  content: "\e74e";
+  content: '\e74e';
 }
 .application-content .icon-a-lowercase:before {
-  content: "\e74f";
+  content: '\e74f';
 }
 .application-content .icon-circle-slashed:before {
-  content: "\e751";
+  content: '\e751';
 }
 .application-content .icon-one:before {
-  content: "\e752";
+  content: '\e752';
 }
 .application-content .icon-diamond:before {
-  content: "\e756";
+  content: '\e756';
 }
 .application-content .icon-choice-user-scheme:before {
-  content: "\e753";
+  content: '\e753';
 }
 .application-content .icon-choice-single-scheme:before {
-  content: "\e755";
+  content: '\e755';
 }
 .application-content .icon-choice-multi-scheme:before {
-  content: "\e757";
+  content: '\e757';
 }
 .application-content .icon-book-opened:before {
-  content: "\e6cf";
+  content: '\e6cf';
 }
 .application-content .icon-e-book:before {
-  content: "\e697";
+  content: '\e697';
 }
 .application-content .icon-spinner:before {
-  content: "\e61a";
+  content: '\e61a';
 }
 .application-content .icon-layouts:before {
-  content: "\e65b";
+  content: '\e65b';
 }
 .application-content .icon-layout:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-id-card:before {
-  content: "\e663";
+  content: '\e663';
 }
 .application-content .icon-id-cards:before {
-  content: "\e662";
+  content: '\e662';
 }
 .application-content .icon-l-grid-3-2:before {
-  content: "\e611";
+  content: '\e611';
 }
 .application-content .icon-l-grid-2-2:before {
-  content: "\e628";
+  content: '\e628';
 }
 .application-content .icon-l-cols-70-30:before {
-  content: "\e637";
+  content: '\e637';
 }
 .application-content .icon-l-cols-30-70:before {
-  content: "\e641";
+  content: '\e641';
 }
 .application-content .icon-l-cols-25-50-25:before {
-  content: "\e688";
+  content: '\e688';
 }
 .application-content .icon-l-cols-20-60-20:before {
-  content: "\e6a1";
+  content: '\e6a1';
 }
 .application-content .icon-eye:before {
-  content: "\e692";
+  content: '\e692';
 }
 .application-content .icon-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-folder-clock:before {
-  content: "\e68c";
+  content: '\e68c';
 }
 .application-content .icon-app-default:before {
-  content: "\e618";
+  content: '\e618';
 }
 .application-content .icon-app-blogs:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-app-content:before {
-  content: "\e6cf";
+  content: '\e6cf';
 }
 .application-content .icon-app-content-dashboard:before {
-  content: "\e686";
+  content: '\e686';
 }
 .application-content .icon-app-file-import:before {
-  content: "\e6db";
+  content: '\e6db';
 }
 .application-content .icon-app-forms:before {
-  content: "\e689";
+  content: '\e689';
 }
 .application-content .icon-app-checked-out:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-app-media:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-app-my-blogs:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-app-my-documents:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-app-outdated:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-app-pending:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-app-polls:before {
-  content: "\e6aa";
+  content: '\e6aa';
 }
 .application-content .icon-app-recent:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-app-translations:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-app-activities:before {
-  content: "\e695";
+  content: '\e695';
 }
 .application-content .icon-app-banners:before {
-  content: "\e624";
+  content: '\e624';
 }
 .application-content .icon-app-campaigns:before {
-  content: "\e6ba";
+  content: '\e6ba';
 }
 .application-content .icon-app-contacts:before {
-  content: "\e663";
+  content: '\e663';
 }
 .application-content .icon-app-contact-groups:before {
-  content: "\e662";
+  content: '\e662';
 }
 .application-content .icon-app-conversions:before {
-  content: "\e683";
+  content: '\e683';
 }
 .application-content .icon-app-marketing-dashboard:before {
-  content: "\e686";
+  content: '\e686';
 }
 .application-content .icon-app-marketing-reports:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-app-newsletters:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-app-processes:before {
-  content: "\e62c";
+  content: '\e62c';
 }
 .application-content .icon-app-scoring:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-app-web-analytics:before {
-  content: "\e631";
+  content: '\e631';
 }
 .application-content .icon-app-ab-test:before {
-  content: "\e706";
+  content: '\e706';
 }
 .application-content .icon-app-mvt:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-app-catalog-discounts:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-app-customers:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-app-ecommerce-dashboard:before {
-  content: "\e686";
+  content: '\e686';
 }
 .application-content .icon-app-ecommerce-reports:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-app-free-shipping-offers:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-app-manufacturers:before {
-  content: "\e690";
+  content: '\e690';
 }
 .application-content .icon-app-order-discounts:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-app-orders:before {
-  content: "\e660";
+  content: '\e660';
 }
 .application-content .icon-app-product-coupons:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-app-product-options:before {
-  content: "\e6cc";
+  content: '\e6cc';
 }
 .application-content .icon-app-products:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-app-suppliers:before {
-  content: "\e6cd";
+  content: '\e6cd';
 }
 .application-content .icon-app-abuse-reports:before {
-  content: "\e6ea";
+  content: '\e6ea';
 }
 .application-content .icon-app-avatars:before {
-  content: "\e652";
+  content: '\e652';
 }
 .application-content .icon-app-bad-words:before {
-  content: "\e6c2";
+  content: '\e6c2';
 }
 .application-content .icon-app-badges:before {
-  content: "\e6d2";
+  content: '\e6d2';
 }
 .application-content .icon-app-events:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-app-facebook:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-app-forums:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-app-friends:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-app-groups:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-app-chat:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-app-message-boards:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-app-messages:before {
-  content: "\e64e";
+  content: '\e64e';
 }
 .application-content .icon-app-my-projects:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 .application-content .icon-app-projects:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 .application-content .icon-app-api-examples:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-app-classes:before {
-  content: "\e6cb";
+  content: '\e6cb';
 }
 .application-content .icon-app-css-stylesheets:before {
-  content: "\e63f";
+  content: '\e63f';
 }
 .application-content .icon-app-custom-tables:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-app-database-objects:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-app-device-profiles:before {
-  content: "\e645";
+  content: '\e645';
 }
 .application-content .icon-app-document-types:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-app-email-templates:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-app-form-controls:before {
-  content: "\e689";
+  content: '\e689';
 }
 .application-content .icon-app-inline-controls:before {
-  content: "\e689";
+  content: '\e689';
 }
 .application-content .icon-app-javascript-files:before {
-  content: "\e6cb";
+  content: '\e6cb';
 }
 .application-content .icon-app-macro-rules:before {
-  content: "\e740";
+  content: '\e740';
 }
 .application-content .icon-app-modules:before {
-  content: "\e62a";
+  content: '\e62a';
 }
 .application-content .icon-app-notifications:before {
-  content: "\e68f";
+  content: '\e68f';
 }
 .application-content .icon-app-page-layouts:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-app-page-templates:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-app-web-part-containers:before {
-  content: "\e617";
+  content: '\e617';
 }
 .application-content .icon-app-web-parts:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-app-web-templates:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-app-widgets:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-app-banned-ips:before {
-  content: "\e6ea";
+  content: '\e6ea';
 }
 .application-content .icon-app-categories:before {
-  content: "\e699";
+  content: '\e699';
 }
 .application-content .icon-app-content-reports:before {
-  content: "\e6a7";
+  content: '\e6a7';
 }
 .application-content .icon-app-countries:before {
-  content: "\e653";
+  content: '\e653';
 }
 .application-content .icon-app-ecommerce-configuration:before {
-  content: "\e6a7";
+  content: '\e6a7';
 }
 .application-content .icon-app-email-queue:before {
-  content: "\e64e";
+  content: '\e64e';
 }
 .application-content .icon-app-event-log:before {
-  content: "\e6a9";
+  content: '\e6a9';
 }
 .application-content .icon-app-integration-bus:before {
-  content: "\e661";
+  content: '\e661';
 }
 .application-content .icon-app-localization:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-app-membership:before {
-  content: "\e663";
+  content: '\e663';
 }
 .application-content .icon-app-marketing-configuration:before {
-  content: "\e6a7";
+  content: '\e6a7';
 }
 .application-content .icon-app-permissions:before {
-  content: "\e634";
+  content: '\e634';
 }
 .application-content .icon-app-recycle-bin:before {
-  content: "\e6d0";
+  content: '\e6d0';
 }
 .application-content .icon-app-relationship-names:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-app-roles:before {
-  content: "\e603";
+  content: '\e603';
 }
 .application-content .icon-app-search-engines:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-app-settings:before {
-  content: "\e6a7";
+  content: '\e6a7';
 }
 .application-content .icon-app-scheduled-tasks:before {
-  content: "\e68c";
+  content: '\e68c';
 }
 .application-content .icon-app-sites:before {
-  content: "\e65b";
+  content: '\e65b';
 }
 .application-content .icon-app-smart-search:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-app-smtp-servers:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-app-staging:before {
-  content: "\e616";
+  content: '\e616';
 }
 .application-content .icon-app-system:before {
-  content: "\e6ab";
+  content: '\e6ab';
 }
 .application-content .icon-app-tag-groups:before {
-  content: "\e678";
+  content: '\e678';
 }
 .application-content .icon-app-time-zones:before {
-  content: "\e6a8";
+  content: '\e6a8';
 }
 .application-content .icon-app-translation-services:before {
-  content: "\e60c";
+  content: '\e60c';
 }
 .application-content .icon-app-ui-personalization:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-app-users:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-app-web-farm:before {
-  content: "\e63c";
+  content: '\e63c';
 }
 .application-content .icon-app-workflows:before {
-  content: "\e756";
+  content: '\e756';
 }
 .application-content .icon-app-personas:before {
-  content: "\e75a";
+  content: '\e75a';
 }
 .application-content .icon-app-unit-tests:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-app-licenses:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-app-my-profile:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-app-debug:before {
-  content: "\e6bd";
+  content: '\e6bd';
 }
 .application-content .icon-app-twitter:before {
-  content: "\e6c7";
+  content: '\e6c7';
 }
 .application-content .icon-app-continuous-integration:before {
-  content: "\e600";
+  content: '\e600';
 }
 .application-content .icon-googletranslator:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-microsofttranslator:before {
-  content: "\e6ca";
+  content: '\e6ca';
 }
 .application-content .icon-external-link:before {
-  content: "\e6d8";
+  content: '\e6d8';
 }
 .application-content .icon-mvc:before {
-  content: "\e73e";
+  content: '\e73e';
 }
 .application-content .icon-w-webpart-default:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-widget-default:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-w-css-list-menu:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-tree-menu:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-w-category-menu:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-tab-menu:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-drop-down-menu:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-language-selection:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-w-language-selection-dropdown:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-w-language-selection-with-flags:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-w-page-placeholder:before {
-  content: "\e630";
+  content: '\e630';
 }
 .application-content .icon-w-site-map:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-w-qr-code:before {
-  content: "\e6eb";
+  content: '\e6eb';
 }
 .application-content .icon-w-repeater:before {
-  content: "\e6f4";
+  content: '\e6f4';
 }
 .application-content .icon-w-repeater-for-web-service:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-w-repeater-with-carousel:before {
-  content: "\e6f1";
+  content: '\e6f1';
 }
 .application-content .icon-w-repeater-with-custom-query:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-query-repeater-with-effect:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-repeater-with-effect:before {
-  content: "\e6f4";
+  content: '\e6f4';
 }
 .application-content .icon-w-repeater-with-lightbox:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-basic-repeater:before {
-  content: "\e6f4";
+  content: '\e6f4';
 }
 .application-content .icon-w-basic-repeater-with-effect:before {
-  content: "\e6f4";
+  content: '\e6f4';
 }
 .application-content .icon-w-custom-table-repeater:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-custom-table-repeater-with-effect:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-report-table:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-atom-repeater:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-xml-repeater:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-w-head-html-code:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-w-static-html:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-w-javascript:before {
-  content: "\e6cb";
+  content: '\e6cb';
 }
 .application-content .icon-w-breadcrumbs:before {
-  content: "\e6f9";
+  content: '\e6f9';
 }
 .application-content .icon-w-category-breadcrumbs:before {
-  content: "\e6f9";
+  content: '\e6f9';
 }
 .application-content .icon-w-forum-breadcrumbs:before {
-  content: "\e6f9";
+  content: '\e6f9';
 }
 .application-content .icon-w-document-attachments:before {
-  content: "\e63d";
+  content: '\e63d';
 }
 .application-content .icon-w-document-attachments-with-effect:before {
-  content: "\e63d";
+  content: '\e63d';
 }
 .application-content .icon-w-attachments:before {
-  content: "\e63d";
+  content: '\e63d';
 }
 .application-content .icon-w-attachments-carousel:before {
-  content: "\e6f1";
+  content: '\e6f1';
 }
 .application-content .icon-w-attachments-carousel-3d:before {
-  content: "\e6f1";
+  content: '\e6f1';
 }
 .application-content .icon-w-attachments-lightbox:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-lightbox-gallery:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-inbox:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-send-message:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-send-to-friend:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-newsletter-archive:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-newsletter-subscription:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-messaging-info-panel:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-newsletter-unsubscription:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-w-custom-subscription-form:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-registration-e-mail-confirmation:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-my-messages:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-unsubscription-request:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-w-outbox:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-my-sent-invitations:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-board-messages-data-source:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-forum-posts-data-source:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-query-data-source:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-forum-posts-data-source:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-documents-data-source:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-w-web-service-data-source:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-w-department-members-data-source:before {
-  content: "\e640";
+  content: '\e640';
 }
 .application-content .icon-w-macro-data-source:before {
-  content: "\e740";
+  content: '\e740';
 }
 .application-content .icon-w-file-system-data-source:before {
-  content: "\e68a";
+  content: '\e68a';
 }
 .application-content .icon-w-sharepoint-data-source:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-group-media-libraries-data-source:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-atom-data-source:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-media-files-data-source:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-groups-data-source:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-custom-table-data-source:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-group-members-data-source:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-friends-data-source:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-w-blog-comments-data-source:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-sql-data-source:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-sql-search-box:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-xml-data-source:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-w-sql-search-dialog:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-products-data-source:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-sql-search-dialog-with-results:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-media-libraries-data-source:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-users-data-source:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-attachments-data-source:before {
-  content: "\e63d";
+  content: '\e63d';
 }
 .application-content .icon-w-sql-search-results:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-chat-search-on-line-users:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-search-accelerator-for-ie8-and-higher:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-search-engine-results-highlighter:before {
-  content: "\e6f6";
+  content: '\e6f6';
 }
 .application-content .icon-w-smart-search-box:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-forum-search-advanced-dialog:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-smart-search-dialog:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-forum-search-box:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-smart-search-dialog-with-results:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-smart-search-filter:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-w-smart-search-results:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-message-board-rss-feed:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-posts-rss-feed:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-query-rss-feed:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-news-rss-feed:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-web-service-rss-feed:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-w-feed-link:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-cms-rss-feed:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-atom-feed:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-media-files-rss-feed:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-blog-comments-rss-feed:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-events-rss-feed:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-rss-data-source:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-rss-feed:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-products-rss-feed:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-custom-table-rss-feed:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-blog-posts-rss-feed:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-rss-repeater:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-web-part-zone:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-w-banner-rotator:before {
-  content: "\e624";
+  content: '\e624';
 }
 .application-content .icon-w-css-style-selector:before {
-  content: "\e63f";
+  content: '\e63f';
 }
 .application-content .icon-w-report:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-report-chart:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-switch-mobile-device-detection:before {
-  content: "\e61d";
+  content: '\e61d';
 }
 .application-content .icon-w-mobile-device-redirection:before {
-  content: "\e61d";
+  content: '\e61d';
 }
 .application-content .icon-w-poll:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-group-polls:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-scrolling-text:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-w-static-text:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-w-paged-text:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-w-editable-text:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-w-change-password:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-w-unlock-user-accunt:before {
-  content: "\e6ec";
+  content: '\e6ec';
 }
 .application-content .icon-w-reset-password:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-w-automatically-initiated-chat:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-w-chat-send-message:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-chat-support-request:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-w-chat-web-part:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-chat-errors:before {
-  content: "\e6f2";
+  content: '\e6f2';
 }
 .application-content .icon-w-chat-leave-room:before {
-  content: "\e6d9";
+  content: '\e6d9';
 }
 .application-content .icon-w-chat-login:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-w-chat-notifications:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-w-chat-room-messages:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-w-chat-room-name:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-w-chat-room-users:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-chat-rooms:before {
-  content: "\e6f3";
+  content: '\e6f3';
 }
 .application-content .icon-w-comment-view:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-unsubscription:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-w-forum-most-active-threads:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-recently-active-threads:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-top-contributors:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-single-forum-flat-layout:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-single-forum-general:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-single-forum-tree-layout:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-calendar:before {
-  content: "\e6b9";
+  content: '\e6b9';
 }
 .application-content .icon-w-date-and-time:before {
-  content: "\e6a8";
+  content: '\e6a8';
 }
 .application-content .icon-w-event-calendar:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-event-registration:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-content-rating:before {
-  content: "\e614";
+  content: '\e614';
 }
 .application-content .icon-w-shopping-cart-content:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 .application-content .icon-w-shopping-cart-preview:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 .application-content .icon-w-shopping-cart-totals:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 .application-content .icon-w-attachment-image-gallery:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-media-gallery-file-filter:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-media-gallery-file-list:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-media-gallery-folder-tree:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-image-gallery:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-media-libraries-viewer:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-custom-table-datagrid:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-grid-with-custom-query:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-custom-table-datalist:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-grid:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-table-layout:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-sharepoint-datagrid:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-grid-for-rest-service:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-grid-for-web-service:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-w-custom-table-datagrid:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-basic-datalist:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-sharepoint-datalist:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-datalist-with-custom-query:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-datalist:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-my-friends:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-w-request-friendship:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-w-friends-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-my-pending-requests:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-w-friends-viewer:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-w-rejected-friends:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-w-friends-waiting-for-approval:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-friendship-management:before {
-  content: "\e681";
+  content: '\e681';
 }
 .application-content .icon-w-group-forum-list:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-profile:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-properties:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-forum-post-viewer:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-public-profile:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-forum-search-results:before {
-  content: "\e657";
+  content: '\e657';
 }
 .application-content .icon-w-group-registration:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-forums:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-roles:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-invitation:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-group-security-access:before {
-  content: "\e658";
+  content: '\e658';
 }
 .application-content .icon-w-group-media-libraries:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-department-members-viewer:before {
-  content: "\e640";
+  content: '\e640';
 }
 .application-content .icon-w-group-security-message:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-leave-group:before {
-  content: "\e6d9";
+  content: '\e6d9';
 }
 .application-content .icon-w-group-media-libraries-viewer:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-groups-filter:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-w-group-members:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-groups-viewer:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-members-viewer:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-group-contribution-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-chat-on-line-users:before {
-  content: "\e6c3";
+  content: '\e6c3';
 }
 .application-content .icon-w-group-message-board:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-document-library:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-group-message-board-viewer:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-edit-contribution:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-group-message-boards:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-forum-most-active-threads:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-permissions:before {
-  content: "\e634";
+  content: '\e634';
 }
 .application-content .icon-w-group-forum-recently-active-threads:before {
-  content: "\e6a8";
+  content: '\e6a8';
 }
 .application-content .icon-w-custom-registration-form:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-on-line-form:before {
-  content: "\e689";
+  content: '\e689';
 }
 .application-content .icon-w-registration-form:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-logon-form:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-w-logon-mini-form:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 .application-content .icon-w-discount-coupon:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-w-my-account:before {
-  content: "\e663";
+  content: '\e663';
 }
 .application-content .icon-w-on-line-users:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-my-profile:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-user-public-profile:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-users-filter:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-w-document-name-filter:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-w-filter:before {
-  content: "\e687";
+  content: '\e687';
 }
 .application-content .icon-w-remaining-amount-for-free-shipping:before {
-  content: "\e638";
+  content: '\e638';
 }
 .application-content .icon-w-shipping-option-selection:before {
-  content: "\e609";
+  content: '\e609';
 }
 .application-content .icon-w-tasks-owned-by-me:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-my-projects:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 .application-content .icon-w-project-list:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 .application-content .icon-w-project-tasks:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-tasks-assigned-to-me:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-customer-detail:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-w-customer-address:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-w-liveid-required-data:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-windows-liveid:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-openid-logon:before {
-  content: "\e6e4";
+  content: '\e6e4';
 }
 .application-content .icon-w-openid-required-data:before {
-  content: "\e6e4";
+  content: '\e6e4';
 }
 .application-content .icon-w-powered-by-kentico:before {
-  content: "\e65f";
+  content: '\e65f';
 }
 .application-content .icon-w-bing-translator:before {
-  content: "\e6ca";
+  content: '\e6ca';
 }
 .application-content .icon-w-static-bing-maps:before {
-  content: "\e6ca";
+  content: '\e6ca';
 }
 .application-content .icon-w-basic-bing-maps:before {
-  content: "\e6ca";
+  content: '\e6ca';
 }
 .application-content .icon-w-bing-maps:before {
-  content: "\e6ca";
+  content: '\e6ca';
 }
 .application-content .icon-w-google-maps:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-static-google-maps:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-basic-google-maps:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-google-activity-feed:before {
-  content: "\e6e6";
+  content: '\e6e6';
 }
 .application-content .icon-w-google-badge:before {
-  content: "\e6e6";
+  content: '\e6e6';
 }
 .application-content .icon-w-google-analytics:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-google-search:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-google-sitemap-xml-sitemap:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-google-translator:before {
-  content: "\e6c8";
+  content: '\e6c8';
 }
 .application-content .icon-w-google-1-button:before {
-  content: "\e6e6";
+  content: '\e6e6';
 }
 .application-content .icon-w-facebook-activity-feed:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-comments:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-connect-logon:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-facepile:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-like-box:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-like-button:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-recommendations:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-facebook-send-button:before {
-  content: "\e6c9";
+  content: '\e6c9';
 }
 .application-content .icon-w-twitter-feed:before {
-  content: "\e6c7";
+  content: '\e6c7';
 }
 .application-content .icon-w-twitter-follow-button:before {
-  content: "\e6c7";
+  content: '\e6c7';
 }
 .application-content .icon-w-twitter-tweet-button:before {
-  content: "\e6c7";
+  content: '\e6c7';
 }
 .application-content .icon-w-pinterest-follow-button:before {
-  content: "\e6e3";
+  content: '\e6e3';
 }
 .application-content .icon-w-pinterest-pin-it-button:before {
-  content: "\e6e3";
+  content: '\e6e3';
 }
 .application-content .icon-w-linkedin-apply-with:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-company-insider:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-company-profile:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-logon:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-member-profile:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-recommend-button:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-required-data:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-linkedin-share-button:before {
-  content: "\e6e5";
+  content: '\e6e5';
 }
 .application-content .icon-w-flash-web-part:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-flash-widget:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-w-social-bookmarking:before {
-  content: "\e678";
+  content: '\e678';
 }
 .application-content .icon-w-wmp-video:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-youtube-video:before {
-  content: "\e659";
+  content: '\e659';
 }
 .application-content .icon-w-silverlight-application-web-part:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-silverlight-application-widget:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-w-quicktime:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-product-filter:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-top-n-newest-products:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-top-n-products-by-sales:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-similar-products-by-sales:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-random-products:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-tag-cloud:before {
-  content: "\e701";
+  content: '\e701';
 }
 .application-content .icon-w-message-board:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-accordion-layout:before {
-  content: "\e704";
+  content: '\e704';
 }
 .application-content .icon-w-columns-layout:before {
-  content: "\e712";
+  content: '\e712';
 }
 .application-content .icon-w-tabs-layout:before {
-  content: "\e6fb";
+  content: '\e6fb';
 }
 .application-content .icon-w-wizard-layout:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-rows-layout:before {
-  content: "\e72e";
+  content: '\e72e';
 }
 .application-content .icon-w-new-blog:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-abuse-report:before {
-  content: "\e6ea";
+  content: '\e6ea';
 }
 .application-content .icon-w-in-line-abuse-report:before {
-  content: "\e6ea";
+  content: '\e6ea';
 }
 .application-content .icon-w-message-board-subscription-confirmation:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-datalist-for-web-service:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-w-tree-view:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-w-admin-actions:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-simple-cookie-law-consent:before {
-  content: "\e6f7";
+  content: '\e6f7';
 }
 .application-content .icon-w-news-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-message-board-unsubscription:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-w-keep-alive:before {
-  content: "\e622";
+  content: '\e622';
 }
 .application-content .icon-w-donate:before {
-  content: "\e708";
+  content: '\e708';
 }
 .application-content .icon-w-donations:before {
-  content: "\e708";
+  content: '\e708';
 }
 .application-content .icon-w-payment-form:before {
-  content: "\e708";
+  content: '\e708';
 }
 .application-content .icon-w-payment-method-selection:before {
-  content: "\e708";
+  content: '\e708';
 }
 .application-content .icon-w-currency-selection:before {
-  content: "\e6ed";
+  content: '\e6ed';
 }
 .application-content .icon-w-analytics-browser-capabilities:before {
-  content: "\e6ff";
+  content: '\e6ff';
 }
 .application-content .icon-w-strands-recommendations:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-password-expiration:before {
-  content: "\e658";
+  content: '\e658';
 }
 .application-content .icon-w-message-board-viewer:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-checkout-process-obsolete:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-category-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-analytics-custom-statistics:before {
-  content: "\e631";
+  content: '\e631';
 }
 .application-content .icon-w-subscription-approval:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-widget-actions:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-w-message-panel:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 .application-content .icon-w-article-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-set-cookie:before {
-  content: "\e6f7";
+  content: '\e6f7';
 }
 .application-content .icon-w-random-document:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-w-edit-contribution:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-universal-document-viewer:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-w-custom-response:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-w-collapsible-panel:before {
-  content: "\e700";
+  content: '\e700';
 }
 .application-content .icon-w-wishlist:before {
-  content: "\e614";
+  content: '\e614';
 }
 .application-content .icon-w-latest-news:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-edit-document-link:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-did-you-mean:before {
-  content: "\e629";
+  content: '\e629';
 }
 .application-content .icon-w-universal-pager:before {
-  content: "\e6fe";
+  content: '\e6fe';
 }
 .application-content .icon-w-basic-universal-viewer:before {
-  content: "\e6fd";
+  content: '\e6fd';
 }
 .application-content .icon-w-random-redirection:before {
-  content: "\e703";
+  content: '\e703';
 }
 .application-content .icon-w-notification-subscription:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-wizard-buttons:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-universal-viewer:before {
-  content: "\e6fd";
+  content: '\e6fd';
 }
 .application-content .icon-w-report-value:before {
-  content: "\e749";
+  content: '\e749';
 }
 .application-content .icon-w-recent-posts:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-object-management-buttons:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-wizard-header:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-universal-viewer-with-custom-query:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-w-confirmation-checkbox:before {
-  content: "\e702";
+  content: '\e702';
 }
 .application-content .icon-w-sharepoint-repeater:before {
-  content: "\e6f4";
+  content: '\e6f4';
 }
 .application-content .icon-w-register-after-checkout:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-post-archive:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-my-invitations:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-link-button:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-contact-list:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-w-task-info-panel:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-document-library:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-w-custom-table-form:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-hierarchical-viewer:before {
-  content: "\e6fd";
+  content: '\e6fd';
 }
 .application-content .icon-w-user-control:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-content-slider:before {
-  content: "\e6f1";
+  content: '\e6f1';
 }
 .application-content .icon-w-blog-post-subscription-confirmation:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-ignore-list:before {
-  content: "\e6ea";
+  content: '\e6ea';
 }
 .application-content .icon-w-document-pager:before {
-  content: "\e6fe";
+  content: '\e6fe';
 }
 .application-content .icon-w-content-subscription:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-blog-post-unsubscription:before {
-  content: "\e60d";
+  content: '\e60d';
 }
 .application-content .icon-w-text-highlighter:before {
-  content: "\e6f6";
+  content: '\e6f6';
 }
 .application-content .icon-w-related-documents:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-w-order-note:before {
-  content: "\e660";
+  content: '\e660';
 }
 .application-content .icon-w-xslt-viewer:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-w-document-wizard-button:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-contribution-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-timer:before {
-  content: "\e6a8";
+  content: '\e6a8';
 }
 .application-content .icon-w-shortcuts:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-document-wizard-manager:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-cookie-law-consent:before {
-  content: "\e6f7";
+  content: '\e6f7';
 }
 .application-content .icon-w-blog-comments-viewer:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-sign-out-button:before {
-  content: "\e6d9";
+  content: '\e6d9';
 }
 .application-content .icon-w-scrolling-news:before {
-  content: "\e6f1";
+  content: '\e6f1';
 }
 .application-content .icon-w-output-cache-dependencies:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-zones-with-effect:before {
-  content: "\e65c";
+  content: '\e65c';
 }
 .application-content .icon-w-document-wizard-navigation:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-my-subscriptions:before {
-  content: "\e634";
+  content: '\e634';
 }
 .application-content .icon-w-document-wizard-step-action:before {
-  content: "\e6fa";
+  content: '\e6fa';
 }
 .application-content .icon-w-page-views:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-activities:before {
-  content: "\e695";
+  content: '\e695';
 }
 .application-content .icon-w-analytics-chart-viewer:before {
-  content: "\e631";
+  content: '\e631';
 }
 .application-content .icon-w-analytics-table-viewer:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-w-articles-rss-feed:before {
-  content: "\e6e9";
+  content: '\e6e9';
 }
 .application-content .icon-w-blog-comments:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-building-your-on-line-store:before {
-  content: "\e6f5";
+  content: '\e6f5';
 }
 .application-content .icon-w-department-latest-blog-posts:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-department-latest-forum-posts:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-department-latest-news:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-department-quick-links:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-department-upcoming-events:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-documents:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-w-e-commerce-settings-checker:before {
-  content: "\e702";
+  content: '\e702';
 }
 .application-content .icon-w-editable-image:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-e-mail-queue:before {
-  content: "\e64e";
+  content: '\e64e';
 }
 .application-content .icon-w-employee-of-the-month:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-w-event-management:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-eventlog:before {
-  content: "\e6a9";
+  content: '\e6a9';
 }
 .application-content .icon-w-forum-group:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-posts-waiting-for-approval:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-administrators:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-group-forum-posts-viewer:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-group-poll:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-intranet-canteen-menu:before {
-  content: "\e660";
+  content: '\e660';
 }
 .application-content .icon-w-intranet-departments:before {
-  content: "\e640";
+  content: '\e640';
 }
 .application-content .icon-w-intranet-employees:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-intranet-latest-blog-posts:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-intranet-latest-forum-posts:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-intranet-latest-news:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-intranet-poll:before {
-  content: "\e631";
+  content: '\e631';
 }
 .application-content .icon-w-intranet-quick-links:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-intranet-upcoming-events:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-latest-blog-posts:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-latest-forum-posts:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-latest-news-for-corporate-site:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-link:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-media-gallery:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-w-message-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-most-recent-pages:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-my-accounts:before {
-  content: "\e6bc";
+  content: '\e6bc';
 }
 .application-content .icon-w-my-blogs:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-my-blogs-comments:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-my-contacts:before {
-  content: "\e663";
+  content: '\e663';
 }
 .application-content .icon-w-my-inbox:before {
-  content: "\e64e";
+  content: '\e64e';
 }
 .application-content .icon-w-my-pending-contacts:before {
-  content: "\e663";
+  content: '\e663';
 }
 .application-content .icon-w-my-projects-intranet-portal:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 .application-content .icon-w-my-workgroups:before {
-  content: "\e6c6";
+  content: '\e6c6';
 }
 .application-content .icon-w-object-recycle-bin:before {
-  content: "\e6d0";
+  content: '\e6d0';
 }
 .application-content .icon-w-orders:before {
-  content: "\e660";
+  content: '\e660';
 }
 .application-content .icon-w-persona-based-recommendations:before {
-  content: "\e604";
+  content: '\e604';
 }
 .application-content .icon-w-personal-category-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-products:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-random-products-for-corporate-site:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 .application-content .icon-w-recent-users:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-report-daily-sales:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-report-monthly-sales:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-report-number-of-orders-by-status:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-report-sales-by-order-status:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-reporting:before {
-  content: "\e684";
+  content: '\e684';
 }
 .application-content .icon-w-rich-text:before {
-  content: "\e728";
+  content: '\e728';
 }
 .application-content .icon-w-scrolling-news-for-corporate-site:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-system:before {
-  content: "\e6ab";
+  content: '\e6ab';
 }
 .application-content .icon-w-tasks-assigned-to-me-intranet-portal:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-tasks-owned-by-me-intranet-portal:before {
-  content: "\e61b";
+  content: '\e61b';
 }
 .application-content .icon-w-text:before {
-  content: "\e72c";
+  content: '\e72c';
 }
 .application-content .icon-w-widget-zone:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 .application-content .icon-w-workgroup-administrators:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-workgroup-latest-blog-posts:before {
-  content: "\e642";
+  content: '\e642';
 }
 .application-content .icon-w-workgroup-latest-forum-posts:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-workgroup-latest-news:before {
-  content: "\e643";
+  content: '\e643';
 }
 .application-content .icon-w-workgroup-members:before {
-  content: "\e602";
+  content: '\e602';
 }
 .application-content .icon-w-workgroup-messages:before {
-  content: "\e64f";
+  content: '\e64f';
 }
 .application-content .icon-w-workgroup-quick-links:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-w-workgroup-recent-pages:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-workgroup-upcoming-events:before {
-  content: "\e6b8";
+  content: '\e6b8';
 }
 .application-content .icon-w-current-user:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-disabled-module-info:before {
-  content: "\e664";
+  content: '\e664';
 }
 .application-content .icon-w-edit:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-edit-parameters:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-forum-favorites:before {
-  content: "\e614";
+  content: '\e614';
 }
 .application-content .icon-w-forum-posts-viewer:before {
-  content: "\e6c1";
+  content: '\e6c1';
 }
 .application-content .icon-w-forum-subscription-confirmation:before {
-  content: "\e675";
+  content: '\e675';
 }
 .application-content .icon-w-header-actions:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-horizontal-tabs:before {
-  content: "\e6fb";
+  content: '\e6fb';
 }
 .application-content .icon-w-listing:before {
-  content: "\e728";
+  content: '\e728';
 }
 .application-content .icon-w-edit-bindings:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-media-file-uploader:before {
-  content: "\e632";
+  content: '\e632';
 }
 .application-content .icon-w-messages-placeholder:before {
-  content: "\e630";
+  content: '\e630';
 }
 .application-content .icon-w-metafile-list:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-w-new-header-action:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-object-edit-panel:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-object-tree-menu:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-w-page-title:before {
-  content: "\e727";
+  content: '\e727';
 }
 .application-content .icon-w-preview-edit:before {
-  content: "\e696";
+  content: '\e696';
 }
 .application-content .icon-w-selector:before {
-  content: "\e6bb";
+  content: '\e6bb';
 }
 .application-content .icon-w-select-site:before {
-  content: "\e698";
+  content: '\e698';
 }
 .application-content .icon-w-theme-file-manager:before {
-  content: "\e68a";
+  content: '\e68a';
 }
 .application-content .icon-w-tree:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-w-tree-guide:before {
-  content: "\e73a";
+  content: '\e73a';
 }
 .application-content .icon-w-users-viewer:before {
-  content: "\e605";
+  content: '\e605';
 }
 .application-content .icon-w-vertical-tabs:before {
-  content: "\e73c";
+  content: '\e73c';
 }
 .application-content .icon-file-default:before {
-  content: "\e69c";
+  content: '\e69c';
 }
 .application-content .icon-file-3gp:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-accdb:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-file-ai:before {
-  content: "\e717";
+  content: '\e717';
 }
 .application-content .icon-file-ascx:before {
-  content: "\e714";
+  content: '\e714';
 }
 .application-content .icon-file-aspx:before {
-  content: "\e69f";
+  content: '\e69f';
 }
 .application-content .icon-file-au:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-avi:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-bat:before {
-  content: "\e71a";
+  content: '\e71a';
 }
 .application-content .icon-file-bmp:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-cs:before {
-  content: "\e718";
+  content: '\e718';
 }
 .application-content .icon-file-css:before {
-  content: "\e63f";
+  content: '\e63f';
 }
 .application-content .icon-file-csv:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-file-dbm:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-file-doc:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-file-eps:before {
-  content: "\e717";
+  content: '\e717';
 }
 .application-content .icon-file-flv:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-gif:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-html:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-file-jpeg:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-js:before {
-  content: "\e6cb";
+  content: '\e6cb';
 }
 .application-content .icon-file-mdb:before {
-  content: "\e6a0";
+  content: '\e6a0';
 }
 .application-content .icon-file-mid:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-mov:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-mp3:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-mp4:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-mpeg:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-mpg:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-mpg4:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-oga:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-ogg:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-ogv:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-pdf:before {
-  content: "\e6a3";
+  content: '\e6a3';
 }
 .application-content .icon-file-png:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-pps:before {
-  content: "\e71d";
+  content: '\e71d';
 }
 .application-content .icon-file-ppt:before {
-  content: "\e71d";
+  content: '\e71d';
 }
 .application-content .icon-file-ps:before {
-  content: "\e717";
+  content: '\e717';
 }
 .application-content .icon-file-psd:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-rtf:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-file-sln:before {
-  content: "\e6ff";
+  content: '\e6ff';
 }
 .application-content .icon-file-swf:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-tif:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-tiff:before {
-  content: "\e633";
+  content: '\e633';
 }
 .application-content .icon-file-txt:before {
-  content: "\e625";
+  content: '\e625';
 }
 .application-content .icon-file-vb:before {
-  content: "\e716";
+  content: '\e716';
 }
 .application-content .icon-file-wav:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-webm:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-wma:before {
-  content: "\e71c";
+  content: '\e71c';
 }
 .application-content .icon-file-wmv:before {
-  content: "\e636";
+  content: '\e636';
 }
 .application-content .icon-file-xls:before {
-  content: "\e612";
+  content: '\e612';
 }
 .application-content .icon-file-xml:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-file-xsl:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-file-xslt:before {
-  content: "\e6e7";
+  content: '\e6e7';
 }
 .application-content .icon-file-zip:before {
-  content: "\e715";
+  content: '\e715';
 }
 .application-content .icon-me-abstractobjectcollection:before {
-  content: "\e68b";
+  content: '\e68b';
 }
 .application-content .icon-me-binding:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-me-boolean:before {
-  content: "\e74a";
+  content: '\e74a';
 }
 .application-content .icon-me-datetime:before {
-  content: "\e6a8";
+  content: '\e6a8';
 }
 .application-content .icon-me-double:before {
-  content: "\e752";
+  content: '\e752';
 }
 .application-content .icon-me-false:before {
-  content: "\e74e";
+  content: '\e74e';
 }
 .application-content .icon-me-children:before {
-  content: "\e67b";
+  content: '\e67b';
 }
 .application-content .icon-me-icontext:before {
-  content: "\e654";
+  content: '\e654';
 }
 .application-content .icon-me-ilist:before {
-  content: "\e6f8";
+  content: '\e6f8';
 }
 .application-content .icon-me-imacronamespace:before {
-  content: "\e699";
+  content: '\e699';
 }
 .application-content .icon-me-info:before {
-  content: "\e6a9";
+  content: '\e6a9';
 }
 .application-content .icon-me-insertmacro:before {
-  content: "\e740";
+  content: '\e740';
 }
 .application-content .icon-me-int32:before {
-  content: "\e752";
+  content: '\e752';
 }
 .application-content .icon-me-method:before {
-  content: "\e6a6";
+  content: '\e6a6';
 }
 .application-content .icon-me-null:before {
-  content: "\e751";
+  content: '\e751';
 }
 .application-content .icon-me-number:before {
-  content: "\e752";
+  content: '\e752';
 }
 .application-content .icon-me-parent:before {
-  content: "\e74c";
+  content: '\e74c';
 }
 .application-content .icon-me-property:before {
-  content: "\e6a9";
+  content: '\e6a9';
 }
 .application-content .icon-me-referring:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-me-sitebinding:before {
-  content: "\e67f";
+  content: '\e67f';
 }
 .application-content .icon-me-snippet:before {
-  content: "\e750";
+  content: '\e750';
 }
 .application-content .icon-me-string:before {
-  content: "\e74f";
+  content: '\e74f';
 }
 .application-content .icon-me-true:before {
-  content: "\e74b";
+  content: '\e74b';
 }
 .application-content .icon-me-value:before {
-  content: "\e749";
+  content: '\e749';
 }
 .application-content .icon-me-exception:before {
-  content: "\e693";
+  content: '\e693';
 }
 .application-content .icon-crosshair {
   position: relative;
   display: inline-block;
 }
 .application-content .icon-crosshair:before {
-  content: "\e71b";
+  content: '\e71b';
   color: #fff;
   position: absolute;
   left: 0;
   display: inline-block;
 }
 .application-content .icon-crosshair:after {
-  content: "\e71f";
+  content: '\e71f';
   position: absolute;
   left: 0;
   display: inline-block;
@@ -5136,7 +5152,7 @@ body {
 .application-content .checkbox label:before,
 .application-content .radio label:after,
 .application-content .checkbox label:after {
-  content: "";
+  content: '';
   width: 15px;
   height: 15px;
   line-height: 16px;
@@ -5159,7 +5175,7 @@ body {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 .application-content .radio input[disabled] + label,
@@ -5192,7 +5208,7 @@ body {
 .application-content .checkbox input + label:before,
 .application-content .radio input + label:after,
 .application-content .checkbox input + label:after {
-  font-family: "Core-icons";
+  font-family: 'Core-icons';
   font-size: 16px;
   text-align: center;
 }
@@ -5218,25 +5234,25 @@ body {
   height: 16px;
 }
 .application-content .radio input ~ label:before {
-  content: "\e626";
+  content: '\e626';
 }
 .application-content .radio input:disabled ~ label:before {
-  content: "\e6ac";
+  content: '\e6ac';
 }
 .application-content .radio input:checked ~ label:after {
-  content: "\e627";
+  content: '\e627';
 }
 .application-content .radio label:before {
   border-radius: 50%;
 }
 .application-content .checkbox input ~ label:before {
-  content: "\e6ad";
+  content: '\e6ad';
 }
 .application-content .checkbox input:disabled ~ label:before {
-  content: "\e6f0";
+  content: '\e6f0';
 }
 .application-content .checkbox input:checked ~ label:after {
-  content: "\e6b0";
+  content: '\e6b0';
 }
 .application-content .checkbox:not(.checkbox-no-label) label {
   margin-right: 8px;
@@ -5409,7 +5425,7 @@ body {
 .application-content .logo-link,
 .application-content .logo-link:hover,
 .application-content .logo-link:focus {
-  color: #1C1C1C;
+  color: #1c1c1c;
 }
 .application-content footer {
   margin-top: 2rem;
@@ -5431,7 +5447,7 @@ body {
   color: white;
 }
 .application-content .footer-container {
-  background: #1D1D1D;
+  background: #1d1d1d;
   color: #fff;
   padding-bottom: 2rem;
 }
@@ -5439,7 +5455,7 @@ body {
   color: #fff;
 }
 .application-content .footer-container .form-group-input input {
-  color: #1D1D1D;
+  color: #1d1d1d;
   height: 45px;
   width: 100%;
 }
@@ -5464,18 +5480,18 @@ body {
   }
 }
 .application-content .form-group {
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 .application-content .form-group-label {
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
 }
 .application-content .form-group-label-required:after {
-  content: "*";
-  color: #B4594A;
+  content: '*';
+  color: #b4594a;
 }
 .application-content .form-group-input input,
 .application-content .form-group-input textarea {
-  padding: .4rem;
+  padding: 0.4rem;
   width: 60%;
 }
 .application-content .form-group-input textarea {
@@ -5484,20 +5500,20 @@ body {
 }
 .application-content .form-group-input .Error input,
 .application-content .form-group-input .Error textarea {
-  border-color: #D12127;
+  border-color: #d12127;
 }
 .application-content .btn {
-  padding: .6rem 2rem;
+  padding: 0.6rem 2rem;
   cursor: pointer;
-  color: #08768C;
+  color: #08768c;
   background: #fff;
-  border: 2px solid #08768C;
+  border: 2px solid #08768c;
   display: inline-block;
   text-decoration: none;
 }
 .application-content .btn-primary {
   text-transform: uppercase;
-  background: #08768C;
+  background: #08768c;
   color: #fff;
 }
 .application-content .btn-primary:hover {
@@ -5519,7 +5535,7 @@ body {
 }
 .application-content .btn-hide-and-seek:hover {
   background-color: #fff;
-  color: #1C1C1C;
+  color: #1c1c1c;
 }
 .application-content .btn-hide-and-seek:focus {
   background-color: transparent;
@@ -5537,13 +5553,13 @@ body {
 .application-content .error-label,
 .application-content .info-label {
   font-weight: bold;
-  margin-top: .3rem;
-  margin-bottom: .6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.6rem;
   display: block;
 }
 .application-content .message-error,
 .application-content .error-label {
-  color: #D12127;
+  color: #d12127;
 }
 .application-content .info-label {
   color: white;
@@ -5573,22 +5589,22 @@ body {
   overflow: hidden;
 }
 .application-content .article-tile-content {
-  padding-right: .7rem;
+  padding-right: 0.7rem;
 }
 .application-content .article-tile-image {
   width: 100%;
   display: block;
 }
 .application-content .article-tile-date {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   display: inline-block;
   padding: 0.3rem 1rem;
 }
 .application-content .title-tab {
   background: black;
   color: white;
-  padding: .6rem 1rem;
-  margin: 0 .5px;
+  padding: 0.6rem 1rem;
+  margin: 0 0.5px;
   display: inline-block;
   font-size: 1rem;
   text-transform: uppercase;
@@ -5668,17 +5684,17 @@ body {
 }
 .application-content .pagination > li > a:hover,
 .application-content .pagination > li > a:focus {
-  border-bottom: 2px solid #E6E6E6;
+  border-bottom: 2px solid #e6e6e6;
 }
 .application-content .pagination > li.active {
-  color: #08768C;
-  border: 2px solid #08768C;
+  color: #08768c;
+  border: 2px solid #08768c;
   padding: 3px 9px;
 }
 .application-content .pagination > li.PagedList-skipToPrevious > a,
 .application-content .pagination > li.PagedList-skipToNext > a {
   text-decoration: underline;
-  color: #08768C;
+  color: #08768c;
   border-bottom: none;
 }
 @media (min-width: 768px) {
@@ -5698,9 +5714,9 @@ body {
 }
 .application-content .banner-heading {
   text-transform: uppercase;
-  color: #FFFFFF;
-  background-color: #B24143;
-  font-family: "Source Sans Pro";
+  color: #ffffff;
+  background-color: #b24143;
+  font-family: 'Source Sans Pro';
   font-weight: normal;
   font-size: 1.375rem;
   padding: 1rem;
@@ -5709,7 +5725,7 @@ body {
 }
 .application-content .banner-text {
   color: #000000;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 1.375rem;
   padding: 1rem;
   display: block;
@@ -5726,7 +5742,7 @@ body {
   font-size: 1.3rem;
 }
 .application-content .cafe-overlay {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: block;
   height: 100%;
   position: absolute;
@@ -5740,8 +5756,8 @@ body {
   padding: 0px;
 }
 .application-content .cafe-tile {
-  background: #B24143;
-  color: #FFF;
+  background: #b24143;
+  color: #fff;
   height: 200px;
   overflow: hidden;
 }
@@ -5753,7 +5769,7 @@ body {
 .application-content .cafe-tile-address-anchor:hover,
 .application-content .cafe-tile-address-anchor:focus,
 .application-content .cafe-tile-address-anchor:active {
-  color: #FFF;
+  color: #fff;
 }
 .application-content .cafe-tile-image {
   width: 100%;
@@ -5762,8 +5778,8 @@ body {
   padding: 0 1rem 1rem 1rem;
 }
 .application-content .cafe-image-tile {
-  background: #B24143;
-  color: #FFF;
+  background: #b24143;
+  color: #fff;
 }
 .application-content .cafe-image-tile-address {
   font-style: normal;
@@ -5773,7 +5789,7 @@ body {
 .application-content .cafe-image-tile-address-anchor:hover,
 .application-content .cafe-image-tile-address-anchor:focus,
 .application-content .cafe-image-tile-address-anchor:active {
-  color: #FFF;
+  color: #fff;
 }
 .application-content .cafe-image-tile-image {
   width: 100%;
@@ -5849,7 +5865,7 @@ body {
   position: relative;
 }
 .application-content .cafe-overlay {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: block;
   height: 100%;
   position: absolute;
@@ -5870,25 +5886,25 @@ body {
 .application-content .InfoLabel,
 .application-content .error-label {
   font-weight: bold;
-  margin-top: .3rem;
-  margin-bottom: .6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.6rem;
   display: block;
 }
 .application-content .searchBox {
-  border: 2px solid #BDBBBB;
+  border: 2px solid #bdbbbb;
   display: inline-block;
   width: 100%;
-  background: #FFF;
+  background: #fff;
 }
-.application-content .searchBox input[type=text] {
+.application-content .searchBox input[type='text'] {
   padding: 0 1rem;
   width: 85%;
 }
 .application-content .searchBox .search-box-watermark {
-  color: #BDBBBB;
+  color: #bdbbbb;
 }
 .application-content .searchBox .search-box-btn {
-  padding: .6rem 1rem;
+  padding: 0.6rem 1rem;
   float: right;
   background: url(Images/icon-magnifier.png) no-repeat left;
 }
@@ -5911,13 +5927,13 @@ body {
   padding: 1rem;
 }
 .application-content .search-tile-badge {
-  background: #08768C;
+  background: #08768c;
   display: inline-block;
   padding: 0 5px;
   color: #fff;
 }
 .application-content .search-tile-subtitle {
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 .application-content .search-tile-product-image img {
   display: block;
@@ -5934,9 +5950,12 @@ body {
   }
 }
 @media (max-width: 768px) {
-  .application-content .signin-register .form-group-input input[type="text"],
-  .application-content .signin-register .form-group-input input[type="password"],
-  .application-content .signin-register .form-group-input input[type="email"],
+  .application-content .signin-register .form-group-input input[type='text'],
+  .application-content
+    .signin-register
+    .form-group-input
+    input[type='password'],
+  .application-content .signin-register .form-group-input input[type='email'],
   .application-content .signin-register .form-group-input textarea {
     width: 100% !important;
   }
@@ -5951,10 +5970,10 @@ body {
   display: block;
   font-weight: bold;
   text-align: left;
-  background-color: #D12127;
+  background-color: #d12127;
   padding: 10px 12px;
-  margin-top: .3rem;
-  margin-bottom: .6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.6rem;
 }
 .application-content .signin-register .input-validation-error {
   border-color: #d12127 !important;
@@ -5969,7 +5988,7 @@ body {
   margin-top: 0;
 }
 .application-content .signin-register .zone-dark {
-  background: #E7E7E7;
+  background: #e7e7e7;
   padding: 1rem;
 }
 .application-content .signin-register .zone-light {
@@ -5986,19 +6005,19 @@ body {
   margin-left: -2rem;
   padding: 0 0.5rem;
   top: 0.5rem;
-  background: #E7E7E7;
+  background: #e7e7e7;
 }
-.application-content .signin-register input[type="submit"] {
-  margin: .5rem 0;
+.application-content .signin-register input[type='submit'] {
+  margin: 0.5rem 0;
 }
-.application-content .signin-register input[type="password"],
-.application-content .signin-register input[type="text"],
-.application-content .signin-register input[type="email"] {
+.application-content .signin-register input[type='password'],
+.application-content .signin-register input[type='text'],
+.application-content .signin-register input[type='email'] {
   height: 2.6rem;
   margin-top: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  border: 2px solid #BEBEBE;
+  border: 2px solid #bebebe;
 }
 .application-content .signin-register .logon-password-retrieval-result {
   color: white;
@@ -6009,16 +6028,16 @@ body {
   margin-bottom: 0.7rem;
 }
 .application-content .signin-register .logon-password-retrieval-result-failed {
-  background-color: #D12127 !important;
+  background-color: #d12127 !important;
   font-weight: bold;
 }
 .application-content .signin-register .EditingFormErrorLabel {
-  color: #D12127;
+  color: #d12127;
 }
 .application-content .logon-remember-me-checkbox {
   display: block;
 }
-.application-content .logon-remember-me-checkbox input[type="checkbox"] {
+.application-content .logon-remember-me-checkbox input[type='checkbox'] {
   width: auto;
   margin-right: 0.15rem;
 }
@@ -6031,17 +6050,17 @@ body {
   position: relative;
 }
 .application-content .btn {
-  padding: .6rem 2rem;
+  padding: 0.6rem 2rem;
   cursor: pointer;
-  color: #08768C;
+  color: #08768c;
   background: #fff;
-  border: 2px solid #08768C;
+  border: 2px solid #08768c;
   display: inline-block;
   text-decoration: none;
 }
 .application-content .btn-primary {
   text-transform: uppercase;
-  background: #08768C;
+  background: #08768c;
   color: #fff;
 }
 .application-content .btn-primary:hover {
@@ -6075,7 +6094,7 @@ body {
 }
 .application-content .btn-hide-and-seek:hover {
   background-color: #fff;
-  color: #1C1C1C;
+  color: #1c1c1c;
 }
 .application-content .btn-hide-and-seek:focus {
   background-color: transparent;
@@ -6087,12 +6106,12 @@ body {
   background-position: 28px 28px;
   background-size: 2em 2em;
   border-collapse: separate;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 2em;
   width: 100%;
 }
 .application-content .message-info {
-  background-color: #89CFFA;
+  background-color: #89cffa;
 }
 
 .application-content .message-content {
@@ -6132,9 +6151,9 @@ body {
 
 .loader {
   border: solid 15px transparent;
-  border-bottom-color: #1D1D1D;
+  border-bottom-color: #1d1d1d;
   border-radius: 50%;
-  content: "";
+  content: '';
   height: 10em;
   width: 10em;
   animation: spin 1s infinite linear;

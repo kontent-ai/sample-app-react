@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Link from '../Components/LowerCaseUrlLink';
-import { resolveContentLink } from '../Utilities/ContentLinks'
-import { CoffeeStore } from "../Stores/Coffee";
+import { resolveContentLink } from '../Utilities/ContentLinks';
+import { CoffeeStore } from '../Stores/Coffee';
 
-let getState = (props) => {
+let getState = props => {
   return {
     coffees: CoffeeStore.getCoffees(props.language),
     filter: CoffeeStore.getFilter()
@@ -11,7 +11,6 @@ let getState = (props) => {
 };
 
 class Coffees extends Component {
-
   constructor(props) {
     super(props);
 
@@ -43,26 +42,22 @@ class Coffees extends Component {
   render() {
     let formatPrice = (price, language) => {
       return price.toLocaleString(language, {
-        style: "currency",
-        currency: "USD"
+        style: 'currency',
+        currency: 'USD'
       });
     };
 
-    let renderProductStatus = (productStatus) => {
+    let renderProductStatus = productStatus => {
       if (productStatus.value.length === 0) {
-        return <span />
+        return <span />;
       }
 
-      let text = productStatus.value.map((x) => x.name).join(", ");
+      let text = productStatus.value.map(x => x.name).join(', ');
 
-      return (
-        <span className="product-tile-status">
-          {text}
-        </span>
-      );
+      return <span className="product-tile-status">{text}</span>;
     };
 
-    let filter = (coffee) => {
+    let filter = coffee => {
       return this.state.filter.matches(coffee);
     };
 
@@ -71,7 +66,10 @@ class Coffees extends Component {
       let name = coffee.productName.value;
       let imageLink = coffee.image.value[0].url;
       let status = renderProductStatus(coffee.productStatus);
-      let link = resolveContentLink({ type: 'coffee', urlSlug: coffee.urlPattern.value }, this.props.language);
+      let link = resolveContentLink(
+        { type: 'coffee', urlSlug: coffee.urlPattern.value },
+        this.props.language
+      );
 
       return (
         <div className="col-md-6 col-lg-4" key={index}>
@@ -83,9 +81,7 @@ class Coffees extends Component {
                 <img alt={name} className="" src={imageLink} title={name} />
               </figure>
               <div className="product-tile-info">
-                <span className="product-tile-price">
-                  {price}
-                </span>
+                <span className="product-tile-price">{price}</span>
               </div>
             </Link>
           </article>

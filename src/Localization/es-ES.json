@@ -1,60 +1,60 @@
 {
-    "locale": "es-ES",
-    "Banner": {
-        "heading": "Café tostado de primera calidad ",
-        "text": "Descubre el fascinante mundo de Dancing Goat café de la mas alta calidad. Nunca más perderás una sola oportunidad de disfrutar un buen café."
-    },
-    "LatestArticles": {
-        "title": "Último artículo"
-    },
-    "Home": {
-        "moreArticles": "Más artículos",
-        "aboutLinkText": "Leer toda la historia",
-        "cafesLinkText": "Más cafés"
-    },
-    "OurStory": {
-        "title": "Nuestra historia",
-        "text": "Dancing Goat originó en 1969 como una empresa de entusiastas del café. Nuestro principal objetivo siempre ha sido ofrecer una experiencia inolvidable a nuestros clientes. Conocemos a todos los agricultores personalmente y tenemos la calidad como la mayor exigencia. Con esta creencia nos hemos convertido en una marca reconocida y disfrutarda por todo el mundo."
-    },
-    "TasteOurCoffee": {
-        "title": "Probar nuestro café"
-    },
-    "Header": {
-        "homeLinkTitle": "Inicio",
-        "storeLinkTitle": "Tienda",
-        "articlesLinkTitle": "Artículos",
-        "aboutLinkTitle": "Quiénes somos",
-        "cafesLinkTitle": "Cafés",
-        "contactsLinkTitle": "Contacto"
-    },
-    "Store": {
-        "coffeesLinkTitle": "Cafés",
-        "brewersLinkTitle": "Cerveceros"
-    },
-    "CoffeeFilter": {
-        "coffeeProcessingTitle": "Procesamiento del café",
-        "statusTitle": "Estado"
-    },
-    "BrewerFilter": {
-        "manufacturerTitle": "Fabricante",
-        "priceTitle": "Precio",
-        "statusTitle": "Estado"
-    },
-    "Cafes": {
-        "ourCafesTitle" : "Nuestros cafés",
-        "partnerCafesTitle" : "Otros lugares donde puedes tomar nuestro café"
-    },
-    "Contacts": {
-        "roasteryTitle":"Roastery",
-        "ourCafesTitle": "Probar nuestro café",
-        "mapTitle": "Pase por nuestros cafés        "
-    },
-    "Footer": {
-      "followUs": "Síguenos",
-      "followUsOnFacebook": "Síguenos en Facebook",
-      "followUsOnTwitter": "Síganos en Twitter",
-      "contact": "Contacto",
-      "cityStateZip": "Illinois 60601, EE.UU.",
-      "allRightsReserved": "Todos los derechos reservados."
-    }
+  "locale": "es-ES",
+  "Banner": {
+    "heading": "Café tostado de primera calidad ",
+    "text": "Descubre el fascinante mundo de Dancing Goat café de la mas alta calidad. Nunca más perderás una sola oportunidad de disfrutar un buen café."
+  },
+  "LatestArticles": {
+    "title": "Último artículo"
+  },
+  "Home": {
+    "moreArticles": "Más artículos",
+    "aboutLinkText": "Leer toda la historia",
+    "cafesLinkText": "Más cafés"
+  },
+  "OurStory": {
+    "title": "Nuestra historia",
+    "text": "Dancing Goat originó en 1969 como una empresa de entusiastas del café. Nuestro principal objetivo siempre ha sido ofrecer una experiencia inolvidable a nuestros clientes. Conocemos a todos los agricultores personalmente y tenemos la calidad como la mayor exigencia. Con esta creencia nos hemos convertido en una marca reconocida y disfrutarda por todo el mundo."
+  },
+  "TasteOurCoffee": {
+    "title": "Probar nuestro café"
+  },
+  "Header": {
+    "homeLinkTitle": "Inicio",
+    "storeLinkTitle": "Tienda",
+    "articlesLinkTitle": "Artículos",
+    "aboutLinkTitle": "Quiénes somos",
+    "cafesLinkTitle": "Cafés",
+    "contactsLinkTitle": "Contacto"
+  },
+  "Store": {
+    "coffeesLinkTitle": "Cafés",
+    "brewersLinkTitle": "Cerveceros"
+  },
+  "CoffeeFilter": {
+    "coffeeProcessingTitle": "Procesamiento del café",
+    "statusTitle": "Estado"
+  },
+  "BrewerFilter": {
+    "manufacturerTitle": "Fabricante",
+    "priceTitle": "Precio",
+    "statusTitle": "Estado"
+  },
+  "Cafes": {
+    "ourCafesTitle": "Nuestros cafés",
+    "partnerCafesTitle": "Otros lugares donde puedes tomar nuestro café"
+  },
+  "Contacts": {
+    "roasteryTitle": "Roastery",
+    "ourCafesTitle": "Probar nuestro café",
+    "mapTitle": "Pase por nuestros cafés        "
+  },
+  "Footer": {
+    "followUs": "Síguenos",
+    "followUsOnFacebook": "Síguenos en Facebook",
+    "followUsOnTwitter": "Síganos en Twitter",
+    "contact": "Contacto",
+    "cityStateZip": "Illinois 60601, EE.UU.",
+    "allRightsReserved": "Todos los derechos reservados."
+  }
 }

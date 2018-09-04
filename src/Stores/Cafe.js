@@ -1,31 +1,35 @@
-import { Client } from "../Client.js";
+import { Client } from '../Client.js';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { initLanguageCodeObject, defaultLanguage, languageCodes } from '../Utilities/LanguageCodes'
+import {
+  initLanguageCodeObject,
+  defaultLanguage,
+  languageCodes
+} from '../Utilities/LanguageCodes';
 import { spinnerService } from '@chevtek/react-spinners';
 
 let unsubscribe = new Subject();
 let changeListeners = [];
 const resetStore = () => {
   let languageInitialized = {};
-  languageCodes.forEach((language) => {
+  languageCodes.forEach(language => {
     languageInitialized[language] = false;
   });
 
   return {
     cafes: initLanguageCodeObject(),
     languageInitialized: languageInitialized
-  }
+  };
 };
 let { cafes, languageInitialized } = resetStore();
 
-let notifyChange = (newlanguage) => {
-  changeListeners.forEach((listener) => {
+let notifyChange = newlanguage => {
+  changeListeners.forEach(listener => {
     listener(newlanguage);
   });
-}
+};
 
-let fetchCafes = (language) => {
+let fetchCafes = language => {
   if (languageInitialized[language]) {
     notifyChange(language);
     return;
@@ -33,12 +37,13 @@ let fetchCafes = (language) => {
 
   let query = Client.items()
     .type('cafe')
-    .orderParameter('system.name')
+    .orderParameter('system.name');
   if (language) {
     query.languageParameter(language);
   }
 
-  query.getObservable()
+  query
+    .getObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
@@ -49,10 +54,9 @@ let fetchCafes = (language) => {
       notifyChange(language);
       languageInitialized[language] = true;
     });
-}
+};
 
 class Cafe {
-
   // Actions
 
   providePartnerCafes(language) {
@@ -73,12 +77,12 @@ class Cafe {
 
   getPartnerCafes(language) {
     spinnerService.hide('apiSpinner');
-    return cafes[language].filter((cafe) => cafe.country.value !== "USA");
+    return cafes[language].filter(cafe => cafe.country.value !== 'USA');
   }
 
   getCompanyCafes(language) {
     spinnerService.hide('apiSpinner');
-    return cafes[language].filter((cafe) => cafe.country.value === "USA");
+    return cafes[language].filter(cafe => cafe.country.value === 'USA');
   }
 
   // Listeners
@@ -88,7 +92,7 @@ class Cafe {
   }
 
   removeChangeListener(listener) {
-    changeListeners = changeListeners.filter((element) => {
+    changeListeners = changeListeners.filter(element => {
       return element !== listener;
     });
   }
@@ -101,8 +105,4 @@ class Cafe {
 }
 let CafeStore = new Cafe();
 
-export {
-  CafeStore,
-  resetStore
-};
-
+export { CafeStore, resetStore };

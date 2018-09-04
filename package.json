@@ -6,6 +6,9 @@
     "cpy-cli": "^2.0.0",
     "cross-env": "^5.2.0",
     "dateformat": "^3.0.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
     "react-scripts": "^2.0.0-next.a671462c"
   },
   "dependencies": {
@@ -27,7 +30,14 @@
     "universal-cookie": "^3.0.4",
     "validator": "^10.7.0"
   },
+  "lint-staged": {
+    "{src,examples}/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
     "test": "react-scripts test --env=jsdom",
