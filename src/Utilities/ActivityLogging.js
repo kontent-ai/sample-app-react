@@ -1,3 +1,3 @@
-export function LogAboutUs(){
-      window.ket('action', '');
+export function LogAboutUs() {
+  window.ket('action', '');
 }

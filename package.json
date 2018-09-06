@@ -3,29 +3,41 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "cross-env": "^5.1.4",
-    "dateformat": "^2.0.0",
-    "react-scripts": "1.1.4",
-    "cpy-cli": "^1.0.1"
+    "cpy-cli": "^2.0.0",
+    "cross-env": "^5.2.0",
+    "dateformat": "^3.0.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "react-scripts": "^2.0.0-next.a671462c"
   },
   "dependencies": {
-    "google-maps-react": "^1.1.2",
+    "@chevtek/react-spinners": "^1.0.5",
+    "google-maps-react": "^2.0.2",
     "immutable": "^3.8.2",
-    "kentico-cloud-delivery": "^4.0.2",
-    "lodash": "^4.17.4",
+    "kentico-cloud-delivery": "^4.3.0",
+    "lodash": "^4.17.10",
     "qs": "^6.5.2",
-    "react": "^15.3.1",
-    "react-cookie": "^2.2.0",
-    "react-dom": "^15.3.1",
-    "react-router-dom": "^4.2.2",
-    "react-scroll": "^1.6.4",
+    "react": "^16.4.2",
+    "react-cookie": "^3.0.4",
+    "react-dom": "^16.4.2",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^4.3.1",
+    "react-scroll": "^1.7.10",
     "react-translate": "^6.0.0",
-    "rxjs": "^6.1.0",
-    "twitter-widgets": "^1.0.0",
-    "universal-cookie": "^2.2.0",
-    "validator": "^10.4.0"
+    "rxjs": "^6.2.2",
+    "twitter-widgets": "^2.0.0",
+    "universal-cookie": "^3.0.4",
+    "validator": "^10.7.0"
+  },
+  "lint-staged": {
+    "{src,examples}/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
     "test": "react-scripts test --env=jsdom",
@@ -33,5 +45,17 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">0.25%",
+      "not op_mini all",
+      "ie 11"
+    ]
   }
 }

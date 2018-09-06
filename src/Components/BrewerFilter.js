@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { translate } from 'react-translate'
+import { translate } from 'react-translate';
 
-import { BrewerStore } from "../Stores/Brewer";
+import { BrewerStore } from '../Stores/Brewer';
 
 let priceRanges = [
   { min: 0, max: 50 },
   { min: 50, max: 250 },
-  { min: 250, max: 5000 },
+  { min: 250, max: 5000 }
 ];
 
 let getState = () => {
@@ -48,34 +48,40 @@ class BrewerFilter extends Component {
 
     return (
       <aside className="col-md-4 col-lg-3 product-filter">
-        <h4>{this.props.t("manufacturerTitle")}</h4>
+        <h4>{this.props.t('manufacturerTitle')}</h4>
         <ManufacturerFilter manufacturers={manufacturers} filter={filter} />
-        <h4>{this.props.t("priceTitle")}</h4>
-        <PriceRangeFilter priceRanges={priceRanges} filter={filter} language={this.props.language} />
-        <h4>{this.props.t("statusTitle")}</h4>
-        <ProductStatusFilter productStatuses={productStatuses} filter={filter} />
+        <h4>{this.props.t('priceTitle')}</h4>
+        <PriceRangeFilter
+          priceRanges={priceRanges}
+          filter={filter}
+          language={this.props.language}
+        />
+        <h4>{this.props.t('statusTitle')}</h4>
+        <ProductStatusFilter
+          productStatuses={productStatuses}
+          filter={filter}
+        />
       </aside>
     );
   }
 }
 
-const ManufacturerFilter = (props) => {
-  let filterItems = props.manufacturers.map((manufacturer) => {
+const ManufacturerFilter = props => {
+  let filterItems = props.manufacturers.map(manufacturer => {
     return (
-      <ManufacturerFilterItem manufacturer={manufacturer} id={"Manufacturer-" + manufacturer.codename}
+      <ManufacturerFilterItem
+        manufacturer={manufacturer}
+        id={'Manufacturer-' + manufacturer.codename}
         filter={props.filter}
-        key={manufacturer.codename} />
+        key={manufacturer.codename}
+      />
     );
   });
 
-  return (
-    <div>
-      {filterItems}
-    </div>
-  );
-}
+  return <div>{filterItems}</div>;
+};
 
-const ManufacturerFilterItem = (props) => {
+const ManufacturerFilterItem = props => {
   let codename = props.manufacturer.codename;
   let checked = props.filter.manufacturers.includes(codename);
   let onChange = () => {
@@ -85,64 +91,82 @@ const ManufacturerFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
+      <input
+        id={props.id}
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
       <label htmlFor={props.id}>{props.manufacturer.name}</label>
     </span>
   );
-}
+};
 
-const PriceRangeFilter = (props) => {
+const PriceRangeFilter = props => {
   let filterItems = props.priceRanges.map((priceRange, index) => {
     return (
-      <PriceRangeFilterItem language={props.language} priceRange={priceRange} id={"PriceRange-" + index} filter={props.filter} key={index} />
+      <PriceRangeFilterItem
+        language={props.language}
+        priceRange={priceRange}
+        id={'PriceRange-' + index}
+        filter={props.filter}
+        key={index}
+      />
     );
   });
 
-  return (
-    <div>
-      {filterItems}
-    </div>
-  );
-}
+  return <div>{filterItems}</div>;
+};
 
-const PriceRangeFilterItem = (props) => {
-  let checked = props.filter.priceRanges.findIndex((x) => x.min === props.priceRange.min && x.max === props.priceRange.max) >= 0;
+const PriceRangeFilterItem = props => {
+  let checked =
+    props.filter.priceRanges.findIndex(
+      x => x.min === props.priceRange.min && x.max === props.priceRange.max
+    ) >= 0;
   let formatPrice = (price, language) => {
     return price.toLocaleString(language, {
-      style: "currency",
-      currency: "USD",
+      style: 'currency',
+      currency: 'USD',
       maximumFractionDigits: 2
     });
   };
   let onChange = () => {
     props.filter.togglePriceRange(props.priceRange);
     BrewerStore.setFilter(props.filter);
-  }
+  };
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
-      <label htmlFor={props.id}>{formatPrice(props.priceRange.min, props.language) + " – " + formatPrice(props.priceRange.max, props.language)}</label>
+      <input
+        id={props.id}
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
+      <label htmlFor={props.id}>
+        {formatPrice(props.priceRange.min, props.language) +
+          ' – ' +
+          formatPrice(props.priceRange.max, props.language)}
+      </label>
     </span>
   );
-}
+};
 
-const ProductStatusFilter = (props) => {
-  let filterItems = props.productStatuses.map((productStatus) => {
+const ProductStatusFilter = props => {
+  let filterItems = props.productStatuses.map(productStatus => {
     return (
-      <ProductStatusFilterItem productStatus={productStatus} id={"ProductStatus-" + productStatus.codename}
+      <ProductStatusFilterItem
+        productStatus={productStatus}
+        id={'ProductStatus-' + productStatus.codename}
         filter={props.filter}
-        key={productStatus.codename} />
+        key={productStatus.codename}
+      />
     );
   });
 
-  return (
-    <div>
-      {filterItems}
-    </div>
-  );
-}
+  return <div>{filterItems}</div>;
+};
 
-const ProductStatusFilterItem = (props) => {
+const ProductStatusFilterItem = props => {
   let codename = props.productStatus.codename;
   let checked = props.filter.productStatuses.includes(codename);
   let onChange = () => {
@@ -152,10 +176,15 @@ const ProductStatusFilterItem = (props) => {
 
   return (
     <span className="checkbox js-postback">
-      <input id={props.id} type="checkbox" checked={checked} onChange={onChange} />
+      <input
+        id={props.id}
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
       <label htmlFor={props.id}>{props.productStatus.name}</label>
     </span>
   );
-}
+};
 
-export default translate("BrewerFilter")(BrewerFilter);
+export default translate('BrewerFilter')(BrewerFilter);

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { FactStore } from '../Stores/Fact';
+import { AboutStore } from '../Stores/About';
 import RichTextElement from '../Components/RichTextElement';
+import Metadata from '../Components/Metadata';
 
-let getState = (props) => {
+let getState = props => {
   return {
-    facts: FactStore.getFacts(props.language)
+    metaData: AboutStore.getMetaData(props.language),
+    facts: AboutStore.getFacts(props.language)
   };
 };
 
@@ -17,18 +19,33 @@ class About extends Component {
   }
 
   componentDidMount() {
-    FactStore.addChangeListener(this.onChange);
-    FactStore.provideFacts(this.props.language, this.props.match.params.urlSlug);
+    AboutStore.addChangeListener(this.onChange);
+    AboutStore.provideFacts(
+      this.props.language,
+      this.props.match.params.urlSlug
+    );
+    AboutStore.provideMetaData(
+      this.props.language,
+      this.props.match.params.urlSlug
+    );
   }
 
   componentWillUnmount() {
-    FactStore.removeChangeListener(this.onChange);
-    FactStore.unsubscribe();
+    AboutStore.removeChangeListener(this.onChange);
+    AboutStore.unsubscribe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.language !== nextProps.language) {
-      FactStore.provideFacts(nextProps.language, nextProps.match.params.urlSlug);
+      AboutStore.provideFacts(
+        this.props.language,
+        this.props.match.params.urlSlug
+      );
+      AboutStore.provideMetaData(
+        this.props.language,
+        this.props.match.params.urlSlug
+      );
     }
   }
 
@@ -47,10 +64,18 @@ class About extends Component {
           <section className="row text-and-image" key={index}>
             <h2 className="col-lg-12">{title}</h2>
             <div className="col-md-6">
-              <RichTextElement className="text-and-image-text" element={descriptionElement} />
+              <RichTextElement
+                className="text-and-image-text"
+                element={descriptionElement}
+              />
             </div>
             <div className="col-md-6">
-              <img alt={title} className="img-responsive" src={imageLink} title={title} />
+              <img
+                alt={title}
+                className="img-responsive"
+                src={imageLink}
+                title={title}
+              />
             </div>
           </section>
         );
@@ -60,17 +85,39 @@ class About extends Component {
         <section className="row text-and-image" key={index}>
           <h2 className="col-lg-12">{title}</h2>
           <div className="col-md-6 col-md-push-6">
-            <RichTextElement className="text-and-image-text-right" element={descriptionElement} />
+            <RichTextElement
+              className="text-and-image-text-right"
+              element={descriptionElement}
+            />
           </div>
           <div className="col-md-6 col-md-pull-6">
-            <img alt={title} className="img-responsive" src={imageLink} title={title} />
+            <img
+              alt={title}
+              className="img-responsive"
+              src={imageLink}
+              title={title}
+            />
           </div>
         </section>
       );
     });
 
+    let metaData = this.state.metaData;
+
     return (
       <div className="container">
+        <Metadata
+          title={metaData.metadataMetaTitle}
+          description={metaData.metadataMetaDescription}
+          ogTitle={metaData.metadataOgTitle}
+          ogImage={metaData.metadataOgImage}
+          ogDescription={metaData.metadataOgDescription}
+          twitterTitle={metaData.metadataMetaTitle}
+          twitterSite={metaData.metadataTwitterSite}
+          twitterCreator={metaData.metadataTwitterCreator}
+          twitterDescription={metaData.metadataTwitterDescription}
+          twitterImage={metaData.metadataTwitterImage}
+        />
         {facts}
       </div>
     );

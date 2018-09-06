@@ -1,21 +1,21 @@
 export function resolveContentLink(link, language) {
   let resultLink;
   switch (link.type) {
-    case "article":
+    case 'article':
       resultLink = `/articles/${link.itemId}`;
       break;
-    case "coffee":
+    case 'coffee':
       resultLink = `/coffees/${link.urlSlug}`;
       break;
-    case "brewer":
-      resultLink = `/brewers/${link.urlSlug}`; 
+    case 'brewer':
+      resultLink = `/brewers/${link.urlSlug}`;
       break;
     default:
-      resultLink = "";
+      resultLink = '';
   }
 
-  if(language){
-    resultLink = `/${language.toLowerCase()}${resultLink}`
+  if (language) {
+    resultLink = `/${language.toLowerCase()}${resultLink}`;
   }
 
   return resultLink;
