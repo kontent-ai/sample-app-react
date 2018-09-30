@@ -32,8 +32,7 @@ class LatestArticles extends Component {
     ArticleStore.unsubscribe();
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (this.props.language !== nextProps.language) {
       ArticleStore.provideArticles(nextProps.language);
       dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];

@@ -35,8 +35,7 @@ class Home extends Component {
     HomeStore.unsubscribe();
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (this.props.language !== nextProps.language) {
       HomeStore.provideMetaData(this.props.language);
     }
