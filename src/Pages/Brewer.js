@@ -27,11 +27,10 @@ class Brewer extends Component {
     BrewerStore.unsubscribe();
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     if (
-      this.props.language !== nextProps.language ||
-      this.props.match.params.brewerSlug !== nextProps.match.params.brewerSlug
+      prevState.language !== nextProps.language ||
+      prevState.match.params.brewerSlug !== nextProps.match.params.brewerSlug
     ) {
       BrewerStore.provideBrewer(nextProps.language);
     }

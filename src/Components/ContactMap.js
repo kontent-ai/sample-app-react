@@ -37,8 +37,7 @@ export class MapContainer extends Component {
     }
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     this.focusOnAddress(nextProps.focusOnAddress);
   }
 
