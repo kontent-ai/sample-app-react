@@ -79,9 +79,9 @@ You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
 ## Tracking visitors and their activity
 
-By default you can see sample visitor data in Kentico Cloud, even if you already feed the single-page application with your own content. Tracking real visitors needs to be set up separately and here's how to.
+By default, you can see sample visitor data in Kentico Cloud, even if you already feed the single-page application with your own content. Tracking real visitors needs to be set up separately and here's how to.
 
-In single-page applications you have to use custom activities to track visitor activity. This is how you set up tracking visits of About Us page:
+In single-page applications, you have to use custom activities to track visitor activity. This is how you set up tracking visits of About Us page:
 
 1. In Kentico Cloud, choose Project settings from the app menu.
 2. Under Development, choose API keys.
