@@ -4,10 +4,11 @@ node_js:
 - "stable"
 before_script:
 - npm install
-before_deploy:
+script:
 - npm run build
 deploy:
   provider: surge
   project: ./build/
-  domain: kentico-cloud-sample-app-react.surge.sh 
+  domain: kentico-sample-app-react.surge.sh 
   skip_cleanup: true
+

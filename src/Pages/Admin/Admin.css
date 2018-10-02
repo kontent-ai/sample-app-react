@@ -1,0 +1,492 @@
+html,
+body {
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro';
+  background-color: #f7f7f7;
+  color: #4f4d4b;
+  display: table;
+  width: 100%;
+}
+
+.project-configuration-section .user-message {
+  background-repeat: no-repeat;
+  background-position: 28px 28px;
+  background-size: 2em 2em;
+  border-collapse: separate;
+  color: #ffffff;
+  padding: 2em;
+}
+.project-configuration-section .message-info {
+  background-color: #89cffa;
+}
+.project-configuration-section .message-warning {
+  background-color: #ff9776;
+}
+.project-configuration-section .message-error {
+  background-color: #f38480;
+}
+.project-configuration-section .user-message img,
+.project-configuration-section .user-message p {
+  margin: 0;
+}
+.project-configuration-section .user-message p {
+  padding: 0 0 0 20px;
+}
+.project-configuration-section table.user-message td {
+  vertical-align: top;
+}
+
+.project-configuration-section p {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.55em;
+}
+.project-configuration-section h1 {
+  font-weight: 300;
+  line-height: 1.2em;
+  font-size: 2.827em;
+}
+.project-configuration-section h2 {
+  font-weight: 300;
+  line-height: 1.2em;
+  font-size: 1.999em;
+}
+.project-configuration-section h3 {
+  font-weight: 300;
+  line-height: 1.2em;
+  font-size: 1.414em;
+}
+.project-configuration-section a:link,
+.project-configuration-section a:active,
+.project-configuration-section a:hover,
+.project-configuration-section a:focus {
+  text-decoration: underline;
+}
+.project-configuration-section a:link,
+.project-configuration-section a:visited {
+  color: #008ae1;
+}
+.project-configuration-section header a:link,
+.project-configuration-section header a:visited {
+  color: #ffffff;
+}
+.project-configuration-section a:active,
+.project-configuration-section a:hover,
+.project-configuration-section a:focus {
+  color: #f05a22;
+}
+.project-configuration-section .content {
+  margin: 0 auto 0 auto;
+  max-width: 1140px;
+  overflow: visible;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.project-configuration-section header {
+  background-color: #008ae1;
+  color: #ffffff;
+  overflow: auto;
+  padding-bottom: 4em;
+}
+.project-configuration-section section {
+  margin: 0 auto 0 auto;
+  max-width: 1140px;
+  overflow: visible;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #f7f7f7;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.project-configuration-section .sections-secondary {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+.project-configuration-section .sections-secondary::after,
+.project-configuration-section .inline-controls::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  .project-configuration-section section.section-secondary {
+    float: left;
+    padding-left: 0;
+    padding-right: 6em;
+    width: 36%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .project-configuration-section section.section-secondary {
+    float: none;
+    padding: 0;
+  }
+}
+.project-configuration-section section.messages {
+  padding-top: 3em;
+  margin: 0 auto 0 auto;
+  max-width: 1140px;
+  overflow: visible;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.project-configuration-section .logotype-row {
+  background-color: #008ae1;
+  color: #ffffff;
+  overflow: auto;
+}
+.project-configuration-section .logotype {
+  background-color: #ef5a22;
+  display: inline-block;
+  width: 132px;
+  padding: 16px;
+}
+.project-configuration-section .logotype-link {
+  display: block;
+  overflow: visible;
+  height: 44px;
+}
+.project-configuration-section .inline-controls div,
+.project-configuration-section .inline-controls p,
+.project-configuration-section .inline-controls input {
+  display: block;
+  float: left;
+}
+.project-configuration-section input[type='submit'] {
+  border-width: 0;
+  font-size: 0.888em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  padding: 0.75em 0.75em 0.5em 0.75em;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  color: #f7f7f7;
+  margin: 0.55em 0 0.55em 0;
+  text-transform: uppercase;
+}
+.project-configuration-section input[type='submit'].button-primary {
+  background-color: #ef5a22;
+  border-color: #db531f;
+}
+.project-configuration-section input[type='submit'].button-primary:active,
+.project-configuration-section input[type='submit'].button-primary:hover,
+.project-configuration-section input[type='submit'].button-primary:focus {
+  background-color: #db531f;
+  border-color: #db531f;
+}
+.project-configuration-section input[type='submit'].button-secondary {
+  background-color: #008ae1;
+  border-color: #0077c2;
+}
+.project-configuration-section input[type='submit'].button-secondary:active,
+.project-configuration-section input[type='submit'].button-secondary:hover,
+.project-configuration-section input[type='submit'].button-secondary:focus {
+  background-color: #0077c2;
+  border-color: #0077c2;
+}
+.project-configuration-section input[type='submit'].button-tertiary {
+  background-color: #79b751;
+  border-color: #62a644;
+}
+.project-configuration-section input[type='submit'].button-tertiary:active,
+.project-configuration-section input[type='submit'].button-tertiary:hover,
+.project-configuration-section input[type='submit'].button-tertiary:focus {
+  background-color: #62a644;
+  border-color: #62a644;
+}
+.project-configuration-section .text-gray {
+  color: #4f4d4b;
+}
+.project-configuration-section input[type='email'],
+.project-configuration-section input[type='file'],
+.project-configuration-section input[type='month'],
+.project-configuration-section input[type='number'],
+.project-configuration-section input[type='password'],
+.project-configuration-section input[type='search'],
+.project-configuration-section input[type='tel'],
+.project-configuration-section input[type='text'],
+.project-configuration-section input[type='time'],
+.project-configuration-section input[type='url'],
+.project-configuration-section input[type='week'],
+.project-configuration-section textarea {
+  border-width: 0;
+  font-size: 0.888em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  padding: 0.75em 0.75em 0.5em 0.75em;
+  background-color: #ebebeb;
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+  border-style: solid;
+  border-color: #ebebeb;
+  color: #4f4d4b;
+}
+.project-configuration-section input[type='email']:focus,
+.project-configuration-section input[type='file']:focus,
+.project-configuration-section input[type='month']:focus,
+.project-configuration-section input[type='number']:focus,
+.project-configuration-section input[type='password']:focus,
+.project-configuration-section input[type='search']:focus,
+.project-configuration-section input[type='tel']:focus,
+.project-configuration-section input[type='text']:focus,
+.project-configuration-section input[type='time']:focus,
+.project-configuration-section input[type='url']:focus,
+.project-configuration-section input[type='week']:focus,
+.project-configuration-section textarea {
+  border-left-color: #008ae1;
+}
+.project-configuration-section .styled-checkbox,
+.project-configuration-section .styled-radio {
+  background-color: #ffffff;
+  margin: 1em 0 1em 0;
+  padding: 0 1em 0 1em;
+  vertical-align: top;
+}
+.project-configuration-section .styled-checkbox > input[type='checkbox'],
+.project-configuration-section .styled-radio > input[type='radio'] {
+  position: absolute;
+  left: -999em;
+}
+.project-configuration-section .styled-checkbox > label,
+.project-configuration-section .styled-radio > label {
+  background-color: transparent;
+  display: block;
+  left: 0;
+  padding-left: 30px;
+  position: relative;
+  top: -10px;
+}
+.project-configuration-section
+  .styled-checkbox
+  > input[type='checkbox']
+  + span {
+  background-position: left top;
+  background-repeat: no-repeat;
+  display: block;
+  height: 1em;
+  left: 0;
+  min-height: 18px;
+  min-width: 18px;
+  position: relative;
+  top: 9px;
+  width: 18px;
+  background-image: url(../../Images/Admin/checkbox-unchecked.svg);
+}
+.project-configuration-section
+  .styled-checkbox
+  > input[type='checkbox']:checked
+  + span {
+  background-position: left top;
+  background-repeat: no-repeat;
+  display: block;
+  height: 1em;
+  left: 0;
+  min-height: 18px;
+  min-width: 18px;
+  position: relative;
+  top: 9px;
+  width: 18px;
+  background-image: url(../../Images/Admin/checkbox-checked.svg);
+}
+.project-configuration-section .styled-radio > input[type='radio'] + span {
+  background-position: left top;
+  background-repeat: no-repeat;
+  display: block;
+  height: 1em;
+  left: 0;
+  min-height: 18px;
+  min-width: 18px;
+  position: relative;
+  top: 9px;
+  width: 18px;
+  background-image: url(../../Images/Admin/radio-button.svg);
+}
+.project-configuration-section
+  .styled-radio
+  > input[type='radio']:checked
+  + span {
+  background-position: left top;
+  background-repeat: no-repeat;
+  display: block;
+  height: 1em;
+  left: 0;
+  min-height: 18px;
+  min-width: 18px;
+  position: relative;
+  top: 9px;
+  width: 18px;
+  background-image: url(../../Images/Admin/radio-button-checked.svg);
+}
+.project-configuration-section .text-input-validation {
+  border-left: 4px solid #f05d4e;
+}
+.project-configuration-section form.form-panel .text-input {
+  background-color: #f7f7f7;
+}
+.project-configuration-section .form-panel-group {
+  width: 50%;
+}
+.project-configuration-section .form-panel-group form h1,
+.project-configuration-section .form-panel-group form h2,
+.project-configuration-section .form-panel-group form h3 {
+  display: none;
+}
+.project-configuration-section .tab {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  text-align: center;
+}
+.project-configuration-section .tab-inactive {
+  background-color: #e5e5e5;
+}
+.project-configuration-section .tab-active {
+  background-color: #ffffff;
+}
+.project-configuration-section .form-panel-tabs h1 a,
+.project-configuration-section .form-panel-tabs h2 a,
+.project-configuration-section .form-panel-tabs h3 a {
+  color: #4f4d4b;
+  display: block;
+  text-decoration: none;
+  margin: auto;
+}
+.project-configuration-section .form-panels,
+.project-configuration-section .form-panel-tabs {
+  background-color: #ffffff;
+  display: block;
+  margin: 0;
+  min-width: 20em;
+  padding: 0;
+}
+.project-configuration-section .form-panels {
+  background-color: #ffffff;
+  overflow: visible;
+}
+.project-configuration-section .form-panel {
+  padding: 2em;
+}
+.project-configuration-section .form-panel input:not([type='submit']) {
+  width: 90%;
+}
+.project-configuration-section .form-group {
+  padding: 0.5em 0 0.5em 0;
+}
+.project-configuration-section .field-validation-error,
+.project-configuration-section #selectProjectValidation,
+.project-configuration-section #termsAcceptedValidation {
+  color: #f05d4e;
+  display: inherit;
+  padding: 1em 0 1em 0;
+}
+.project-configuration-section #selectProject .form-group {
+  max-height: 50em;
+  overflow: auto;
+}
+.project-configuration-section #selectProject input[type='submit'] {
+  margin-top: 2em;
+}
+.project-configuration-section label:not(.visible) {
+  display: none;
+}
+.project-configuration-section .hidden {
+  display: none;
+}
+.project-configuration-section .detached {
+  margin-top: 3em;
+}
+.project-configuration-section .divided::before {
+  background-color: #e5e5e5;
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 0 auto 0 auto;
+  max-width: 1140px;
+  overflow: visible;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.project-configuration-section .padded-top-bottom {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.project-configuration-section .no-left-padding {
+  padding-left: 0;
+}
+.project-configuration-section .full-height {
+  height: 100%;
+}
+.project-configuration-section .spinner-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+.project-configuration-section .percentage {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 82px;
+  height: 82px;
+  width: 82px;
+  margin-left: -26px;
+  margin-top: -26px;
+}
+
+.project-configuration-section .spinner-box {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.project-configuration-section span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.project-configuration-section .spinner-box .spinner {
+  animation: spin 2s linear infinite;
+  border: 0.5em solid #ebebeb;
+  border-radius: 50%;
+  border-top: 0.5em solid #008ae1;
+  height: 1em;
+  overflow: auto;
+  width: 1em;
+  animation: spin 2s linear infinite;
+  -webkit-animation: spin 2s linear infinite;
+}
+
+.project-configuration-section .spinner-box .spinner-message {
+  padding-left: 1em;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

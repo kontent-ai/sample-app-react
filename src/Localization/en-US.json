@@ -1,60 +1,60 @@
 {
-    "locale": "en-US",
-    "Banner": {
-        "heading": "Roasting premium coffee",
-        "text": "Discover the fascinating world of Dancing Goat high-quality coffee and you will never miss a single coffee break again."
-    },
-    "LatestArticles": {
-        "title": "Latest articles"
-    },
-    "Home": {
-        "moreArticles": "More articles",
-        "aboutLinkText": "Read the whole story",
-        "cafesLinkText": "Find out more"
-    },
-    "OurStory": {
-        "title": "Our Story",
-        "text": "At Dancing Goat, we strive to do things right. Not only do we source the best coffees you can get your hands on. We also make sure we have a direct relationship with our farmers. Visiting the micro farms where we source our coffees is our daily bread. This way, we can guarantee the highest quality standard all year long. No middle-men, no unfair shares. Our farmers get the best deal possible. So do you."
-    },
-    "TasteOurCoffee": {
-        "title": "Taste Our Coffee"
-    },
-    "Header": {
-        "homeLinkTitle": "Home",
-        "storeLinkTitle": "Product catalog",
-        "articlesLinkTitle": "Articles",
-        "aboutLinkTitle": "About us",
-        "cafesLinkTitle": "Cafes",
-        "contactsLinkTitle": "Contact"
-    },
-    "Store": {
-        "coffeesLinkTitle": "Coffees",
-        "brewersLinkTitle": "Brewers"
-    },
-    "CoffeeFilter": {
-        "coffeeProcessingTitle": "Coffee processing",
-        "statusTitle": "Status"
-    },
-    "BrewerFilter": {
-        "manufacturerTitle": "Manufacturer",
-        "priceTitle": "Price",
-        "statusTitle": "Status"
-    },
-    "Cafes": {
-        "ourCafesTitle": "Our cafes",
-        "partnerCafesTitle": "Other places where you can drink our coffee"
-    },
-    "Contacts": {
-        "roasteryTitle": "Roastery",
-        "ourCafesTitle": "Our cafes",
-        "mapTitle": "Drop in"
-    },
-    "Footer": {
-      "followUs": "Follow us",
-      "followUsOnFacebook": "Follow us on Facebook",
-      "followUsOnTwitter": "Follow us on Twitter",
-      "contact": "Contact",
-      "cityStateZip": "Illinois 60601, USA",
-      "allRightsReserved": "All rights reserved."
-    }
+  "locale": "en-US",
+  "Banner": {
+    "heading": "Roasting premium coffee",
+    "text": "Discover the fascinating world of Dancing Goat high-quality coffee and you will never miss a single coffee break again."
+  },
+  "LatestArticles": {
+    "title": "Latest articles"
+  },
+  "Home": {
+    "moreArticles": "More articles",
+    "aboutLinkText": "Read the whole story",
+    "cafesLinkText": "Find out more"
+  },
+  "OurStory": {
+    "title": "Our Story",
+    "text": "At Dancing Goat, we strive to do things right. Not only do we source the best coffees you can get your hands on. We also make sure we have a direct relationship with our farmers. Visiting the micro farms where we source our coffees is our daily bread. This way, we can guarantee the highest quality standard all year long. No middle-men, no unfair shares. Our farmers get the best deal possible. So do you."
+  },
+  "TasteOurCoffee": {
+    "title": "Taste Our Coffee"
+  },
+  "Header": {
+    "homeLinkTitle": "Home",
+    "storeLinkTitle": "Product catalog",
+    "articlesLinkTitle": "Articles",
+    "aboutLinkTitle": "About us",
+    "cafesLinkTitle": "Cafes",
+    "contactsLinkTitle": "Contact"
+  },
+  "Store": {
+    "coffeesLinkTitle": "Coffees",
+    "brewersLinkTitle": "Brewers"
+  },
+  "CoffeeFilter": {
+    "coffeeProcessingTitle": "Coffee processing",
+    "statusTitle": "Status"
+  },
+  "BrewerFilter": {
+    "manufacturerTitle": "Manufacturer",
+    "priceTitle": "Price",
+    "statusTitle": "Status"
+  },
+  "Cafes": {
+    "ourCafesTitle": "Our cafes",
+    "partnerCafesTitle": "Other places where you can drink our coffee"
+  },
+  "Contacts": {
+    "roasteryTitle": "Roastery",
+    "ourCafesTitle": "Our cafes",
+    "mapTitle": "Drop in"
+  },
+  "Footer": {
+    "followUs": "Follow us",
+    "followUsOnFacebook": "Follow us on Facebook",
+    "followUsOnTwitter": "Follow us on Twitter",
+    "contact": "Contact",
+    "cityStateZip": "Illinois 60601, USA",
+    "allRightsReserved": "All rights reserved."
+  }
 }

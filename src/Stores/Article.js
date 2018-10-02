@@ -1,83 +1,121 @@
-import Client from "../Client.js";
-import { SortOrder } from 'kentico-cloud-delivery-typescript-sdk';
+import { Client } from '../Client.js';
+import { SortOrder } from 'kentico-cloud-delivery';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import {
+  initLanguageCodeObject,
+  defaultLanguage
+} from '../Utilities/LanguageCodes';
+import { spinnerService } from '@chevtek/react-spinners';
 
-import { initLanguageCodeObject, defaultLanguage } from '../Utilities/LanguageCodes'
-
-let articleList = initLanguageCodeObject();
-let articleDetails = initLanguageCodeObject();
+let unsubscribe = new Subject();
+const resetStore = () => ({
+  articleList: initLanguageCodeObject(),
+  articleDetails: initLanguageCodeObject()
+});
+let { articleList, articleDetails } = resetStore();
 
 let changeListeners = [];
 
 let notifyChange = () => {
-  changeListeners.forEach((listener) => {
+  changeListeners.forEach(listener => {
     listener();
   });
-}
+};
 
-class ArticleStore {
-
+class Article {
   // Actions
 
-  provideArticle(articleSlug, language) {
-
+  provideArticle(articleId, language) {
     let query = Client.items()
       .type('article')
-      .equalsFilter('elements.url_pattern', articleSlug)
-      .elementsParameter(['title', 'teaser_image', 'post_date', 'body_copy', 'video_host', 'video_id', 'tweet_link', 'theme', 'display_options'])
+      .equalsFilter('system.id', articleId)
+      .elementsParameter([
+        'title',
+        'teaser_image',
+        'post_date',
+        'body_copy',
+        'video_host',
+        'video_id',
+        'tweet_link',
+        'theme',
+        'display_options',
+        'metadata__meta_title',
+        'metadata__meta_description',
+        'metadata__og_title',
+        'metadata__og_description',
+        'metadata__og_image',
+        'metadata__twitter_title',
+        'metadata__twitter_site',
+        'metadata__twitter_creator',
+        'metadata__twitter_description',
+        'metadata__twitter_image'
+      ]);
 
     if (language) {
       query.languageParameter(language);
     }
 
-    query.get()
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
+
+    query
+      .getObservable()
+      .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (!response.isEmpty) {
           if (language) {
-            articleDetails[language][articleSlug] = response.items[0];
+            articleDetails[language][articleId] = response.items[0];
           } else {
-            articleDetails[defaultLanguage][articleSlug] = response.items[0];
+            articleDetails[defaultLanguage][articleId] = response.items[0];
           }
           notifyChange();
         }
-      })
+      });
   }
 
-  provideArticles(count, language) {
-
+  provideArticles(language) {
     let query = Client.items()
       .type('article')
-      .orderParameter("elements.post_date", SortOrder.desc);
+      .orderParameter('elements.post_date', SortOrder.desc);
 
     if (language) {
       query.languageParameter(language);
     }
 
-    query.get()
+    if (spinnerService.isShowing('apiSpinner') === false) {
+      spinnerService.show('apiSpinner');
+    }
+
+    query
+      .getObservable()
+      .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (language) {
           articleList[language] = response.items;
         } else {
-          articleList[defaultLanguage] = response.items
+          articleList[defaultLanguage] = response.items;
         }
         notifyChange();
       });
   }
 
   // Methods
-  getArticle(articleSlug, language) {
+  getArticle(articleId, language) {
+    spinnerService.hide('apiSpinner');
     if (language) {
-      return articleDetails[language][articleSlug];
+      return articleDetails[language][articleId];
     } else {
-      return articleDetails[defaultLanguage][articleSlug];
+      return articleDetails[defaultLanguage][articleId];
     }
-
   }
 
   getArticles(count, language) {
+    spinnerService.hide('apiSpinner');
     if (language) {
       return articleList[language].slice(0, count);
-    }
-    else {
+    } else {
       return articleList[defaultLanguage].slice(0, count);
     }
   }
@@ -88,11 +126,18 @@ class ArticleStore {
   }
 
   removeChangeListener(listener) {
-    changeListeners = changeListeners.filter((element) => {
+    changeListeners = changeListeners.filter(element => {
       return element !== listener;
     });
   }
 
+  unsubscribe() {
+    unsubscribe.next();
+    unsubscribe.complete();
+    unsubscribe = new Subject();
+  }
 }
 
-export default new ArticleStore();
+let ArticleStore = new Article();
+
+export { ArticleStore, resetStore };

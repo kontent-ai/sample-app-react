@@ -1,23 +1,29 @@
-// kentico cloud
-import { DeliveryClient, DeliveryClientConfig, TypeResolver } from 'kentico-cloud-delivery-typescript-sdk';
+import Cookies from 'universal-cookie';
+import {
+  selectedProjectCookieName,
+  defaultProjectId
+} from './Utilities/SelectedProject';
 
-const projectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
-const previewApiKey = "";
+// kentico cloud
+import { DeliveryClient, TypeResolver } from 'kentico-cloud-delivery';
 
 // models
-import { AboutUs } from './Models/AboutUs'
-import { Accessory } from './Models/Accessory'
-import { Article } from './Models/Article'
-import { Brewer } from './Models/Brewer'
-import { Cafe } from './Models/Cafe'
-import { Coffee } from './Models/Coffee'
-import { FactAboutUs } from './Models/FactAboutUs'
-import { Grinder } from './Models/Grinder'
-import { HeroUnit } from './Models/HeroUnit'
-import { Home } from './Models/Home'
-import { HostedVideo } from './Models/HostedVideo'
-import { Office } from './Models/Office'
-import { Tweet } from './Models/Tweet'
+import { AboutUs } from './Models/about_us';
+import { Accessory } from './Models/accessory';
+import { Article } from './Models/article';
+import { Brewer } from './Models/brewer';
+import { Cafe } from './Models/cafe';
+import { Coffee } from './Models/coffee';
+import { FactAboutUs } from './Models/fact_about_us';
+import { Grinder } from './Models/grinder';
+import { HeroUnit } from './Models/hero_unit';
+import { Home } from './Models/home';
+import { HostedVideo } from './Models/hosted_video';
+import { Office } from './Models/office';
+import { Tweet } from './Models/tweet';
+
+const projectId = '';
+const previewApiKey = '';
 
 // configure type resolvers
 let typeResolvers = [
@@ -36,16 +42,32 @@ let typeResolvers = [
   new TypeResolver('tweet', () => new Tweet())
 ];
 
-
-function isPreview() {
-  return previewApiKey !== "";
+const cookies = new Cookies(document.cookies);
+let currentProjectId = projectId || cookies.get(selectedProjectCookieName);
+if (currentProjectId) {
+  cookies.set(selectedProjectCookieName, currentProjectId, { path: '/' });
+} else {
+  currentProjectId = defaultProjectId;
 }
 
-export default new DeliveryClient(
-  new DeliveryClientConfig(projectId, typeResolvers,
-    {
-      enablePreviewMode: isPreview(),
-      previewApiKey: previewApiKey
-    }
-  )
-)
+const isPreview = () => previewApiKey !== '';
+
+let Client = new DeliveryClient({
+  projectId: currentProjectId,
+  typeResolvers: typeResolvers,
+  previewApiKey: previewApiKey,
+  enablePreviewMode: isPreview()
+});
+
+const resetClient = newProjectId => {
+  Client = new DeliveryClient({
+    projectId: newProjectId,
+    typeResolvers: typeResolvers,
+    previewApiKey: previewApiKey,
+    enablePreviewMode: isPreview()
+  });
+  const cookies = new Cookies(document.cookies);
+  cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
+};
+
+export { Client, resetClient };
