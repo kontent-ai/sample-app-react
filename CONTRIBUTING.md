@@ -2,7 +2,7 @@
 
 There are many different ways in which you can contribute. One of them is simply by using our software and providing us with your feedback or you can actively participate by coding some new features.
 
-This guide describes general guidelines that most of the repositories refer to. We don't want to make things complicated so we try to follow the same rules in every repository. But sometimes there are some rules specific for that particular repository. Always check the contributing guideline and readme in that repository as well.
+This guide describes general guidelines that most of the repositories refer to. We don't want to make things complicated so we try to follow the same rules in every repository. But sometimes there are some rules specific to that particular repository. Always check the contributing guideline and readme in that repository as well.
 
 
 ## I have an idea for a new feature
