@@ -3,7 +3,6 @@ import { translate } from 'react-translate';
 
 import Link from '../Components/LowerCaseUrlLink';
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
-import { LogAboutUs } from '../Utilities/ActivityLogging';
 import MessageBox from './MessageBox';
 
 const Header = props => {
@@ -31,16 +30,13 @@ const Header = props => {
               </li>
               {props.language.toLowerCase() === englishCode.toLowerCase() ? (
                 <li>
-                  <Link to={`/${props.language}/about-us`} onClick={LogAboutUs}>
+                  <Link to={`/${props.language}/about-us`}>
                     {props.t('aboutLinkTitle')}
                   </Link>
                 </li>
               ) : props.language.toLowerCase() === spanishCode.toLowerCase() ? (
                 <li>
-                  <Link
-                    to={`/${props.language}/acerca-de`}
-                    onClick={LogAboutUs}
-                  >
+                  <Link to={`/${props.language}/acerca-de`}>
                     {props.t('aboutLinkTitle')}
                   </Link>
                 </li>
