@@ -35,18 +35,21 @@ class About extends Component {
     AboutStore.unsubscribe();
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.language !== nextProps.language) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.language !== nextProps.language) {
       AboutStore.provideFacts(
-        this.props.language,
-        this.props.match.params.urlSlug
+        nextProps.language,
+        nextProps.match.params.urlSlug
       );
       AboutStore.provideMetaData(
-        this.props.language,
-        this.props.match.params.urlSlug
+        nextProps.language,
+        nextProps.match.params.urlSlug
       );
+      return {
+        language: nextProps.language
+      };
     }
+    return null;
   }
 
   onChange() {
