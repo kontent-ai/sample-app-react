@@ -37,15 +37,19 @@ class Article extends Component {
     ArticleStore.unsubscribe();
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.language !== nextProps.language) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.language !== nextProps.language) {
       ArticleStore.provideArticle(
-        this.props.match.params.articleId,
+        prevState.match.params.articleId,
         nextProps.language
       );
       dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
+
+      return {
+        language: nextProps.language
+      };
     }
+    return null;
   }
 
   onChange() {

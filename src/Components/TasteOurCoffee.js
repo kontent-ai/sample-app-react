@@ -27,11 +27,14 @@ class TasteOurCoffee extends Component {
     CafeStore.unsubscribe();
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.language !== nextProps.language) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.language !== nextProps.language) {
       CafeStore.provideCompanyCafes(nextProps.language);
+      return {
+        language: nextProps.language
+      };
     }
+    return null;
   }
 
   onChange() {
