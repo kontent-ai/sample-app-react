@@ -38,7 +38,7 @@ export class MapContainer extends Component {
   }
 
   //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  componentDidUPdate(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.focusOnAddress(nextProps.focusOnAddress);
   }
 
