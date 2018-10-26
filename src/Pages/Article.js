@@ -40,7 +40,7 @@ class Article extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.language !== nextProps.language) {
       ArticleStore.provideArticle(
-        prevState.match.params.articleId,
+        nextProps.match.params.articleId,
         nextProps.language
       );
       dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
