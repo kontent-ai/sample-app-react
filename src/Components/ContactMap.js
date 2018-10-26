@@ -23,23 +23,21 @@ export class MapContainer extends Component {
     this.focusOnLocation = this.focusOnLocation.bind(this);
   }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillUpdate(nextProps, nextState) {
-    if (!nextProps.loaded) {
+  componentDidUpdate(prevProps) {
+    if (!this.props.loaded) {
       return;
     }
 
     if (
-      nextState.reloadRequired ||
-      !_.isEqual(this.props.cafesAddresses, nextProps.cafesAddresses)
+      this.state.reloadRequired ||
+      !_.isEqual(this.props.cafesAddresses, prevProps.cafesAddresses)
     ) {
-      this.reloadMarkers(nextProps.cafesAddresses);
+      this.reloadMarkers(this.props.cafesAddresses);
     }
-  }
 
-  //TODO: Method will be removed in React 17, will need to be rewritten if still required.
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.focusOnAddress(nextProps.focusOnAddress);
+    if (prevProps.focusOnAddress !== this.props.focusOnAddress) {
+      this.focusOnAddress(this.props.focusOnAddress);
+    }
   }
 
   reloadMarkers(cafesAddresses) {
@@ -79,7 +77,7 @@ export class MapContainer extends Component {
   }
 
   focusOnAddress(address) {
-    if (address && address !== this.props.focusOnAddress) {
+    if (address) {
       let addressLocation = this.state.locationsCache.get(address);
       if (addressLocation) {
         this.focusOnLocation(addressLocation);
