@@ -5,7 +5,11 @@ import Metadata from '../Components/Metadata';
 
 let getState = props => {
   return {
-    coffee: CoffeeStore.getCoffee(props.match.params.coffeeSlug, props.language)
+    coffee: CoffeeStore.getCoffee(
+      props.match.params.coffeeSlug,
+      props.language
+    ),
+    match: { params: { coffeeSlug: props.match.params.coffeeSlug } }
   };
 };
 
