@@ -11,7 +11,7 @@ const Footer = props => {
               <div className="col-md-4 col-lg-4 footer-col">
                 <h3 className="contact-title">{props.t('contact')}</h3>
                 <p>
-                  (+1) 617-632-4520
+                  (+0) 000-000-0000
                   <br />
                   <Link to="mailto:dancinggoat@localhost.local">
                     dancinggoat@localhost.local
