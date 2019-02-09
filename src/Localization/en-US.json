@@ -5,7 +5,21 @@
     "text": "Discover the fascinating world of Dancing Goat high-quality coffee and you will never miss a single coffee break again."
   },
   "LatestArticles": {
-    "title": "Latest articles"
+    "title": "Latest articles",
+    "noTitleValue": "(Article has no title)",
+    "noTeaserValue": "(Article has no teaser image)",
+    "noSummaryValue": "No summary filled"
+  },
+  "About": {
+    "noTitleValue": "(Fact has no title)",
+    "noDescriptionValue": "No description filled",
+    "noTeaserValue": "(Fact has no teaser image)"
+  },
+  "Articles": {
+    "noTitleValue": "(Article has no title)",
+    "noTeaserValue": "(Article has no teaser image)",
+    "noSummaryValue": "No summary filled",
+    "noBodyCopyValue": "No body copy filled"
   },
   "Home": {
     "moreArticles": "More articles",
@@ -40,9 +54,21 @@
     "priceTitle": "Price",
     "statusTitle": "Status"
   },
+  "Brewers": {
+    "noPriceValue": "No price filled",
+    "noNameValue": "No name filled",
+    "noTeaserValue": "(Product has no teaser image)",
+    "noDescriptionValue": "No description filled"
+  },
   "Cafes": {
     "ourCafesTitle": "Our cafes",
     "partnerCafesTitle": "Other places where you can drink our coffee"
+  },
+  "Coffees": {
+    "noPriceValue": "No price filled",
+    "noNameValue": "No name filled",
+    "noTeaserValue": "(Product has no teaser image)",
+    "noDescriptionValue": "No description filled"
   },
   "Contacts": {
     "roasteryTitle": "Roastery",

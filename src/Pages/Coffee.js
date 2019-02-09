@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CoffeeStore } from '../Stores/Coffee';
 import RichTextElement from '../Components/RichTextElement';
 import Metadata from '../Components/Metadata';
+import { translate } from 'react-translate';
 
 let getState = props => {
   return {
@@ -53,14 +54,42 @@ class Coffee extends Component {
     }
 
     let coffee = this.state.coffee;
-    let name = coffee.productName.value;
-    let imageLink = coffee.image.value[0].url;
-    let descriptionElement = coffee.longDescription;
-    let farm = coffee.farm.value;
-    let variety = coffee.variety.value;
+
+    let name =
+      coffee.productName.value.trim().length > 0
+        ? coffee.productName.value
+        : this.props.t('noNameValue');
+
+    let imageLink =
+      coffee.image.value[0] !== undefined ? (
+        <img alt={name} src={coffee.image.value[0].url} title={name} />
+      ) : (
+        <div className="placeholder-tile-image">
+          {this.props.t('noTeaserValue')}
+        </div>
+      );
+
+    let descriptionElement =
+      coffee.longDescription.value !== '<p><br></p>' ? (
+        <RichTextElement element={coffee.longDescription} />
+      ) : (
+        <p>{this.props.t('noDescriptionValue')}</p>
+      );
+
+    let farm =
+      coffee.farm.value.trim().length > 0 ? coffee.farm.value : '\u00A0';
+
+    let variety =
+      coffee.variety.value.trim().length > 0 ? coffee.variety.value : '\u00A0';
+
     let processing =
-      coffee.processing.value.length > 0 ? coffee.processing.value[0].name : '';
-    let altitude = coffee.altitude.value + ' feet';
+      coffee.processing.value.length > 0
+        ? coffee.processing.value[0].name
+        : '\u00A0';
+    let altitude =
+      coffee.altitude.value.trim().length > 0
+        ? coffee.altitude.value + ' feet'
+        : '\u00A0';
 
     return (
       <div className="container">
@@ -86,11 +115,9 @@ class Coffee extends Component {
           </div>
           <div className="row-fluid">
             <div className="col-lg-7 col-md-6">
-              <figure className="image">
-                <img alt={name} className="" src={imageLink} title={name} />
-              </figure>
+              <figure className="image">{imageLink}</figure>
               <div className="description">
-                <RichTextElement element={descriptionElement} />
+                {descriptionElement}
                 <div className="product-detail-properties">
                   <h4>Parameters</h4>
                   <dl className="row">
@@ -113,4 +140,4 @@ class Coffee extends Component {
   }
 }
 
-export default Coffee;
+export default translate('Coffees')(Coffee);

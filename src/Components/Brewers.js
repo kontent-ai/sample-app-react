@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Link from '../Components/LowerCaseUrlLink';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import { BrewerStore } from '../Stores/Brewer';
+import { translate } from 'react-translate';
 
 let getState = props => {
   return {
@@ -66,9 +67,28 @@ class Brewers extends Component {
     };
 
     let brewers = this.state.brewers.filter(filter).map((brewer, index) => {
-      let price = formatPrice(brewer.price.value, this.props.language);
-      let name = brewer.productName.value;
-      let imageLink = brewer.image.value[0].url;
+      let price =
+        brewer.price.value !== null
+          ? formatPrice(brewer.price.value, this.props.language)
+          : this.props.t('noPriceValue');
+
+      let name =
+        brewer.productName.value.trim().length > 0
+          ? brewer.productName.value
+          : this.props.t('noNameValue');
+
+      let imageLink =
+        brewer.image.value[0] !== undefined ? (
+          <img alt={name} src={brewer.image.value[0].url} title={name} />
+        ) : (
+          <div
+            style={{ height: '257.15px' }}
+            className="placeholder-tile-image"
+          >
+            {this.props.t('noTeaserValue')}
+          </div>
+        );
+
       let status = renderProductStatus(brewer.productStatus);
       let link = resolveContentLink(
         { type: 'brewer', urlSlug: brewer.urlPattern.value },
@@ -81,9 +101,7 @@ class Brewers extends Component {
             <Link to={link}>
               <h1 className="product-heading">{name}</h1>
               {status}
-              <figure className="product-tile-image">
-                <img alt={name} className="" src={imageLink} title={name} />
-              </figure>
+              <figure className="product-tile-image">{imageLink}</figure>
               <div className="product-tile-info">
                 <span className="product-tile-price">{price}</span>
               </div>
@@ -101,4 +119,4 @@ class Brewers extends Component {
   }
 }
 
-export default Brewers;
+export default translate('Brewers')(Brewers);

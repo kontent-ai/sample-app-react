@@ -5,6 +5,7 @@ import { ArticleStore } from '../Stores/Article';
 import RichTextElement from '../Components/RichTextElement';
 import { dateFormats } from '../Utilities/LanguageCodes';
 import Metadata from '../Components/Metadata';
+import { translate } from 'react-translate';
 
 let getState = props => {
   return {
@@ -67,10 +68,38 @@ class Article extends Component {
       return dateFormat(value, 'dddd, mmmm d, yyyy');
     };
 
-    let title = article.title.value;
-    let imageLink = article.teaserImage.value[0].url;
+    let title =
+      article.title.value.trim().length > 0
+        ? article.title.value
+        : this.props.t('noTitleValue');
+
+    let imageLink =
+      article.teaserImage.value[0] !== undefined ? (
+        <img
+          alt={title}
+          className="img-responsive"
+          src={article.teaserImage.value[0].url}
+          title={title}
+        />
+      ) : (
+        <div className="img-responsive placeholder-tile-image">
+          {this.props.t('noTeaserValue')}
+        </div>
+      );
+
     let postDate = formatDate(article.postDate.value);
-    let bodyCopyElement = article.bodyCopy;
+
+    let bodyCopyElement =
+      article.bodyCopy.value !== '<p><br></p>' ? (
+        <RichTextElement
+          className="article-detail-content"
+          element={article.bodyCopy}
+        />
+      ) : (
+        <p className="article-detail-content">
+          {this.props.t('noBodyCopyValue')}
+        </p>
+      );
 
     return (
       <div className="container">
@@ -91,24 +120,14 @@ class Article extends Component {
           <div className="article-detail-datetime">{postDate}</div>
           <div className="row">
             <div className="article-detail-image col-md-push-2 col-md-8">
-              <img
-                alt={title}
-                className="img-responsive"
-                src={imageLink}
-                title={title}
-              />
+              {imageLink}
             </div>
           </div>
-          <div className="row">
-            <RichTextElement
-              className="article-detail-content"
-              element={bodyCopyElement}
-            />
-          </div>
+          <div className="row">{bodyCopyElement}</div>
         </article>
       </div>
     );
   }
 }
 
-export default Article;
+export default translate('Articles')(Article);

@@ -5,7 +5,21 @@
     "text": "Descubre el fascinante mundo de Dancing Goat café de la mas alta calidad. Nunca más perderás una sola oportunidad de disfrutar un buen café."
   },
   "LatestArticles": {
-    "title": "Último artículo"
+    "title": "Último artículo",
+    "noTitleValue": "(El artículo no tiene título)",
+    "noTeaserValue": "(El artículo no tiene imagen teaser)",
+    "noSummaryValue": "Sin resumen lleno"
+  },
+  "About": {
+    "noTitleValue": "(Hecho no tiene titulo)",
+    "noDescriptionValue": "ninguna descripción llena",
+    "noTeaserValue": "(hecho no tiene imagen teaser)"
+  },
+  "Articles": {
+    "noTitleValue": "(El artículo no tiene título)",
+    "noTeaserValue": "(El artículo no tiene imagen teaser)",
+    "noSummaryValue": "Sin resumen lleno",
+    "noBodyCopyValue": "ninguna copia del cuerpo llena"
   },
   "Home": {
     "moreArticles": "Más artículos",
@@ -40,9 +54,21 @@
     "priceTitle": "Precio",
     "statusTitle": "Estado"
   },
+  "Brewers": {
+    "noPriceValue": "Sin precio llenado",
+    "noNameValue": "Sin nombre lleno",
+    "noTeaserValue": "(El producto no tiene imagen teaser)",
+    "noDescriptionValue": "ninguna descripción llena"
+  },
   "Cafes": {
     "ourCafesTitle": "Nuestros cafés",
     "partnerCafesTitle": "Otros lugares donde puedes tomar nuestro café"
+  },
+  "Coffees": {
+    "noPriceValue": "Sin precio llenado",
+    "noNameValue": "Sin nombre lleno",
+    "noTeaserValue": "(El producto no tiene imagen teaser)",
+    "noDescriptionValue": "ninguna descripción llena"
   },
   "Contacts": {
     "roasteryTitle": "Roastery",

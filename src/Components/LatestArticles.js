@@ -57,10 +57,32 @@ class LatestArticles extends Component {
     };
 
     var otherArticles = this.state.articles.slice(1).map((article, index) => {
-      let title = article.title.value;
-      let imageLink = article.teaserImage.value[0].url;
+      let title =
+        article.title.value.trim().length > 0
+          ? article.title.value
+          : this.props.t('noTitleValue');
+
+      let imageLink =
+        article.teaserImage.value[0] !== undefined ? (
+          <img
+            alt={'Article ' + title}
+            className="article-tile-image"
+            src={article.teaserImage.value[0].url}
+            title={'Article ' + title}
+          />
+        ) : (
+          <div className="article-tile-image placeholder-tile-image">
+            {this.props.t('noTeaserValue')}
+          </div>
+        );
+
       let postDate = formatDate(article.postDate.value);
-      let summary = article.summary.value;
+
+      let summary =
+        article.summary.value.trim().length > 0
+          ? article.summary.value
+          : this.props.t('noSummaryValue');
+
       let link = `/${this.props.language.toLowerCase()}/articles/${
         article.system.id
       }`;
@@ -68,14 +90,7 @@ class LatestArticles extends Component {
       return (
         <div className="col-md-3" key={index}>
           <div className="article-tile">
-            <Link to={link}>
-              <img
-                alt={'Article ' + title}
-                className="article-tile-image"
-                src={imageLink}
-                title={'Article ' + title}
-              />
-            </Link>
+            <Link to={link}>{imageLink}</Link>
             <div className="article-tile-date">{postDate}</div>
             <div className="article-tile-content">
               <h2 className="h4">
@@ -89,10 +104,33 @@ class LatestArticles extends Component {
     });
 
     let article = this.state.articles[0];
-    let title = article.title.value;
-    let imageLink = article.teaserImage.value[0].url;
+
+    let title =
+      article.title.value.trim().length > 0
+        ? article.title.value
+        : this.props.t('noTitleValue');
+
+    let imageLink =
+      article.teaserImage.value[0] !== undefined ? (
+        <img
+          alt={'Article ' + title}
+          className="article-tile-image"
+          src={article.teaserImage.value[0].url}
+          title={'Article ' + title}
+        />
+      ) : (
+        <div className="article-tile-image placeholder-tile-image">
+          {this.props.t('noTeaserValue')}
+        </div>
+      );
+
     let postDate = formatDate(article.postDate.value);
-    let summary = article.summary.value;
+
+    let summary =
+      article.summary.value.trim().length > 0
+        ? article.summary.value
+        : this.props.t('noSummaryValue');
+
     let link = `/${this.props.language.toLowerCase()}/articles/${
       article.system.id
     }`;
@@ -103,14 +141,7 @@ class LatestArticles extends Component {
         <h1 className="title-tab">{tabTitle}</h1>
         <div className="article-tile article-tile-large">
           <div className="col-md-12 col-lg-6">
-            <Link to={link}>
-              <img
-                alt={title}
-                className="article-tile-image"
-                src={imageLink}
-                title={title}
-              />
-            </Link>
+            <Link to={link}>{imageLink}</Link>
           </div>
           <div className="col-md-12 col-lg-6">
             <div className="article-tile-date">{postDate}</div>
