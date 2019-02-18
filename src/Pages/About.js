@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AboutStore } from '../Stores/About';
 import RichTextElement from '../Components/RichTextElement';
 import Metadata from '../Components/Metadata';
+import { translate } from 'react-translate';
 
 let getState = props => {
   return {
@@ -58,28 +59,43 @@ class About extends Component {
 
   render() {
     let facts = this.state.facts.map((fact, index) => {
-      let title = fact.title.value;
-      let descriptionElement = fact.description;
-      let imageLink = fact.image.value[0].url;
+      let title =
+        fact.title.value.trim().length > 0
+          ? fact.title.value
+          : this.props.t('noTitleValue');
+
+      let descriptionElement =
+        fact.description.value !== '<p><br></p>' ? (
+          <RichTextElement
+            className="text-and-image-text"
+            element={fact.description}
+          />
+        ) : (
+          <p className="text-and-image-text">
+            {this.props.t('noDescriptionValue')}
+          </p>
+        );
+
+      let imageLink =
+        fact.image.value[0] !== undefined ? (
+          <img
+            alt={title}
+            className="img-responsive"
+            src={fact.image.value[0].url}
+            title={title}
+          />
+        ) : (
+          <div className="img-responsive placeholder-tile-image">
+            {this.props.t('noTeaserValue')}
+          </div>
+        );
 
       if (index % 2 === 0) {
         return (
           <section className="row text-and-image" key={index}>
             <h2 className="col-lg-12">{title}</h2>
-            <div className="col-md-6">
-              <RichTextElement
-                className="text-and-image-text"
-                element={descriptionElement}
-              />
-            </div>
-            <div className="col-md-6">
-              <img
-                alt={title}
-                className="img-responsive"
-                src={imageLink}
-                title={title}
-              />
-            </div>
+            <div className="col-md-6">{descriptionElement}</div>
+            <div className="col-md-6">{imageLink}</div>
           </section>
         );
       }
@@ -87,20 +103,8 @@ class About extends Component {
       return (
         <section className="row text-and-image" key={index}>
           <h2 className="col-lg-12">{title}</h2>
-          <div className="col-md-6 col-md-push-6">
-            <RichTextElement
-              className="text-and-image-text-right"
-              element={descriptionElement}
-            />
-          </div>
-          <div className="col-md-6 col-md-pull-6">
-            <img
-              alt={title}
-              className="img-responsive"
-              src={imageLink}
-              title={title}
-            />
-          </div>
+          <div className="col-md-6 col-md-push-6">{descriptionElement}</div>
+          <div className="col-md-6 col-md-pull-6">{imageLink}</div>
         </section>
       );
     });
@@ -127,4 +131,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default translate('About')(About);

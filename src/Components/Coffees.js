@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from '../Components/LowerCaseUrlLink';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import { CoffeeStore } from '../Stores/Coffee';
+import { translate } from 'react-translate';
 
 let getState = props => {
   return {
@@ -65,9 +66,33 @@ class Coffees extends Component {
     };
 
     let coffees = this.state.coffees.filter(filter).map((coffee, index) => {
-      let price = formatPrice(coffee.price.value, this.props.language);
-      let name = coffee.productName.value;
-      let imageLink = coffee.image.value[0].url;
+      let price =
+        coffee.price.value !== null
+          ? formatPrice(coffee.price.value, this.props.language)
+          : this.props.t('noPriceValue');
+
+      let name =
+        coffee.productName.value.trim().length > 0
+          ? coffee.productName.value
+          : this.props.t('noNameValue');
+
+      let imageLink =
+        coffee.image.value[0] !== undefined ? (
+          <img
+            alt={name}
+            className=""
+            src={coffee.image.value[0].url}
+            title={name}
+          />
+        ) : (
+          <div
+            style={{ height: '257.15px' }}
+            className="product-tile-image placeholder-tile-image"
+          >
+            {this.props.t('noTeaserValue')}
+          </div>
+        );
+
       let status = renderProductStatus(coffee.productStatus);
       let link = resolveContentLink(
         { type: 'coffee', urlSlug: coffee.urlPattern.value },
@@ -80,9 +105,7 @@ class Coffees extends Component {
             <Link to={link}>
               <h1 className="product-heading">{name}</h1>
               {status}
-              <figure className="product-tile-image">
-                <img alt={name} className="" src={imageLink} title={name} />
-              </figure>
+              <figure className="product-tile-image">{imageLink}</figure>
               <div className="product-tile-info">
                 <span className="product-tile-price">{price}</span>
               </div>
@@ -100,4 +123,4 @@ class Coffees extends Component {
   }
 }
 
-export default Coffees;
+export default translate('Coffees')(Coffees);

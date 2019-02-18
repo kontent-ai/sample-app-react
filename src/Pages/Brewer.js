@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrewerStore } from '../Stores/Brewer';
 import RichTextElement from '../Components/RichTextElement';
 import Metadata from '../Components/Metadata';
+import { translate } from 'react-translate';
 
 let getState = props => {
   return {
@@ -54,9 +55,26 @@ class Brewer extends Component {
     }
 
     let brewer = this.state.brewer;
-    let name = brewer.productName.value;
-    let imageLink = brewer.image.value[0].url;
-    let descriptionElement = brewer.longDescription;
+    let name =
+      brewer.productName.value.trim().length > 0
+        ? brewer.productName.value
+        : this.props.t('noNameValue');
+
+    let imageLink =
+      brewer.image.value[0] !== undefined ? (
+        <img alt={name} src={brewer.image.value[0].url} title={name} />
+      ) : (
+        <div className="placeholder-tile-image">
+          {this.props.t('noTeaserValue')}
+        </div>
+      );
+
+    let descriptionElement =
+      brewer.longDescription.value !== '<p><br></p>' ? (
+        <RichTextElement element={brewer.longDescription} />
+      ) : (
+        <p>{this.props.t('noDescriptionValue')}</p>
+      );
 
     return (
       <div className="container">
@@ -82,12 +100,8 @@ class Brewer extends Component {
           </div>
           <div className="row-fluid">
             <div className="col-lg-7 col-md-6">
-              <figure className="image">
-                <img alt={name} className="" src={imageLink} title={name} />
-              </figure>
-              <div className="description">
-                <RichTextElement element={descriptionElement} />
-              </div>
+              <figure className="image">{imageLink}</figure>
+              <div className="description">{descriptionElement}</div>
             </div>
           </div>
         </article>
@@ -96,4 +110,4 @@ class Brewer extends Component {
   }
 }
 
-export default Brewer;
+export default translate('Brewers')(Brewer);
