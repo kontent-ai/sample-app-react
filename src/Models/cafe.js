@@ -8,6 +8,9 @@ export class Cafe extends ContentItem {
         if (fieldName === 'zip_code') {
           return 'zipCode';
         }
+        if (fieldName === 'conversion_name') {
+          return 'conversionName';
+        }
         return fieldName;
       },
       linkResolver: link => resolveContentLink(link)

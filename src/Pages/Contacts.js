@@ -43,7 +43,12 @@ class Contacts extends Component {
     this.setState(getState(language || this.props.language));
   }
 
-  selectAddress(address) {
+  selectAddress(address, conversion) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'conversion',
+      conversion: conversion
+    });
     this.setState({
       selectedAddress: address
     });
@@ -59,7 +64,8 @@ class Contacts extends Component {
         country: cafe.country.value,
         state: cafe.state.value,
         phone: cafe.phone.value,
-        email: cafe.email.value
+        email: cafe.email.value,
+        conversion: cafe.conversionName.value
       };
       model.dataAddress = model.city + ', ' + model.street;
       model.countryWithState =
@@ -83,7 +89,7 @@ class Contacts extends Component {
                 href="/#"
                 onClick={e => {
                   e.preventDefault();
-                  this.selectAddress(model.dataAddress);
+                  this.selectAddress(model.dataAddress, model.conversion);
                 }}
                 data-address={model.dataAddress}
                 className="js-scroll-to-map"
@@ -102,7 +108,9 @@ class Contacts extends Component {
       return (
         <div className="col-md-6 col-lg-3" key={index}>
           <div
-            onClick={() => this.selectAddress(model.dataAddress)}
+            onClick={() =>
+              this.selectAddress(model.dataAddress, model.conversion)
+            }
             className="cafe-tile cursor-hand js-scroll-to-map"
             data-address={model.dataAddress}
           >
