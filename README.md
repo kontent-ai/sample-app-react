@@ -1,7 +1,7 @@
 # Kentico Cloud sample React single-page application
 [![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-react.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-react)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](http://kentico-cloud-sample-app-react.surge.sh)
-[![Stack Overflow](https://img.shields.io/stackexchange/stackoverflow/t/kentico%2dcloud.svg?label=Stack%20Overflow)](https://stackoverflow.com/tags/kentico-cloud)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-cloud)
 
 This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>. For a brief walkthrough, read [Running the React sample app](https://developer.kenticocloud.com/v1/docs/running-react-sample-app) on our Developer Hub.
 
