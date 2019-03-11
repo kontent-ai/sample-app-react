@@ -5,6 +5,7 @@ import { ArticleStore } from '../Stores/Article';
 import RichTextElement from '../Components/RichTextElement';
 import { dateFormats } from '../Utilities/LanguageCodes';
 import Metadata from '../Components/Metadata';
+import ProductPromo from '../Components/ProductPromo';
 import { translate } from 'react-translate';
 
 let getState = props => {
@@ -124,6 +125,7 @@ class Article extends Component {
             </div>
           </div>
           <div className="row">{bodyCopyElement}</div>
+          <ProductPromo product={article.promoForProduct} />
         </article>
       </div>
     );

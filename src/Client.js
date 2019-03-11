@@ -22,7 +22,7 @@ import { HostedVideo } from './Models/hosted_video';
 import { Office } from './Models/office';
 import { Tweet } from './Models/tweet';
 
-const projectId = '';
+const projectId = '471f9f4c-4f97-009b-a0b8-79db2558e63f';
 const previewApiKey = '';
 
 // configure type resolvers
