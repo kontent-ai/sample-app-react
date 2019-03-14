@@ -56,6 +56,9 @@ export class Article extends ContentItem {
         if (fieldName === 'url_pattern') {
           return 'urlPattern';
         }
+        if (fieldName === 'target_audiences') {
+          return 'targetAudiences';
+        }
         return fieldName;
       },
       linkResolver: link => resolveContentLink(link)

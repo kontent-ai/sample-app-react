@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import { ArticleStore } from '../Stores/Article';
 import dateFormat from 'dateformat';
 import { translate } from 'react-translate';
-
 import { dateFormats } from '../Utilities/LanguageCodes';
 import Link from '../Components/LowerCaseUrlLink';
+import { getPersonalizedArticles } from '../Utilities/Optimizely';
 
 const articleCount = 5;
 
 let getState = props => {
   return {
-    articles: ArticleStore.getArticles(articleCount, props.language)
+    articles: getPersonalizedArticles(
+      ArticleStore.getArticles(100, props.language),
+      articleCount
+    )
   };
 };
 
