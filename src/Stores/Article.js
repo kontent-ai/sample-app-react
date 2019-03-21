@@ -49,7 +49,8 @@ class Article {
         'metadata__twitter_site',
         'metadata__twitter_creator',
         'metadata__twitter_description',
-        'metadata__twitter_image'
+        'metadata__twitter_image',
+        'promo_for_magento_product'
       ]);
 
     if (language) {

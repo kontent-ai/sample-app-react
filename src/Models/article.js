@@ -50,6 +50,9 @@ export class Article extends ContentItem {
         if (fieldName === 'metadata__og_image') {
           return 'metadataOgImage';
         }
+        if (fieldName === 'promo_for_magento_product') {
+          return 'promoForMagentoProduct';
+        }
         if (fieldName === 'related_articles') {
           return 'relatedArticles';
         }
