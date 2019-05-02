@@ -13,7 +13,7 @@ import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 
 let getState = props => {
   return {
-    metaData: HomeStore.getMetaData(props.language)
+    home: HomeStore.getHome(props.language)
   };
 };
 
@@ -27,7 +27,7 @@ class Home extends Component {
 
   componentDidMount() {
     HomeStore.addChangeListener(this.onChange);
-    HomeStore.provideMetaData(this.props.language);
+    HomeStore.provideHome(this.props.language);
   }
 
   componentWillUnmount() {
@@ -37,7 +37,7 @@ class Home extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.language !== nextProps.language) {
-      HomeStore.provideMetaData(nextProps.language);
+      HomeStore.provideHome(nextProps.language);
       return {
         language: nextProps.language
       };
@@ -50,29 +50,36 @@ class Home extends Component {
   }
 
   render() {
-    let metaData = this.state.metaData;
+    let home = this.state.home;
 
     return (
       <div className="container">
         <Metadata
-          title={metaData.metadataMetaTitle}
-          description={metaData.metadataMetaDescription}
-          ogTitle={metaData.metadataOgTitle}
-          ogImage={metaData.metadataOgImage}
-          ogDescription={metaData.metadataOgDescription}
-          twitterTitle={metaData.metadataMetaTitle}
-          twitterSite={metaData.metadataTwitterSite}
-          twitterCreator={metaData.metadataTwitterCreator}
-          twitterDescription={metaData.metadataTwitterDescription}
-          twitterImage={metaData.metadataTwitterImage}
+          title={home.metadataMetaTitle}
+          description={home.metadataMetaDescription}
+          ogTitle={home.metadataOgTitle}
+          ogImage={home.metadataOgImage}
+          ogDescription={home.metadataOgDescription}
+          twitterTitle={home.metadataMetaTitle}
+          twitterSite={home.metadataTwitterSite}
+          twitterCreator={home.metadataTwitterCreator}
+          twitterDescription={home.metadataTwitterDescription}
+          twitterImage={home.metadataTwitterImage}
         />
-        <Banner />
-        <LatestArticles language={this.props.language} />
+        {home.heroUnit &&
+          home.heroUnit.length && <Banner heroUnit={home.heroUnit[0]} />}
+        {home.articles && (
+          <LatestArticles
+            articles={home.articles}
+            language={this.props.language}
+          />
+        )}
         <LinkButton
           link={`/${this.props.language}/articles`}
           text={this.props.t('moreArticles')}
         />
-        <OurStory />
+        {home.ourStory &&
+          home.ourStory.length && <OurStory fact={home.ourStory[0]} />}
         {this.props.language &&
         this.props.language.toLowerCase() === englishCode.toLowerCase() ? (
           <LinkButton
@@ -86,7 +93,9 @@ class Home extends Component {
             text={this.props.t('aboutLinkText')}
           />
         ) : null}
-        <TasteOurCoffee language={this.props.language} />
+        {home.cafes && (
+          <TasteOurCoffee cafes={home.cafes} language={this.props.language} />
+        )}
         <LinkButton
           link={`/${this.props.language}/cafes`}
           text={this.props.t('cafesLinkText')}

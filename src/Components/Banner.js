@@ -1,16 +1,30 @@
 import React from 'react';
 import { translate } from 'react-translate';
 
-import BackgroundImage from '../Images/banner-default.jpg';
-
 const Banner = props => {
+  const heroUnit = props.heroUnit;
+  const images = heroUnit.image && heroUnit.image.value;
+  const imageUrl = images && images.length && images[0].url;
+
   return (
     <section
       className="banner-section"
-      style={{ backgroundImage: 'url(' + BackgroundImage + ')' }}
+      style={
+        imageUrl ? { backgroundImage: 'url(' + imageUrl + ')' } : undefined
+      }
     >
-      <h2 className="banner-heading">{props.t('heading')}</h2>
-      <p className="banner-text">{props.t('text')}</p>
+      <h2 className="banner-heading">
+        {heroUnit.title && heroUnit.title.value}
+      </h2>
+      <p className="banner-text">
+        {heroUnit.marketingMessage && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: heroUnit.marketingMessage.value
+            }}
+          />
+        )}
+      </p>
     </section>
   );
 };
