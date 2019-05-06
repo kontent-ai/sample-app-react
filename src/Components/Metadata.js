@@ -37,7 +37,7 @@ const Metadata = props => {
       )}
 
       {!_.has(props, 'ogDescription.value') ||
-      props.ogDescription.value.trim().length === 1 ? null : (
+      props.ogDescription.value.trim().length === 0 ? null : (
         <meta property="og:description" content={props.ogDescription.value} />
       )}
 
