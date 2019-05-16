@@ -44,6 +44,9 @@ export class Home extends ContentItem {
         if (fieldName === 'url_pattern') {
           return 'urlPattern';
         }
+        if (fieldName === 'a_b_testing') {
+          return 'abTesting';
+        }
         return fieldName;
       },
       linkResolver: link => resolveContentLink(link)
