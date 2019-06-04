@@ -1,5 +1,6 @@
 import React from 'react';
 import { translate } from 'react-translate';
+import RichTextElement from './RichTextElement';
 
 const OurStory = props => {
   const fact = props.fact;
@@ -16,9 +17,7 @@ const OurStory = props => {
             imageUrl ? { backgroundImage: 'url(' + imageUrl + ')' } : undefined
           }
         >
-          {fact.description && (
-            <div dangerouslySetInnerHTML={{ __html: fact.description.value }} />
-          )}
+          {fact.description && <RichTextElement element={fact.description} />}
         </div>
       </div>
     </div>

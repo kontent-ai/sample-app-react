@@ -1,5 +1,6 @@
 import React from 'react';
 import { translate } from 'react-translate';
+import RichTextElement from './RichTextElement';
 
 const Banner = props => {
   const heroUnit = props.heroUnit;
@@ -16,15 +17,12 @@ const Banner = props => {
       <h2 className="banner-heading">
         {heroUnit.title && heroUnit.title.value}
       </h2>
-      <p className="banner-text">
-        {heroUnit.marketingMessage && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: heroUnit.marketingMessage.value
-            }}
-          />
-        )}
-      </p>
+      {heroUnit.marketingMessage && (
+        <RichTextElement
+          element={heroUnit.marketingMessage}
+          className="banner-text"
+        />
+      )}
     </section>
   );
 };

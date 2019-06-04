@@ -8,8 +8,7 @@ import LinkButton from '../Components/LinkButton.js';
 import OurStory from '../Components/OurStory.js';
 import TasteOurCoffee from '../Components/TasteOurCoffee.js';
 import Metadata from '../Components/Metadata';
-
-import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
+import { getAboutUsLink } from '../Utilities/ContentLinks';
 
 let getState = props => {
   return {
@@ -50,7 +49,8 @@ class Home extends Component {
   }
 
   render() {
-    let home = this.state.home;
+    const home = this.state.home;
+    const aboutUsLink = getAboutUsLink(this.props.language);
 
     return (
       <div className="container">
@@ -79,20 +79,15 @@ class Home extends Component {
           text={this.props.t('moreArticles')}
         />
         {home.ourStory &&
-          home.ourStory.length && <OurStory fact={home.ourStory[0]} />}
-        {this.props.language &&
-        this.props.language.toLowerCase() === englishCode.toLowerCase() ? (
-          <LinkButton
-            link={`/${this.props.language}/about-us`}
-            text={this.props.t('aboutLinkText')}
-          />
-        ) : this.props.language &&
-        this.props.language.toLowerCase() === spanishCode.toLowerCase() ? (
-          <LinkButton
-            link={`/${this.props.language}/acerca-de`}
-            text={this.props.t('aboutLinkText')}
-          />
-        ) : null}
+          home.ourStory.length && (
+            <>
+              <OurStory fact={home.ourStory[0]} />
+              <LinkButton
+                link={aboutUsLink}
+                text={this.props.t('aboutLinkText')}
+              />
+            </>
+          )}
         {home.cafes && (
           <TasteOurCoffee cafes={home.cafes} language={this.props.language} />
         )}
