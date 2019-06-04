@@ -1,16 +1,28 @@
 import React from 'react';
 import { translate } from 'react-translate';
-
-import BackgroundImage from '../Images/banner-default.jpg';
+import RichTextElement from './RichTextElement';
 
 const Banner = props => {
+  const heroUnit = props.heroUnit;
+  const images = heroUnit.image && heroUnit.image.value;
+  const imageUrl = images && images.length && images[0].url;
+
   return (
     <section
       className="banner-section"
-      style={{ backgroundImage: 'url(' + BackgroundImage + ')' }}
+      style={
+        imageUrl ? { backgroundImage: 'url(' + imageUrl + ')' } : undefined
+      }
     >
-      <h2 className="banner-heading">{props.t('heading')}</h2>
-      <p className="banner-text">{props.t('text')}</p>
+      <h2 className="banner-heading">
+        {heroUnit.title && heroUnit.title.value}
+      </h2>
+      {heroUnit.marketingMessage && (
+        <RichTextElement
+          element={heroUnit.marketingMessage}
+          className="banner-text"
+        />
+      )}
     </section>
   );
 };

@@ -1,18 +1,23 @@
 import React from 'react';
 import { translate } from 'react-translate';
-
-import StoryImage from '../Images/our-story.jpg';
+import RichTextElement from './RichTextElement';
 
 const OurStory = props => {
+  const fact = props.fact;
+  const images = fact.image && fact.image.value;
+  const imageUrl = images && images.length && images[0].url;
+
   return (
     <div className="row">
-      <h1 className="title-tab">{props.t('title')}</h1>
+      <h1 className="title-tab">{fact.title && fact.title.value}</h1>
       <div className="col-sm-12">
         <div
           className="ourstory-section center-text"
-          style={{ backgroundImage: 'url(' + StoryImage + ')' }}
+          style={
+            imageUrl ? { backgroundImage: 'url(' + imageUrl + ')' } : undefined
+          }
         >
-          {props.t('text')}
+          {fact.description && <RichTextElement element={fact.description} />}
         </div>
       </div>
     </div>

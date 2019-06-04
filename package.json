@@ -15,7 +15,7 @@
     "@chevtek/react-spinners": "^1.0.5",
     "google-maps-react": "^2.0.2",
     "immutable": "^3.8.2",
-    "kentico-cloud-delivery": "^5.1.0",
+    "kentico-cloud-delivery": "^5.7.2",
     "lodash": "^4.17.11",
     "qs": "^6.5.2",
     "react": "^16.4.2",

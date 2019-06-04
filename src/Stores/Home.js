@@ -10,9 +10,9 @@ import { spinnerService } from '@chevtek/react-spinners';
 let unsubscribe = new Subject();
 let changeListeners = [];
 const resetStore = () => ({
-  metaData: initLanguageCodeObject()
+  home: initLanguageCodeObject()
 });
-let { metaData } = resetStore();
+let { home } = resetStore();
 
 let notifyChange = () => {
   changeListeners.forEach(listener => {
@@ -20,21 +20,8 @@ let notifyChange = () => {
   });
 };
 
-let fetchMetaData = language => {
-  let query = Client.items()
-    .type('home')
-    .elementsParameter([
-      'metadata__meta_title',
-      'metadata__meta_description',
-      'metadata__og_title',
-      'metadata__og_description',
-      'metadata__og_image',
-      'metadata__twitter_title',
-      'metadata__twitter_site',
-      'metadata__twitter_creator',
-      'metadata__twitter_description',
-      'metadata__twitter_image'
-    ]);
+let fetchHome = language => {
+  let query = Client.items().type('home');
 
   if (language) {
     query.languageParameter(language);
@@ -45,9 +32,9 @@ let fetchMetaData = language => {
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
-        metaData[language] = response.items[0];
+        home[language] = response.items[0];
       } else {
-        metaData[defaultLanguage] = response.items[0];
+        home[defaultLanguage] = response.items[0];
       }
       notifyChange();
     });
@@ -56,18 +43,18 @@ let fetchMetaData = language => {
 class Home {
   // Actions
 
-  provideMetaData(language, urlSlug) {
+  provideHome(language, urlSlug) {
     if (spinnerService.isShowing('apiSpinner') === false) {
       spinnerService.show('apiSpinner');
     }
-    fetchMetaData(language, urlSlug);
+    fetchHome(language, urlSlug);
   }
 
   // Methods
 
-  getMetaData(language) {
+  getHome(language) {
     spinnerService.hide('apiSpinner');
-    return metaData[language];
+    return home[language];
   }
 
   // Listeners

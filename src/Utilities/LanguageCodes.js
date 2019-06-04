@@ -133,7 +133,10 @@ const getLanguageCode = match => {
   }
 
   const languageParameter = _.get(match, ['params', 'lang']);
-  if (languageCodesLowerCase.indexOf(languageParameter.toLowerCase()) > -1) {
+  if (
+    languageParameter &&
+    languageCodesLowerCase.indexOf(languageParameter.toLowerCase()) > -1
+  ) {
     return languageCodes[
       languageCodesLowerCase.indexOf(languageParameter.toLowerCase())
     ];
