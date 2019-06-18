@@ -1,6 +1,6 @@
 # Kentico Cloud sample React single-page application
-[![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-react.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-react)
-[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](http://kentico-sample-app-react.surge.sh)
+[![Build Status](https://api.travis-ci.com/Kentico/cloud-sample-app-react.svg?branch=master)](https://travis-ci.com/Kentico/cloud-sample-app-react)
+[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico-sample-app-react.surge.sh)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-cloud)
 
 This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>. For a brief walkthrough, read [Running the React sample app](https://developer.kenticocloud.com/v1/docs/running-react-sample-app) on our Developer Hub.
@@ -30,7 +30,7 @@ If you want to change the source Kentico Cloud project, follow these steps:
 1. In Kentico Cloud, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID
-4. Open the [`src\Client.js`](https://github.com/Kentico/cloud-sample-app-react/blob/master/src/Client.js) file in the sample application folder.
+4. Open the [`src\Client.js`](/src/Client.js) file in the sample application folder.
 5. Find the `projectId` constant.
 6. Change the values of the constant using the Project ID key you copied.
 7. Save the file.
