@@ -1,4 +1,4 @@
-# Kentico Cloud sample React single-page application
+# Kentico Cloud sample React single-page application - Shopify
 [![Build Status](https://api.travis-ci.com/Kentico/cloud-sample-app-react.svg?branch=samples/shopify)](https://travis-ci.com/Kentico/cloud-sample-app-react)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico-cloud-sample-app-react-shopify.surge.sh)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-cloud)
