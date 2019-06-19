@@ -9,6 +9,6 @@ script:
 deploy:
   provider: surge
   project: ./build/
-  domain: kentico-sample-app-react.surge.sh 
+  domain: https://kentico-cloud-sample-app-react-ga-experiments.surge.sh
   skip_cleanup: true
-
+  to: samples/ga-experiments
