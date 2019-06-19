@@ -1,10 +1,11 @@
-# Kentico Cloud sample React single-page application
-[![Build Status](https://api.travis-ci.org/Kentico/cloud-sample-app-react.svg?branch=master)](https://travis-ci.org/Kentico/cloud-sample-app-react)
-[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](http://kentico-cloud-sample-app-react.surge.sh)
+# Kentico Cloud sample React single-page application - Personalization (Optimizely)
+[![Build Status](https://api.travis-ci.com/Kentico/cloud-sample-app-react.svg?branch=samples/optimizely)](https://travis-ci.com/Kentico/cloud-sample-app-react)
+[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico-cloud-sample-app-react-optimizely.surge.sh)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-cloud)
 
 This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>. For a brief walkthrough, read [Running the React sample app](https://developer.kenticocloud.com/v1/docs/running-react-sample-app) on our Developer Hub.
 
+It includes Magento integration sample using data from [Optimizely Audiences selector](https://github.com/Kentico/cloud-custom-element-sample-optimizely).
 
 ## Application setup
 
@@ -30,17 +31,12 @@ If you want to change the source Kentico Cloud project, follow these steps:
 1. In Kentico Cloud, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID
-4. Open the [`src\Client.js`](https://github.com/Kentico/cloud-sample-app-react/blob/master/src/Client.js) file in the sample application folder.
+4. Open the [`src\Client.js`](/src/Client.js) file in the sample application folder.
 5. Find the `projectId` constant.
 6. Change the values of the constant using the Project ID key you copied.
 7. Save the file.
 
 When you now run the sample application, the application retrieves content from your project.
-
-## Get creative
-Deploy, explore and change the app directly in the browser.
-
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/kentico/cloud-sample-app-react)
 
 ## Previewing content from your project
 
@@ -64,7 +60,7 @@ When you now run the application, you will see all project content including the
 2. Sign in with your credentials.
 3. Manage content in the content administration interface of your sample project.
 
-You can learn more about content editing with Kentico Cloud in the [documentation](http://help.kenticocloud.com/).
+You can learn more about content editing with Kentico Cloud in the [documentation](https://docs.kenticocloud.com/).
 
 ## Content delivery
 
@@ -86,7 +82,8 @@ You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the
 We would like to express our thanks to the following people who contributed and made the project possible:
 
 * [Bee Martinez](https://github.com/beemtz)
+* [Martin Hejtmánek](https://github.com/kenticomartinh)
 
 Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/cloud-sample-app-react/issues) and send us a pull request!
 
-![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/cloud-sample-app-react?pixel)
+![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/cloud-sample-app-react/samples/optimizely?pixel)
