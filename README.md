@@ -1,6 +1,6 @@
 # Kentico Cloud sample React single-page application - Shopify
 [![Build Status](https://api.travis-ci.com/Kentico/cloud-sample-app-react.svg?branch=samples/shopify)](https://travis-ci.com/Kentico/cloud-sample-app-react)
-[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico-cloud-sample-app-react-shopify.surge.sh)
+[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico-cloud-sample-app-react-shopify.surge.sh/en-us/articles/3120ec15-a4a2-47ec-8ccd-c85ac8ac5ba5)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-cloud)
 
 This is a sample website written in JavaScript utilizing the Kentico Cloud Delivery API to manage and retrieve content. You can register your account for free at <https://app.kenticocloud.com>. For a brief walkthrough, read [Running the React sample app](https://developer.kenticocloud.com/v1/docs/running-react-sample-app) on our Developer Hub.
