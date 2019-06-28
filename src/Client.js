@@ -23,7 +23,6 @@ import { Office } from './Models/office';
 import { Tweet } from './Models/tweet';
 
 // environment variables
-import { dotenv } from 'dotenv';
 const projectId = process.env.REACT_APP_PROJECT_ID || '';
 const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 

@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@chevtek/react-spinners": "^1.0.5",
-    "dotenv": "^8.0.0",
     "google-maps-react": "^2.0.2",
     "immutable": "^3.8.2",
     "kentico-cloud-delivery": "^5.7.2",
