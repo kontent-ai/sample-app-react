@@ -3,14 +3,9 @@ import {
   selectedProjectCookieName,
   defaultProjectId
 } from './Utilities/SelectedProject';
-import { dotenv } from 'dotenv';
 
 // kentico cloud
 import { DeliveryClient, TypeResolver } from 'kentico-cloud-delivery';
-
-// environment variables
-const projectId = process.env.REACT_APP_PROJECT_ID || '';
-const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 // models
 import { AboutUs } from './Models/about_us';
@@ -26,6 +21,11 @@ import { Home } from './Models/home';
 import { HostedVideo } from './Models/hosted_video';
 import { Office } from './Models/office';
 import { Tweet } from './Models/tweet';
+
+// environment variables
+import { dotenv } from 'dotenv';
+const projectId = process.env.REACT_APP_PROJECT_ID || '';
+const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 // configure type resolvers
 let typeResolvers = [
