@@ -8,12 +8,12 @@ This is a sample website written in JavaScript utilizing the Kentico Cloud Deliv
 
 ## Application setup
 
-1.  Install the latest version of NodeJS and npm. You can download both at <https://nodejs.org/en/download/>.
-2.  Clone the sample application repository.
-3.  Navigate to the root folder of the application in the command line.
-4.  Type `npm install` to install required npm packages.
-5.  Type `npm start` to start a development server.
-6.  The application opens in your browser at <http://localhost:3000>.
+1. Install the latest version of NodeJS and npm. You can download both at <https://nodejs.org/en/download/>.
+2. Clone the sample application repository.
+3. Navigate to the root folder of the application in the command line.
+4. Type `npm install` to install required npm packages.
+5. Type `npm start` to start a development server.
+6. The application opens in your browser at <http://localhost:3000>.
 
 After starting, the sample application retrieves content from the **default** Kentico Cloud sample project.
 
@@ -27,12 +27,12 @@ Alternatively, you can connect your project manually as per the chapter below.
 
 If you want to change the source Kentico Cloud project, follow these steps:
 
-1.  In Kentico Cloud, choose Project settings from the app menu.
-2.  Under Development, choose API keys.
-3.  Copy your Project ID.
-4.  Open `.env.example` in the root directory.
-5.  Replace `your_project_id` with your Project ID and remove `REACT_APP_PREVIEW_API_KEY` entry.
-6.  Save and rename the file `.env`.
+1. In Kentico Cloud, choose Project settings from the app menu.
+2. Under Development, choose API keys.
+3. Copy your Project ID.
+4. Open `.env.example` in the root directory.
+5. Replace `your_project_id` with your Project ID and remove `REACT_APP_PREVIEW_API_KEY` entry.
+6. Save and rename the file `.env`.
 
 When you now run the sample application, the application retrieves content from your project.
 
@@ -48,20 +48,20 @@ If you already have a Kentico Cloud account and you want to connect the sample a
 
 To preview content in the sample application, follow these steps:
 
-1.  In Kentico Cloud, choose Project settings from the app menu.
-2.  Under Development, choose API keys.
-3.  Copy your Project ID and Preview API key.
-4.  Open `.env.example` in the root directory .
-5.  Replace `your_project_id` and `your_api_key` with your Project ID and Preview API key.
-6.  Save and rename the file `.env`.
+1. In Kentico Cloud, choose Project settings from the app menu.
+2. Under Development, choose API keys.
+3. Copy your Project ID and Preview API key.
+4. Open `.env.example` in the root directory .
+5. Replace `your_project_id` and `your_api_key` with your Project ID and Preview API key.
+6. Save and rename the file `.env`.
 
 When you now run the application, you will see all project content including the unpublished version of content items.
 
 ## Content administration
 
-1.  Navigate to <https://app.kenticocloud.com> in your browser.
-2.  Sign in with your credentials.
-3.  Manage content in the content administration interface of your sample project.
+1. Navigate to <https://app.kenticocloud.com> in your browser.
+2. Sign in with your credentials.
+3. Manage content in the content administration interface of your sample project.
 
 You can learn more about content editing with Kentico Cloud in the [documentation](http://help.kenticocloud.com/).
 
