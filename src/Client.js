@@ -22,8 +22,9 @@ import { HostedVideo } from './Models/hosted_video';
 import { Office } from './Models/office';
 import { Tweet } from './Models/tweet';
 
-const projectId = '';
-const previewApiKey = '';
+// environment variables
+const projectId = process.env.REACT_APP_PROJECT_ID || '';
+const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 // configure type resolvers
 let typeResolvers = [
