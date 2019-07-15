@@ -31,7 +31,7 @@ If you want to change the source Kentico Cloud project, follow these steps:
 2.  Under Development, choose API keys.
 3.  Copy your Project ID.
 4.  Open `.env.example` in the root directory.
-5.  Replace `your_project_id` with your Project ID.
+5.  Replace `your_project_id` with your Project ID and remove `REACT_APP_PREVIEW_API_KEY` entry.
 6.  Save and rename the file `.env`.
 
 When you now run the sample application, the application retrieves content from your project.
