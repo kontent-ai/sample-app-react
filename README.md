@@ -40,7 +40,7 @@ When you now run the sample application, the application retrieves content from 
 
 Deploy, explore and change the app directly in the browser.
 
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/kentico/cloud-sample-app-react)
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/remix/clone-from-repo?REPO_URL=https://github.com/Kentico/cloud-sample-app-react)
 
 ## Previewing content from your project
 
