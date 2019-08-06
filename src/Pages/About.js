@@ -58,56 +58,58 @@ class About extends Component {
   }
 
   render() {
-    let facts = this.state.facts.map((fact, index) => {
-      let title =
-        fact.title.value.trim().length > 0
-          ? fact.title.value
-          : this.props.t('noTitleValue');
+    let facts =
+      this.state.facts.value &&
+      this.state.facts.value.map((fact, index) => {
+        let title =
+          fact.title.value.trim().length > 0
+            ? fact.title.value
+            : this.props.t('noTitleValue');
 
-      let descriptionElement =
-        fact.description.value !== '<p><br></p>' ? (
-          <RichTextElement
-            className="text-and-image-text"
-            element={fact.description}
-          />
-        ) : (
-          <p className="text-and-image-text">
-            {this.props.t('noDescriptionValue')}
-          </p>
-        );
+        let descriptionElement =
+          fact.description.value !== '<p><br></p>' ? (
+            <RichTextElement
+              className="text-and-image-text"
+              element={fact.description}
+            />
+          ) : (
+            <p className="text-and-image-text">
+              {this.props.t('noDescriptionValue')}
+            </p>
+          );
 
-      let imageLink =
-        fact.image.value[0] !== undefined ? (
-          <img
-            alt={title}
-            className="img-responsive"
-            src={fact.image.value[0].url}
-            title={title}
-          />
-        ) : (
-          <div className="img-responsive placeholder-tile-image">
-            {this.props.t('noTeaserValue')}
-          </div>
-        );
+        let imageLink =
+          fact.image.value[0] !== undefined ? (
+            <img
+              alt={title}
+              className="img-responsive"
+              src={fact.image.value[0].url}
+              title={title}
+            />
+          ) : (
+            <div className="img-responsive placeholder-tile-image">
+              {this.props.t('noTeaserValue')}
+            </div>
+          );
 
-      if (index % 2 === 0) {
+        if (index % 2 === 0) {
+          return (
+            <section className="row text-and-image" key={index}>
+              <h2 className="col-lg-12">{title}</h2>
+              <div className="col-md-6">{descriptionElement}</div>
+              <div className="col-md-6">{imageLink}</div>
+            </section>
+          );
+        }
+
         return (
           <section className="row text-and-image" key={index}>
             <h2 className="col-lg-12">{title}</h2>
-            <div className="col-md-6">{descriptionElement}</div>
-            <div className="col-md-6">{imageLink}</div>
+            <div className="col-md-6 col-md-push-6">{descriptionElement}</div>
+            <div className="col-md-6 col-md-pull-6">{imageLink}</div>
           </section>
         );
-      }
-
-      return (
-        <section className="row text-and-image" key={index}>
-          <h2 className="col-lg-12">{title}</h2>
-          <div className="col-md-6 col-md-push-6">{descriptionElement}</div>
-          <div className="col-md-6 col-md-pull-6">{imageLink}</div>
-        </section>
-      );
-    });
+      });
 
     let metaData = this.state.metaData;
 
