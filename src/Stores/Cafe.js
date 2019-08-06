@@ -43,7 +43,7 @@ let fetchCafes = language => {
   }
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {

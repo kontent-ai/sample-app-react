@@ -106,7 +106,7 @@ class Configuration extends Component {
       Client.items()
         .elementsParameter(['id'])
         .depthParameter(0)
-        .getObservable()
+        .toObservable()
         .pipe(takeUntil(this.state.unsubscribe))
         .subscribe(response => {
           if (response.items.length === SAMPLE_PROJECT_ITEM_COUNT) {

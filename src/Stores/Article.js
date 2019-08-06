@@ -61,7 +61,7 @@ class Article {
     }
 
     query
-      .getObservable()
+      .toObservable()
       .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (!response.isEmpty) {
@@ -89,7 +89,7 @@ class Article {
     }
 
     query
-      .getObservable()
+      .toObservable()
       .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (language) {
