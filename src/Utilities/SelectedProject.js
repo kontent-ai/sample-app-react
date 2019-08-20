@@ -5,23 +5,18 @@ const projectConfigurationPath = '/Admin/Configuration';
 
 const defaultProjectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
 
-const SAMPLE_PROJECT_ITEM_COUNT = 30;
-
-const getSampleProjectItemsCount = (projectId = defaultProjectId) => {
+const getSampleProjectItems = (projectId = defaultProjectId) => {
   resetClient(projectId);
 
-  const client = Client.items()
+  return Client.items()
     .elementsParameter(['id'])
     .depthParameter(0)
-    .getObservable()       
-
-  return client;   
+    .getObservable();  
 }
 
 export {
   selectedProjectCookieName,
   projectConfigurationPath,
-  defaultProjectId,
-  SAMPLE_PROJECT_ITEM_COUNT,
-  getSampleProjectItemsCount
+  defaultProjectId,  
+  getSampleProjectItems
 };
