@@ -17,6 +17,6 @@ const getSampleProjectItems = (projectId = defaultProjectId) => {
 export {
   selectedProjectCookieName,
   projectConfigurationPath,
-  defaultProjectId,  
+  defaultProjectId,
   getSampleProjectItems
 };
