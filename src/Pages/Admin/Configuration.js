@@ -111,7 +111,7 @@ class Configuration extends Component {
         .subscribe(response => {          
           const sampleProjectListingResponse= getSampleProjectItems()          
             .subscribe(
-            (sampleProjectClientResult)=> {                                          
+            (sampleProjectClientResult) => {                                          
               if ( response.items.length >= sampleProjectClientResult.items.length) {                            
                 this.setState({
                   preparingProject: false
