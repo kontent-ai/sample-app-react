@@ -109,7 +109,7 @@ class Configuration extends Component {
         .getObservable()
         .pipe(takeUntil(this.state.unsubscribe))
         .subscribe(response => {          
-          const sampleProjectClient = getSampleProjectItems()          
+          const sampleProjectListingResponse= getSampleProjectItems()          
             .subscribe(
             (sampleProjectClientResult)=> {                                          
               if ( response.items.length >= sampleProjectClientResult.items.length) {                            
