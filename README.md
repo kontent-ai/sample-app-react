@@ -78,7 +78,7 @@ You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
 ## Deployment
 
-You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kontent.ai/blog/3-steps-to-rapidly-deploy-headless-single-page-appp).
+You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kontent.ai/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
 
 ## Wall of Fame
 
