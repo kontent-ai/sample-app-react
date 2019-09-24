@@ -9,6 +9,6 @@ script:
 deploy:
   provider: surge
   project: ./build/
-  domain: kentico-sample-app-react.surge.sh 
+  domain: kontent-sample-app-react.surge.sh 
   skip_cleanup: true
 
