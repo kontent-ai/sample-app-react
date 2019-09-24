@@ -4,7 +4,7 @@ import {
   defaultProjectId
 } from './Utilities/SelectedProject';
 
-// kentico cloud
+// kentico kontent
 import { DeliveryClient, TypeResolver } from '@kentico/kontent-delivery';
 
 // models
