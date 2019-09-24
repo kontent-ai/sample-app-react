@@ -69,8 +69,8 @@ You can learn more about content editing with Kentico Kontent in the [documentat
 
 You can retrieve content either through the Kentico Kontent Delivery SDKs or the Kentico Kontent Delivery API:
 
-- For published content, use `https://deliver.kenticocloud.com/PROJECT_ID/items`.
-- For unpublished content, use `https://preview-deliver.kenticocloud.com/PROJECT_ID/items`.
+- For published content, use `https://deliver.kontent.ai/PROJECT_ID/items`.
+- For unpublished content, use `https://preview-deliver.kontent.ai/PROJECT_ID/items`.
 
 For more info about the API, see the [API reference](https://developer.kenticocloud.com/reference).
 
