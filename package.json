@@ -1,5 +1,5 @@
 {
-  "name": "dancing-goat",
+  "name": "@kentico/kontent-sample-app-react",
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
