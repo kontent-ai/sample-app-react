@@ -142,7 +142,6 @@ body {
   overflow: auto;
 }
 .project-configuration-section .logotype {
-  background-color: #ef5a22;
   display: inline-block;
   width: 132px;
   padding: 16px;
@@ -150,7 +149,7 @@ body {
 .project-configuration-section .logotype-link {
   display: block;
   overflow: visible;
-  height: 44px;
+  height: 56px;
 }
 .project-configuration-section .inline-controls div,
 .project-configuration-section .inline-controls p,
