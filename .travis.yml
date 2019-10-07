@@ -9,6 +9,6 @@ script:
 deploy:
   provider: surge
   project: ./build/
-  domain: https://kentico-cloud-sample-app-react-magento.surge.sh
+  domain: https://kontent-sample-app-react-magento.surge.sh
   skip_cleanup: true
   on: samples/magento
