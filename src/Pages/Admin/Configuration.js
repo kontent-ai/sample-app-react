@@ -106,7 +106,7 @@ class Configuration extends Component {
       Client.items()
         .elementsParameter(['id'])
         .depthParameter(0)
-        .getObservable()
+        .toObservable()
         .pipe(takeUntil(this.state.unsubscribe))
         .subscribe(response => {
           if (response.items.length === SAMPLE_PROJECT_ITEM_COUNT) {
@@ -132,27 +132,27 @@ class Configuration extends Component {
   redirectToHome(newProjectId) {
     const infoMessage =
       newProjectId === defaultProjectId
-        ? `You've configured your app to with a project ID of a shared Kentico Cloud project.`
-        : `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://app.kenticocloud.com/.`;
+        ? `You've configured your app to with a project ID of a shared Kentico Kontent project.`
+        : `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://kontent.ai/.`;
     this.props.history.push(`/?infoMessage=${infoMessage}`);
   }
 
-  openKenticoCloudProjectSelector(event) {
+  openKenticoKontentProjectSelector(event) {
     event.preventDefault();
     const windowWidth = 800;
     const windowHeight = 800;
     const { left, top } = getWindowCenterPosition(windowWidth, windowHeight);
 
     window.open(
-      'https://app.kenticocloud.com/sample-site-configuration',
-      'Kentico Cloud',
+      'https://app.kontent.ai/sample-site-configuration',
+      'Kentico Kontent',
       `status=no,width=${windowWidth},height=${windowHeight},resizable=yes,left=
       ${left},top=${top},toolbar=no,menubar=no,location=no,directories=no`
     );
   }
 
   receiveMessage(event) {
-    if (event.origin.toLowerCase() !== 'https://app.kenticocloud.com') return;
+    if (event.origin.toLowerCase() !== 'https://app.kontent.ai') return;
 
     if (!event.data.projectGuid) {
       return;
@@ -176,12 +176,12 @@ class Configuration extends Component {
               <a href="/" className="logotype-link">
                 <svg
                   viewBox="0 0 152 54"
-                  id="kenticoCloud"
+                  id="kenticoKontent"
                   width="100%"
                   height="100%"
                 >
                   <title>
-                    Kentico Cloud—the cloud-first CMS for digital agencies and
+                    Kentico Kontent—the cloud-first CMS for digital agencies and
                     their clients
                   </title>
                   <g fill="#fff" fillRule="evenodd">
@@ -197,10 +197,10 @@ class Configuration extends Component {
           <div className="content">
             <h1>Sample Site—Configuration</h1>
             <p>
-              For your sample app to work, you should have a Kentico Cloud
+              For your sample app to work, you should have a Kentico Kontent
               project containing content. Your app should be then configured
               with its project ID. You can either get it by signing in using
-              your Kentico Cloud credentials or by signing up for a trial.
+              your Kentico Kontent credentials or by signing up for a trial.
               Later, it will be converted to a free plan.
             </p>
             {message}
@@ -212,11 +212,11 @@ class Configuration extends Component {
             You may wish to either select from existing projects or create a new
             sample project. The app will be configured with its project ID.
           </p>
-          <form onSubmit={this.openKenticoCloudProjectSelector}>
+          <form onSubmit={this.openKenticoKontentProjectSelector}>
             <input
               type="submit"
               className="button-secondary"
-              value="Get Project ID from Kentico Cloud"
+              value="Get Project ID from Kentico Kontent"
             />
           </form>
         </section>

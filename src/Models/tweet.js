@@ -1,4 +1,4 @@
-import { ContentItem } from 'kentico-cloud-delivery';
+import { ContentItem } from '@kentico/kontent-delivery';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import TwitterWidgetsLoader from 'twitter-widgets';
 
