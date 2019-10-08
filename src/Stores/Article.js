@@ -1,12 +1,12 @@
 import { Client } from '../Client.js';
-import { SortOrder } from 'kentico-cloud-delivery';
+import { SortOrder } from '@kentico/kontent-delivery';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import {
   initLanguageCodeObject,
   defaultLanguage
 } from '../Utilities/LanguageCodes';
-import { spinnerService } from '@chevtek/react-spinners';
+import { spinnerService } from '@simply007org/react-spinners';
 
 let unsubscribe = new Subject();
 const resetStore = () => ({
@@ -62,7 +62,7 @@ class Article {
     }
 
     query
-      .getObservable()
+      .toObservable()
       .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (!response.isEmpty) {
@@ -90,7 +90,7 @@ class Article {
     }
 
     query
-      .getObservable()
+      .toObservable()
       .pipe(takeUntil(unsubscribe))
       .subscribe(response => {
         if (language) {

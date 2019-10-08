@@ -9,6 +9,6 @@ script:
 deploy:
   provider: surge
   project: ./build/
-  domain: https://kentico-cloud-sample-app-react-shopify.surge.sh
+  domain: https://kontent-sample-app-react.surge.sh
   skip_cleanup: true
   on: samples/shopify
