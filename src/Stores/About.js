@@ -41,7 +41,7 @@ let fetchFacts = (language, urlSlug) => {
   }
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
@@ -78,7 +78,7 @@ let fetchMetaData = (language, urlSlug) => {
   }
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
