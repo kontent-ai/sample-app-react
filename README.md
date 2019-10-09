@@ -2,7 +2,7 @@
 [![Build Status](https://api.travis-ci.org/Kentico/kontent-sample-app-react.svg?branch=master)](https://travis-ci.org/Kentico/kontent-sample-app-react)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This is a sample website written in JavaScript utilizing the Kentico kontent Delivery API to manage and retrieve content. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, read [Running the React sample app](https://docs.kontent.ai/tutorials/develop-apps/get-started/running-a-sample-application?tech=react) on our Developer Hub.
+This is a sample website written in JavaScript utilizing the Kentico Kontent Delivery API to manage and retrieve content. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, read [Running the React sample app](https://docs.kontent.ai/tutorials/develop-apps/get-started/running-a-sample-application?tech=react) on our Developer Hub.
 
 It includes Google Analytics integration sample.
 
@@ -15,19 +15,19 @@ It includes Google Analytics integration sample.
 5. Type `npm start` to start a development server.
 6. The application opens in your browser at <http://localhost:3000>.
 
-After starting, the sample application retrieves content from the **default** Kentico kontent sample project.
+After starting, the sample application retrieves content from the **default** Kentico Kontent sample project.
 
 ### Connecting to your sample project
 
-At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kentico kontent project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
+At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kentico Kontent project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
 
 Alternatively, you can connect your project manually as per the chapter below.
 
 #### Connecting to your project manually
 
-If you want to change the source Kentico kontent project, follow these steps:
+If you want to change the source Kentico Kontent project, follow these steps:
  
-1. In Kentico kontent, choose Project settings from the app menu.
+1. In Kentico Kontent, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID
 4. Open the [`src\Client.js`](/src/Client.js) file in the sample application folder.
@@ -39,11 +39,11 @@ When you now run the sample application, the application retrieves content from 
 
 ## Previewing content from your project
 
-If you already have a Kentico kontent account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
+If you already have a Kentico Kontent account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
 
 To preview content in the sample application, follow these steps:
 
-1. In Kentico kontent, choose Project settings from the app menu.
+1. In Kentico Kontent, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID and Preview API key.
 4. Open the `src\Client.js` file in the sample application folder.
@@ -59,11 +59,11 @@ When you now run the application, you will see all project content including the
 2. Sign in with your credentials.
 3. Manage content in the content administration interface of your sample project.
 
-You can learn more about content editing with Kentico kontent in the [documentation](https://docs.kontent.ai/).
+You can learn more about content editing with Kentico Kontent in the [documentation](https://docs.kontent.ai/).
 
 ## Content delivery
 
-You can retrieve content either through the Kentico kontent Delivery SDKs or the Kentico kontent Delivery API:
+You can retrieve content either through the Kentico Kontent Delivery SDKs or the Kentico Kontent Delivery API:
 
 * For published content, use `https://deliver.kontent.ai/PROJECT_ID/items`.
 * For unpublished content, use `https://preview-deliver.kontent.ai/PROJECT_ID/items`.

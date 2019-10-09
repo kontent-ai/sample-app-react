@@ -67,7 +67,10 @@ class Home extends Component {
           twitterImage={metaData.metadataTwitterImage}
         />
         <Banner />
-        <LatestArticles language={this.props.language} />
+        <LatestArticles
+          articles={metaData.articles.value}
+          language={this.props.language}
+        />
         <LinkButton
           link={`/${this.props.language}/articles`}
           text={this.props.t('moreArticles')}
