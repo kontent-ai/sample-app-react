@@ -60,7 +60,7 @@ class About extends Component {
   render() {
     let facts =
       this.state.facts.value &&
-      this.state.facts.map((fact, index) => {
+      this.state.facts.value.map((fact, index) => {
         let title =
           fact.title.value.trim().length > 0
             ? fact.title.value
