@@ -12,10 +12,10 @@
     "react-scripts": "^2.1.5"
   },
   "dependencies": {
-    "@chevtek/react-spinners": "^1.0.5",
+    "@kentico/kontent-delivery": "^7.0.0",
+    "@simply007org/react-spinners": "0.0.3",
     "google-maps-react": "^2.0.2",
     "immutable": "^3.8.2",
-    "kentico-cloud-delivery": "^5.7.2",
     "load-script": "^1.0.0",
     "lodash": "^4.17.11",
     "qs": "^6.5.2",
@@ -26,7 +26,7 @@
     "react-router-dom": "^4.3.1",
     "react-scroll": "^1.7.10",
     "react-translate": "^6.0.0",
-    "rxjs": "^6.2.2",
+    "rxjs": "^6.5.3",
     "twitter-widgets": "^2.0.0",
     "universal-cookie": "^3.0.4",
     "validator": "^10.7.0"

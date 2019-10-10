@@ -5,7 +5,7 @@ import {
   initLanguageCodeObject,
   defaultLanguage
 } from '../Utilities/LanguageCodes';
-import { spinnerService } from '@chevtek/react-spinners';
+import { spinnerService } from '@simply007org/react-spinners';
 import { getVariation } from './experiments';
 
 let unsubscribe = new Subject();
@@ -52,7 +52,7 @@ let fetchHomeVariant = (originalHome, language, experimentId, variantId) => {
   query.orderByAscending('elements.a_b_testing');
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       const homeItem = response.items[0] || originalHome;
@@ -98,7 +98,7 @@ let fetchHome = language => {
   query.orderByAscending('elements.a_b_testing');
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       const homeItem = response.items[0];
