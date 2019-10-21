@@ -8,7 +8,6 @@ import LinkButton from '../Components/LinkButton.js';
 import OurStory from '../Components/OurStory.js';
 import TasteOurCoffee from '../Components/TasteOurCoffee.js';
 import Metadata from '../Components/Metadata';
-x;
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 
 let getState = props => {
