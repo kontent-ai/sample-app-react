@@ -8,7 +8,7 @@ import LinkButton from '../Components/LinkButton.js';
 import OurStory from '../Components/OurStory.js';
 import TasteOurCoffee from '../Components/TasteOurCoffee.js';
 import Metadata from '../Components/Metadata';
-
+x;
 import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 
 let getState = props => {
@@ -67,7 +67,6 @@ class Home extends Component {
           twitterImage={home.metadataTwitterImage}
         />
         {home.heroUnit &&
-          home.heroUnit.length &&
           home.heroUnit.value &&
           home.heroUnit.value.length && (
             <Banner heroUnit={home.heroUnit.value[0]} />
@@ -83,8 +82,7 @@ class Home extends Component {
           text={this.props.t('moreArticles')}
         />
         {home.ourStory &&
-          home.ourStory.value &&
-          home.ourStory.length && <OurStory fact={home.ourStory.value[0]} />}
+          home.ourStory.value && <OurStory fact={home.ourStory.value[0]} />}
         {this.props.language &&
         this.props.language.toLowerCase() === englishCode.toLowerCase() ? (
           <LinkButton
