@@ -1394,6 +1394,10 @@ body {
   font-size: 1.375rem;
   font-weight: bold;
   margin-right: 0.5rem;
+  background: #f9c739;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
 }
 .application-content .product-tile-list-price {
   text-decoration: line-through;
