@@ -5613,6 +5613,7 @@ body {
   background-color: #e2e2e2;
   display: inline-block;
   padding: 0.3rem 1rem;
+  width: 100%;
 }
 .application-content .title-tab {
   background: black;
