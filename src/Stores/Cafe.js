@@ -6,7 +6,7 @@ import {
   defaultLanguage,
   languageCodes
 } from '../Utilities/LanguageCodes';
-import { spinnerService } from '@chevtek/react-spinners';
+import { spinnerService } from '@simply007org/react-spinners';
 
 let unsubscribe = new Subject();
 let changeListeners = [];
@@ -43,7 +43,7 @@ let fetchCafes = language => {
   }
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {

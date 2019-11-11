@@ -5,7 +5,7 @@ import {
   initLanguageCodeObject,
   defaultLanguage
 } from '../Utilities/LanguageCodes';
-import { spinnerService } from '@chevtek/react-spinners';
+import { spinnerService } from '@simply007org/react-spinners';
 
 let unsubscribe = new Subject();
 let changeListeners = [];
@@ -32,7 +32,7 @@ let fetchCoffees = language => {
   }
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
@@ -46,7 +46,7 @@ let fetchCoffees = language => {
 
 let fetchProcessings = () => {
   Client.taxonomy('processing')
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       processings = response.taxonomy.terms;
@@ -56,7 +56,7 @@ let fetchProcessings = () => {
 
 let fetchProductStatuses = () => {
   Client.taxonomy('product_status')
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       productStatuses = response.taxonomy.terms;

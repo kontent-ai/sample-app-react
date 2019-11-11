@@ -5,7 +5,7 @@ import {
   initLanguageCodeObject,
   defaultLanguage
 } from '../Utilities/LanguageCodes';
-import { spinnerService } from '@chevtek/react-spinners';
+import { spinnerService } from '@simply007org/react-spinners';
 
 let unsubscribe = new Subject();
 let changeListeners = [];
@@ -36,7 +36,7 @@ let fetchBrewers = language => {
   }
 
   query
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       if (language) {
@@ -54,7 +54,7 @@ let fetchManufacturers = () => {
   }
 
   Client.taxonomy('manufacturer')
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       manufacturers = response.taxonomy.terms;
@@ -69,7 +69,7 @@ let fetchProductStatuses = () => {
   }
 
   Client.taxonomy('product_status')
-    .getObservable()
+    .toObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
       productStatuses = response.taxonomy.terms;
