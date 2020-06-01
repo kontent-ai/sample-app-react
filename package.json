@@ -7,7 +7,7 @@
     "cross-env": "^7.0.2",
     "dateformat": "^3.0.3",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.6",
+    "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
     "react-scripts": "^3.4.1"
   },
