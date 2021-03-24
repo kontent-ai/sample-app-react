@@ -1,7 +1,7 @@
 # Kentico Kontent sample React single-page application
 
-[![Build Status](https://api.travis-ci.com/Kentico/kontent-sample-app-react.svg?branch=master)](https://travis-ci.com/Kentico/kontent-sample-app-react)
-[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.surge.sh)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5018e8db-b76e-4f19-8ad2-7fd9da21a2ee/deploy-status)](https://app.netlify.com/sites/kontent-sample-app-react/deploys)
+[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.netlify.app/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
 This is a sample website written in JavaScript utilizing the Kentico Kontent Delivery API to manage and retrieve content. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, read [Running the React sample app](https://docs.kontent.ai/tutorials/develop-apps/get-started/running-a-sample-application?tech=react) on our Developer Hub.
