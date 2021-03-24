@@ -88,4 +88,3 @@ We would like to express our thanks to the following people who contributed and 
 
 Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/kontent-sample-app-react/issues) and send us a pull request!
 
-![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/kontent-sample-app-react?pixel)
