@@ -57,7 +57,9 @@ let Client = new DeliveryClient({
   projectId: currentProjectId,
   typeResolvers: typeResolvers,
   previewApiKey: previewApiKey,
-  enablePreviewMode: isPreview()
+  globalQueryConfig: {
+      usePreviewMode: isPreview(),
+    },
 });
 
 const resetClient = newProjectId => {
@@ -65,7 +67,9 @@ const resetClient = newProjectId => {
     projectId: newProjectId,
     typeResolvers: typeResolvers,
     previewApiKey: previewApiKey,
-    enablePreviewMode: isPreview()
+    globalQueryConfig: {
+      usePreviewMode: isPreview(),
+    },
   });
   const cookies = new Cookies(document.cookies);
   cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
