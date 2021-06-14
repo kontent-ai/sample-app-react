@@ -1,6 +1,6 @@
 {
   "name": "@kentico/kontent-sample-app-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "devDependencies": {
     "cpy-cli": "^3.1.1",
@@ -12,7 +12,7 @@
     "react-scripts": "^3.4.1"
   },
   "dependencies": {
-    "@kentico/kontent-delivery": "^9.1.1",
+    "@kentico/kontent-delivery": "^10.4.1",
     "@simply007org/react-spinners": "0.0.3",
     "google-maps-react": "^2.0.6",
     "immutable": "^4.0.0-rc.12",
@@ -25,7 +25,7 @@
     "react-router-dom": "^5.2.0",
     "react-scroll": "^1.7.16",
     "react-translate": "^7.0.1",
-    "rxjs": "^6.5.5",
+    "rxjs": "^7.1.0",
     "twitter-widgets": "^2.0.0",
     "universal-cookie": "^4.0.3",
     "validator": "^13.1.1"
