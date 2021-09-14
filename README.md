@@ -4,7 +4,7 @@
 
 This is a sample website written in JavaScript utilizing the Kentico Kontent Delivery API to manage and retrieve content. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, read [Running the React sample app](https://docs.kontent.ai/tutorials/develop-apps/get-started/running-a-sample-application?tech=react) on our Developer Hub.
 
-It includes Google Analytics integration sample.
+It includes Google Analytics integration sample - check the `selectAddress` method in [`src/Pages/Contacts.js` file](./src/Pages/Contacts.js) in select address.
 
 ## Application setup
 
