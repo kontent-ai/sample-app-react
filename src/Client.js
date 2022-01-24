@@ -38,6 +38,7 @@ const resetClient = newProjectId => {
     defaultQueryConfig: {
       usePreviewMode: isPreview(),
     },
+    propertyNameResolver: camelCasePropertyNameResolver
   });
   const cookies = new Cookies(document.cookies);
   cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
