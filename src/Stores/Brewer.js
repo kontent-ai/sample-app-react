@@ -1,13 +1,10 @@
 import { Client } from '../Client.js';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import {
   initLanguageCodeObject,
   defaultLanguage
 } from '../Utilities/LanguageCodes';
 import { spinnerService } from '@simply007org/react-spinners';
 
-let unsubscribe = new Subject();
 let changeListeners = [];
 const resetStore = () => ({
   brewers: initLanguageCodeObject()
@@ -27,20 +24,19 @@ let notifyChange = () => {
 };
 
 let fetchBrewers = language => {
-  var query = Client.items()
+    var query = Client.items()
     .type('brewer')
-    .orderParameter('elements.product_name');
+    .orderByAscending('elements.product_name');
 
   if (language) {
     query.languageParameter(language);
   }
 
   query
-    .toObservable()
-    .pipe(takeUntil(unsubscribe))
-    .subscribe(response => {
+    .toPromise()
+    .then(response => {
       if (language) {
-        brewers[language] = response.items;
+        brewers[language] = response.data.items;
       } else {
         brewers[defaultLanguage] = response.items;
       }
@@ -54,10 +50,9 @@ let fetchManufacturers = () => {
   }
 
   Client.taxonomy('manufacturer')
-    .toObservable()
-    .pipe(takeUntil(unsubscribe))
-    .subscribe(response => {
-      manufacturers = response.taxonomy.terms;
+    .toPromise()
+    .then(response => {
+      manufacturers = response.data.taxonomy.terms;
       notifyChange();
       manufacturersInitialized = true;
     });
@@ -69,10 +64,9 @@ let fetchProductStatuses = () => {
   }
 
   Client.taxonomy('product_status')
-    .toObservable()
-    .pipe(takeUntil(unsubscribe))
-    .subscribe(response => {
-      productStatuses = response.taxonomy.terms;
+    .toPromise()
+    .then(response => {
+      productStatuses = response.data.taxonomy.terms;
       notifyChange();
       productStatusesInitialized = true;
     });
@@ -98,7 +92,7 @@ export class Filter {
       return true;
     }
 
-    let manufacturerCodenames = brewer.manufacturer.value.map(x => x.codename);
+    let manufacturerCodenames = brewer.elements.manufacturer.value.map(x => x.codename);
     return manufacturerCodenames.some(x => this.manufacturers.includes(x));
   }
 
@@ -107,7 +101,7 @@ export class Filter {
       return true;
     }
 
-    let price = brewer.price.value;
+    let price = brewer.elements.price.value;
 
     return this.priceRanges.some(
       priceRange => priceRange.min <= price && price <= priceRange.max
@@ -119,7 +113,7 @@ export class Filter {
       return true;
     }
 
-    let statusCodenames = brewer.productStatus.value.map(x => x.codename);
+    let statusCodenames = brewer.elements.productStatus.value.map(x => x.codename);
     return statusCodenames.some(x => this.productStatuses.includes(x));
   }
 
@@ -224,12 +218,6 @@ class Brewer {
     changeListeners = changeListeners.filter(element => {
       return element !== listener;
     });
-  }
-
-  unsubscribe() {
-    unsubscribe.next();
-    unsubscribe.complete();
-    unsubscribe = new Subject();
   }
 }
 

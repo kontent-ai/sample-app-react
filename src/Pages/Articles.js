@@ -30,7 +30,6 @@ class Articles extends Component {
 
   componentWillUnmount() {
     ArticleStore.removeChangeListener(this.onChange);
-    ArticleStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -61,18 +60,18 @@ class Articles extends Component {
       }
 
       let title =
-        article.title.value.trim().length > 0
-          ? article.title.value
+        article.elements.title.value.trim().length > 0
+          ? article.elements.title.value
           : this.props.t('noTitleValue');
 
-      let postDate = formatDate(article.postDate.value);
+      let postDate = formatDate(article.elements.postDate.value);
 
       let imageLink =
-        article.teaserImage.value[0] !== undefined ? (
+        article.elements.teaserImage.value[0] !== undefined ? (
           <img
             alt={'Article ' + title}
             className="article-tile-image"
-            src={article.teaserImage.value[0].url}
+            src={article.elements.teaserImage.value[0].url}
             title={'Article ' + title}
           />
         ) : (
@@ -82,8 +81,8 @@ class Articles extends Component {
         );
 
       let summary =
-        article.summary.value.trim().length > 0
-          ? article.summary.value
+        article.elements.summary.value.trim().length > 0
+          ? article.elements.summary.value
           : this.props.t('noSummaryValue');
 
       let link = `/${this.props.language}/articles/${article.system.id}`;

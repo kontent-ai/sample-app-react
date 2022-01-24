@@ -29,7 +29,6 @@ class Brewer extends Component {
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
-    BrewerStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {

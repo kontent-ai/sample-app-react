@@ -6,7 +6,7 @@ import Link from '../Components/LowerCaseUrlLink';
 const TasteOurCoffee = props => {
   let cafes = props.cafes.map((cafe, index) => {
     let name = cafe.system.name;
-    let imageLink = cafe.photo.value[0].url;
+    let imageLink = cafe.elements.photo.value[0].url;
 
     return (
       <div className="col-xs-6 col-md-3" key={index}>

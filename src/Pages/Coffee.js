@@ -28,7 +28,6 @@ class Coffee extends Component {
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
-    CoffeeStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {

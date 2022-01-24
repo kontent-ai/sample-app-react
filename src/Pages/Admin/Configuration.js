@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
 import { isUUID } from 'validator';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 
 import { resetClient, Client } from '../../Client';
 import SpinnerBox from '../../Components/SpinnerBox';
@@ -45,14 +43,12 @@ class Configuration extends Component {
         selectedProjectCookieName
       ),
       preparingProject: false,
-      unsubscribe: new Subject()
     };
 
     this.handleProjectInputChange = this.handleProjectInputChange.bind(this);
     this.handleSetProjectSubmit = this.handleSetProjectSubmit.bind(this);
     this.setNewProjectId = this.setNewProjectId.bind(this);
     this.receiveMessage = this.receiveMessage.bind(this);
-    this.unsubscribe = this.unsubscribe.bind(this);
     this.waitUntilProjectAccessible = this.waitUntilProjectAccessible.bind(
       this
     );
@@ -64,7 +60,6 @@ class Configuration extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('message', this.receiveMessage);
-    this.unsubscribe();
   }
 
   handleProjectInputChange(event) {
@@ -108,35 +103,24 @@ class Configuration extends Component {
       Client.items()
         .elementsParameter(['id'])
         .depthParameter(0)
-        .toObservable()
-        .pipe(takeUntil(this.state.unsubscribe))
-        .subscribe(response => {
-          const sampleProjectListingResponse = getSampleProjectItems().subscribe(
+        .toPromise()
+        .then(response => {
+          getSampleProjectItems().then(
             sampleProjectClientResult => {
               if (
-                response.items.length >= sampleProjectClientResult.items.length
+                response.data.items.length >= sampleProjectClientResult.data.items.length
               ) {
                 this.setState({
                   preparingProject: false
                 });
-                sampleProjectListingResponse.unsubscribe();
                 this.redirectToHome(newProjectId);
               } else {
-                sampleProjectListingResponse.unsubscribe();
                 this.waitUntilProjectAccessible(newProjectId);
               }
             }
           );
         });
     }, 2000);
-  }
-
-  unsubscribe() {
-    this.state.unsubscribe.next();
-    this.state.unsubscribe.complete();
-    this.setState({
-      unsubscribe: new Subject()
-    });
   }
 
   redirectToHome(newProjectId) {

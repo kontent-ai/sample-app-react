@@ -27,7 +27,6 @@ class CoffeeFilter extends Component {
 
   componentWillUnmount() {
     CoffeeStore.removeChangeListener(this.onChange);
-    CoffeeStore.unsubscribe();
   }
 
   onChange() {

@@ -25,7 +25,7 @@ const RichTextElement = props => {
   return (
     <div
       className={props.className}
-      dangerouslySetInnerHTML={{ __html: props.element.resolveHtml() }}
+      dangerouslySetInnerHTML={{ __html: props.element.value }}
       onClick={e => handleClick(props.element, props.history, props.match, e)}
     />
   );
