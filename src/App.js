@@ -21,6 +21,7 @@ import {
   selectedProjectCookieName,
   projectConfigurationPath
 } from './Utilities/SelectedProject';
+import Test from './Pages/Test';
 
 class App extends Component {
   render() {
@@ -46,6 +47,12 @@ class App extends Component {
           message={infoMessage}
         />
         <Switch>
+          <Route
+            path="/:lang?/test"
+            render={matchProps => (
+              <Test {...matchProps} language={language} />
+            )}
+          />
           <Route
             path="/:lang?/store"
             render={matchProps => (
