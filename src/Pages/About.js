@@ -110,7 +110,6 @@ class About extends Component {
         );
       });
 
-    debugger;
     let metaDataElements = this.state.metaData.elements || {};
 
     return (

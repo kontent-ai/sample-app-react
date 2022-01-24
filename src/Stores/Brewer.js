@@ -179,7 +179,7 @@ class Brewer {
   getBrewer(brewerSlug, language) {
     spinnerService.hide('apiSpinner');
     return brewers[language || defaultLanguage].find(
-      brewer => brewer.urlPattern.value === brewerSlug
+      brewer => brewer.elements.urlPattern.value === brewerSlug
     );
   }
 

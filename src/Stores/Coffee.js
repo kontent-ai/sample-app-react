@@ -143,7 +143,7 @@ class Coffee {
   getCoffee(coffeeSlug, language) {
     spinnerService.hide('apiSpinner');
     return coffees[language || defaultLanguage].find(
-      coffee => coffee.urlPattern.value === coffeeSlug
+      coffee => coffee.elements.urlPattern.value === coffeeSlug
     );
   }
 

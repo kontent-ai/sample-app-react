@@ -1,3 +1,4 @@
+import { createRichTextHtmlResolver, linkedItemsHelper } from '@kentico/kontent-delivery';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { resolveContentLink } from '../Utilities/ContentLinks';
@@ -22,10 +23,40 @@ function handleClick(element, history, match, e) {
 }
 
 const RichTextElement = props => {
+
+  const resolvedRichText = createRichTextHtmlResolver().resolveRichText({
+    element: props.element,
+    linkedItems: linkedItemsHelper.convertLinkedItemsToArray(props.linkedItems || {}),
+    imageResolver: (imageId, image) => {
+        return {
+            imageHtml: `<img class="xImage" src="${image?.url}">`,
+            // alternatively you may return just url
+            url: 'customUrl'
+        };
+    },
+    // urlResolver: (linkId, linkText, link) => {
+    //     return {
+    //         linkHtml: `<a class="xLink">${link?.link?.urlSlug}</a>`,
+    //         // alternatively you may return just url
+    //         url: 'customUrl'
+    //     };
+    // },
+    contentItemResolver: (itemId, contentItem) => {
+        // if (contentItem && contentItem.system.type === 'actor') {
+        //     return {
+        //         contentItemHtml: `<div class="xClass">${actor.elements.firstName.value}</div>`
+        //     };
+        // }
+
+        return {
+            contentItemHtml: ''
+        };
+    }
+});
   return (
     <div
       className={props.className}
-      dangerouslySetInnerHTML={{ __html: props.element.value }}
+      dangerouslySetInnerHTML={{ __html: resolvedRichText.html }}
       onClick={e => handleClick(props.element, props.history, props.match, e)}
     />
   );
