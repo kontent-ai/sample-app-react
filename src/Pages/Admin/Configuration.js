@@ -126,7 +126,7 @@ class Configuration extends Component {
   redirectToHome(newProjectId) {
     const infoMessage =
       newProjectId === defaultProjectId
-        ? `You've configured your app to with a project ID of a shared Kentico Kontent project.`
+        ? `You've configured your app to with a project ID of a shared Kontent project.`
         : `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://kontent.ai/.`;
     this.props.history.push(`/?infoMessage=${infoMessage}`);
   }
@@ -170,7 +170,7 @@ class Configuration extends Component {
               <a href="/" className="logotype-link">
                 <img
                   src={KontentLogo}
-                  alt="Kentico Kontent logo"
+                  alt="Kontent logo"
                   id="KenticoKontent"
                   width="100%"
                   height="100%"
@@ -183,10 +183,10 @@ class Configuration extends Component {
           <div className="content">
             <h1>Sample Site—Configuration</h1>
             <p>
-              For your sample app to work, you should have a Kentico Kontent
+              For your sample app to work, you should have a Kontent
               project containing content. Your app should be then configured
               with its project ID. You can either get it by signing in using
-              your Kentico Kontent credentials or by signing up for a trial.
+              your Kontent credentials or by signing up for a trial.
               Later, it will be converted to a free plan.
             </p>
             {message}
@@ -202,7 +202,7 @@ class Configuration extends Component {
             <input
               type="submit"
               className="button-secondary"
-              value="Get Project ID from Kentico Kontent"
+              value="Get Project ID from Kontent"
             />
           </form>
         </section>
