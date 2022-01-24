@@ -4,28 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import { getLanguageCode } from '../Utilities/LanguageCodes';
 
-function handleClick(element, history, match, e) {
-  if (e.target.tagName === 'A' && e.target.hasAttribute('data-item-id')) {
-    e.preventDefault();
-
-    const id = e.target.getAttribute('data-item-id');
-    const link = element.links.find(m => m.linkId === id);
-
-    if (link) {
-      const path = resolveContentLink(link);
-      const language = getLanguageCode(match).toLowerCase();
-
-      if (path) {
-        history.push(`/${language}${path}`);
-      }
-    }
-  }
-}
-
 const RichTextElement = props => {
 
   const resolvedRichText = createRichTextHtmlResolver().resolveRichText({
     element: props.element,
+    // TODO fix linked items (and pass where necessary)
     linkedItems: linkedItemsHelper.convertLinkedItemsToArray(props.linkedItems || {}),
     imageResolver: (imageId, image) => {
         return {
@@ -34,13 +17,15 @@ const RichTextElement = props => {
             url: 'customUrl'
         };
     },
-    // urlResolver: (linkId, linkText, link) => {
-    //     return {
-    //         linkHtml: `<a class="xLink">${link?.link?.urlSlug}</a>`,
-    //         // alternatively you may return just url
-    //         url: 'customUrl'
-    //     };
-    // },
+    urlResolver: (_linkId, _linkText, link) => {
+      const path = resolveContentLink(link);
+      const language = getLanguageCode(props.match).toLowerCase();
+        return {
+            // linkHtml: `<a class="xLink">${link?.link?.urlSlug}</a>`,
+            // alternatively you may return just url
+            linkUrl: `/${language}${path}`
+        };
+    },
     contentItemResolver: (itemId, contentItem) => {
         // if (contentItem && contentItem.system.type === 'actor') {
         //     return {
@@ -57,7 +42,7 @@ const RichTextElement = props => {
     <div
       className={props.className}
       dangerouslySetInnerHTML={{ __html: resolvedRichText.html }}
-      onClick={e => handleClick(props.element, props.history, props.match, e)}
+      // onClick={e => handleClick(props.element, props.history, props.match, e)}
     />
   );
 };
