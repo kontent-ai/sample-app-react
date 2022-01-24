@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 
 <html>
+  <head id="head">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>Dancing Goat</title>
+    <!-- See https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites -->
+    <script>
+      window.twttr = (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
 
-<head id="head">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="UTF-8" />
-  <title>Dancing Goat</title>
-</head>
+        t._e = [];
+        t.ready = function (f) {
+          t._e.push(f);
+        };
 
-<body>
-  <div class="page-wrap" id="root"></div>
-</body>
+        return t;
+      })(document, 'script', 'twitter-wjs');
+    </script>
+  </head>
 
+  <body>
+    <div class="page-wrap" id="root"></div>
+  </body>
 </html>

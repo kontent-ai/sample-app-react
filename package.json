@@ -25,7 +25,6 @@
     "react-router-dom": "^5.2.0",
     "react-scroll": "^1.7.16",
     "react-translate": "^7.0.1",
-    "twitter-widgets": "^2.0.0",
     "universal-cookie": "^4.0.3",
     "validator": "^13.1.1"
   },

@@ -4,12 +4,15 @@ import {
   defaultLanguage
 } from '../Utilities/LanguageCodes';
 import { spinnerService } from '@simply007org/react-spinners';
+import _ from 'lodash';
+import { linkedItemsHelper } from '@kentico/kontent-delivery';
 
 const resetStore = () => ({
   articleList: initLanguageCodeObject(),
-  articleDetails: initLanguageCodeObject()
+  articleDetails: initLanguageCodeObject(),
+  articleDetailsLinkedItems: initLanguageCodeObject()
 });
-let { articleList, articleDetails } = resetStore();
+let { articleList, articleDetails, articleDetailsLinkedItems } = resetStore();
 
 let changeListeners = [];
 
@@ -62,8 +65,10 @@ class Article {
         if (!response.isEmpty) {
           if (language) {
             articleDetails[language][articleId] = response.data.items[0];
+            articleDetailsLinkedItems[language] = _.unionBy(articleDetailsLinkedItems[language], linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems), 'system.id');
           } else {
             articleDetails[defaultLanguage][articleId] = response.data.items[0];
+            articleDetailsLinkedItems[defaultLanguage] = _.unionBy(articleDetailsLinkedItems[defaultLanguage], linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems), 'system.id');
           }
           notifyChange();
         }
@@ -102,6 +107,15 @@ class Article {
       return articleDetails[language][articleId];
     } else {
       return articleDetails[defaultLanguage][articleId];
+    }
+  }
+
+  getArticleLinkedItems(language) {
+    spinnerService.hide('apiSpinner');
+    if (language) {
+      return articleDetailsLinkedItems[language];
+    } else {
+      return articleDetailsLinkedItems[defaultLanguage];
     }
   }
 

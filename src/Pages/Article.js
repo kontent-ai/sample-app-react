@@ -12,7 +12,8 @@ let getState = props => {
     article: ArticleStore.getArticle(
       props.match.params.articleId,
       props.language
-    )
+    ),
+    linkedItems:  ArticleStore.getArticleLinkedItems(props.language)
   };
 };
 
@@ -93,6 +94,7 @@ class Article extends Component {
         <RichTextElement
           className="article-detail-content"
           element={article.elements.bodyCopy}
+          linkedItems={this.state.linkedItems}
         />
       ) : (
         <p className="article-detail-content">
