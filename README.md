@@ -4,7 +4,7 @@
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.netlify.app/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This is a sample website written in JavaScript utilizing the Kontent Delivery API to manage and retrieve content from Kontent by Kentico. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, read [Running the React sample app](https://docs.kontent.ai/tutorials/develop-apps/get-started/running-a-sample-application?tech=react) on our Developer Hub.
+This is a sample website written in JavaScript utilizing the Kontent Delivery API to manage and retrieve content from Kontent by Kentico. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
 
 ## Application setup
 
@@ -63,7 +63,7 @@ When you now run the application, you will see all project content including the
 2. Sign in with your credentials.
 3. Manage content in the content administration interface of your sample project.
 
-You can learn more about content editing with Kontent in the [documentation](https://docs.kontent.ai/).
+You can learn more about content editing in our tutorials at [Kontent Learn](https://kontent.ai/learn/tutorials/write-and-collaborate/create-content/introducing-content-items).
 
 ## Content delivery
 
@@ -72,7 +72,7 @@ You can retrieve content either through the Kontent Delivery SDKs or the Kontent
 - For published content, use `https://deliver.kontent.ai/PROJECT_ID/items`.
 - For unpublished content, use `https://preview-deliver.kontent.ai/PROJECT_ID/items`.
 
-For more info about the API, see the [API reference](https://developer.kenticocloud.com/reference).
+For more info about the API, see the [API reference](https://kontent.ai/learn/reference).
 
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
