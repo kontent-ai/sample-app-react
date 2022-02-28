@@ -51,5 +51,9 @@
     "not ie 11",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "engines": {
+    "npm": "7 || 8",
+    "node": "16 || 17"
+  }
 }
