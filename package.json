@@ -41,7 +41,7 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "cross-env CI=true react-scripts --openssl-legacy-provider build && cpy build/index.html build --rename=200.html",
     "test-watch": "react-scripts test --env=jsdom",
-    "test": "cross-env CI=true react-scripts --openssl-legacy-provider test --env=jsdom"
+    "test": "cross-env CI=true react-scripts --openssl-legacy-provider test --env=jsdom --passWithNoTests"
   },
   "eslintConfig": {
     "extends": "react-app"
