@@ -38,10 +38,10 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "start": "react-scripts start",
-    "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "cross-env CI=true react-scripts --openssl-legacy-provider build && cpy build/index.html build --rename=200.html",
+    "test-watch": "react-scripts test --env=jsdom",
+    "test": "cross-env CI=true react-scripts --openssl-legacy-provider test --env=jsdom"
   },
   "eslintConfig": {
     "extends": "react-app"
