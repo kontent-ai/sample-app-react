@@ -100,6 +100,7 @@ class Configuration extends Component {
 
   waitUntilProjectAccessible(newProjectId) {
     setTimeout(() => {
+      resetClient(newProjectId);
       Client.items()
         .elementsParameter(['id'])
         .depthParameter(0)
@@ -107,6 +108,7 @@ class Configuration extends Component {
         .then(response => {
           getSampleProjectItems().then(
             sampleProjectClientResult => {
+              resetClient(newProjectId);
               if (
                 response.data.items.length >= sampleProjectClientResult.data.items.length
               ) {
