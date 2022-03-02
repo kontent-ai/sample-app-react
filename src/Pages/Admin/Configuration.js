@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
 import { isUUID } from 'validator';
-<<<<<<< HEAD
-import { Subject } from 'rxjs';
-=======
->>>>>>> master
 
 import { resetClient, Client } from '../../Client';
 import SpinnerBox from '../../Components/SpinnerBox';
