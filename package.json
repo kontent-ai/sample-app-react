@@ -38,8 +38,8 @@
     "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test-watch": "react-scripts test --env=jsdom",
+    "test": "cross-env CI=true react-scripts test --env=jsdom --passWithNoTests"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,5 +49,9 @@
     "not ie 11",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "engines": {
+    "npm": "7 || 8",
+    "node": "16 || 17"
+  }
 }

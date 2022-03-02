@@ -1,0 +1,188 @@
+/* taken from https://github.com/Kentico/kontent-sample-app-net#getting-started build output*/
+/* and prefixed to not affect rest of the site */
+.configuration-page .button {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.1ch;
+  border: 0;
+  border-radius: 5000px;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.configuration-page .button-primary {
+  background: #db3c00;
+  box-shadow: 0 8px 14px 2px rgba(244, 92, 35, 0.14),
+    0 6px 20px 5px rgba(244, 92, 35, 0.12),
+    0 8px 10px -5px rgba(244, 92, 35, 0.2);
+  color: #fff;
+}
+.configuration-page .button-primary:focus {
+  box-shadow: 0 0 0 2px #0093ff, inset 0 0 3px 0 #0093ff,
+    0 8px 14px 2px rgba(244, 92, 35, 0.14),
+    0 6px 20px 5px rgba(244, 92, 35, 0.12),
+    0 8px 10px -5px rgba(244, 92, 35, 0.2);
+}
+.configuration-page .button-primary.active,
+.configuration-page .button-primary:active,
+.configuration-page .button-primary:hover {
+  background: #953000;
+}
+.configuration-page .button-primary.disabled,
+.configuration-page .button-primary[disabled] {
+  color: #8c8c8c;
+  background: #dfdfdf;
+  box-shadow: none;
+}
+.configuration-page .kk-container {
+  margin: 0 auto;
+  padding: 0 24px;
+  max-width: 1048px;
+}
+.configuration-page .col {
+  flex: 1;
+}
+@media (min-width: 900px) {
+  .configuration-page .row-lg {
+    display: flex;
+  }
+  .configuration-page .row-lg--align-start {
+    align-items: flex-start;
+  }
+  .configuration-page .col + .col {
+    margin-left: 24px;
+  }
+}
+.configuration-page .hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.configuration-page .user-message {
+  margin-top: 24px;
+}
+.configuration-page .user-message td {
+  padding: 0;
+}
+.configuration-page .user-message__img {
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+  margin-top: 2px;
+}
+.configuration-page .user-message__img--error {
+  background: url('/images/Admin/error-red.svg') no-repeat center center;
+}
+.configuration-page .user-message__img--info {
+  background: url('/images/Admin/info-black.svg') no-repeat center center;
+}
+.configuration-page *,
+.configuration-page *::before,
+.configuration-page *::after {
+  box-sizing: border-box;
+}
+.configuration-page html,
+.configuration-page body {
+  color: #151515;
+  margin: 0;
+  padding: 0;
+}
+.configuration-page h1,
+.configuration-page h2,
+.configuration-page h3,
+.configuration-page h4,
+.configuration-page h5,
+.configuration-page h6 {
+  margin: 0;
+}
+.configuration-page p {
+  margin: 0;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.configuration-page .headline-large {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+.configuration-page .headline-medium {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.configuration-page .gradient-desk {
+  background-image: linear-gradient(135deg, #f3f4f5, #d3dff3);
+  min-height: 100vh;
+}
+.configuration-page .color-alert-text {
+  color: #db0000;
+}
+.configuration-page .paper {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+}
+.configuration-page .margin-top-l {
+  margin-top: 16px;
+}
+.configuration-page .margin-top-xl {
+  margin-top: 24px;
+}
+.configuration-page .padding-bottom-xl {
+  padding-bottom: 24px;
+}
+.configuration-page .logo-link {
+  text-decoration: none;
+  display: block;
+}
+.configuration-page .logo {
+  height: 48px;
+  margin: 32px 0 40px;
+}
+.configuration-page .project-id-form {
+  display: flex;
+}
+.configuration-page .project-id-form__input {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  line-height: normal;
+  border-radius: 20px;
+  border: 1px solid #a8a8a8;
+  padding: 0 16px;
+  min-width: 20ch;
+  width: 100%;
+  max-width: 40ch;
+}
+@media (min-width: 900px) {
+  .configuration-page .project-id-form__input {
+    max-width: none;
+  }
+}
+.configuration-page .project-id-form__input::placeholder {
+  color: #6f6f6f;
+  opacity: 1;
+}
+.configuration-page .project-id-form__input:hover {
+  border-color: #141619;
+}
+.configuration-page .project-id-form__input:focus {
+  border-color: #141619;
+  outline: none;
+}
+.configuration-page .project-id-form__submit-button {
+  margin-left: 8px;
+}
