@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    run: nvmrc=$(cat .nvmrc)
     steps:
+    - run: nvmrc=$(cat .nvmrc)
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
