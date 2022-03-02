@@ -79,10 +79,10 @@
   margin-top: 2px;
 }
 .configuration-page .user-message__img--error {
-  background: url('/images/Admin/error-red.svg') no-repeat center center;
+  background: url('../../Images/Admin/error.svg') no-repeat center center;
 }
 .configuration-page .user-message__img--info {
-  background: url('/images/Admin/info-black.svg') no-repeat center center;
+  background: url('../../Images/Admin/info.svg') no-repeat center center;
 }
 .configuration-page *,
 .configuration-page *::before,

@@ -3,16 +3,16 @@
   "version": "1.1.1",
   "private": true,
   "devDependencies": {
-    "cpy-cli": "^3.1.1",
+    "cpy-cli": "^4.0.0",
     "cross-env": "^7.0.2",
     "dateformat": "^3.0.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^5.0.0"
   },
   "dependencies": {
-    "@kentico/kontent-delivery": "^11.3.0",
+    "@kentico/kontent-delivery": "^11.2.1",
     "@simply007org/react-spinners": "0.0.3",
     "google-maps-react": "^2.0.6",
     "immutable": "^4.0.0-rc.12",
