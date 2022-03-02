@@ -1,6 +1,4 @@
 import { Client } from '../Client.js';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import {
   initLanguageCodeObject,
   defaultLanguage,
@@ -8,7 +6,6 @@ import {
 } from '../Utilities/LanguageCodes';
 import { spinnerService } from '@simply007org/react-spinners';
 
-let unsubscribe = new Subject();
 let changeListeners = [];
 const resetStore = () => {
   let languageInitialized = {};
@@ -23,9 +20,9 @@ const resetStore = () => {
 };
 let { cafes, languageInitialized } = resetStore();
 
-let notifyChange = newlanguage => {
+let notifyChange = newLanguage => {
   changeListeners.forEach(listener => {
-    listener(newlanguage);
+    listener(newLanguage);
   });
 };
 
@@ -37,19 +34,18 @@ let fetchCafes = language => {
 
   let query = Client.items()
     .type('cafe')
-    .orderParameter('system.name');
+    .orderByAscending('system.name');
   if (language) {
     query.languageParameter(language);
   }
 
   query
-    .toObservable()
-    .pipe(takeUntil(unsubscribe))
-    .subscribe(response => {
+    .toPromise()
+    .then(response => {
       if (language) {
-        cafes[language] = response.items;
+        cafes[language] = response.data.items;
       } else {
-        cafes[defaultLanguage] = response.items;
+        cafes[defaultLanguage] = response.data.items;
       }
       notifyChange(language);
       languageInitialized[language] = true;
@@ -77,12 +73,12 @@ class Cafe {
 
   getPartnerCafes(language) {
     spinnerService.hide('apiSpinner');
-    return cafes[language].filter(cafe => cafe.country.value !== 'USA');
+    return cafes[language].filter(cafe => cafe.elements.country.value !== 'USA');
   }
 
   getCompanyCafes(language) {
     spinnerService.hide('apiSpinner');
-    return cafes[language].filter(cafe => cafe.country.value === 'USA');
+    return cafes[language].filter(cafe => cafe.elements.country.value === 'USA');
   }
 
   // Listeners
@@ -95,12 +91,6 @@ class Cafe {
     changeListeners = changeListeners.filter(element => {
       return element !== listener;
     });
-  }
-
-  unsubscribe() {
-    unsubscribe.next();
-    unsubscribe.complete();
-    unsubscribe = new Subject();
   }
 }
 let CafeStore = new Cafe();

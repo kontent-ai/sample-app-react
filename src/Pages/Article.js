@@ -12,7 +12,8 @@ let getState = props => {
     article: ArticleStore.getArticle(
       props.match.params.articleId,
       props.language
-    )
+    ),
+    linkedItems:  ArticleStore.getArticleLinkedItems(props.language)
   };
 };
 
@@ -35,7 +36,6 @@ class Article extends Component {
 
   componentWillUnmount() {
     ArticleStore.removeChangeListener(this.onChange);
-    ArticleStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -69,16 +69,16 @@ class Article extends Component {
     };
 
     let title =
-      article.title.value.trim().length > 0
-        ? article.title.value
+      article.elements.title.value.trim().length > 0
+        ? article.elements.title.value
         : this.props.t('noTitleValue');
 
     let imageLink =
-      article.teaserImage.value[0] !== undefined ? (
+      article.elements.teaserImage.value[0] !== undefined ? (
         <img
           alt={title}
           className="img-responsive"
-          src={article.teaserImage.value[0].url}
+          src={article.elements.teaserImage.value[0].url}
           title={title}
         />
       ) : (
@@ -87,13 +87,14 @@ class Article extends Component {
         </div>
       );
 
-    let postDate = formatDate(article.postDate.value);
+    let postDate = formatDate(article.elements.postDate.value);
 
     let bodyCopyElement =
-      article.bodyCopy.value !== '<p><br></p>' ? (
+      article.elements.bodyCopy.value !== '<p><br></p>' ? (
         <RichTextElement
           className="article-detail-content"
-          element={article.bodyCopy}
+          element={article.elements.bodyCopy}
+          linkedItems={this.state.linkedItems}
         />
       ) : (
         <p className="article-detail-content">
@@ -104,16 +105,16 @@ class Article extends Component {
     return (
       <div className="container">
         <Metadata
-          title={article.metadataMetaTitle}
-          description={article.metadataMetaDescription}
-          ogTitle={article.metadataOgTitle}
-          ogImage={article.metadataOgImage}
-          ogDescription={article.metadataOgDescription}
-          twitterTitle={article.metadataMetaTitle}
-          twitterSite={article.metadataTwitterSite}
-          twitterCreator={article.metadataTwitterCreator}
-          twitterDescription={article.metadataTwitterDescription}
-          twitterImage={article.metadataTwitterImage}
+          title={article.elements.metadataMetaTitle}
+          description={article.elements.metadataMetaDescription}
+          ogTitle={article.elements.metadataOgTitle}
+          ogImage={article.elements.metadataOgImage}
+          ogDescription={article.elements.metadataOgDescription}
+          twitterTitle={article.elements.metadataMetaTitle}
+          twitterSite={article.elements.metadataTwitterSite}
+          twitterCreator={article.elements.metadataTwitterCreator}
+          twitterDescription={article.elements.metadataTwitterDescription}
+          twitterImage={article.elements.metadataTwitterImage}
         />
         <article className="article-detail col-lg-9 col-md-12 article-detail-related-box">
           <h2>{title}</h2>

@@ -25,7 +25,6 @@ class Contacts extends Component {
 
   componentWillUnmount() {
     CafeStore.removeChangeListener(this.onChange);
-    CafeStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -53,13 +52,13 @@ class Contacts extends Component {
     let createModel = cafe => {
       let model = {
         name: cafe.system.name,
-        street: cafe.street.value,
-        city: cafe.city.value,
-        zipCode: cafe.zipCode.value,
-        country: cafe.country.value,
-        state: cafe.state.value,
-        phone: cafe.phone.value,
-        email: cafe.email.value
+        street: cafe.elements.street.value,
+        city: cafe.elements.city.value,
+        zipCode: cafe.elements.zipCode.value,
+        country: cafe.elements.country.value,
+        state: cafe.elements.state.value,
+        phone: cafe.elements.phone.value,
+        email: cafe.elements.email.value
       };
       model.dataAddress = model.city + ', ' + model.street;
       model.countryWithState =
@@ -128,7 +127,7 @@ class Contacts extends Component {
     });
 
     let cafesAddresses = this.state.cafes.map(cafe => {
-      return `${cafe.city.value}, ${cafe.street.value}`;
+      return `${cafe.elements.city.value}, ${cafe.elements.street.value}`;
     });
 
     return (
