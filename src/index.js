@@ -8,6 +8,7 @@ import { projectConfigurationPath } from './Utilities/SelectedProject';
 
 import './index.css';
 
+
 const application = (
   <CookiesProvider>
     <Router>

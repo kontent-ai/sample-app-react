@@ -3,7 +3,7 @@ import { translate } from 'react-translate';
 import RichTextElement from './RichTextElement';
 
 const Banner = props => {
-  const heroUnit = props.heroUnit;
+  const heroUnit = props.heroUnit.elements;
   const images = heroUnit.image && heroUnit.image.value;
   const imageUrl = images && images.length && images[0].url;
 

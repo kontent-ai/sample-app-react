@@ -6,7 +6,7 @@ import { BrewerStore } from '../Stores/Brewer';
 import { translate } from 'react-translate';
 
 let getState = props => {
-  return {
+    return {
     brewers: BrewerStore.getBrewers(props.language),
     filter: BrewerStore.getFilter()
   };
@@ -27,7 +27,6 @@ class Brewers extends Component {
 
   componentWillUnmount() {
     BrewerStore.removeChangeListener(this.onChange);
-    BrewerStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -66,20 +65,20 @@ class Brewers extends Component {
       return this.state.filter.matches(brewer);
     };
 
-    let brewers = this.state.brewers.filter(filter).map((brewer, index) => {
+        let brewers = this.state.brewers.filter(filter).map((brewer, index) => {
       let price =
-        brewer.price.value !== null
-          ? formatPrice(brewer.price.value, this.props.language)
+        brewer.elements.price.value !== null
+          ? formatPrice(brewer.elements.price.value, this.props.language)
           : this.props.t('noPriceValue');
 
       let name =
-        brewer.productName.value.trim().length > 0
-          ? brewer.productName.value
+        brewer.elements.productName.value.trim().length > 0
+          ? brewer.elements.productName.value
           : this.props.t('noNameValue');
 
       let imageLink =
-        brewer.image.value[0] !== undefined ? (
-          <img alt={name} src={brewer.image.value[0].url} title={name} />
+        brewer.elements.image.value[0] !== undefined ? (
+          <img alt={name} src={brewer.elements.image.value[0].url} title={name} />
         ) : (
           <div
             style={{ height: '257.15px' }}
@@ -89,9 +88,9 @@ class Brewers extends Component {
           </div>
         );
 
-      let status = renderProductStatus(brewer.productStatus);
+      let status = renderProductStatus(brewer.elements.productStatus);
       let link = resolveContentLink(
-        { type: 'brewer', urlSlug: brewer.urlPattern.value },
+        { type: 'brewer', urlSlug: brewer.elements.urlPattern.value },
         this.props.language
       );
 

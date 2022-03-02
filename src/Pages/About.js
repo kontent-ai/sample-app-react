@@ -33,7 +33,6 @@ class About extends Component {
 
   componentWillUnmount() {
     AboutStore.removeChangeListener(this.onChange);
-    AboutStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -59,18 +58,18 @@ class About extends Component {
 
   render() {
     let facts =
-      this.state.facts.value &&
-      this.state.facts.value.map((fact, index) => {
+      this.state.facts.linkedItems &&
+      this.state.facts.linkedItems.map((fact, index) => {
         let title =
-          fact.title.value.trim().length > 0
-            ? fact.title.value
+          fact.elements.title.value.trim().length > 0
+            ? fact.elements.title.value
             : this.props.t('noTitleValue');
 
         let descriptionElement =
-          fact.description.value !== '<p><br></p>' ? (
+          fact.elements.description.value !== '<p><br></p>' ? (
             <RichTextElement
               className="text-and-image-text"
-              element={fact.description}
+              element={fact.elements.description}
             />
           ) : (
             <p className="text-and-image-text">
@@ -79,11 +78,11 @@ class About extends Component {
           );
 
         let imageLink =
-          fact.image.value[0] !== undefined ? (
+          fact.elements.image.value[0] !== undefined ? (
             <img
               alt={title}
               className="img-responsive"
-              src={fact.image.value[0].url}
+              src={fact.elements.image.value[0].url}
               title={title}
             />
           ) : (
@@ -111,21 +110,21 @@ class About extends Component {
         );
       });
 
-    let metaData = this.state.metaData;
+    let metaDataElements = this.state.metaData.elements || {};
 
     return (
       <div className="container">
         <Metadata
-          title={metaData.metadataMetaTitle}
-          description={metaData.metadataMetaDescription}
-          ogTitle={metaData.metadataOgTitle}
-          ogImage={metaData.metadataOgImage}
-          ogDescription={metaData.metadataOgDescription}
-          twitterTitle={metaData.metadataMetaTitle}
-          twitterSite={metaData.metadataTwitterSite}
-          twitterCreator={metaData.metadataTwitterCreator}
-          twitterDescription={metaData.metadataTwitterDescription}
-          twitterImage={metaData.metadataTwitterImage}
+          title={metaDataElements.metadataMetaTitle}
+          description={metaDataElements.metadataMetaDescription}
+          ogTitle={metaDataElements.metadataOgTitle}
+          ogImage={metaDataElements.metadataOgImage}
+          ogDescription={metaDataElements.metadataOgDescription}
+          twitterTitle={metaDataElements.metadataMetaTitle}
+          twitterSite={metaDataElements.metadataTwitterSite}
+          twitterCreator={metaDataElements.metadataTwitterCreator}
+          twitterDescription={metaDataElements.metadataTwitterDescription}
+          twitterImage={metaDataElements.metadataTwitterImage}
         />
         {facts}
       </div>

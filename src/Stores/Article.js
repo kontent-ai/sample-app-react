@@ -1,19 +1,18 @@
 import { Client } from '../Client.js';
-import { SortOrder } from '@kentico/kontent-delivery';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import {
   initLanguageCodeObject,
   defaultLanguage
 } from '../Utilities/LanguageCodes';
 import { spinnerService } from '@simply007org/react-spinners';
+import _ from 'lodash';
+import { linkedItemsHelper } from '@kentico/kontent-delivery';
 
-let unsubscribe = new Subject();
 const resetStore = () => ({
   articleList: initLanguageCodeObject(),
-  articleDetails: initLanguageCodeObject()
+  articleDetails: initLanguageCodeObject(),
+  articleDetailsLinkedItems: initLanguageCodeObject()
 });
-let { articleList, articleDetails } = resetStore();
+let { articleList, articleDetails, articleDetailsLinkedItems } = resetStore();
 
 let changeListeners = [];
 
@@ -61,14 +60,15 @@ class Article {
     }
 
     query
-      .toObservable()
-      .pipe(takeUntil(unsubscribe))
-      .subscribe(response => {
+      .toPromise()
+      .then(response => {
         if (!response.isEmpty) {
           if (language) {
-            articleDetails[language][articleId] = response.items[0];
+            articleDetails[language][articleId] = response.data.items[0];
+            articleDetailsLinkedItems[language] = _.unionBy(articleDetailsLinkedItems[language], linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems), 'system.id');
           } else {
-            articleDetails[defaultLanguage][articleId] = response.items[0];
+            articleDetails[defaultLanguage][articleId] = response.data.items[0];
+            articleDetailsLinkedItems[defaultLanguage] = _.unionBy(articleDetailsLinkedItems[defaultLanguage], linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems), 'system.id');
           }
           notifyChange();
         }
@@ -78,7 +78,7 @@ class Article {
   provideArticles(language) {
     let query = Client.items()
       .type('article')
-      .orderParameter('elements.post_date', SortOrder.desc);
+      .orderByDescending('elements.post_date');
 
     if (language) {
       query.languageParameter(language);
@@ -89,13 +89,12 @@ class Article {
     }
 
     query
-      .toObservable()
-      .pipe(takeUntil(unsubscribe))
-      .subscribe(response => {
+      .toPromise()
+      .then(response => {
         if (language) {
-          articleList[language] = response.items;
+          articleList[language] = response.data.items;
         } else {
-          articleList[defaultLanguage] = response.items;
+          articleList[defaultLanguage] = response.data.items;
         }
         notifyChange();
       });
@@ -108,6 +107,15 @@ class Article {
       return articleDetails[language][articleId];
     } else {
       return articleDetails[defaultLanguage][articleId];
+    }
+  }
+
+  getArticleLinkedItems(language) {
+    spinnerService.hide('apiSpinner');
+    if (language) {
+      return articleDetailsLinkedItems[language];
+    } else {
+      return articleDetailsLinkedItems[defaultLanguage];
     }
   }
 
@@ -129,12 +137,6 @@ class Article {
     changeListeners = changeListeners.filter(element => {
       return element !== listener;
     });
-  }
-
-  unsubscribe() {
-    unsubscribe.next();
-    unsubscribe.complete();
-    unsubscribe = new Subject();
   }
 }
 

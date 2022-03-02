@@ -11,7 +11,7 @@ const getSampleProjectItems = (projectId = defaultProjectId) => {
   return Client.items()
     .elementsParameter(['id'])
     .depthParameter(0)
-    .getObservable();  
+    .toPromise();  
 }
 
 export {

@@ -31,7 +31,6 @@ class Home extends Component {
 
   componentWillUnmount() {
     HomeStore.removeChangeListener(this.onChange);
-    HomeStore.unsubscribe();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -50,30 +49,31 @@ class Home extends Component {
 
   render() {
     const home = this.state.home;
+    const homeElements = home.elements || {};
     const aboutUsLink = getAboutUsLink(this.props.language);
 
-    return (
+        return (
       <div className="container">
         <Metadata
-          title={home.metadataMetaTitle}
-          description={home.metadataMetaDescription}
-          ogTitle={home.metadataOgTitle}
-          ogImage={home.metadataOgImage}
-          ogDescription={home.metadataOgDescription}
-          twitterTitle={home.metadataMetaTitle}
-          twitterSite={home.metadataTwitterSite}
-          twitterCreator={home.metadataTwitterCreator}
-          twitterDescription={home.metadataTwitterDescription}
-          twitterImage={home.metadataTwitterImage}
+          title={homeElements.metadataMetaTitle}
+          description={homeElements.metadataMetaDescription}
+          ogTitle={homeElements.metadataOgTitle}
+          ogImage={homeElements.metadataOgImage}
+          ogDescription={homeElements.metadataOgDescription}
+          twitterTitle={homeElements.metadataMetaTitle}
+          twitterSite={homeElements.metadataTwitterSite}
+          twitterCreator={homeElements.metadataTwitterCreator}
+          twitterDescription={homeElements.metadataTwitterDescription}
+          twitterImage={homeElements.metadataTwitterImage}
         />
-        {home.heroUnit &&
-          home.heroUnit.value &&
-          home.heroUnit.value.length && (
-            <Banner heroUnit={home.heroUnit.value[0]} />
+        {homeElements.heroUnit &&
+          homeElements.heroUnit.linkedItems &&
+          homeElements.heroUnit.linkedItems.length && (
+            <Banner heroUnit={homeElements.heroUnit.linkedItems[0]} />
           )}
-        {home.articles && (
+        {homeElements.articles && (
           <LatestArticles
-            articles={home.articles.value}
+            articles={homeElements.articles.linkedItems}
             language={this.props.language}
           />
         )}
@@ -81,21 +81,21 @@ class Home extends Component {
           link={`/${this.props.language}/articles`}
           text={this.props.t('moreArticles')}
         />
-        {home.ourStory &&
-          home.ourStory.value &&
-          home.ourStory.value.length && (
+        {homeElements.ourStory &&
+          homeElements.ourStory.linkedItems &&
+          homeElements.ourStory.linkedItems.length && (
             <>
-              <OurStory fact={home.ourStory.value[0]} />
+              <OurStory fact={homeElements.ourStory.linkedItems[0]} />
               <LinkButton
                 link={aboutUsLink}
                 text={this.props.t('aboutLinkText')}
               />
             </>
           )}
-        {home.cafes &&
-          home.cafes.value && (
+        {homeElements.cafes &&
+          homeElements.cafes.value && (
             <TasteOurCoffee
-              cafes={home.cafes.value}
+              cafes={homeElements.cafes.linkedItems}
               language={this.props.language}
             />
           )}
