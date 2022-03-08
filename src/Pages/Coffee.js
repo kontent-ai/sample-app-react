@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CoffeeStore } from '../Stores/Coffee';
-import RichTextElement from '../Components/RichTextElement';
+import RichText from '../Components/RichText';
 import Metadata from '../Components/Metadata';
 import { translate } from 'react-translate';
 
@@ -70,7 +70,7 @@ class Coffee extends Component {
 
     let descriptionElement =
       coffee.elements.longDescription.value !== '<p><br></p>' ? (
-        <RichTextElement element={coffee.elements.longDescription} />
+        <RichText element={coffee.elements.longDescription} />
       ) : (
         <p>{this.props.t('noDescriptionValue')}</p>
       );

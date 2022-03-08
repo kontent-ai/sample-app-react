@@ -12,7 +12,8 @@
     "react-scripts": "^5.0.0"
   },
   "dependencies": {
-    "@kentico/kontent-delivery": "^11.2.1",
+    "@kentico/kontent-delivery": "11.5.0-0",
+    "@simply007org/kontent-react-components": "0.0.4-0",
     "@simply007org/react-spinners": "0.0.3",
     "google-maps-react": "^2.0.6",
     "immutable": "^4.0.0-rc.12",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AboutStore } from '../Stores/About';
-import RichTextElement from '../Components/RichTextElement';
+import RichText from '../Components/RichText';
 import Metadata from '../Components/Metadata';
 import { translate } from 'react-translate';
 
@@ -67,7 +67,7 @@ class About extends Component {
 
         let descriptionElement =
           fact.elements.description.value !== '<p><br></p>' ? (
-            <RichTextElement
+            <RichText
               className="text-and-image-text"
               element={fact.elements.description}
             />

@@ -5,7 +5,6 @@ import {
 } from '../Utilities/LanguageCodes';
 import { spinnerService } from '@simply007org/react-spinners';
 import _ from 'lodash';
-import { linkedItemsHelper } from '@kentico/kontent-delivery';
 
 const resetStore = () => ({
   articleList: initLanguageCodeObject(),
@@ -65,10 +64,10 @@ class Article {
         if (!response.isEmpty) {
           if (language) {
             articleDetails[language][articleId] = response.data.items[0];
-            articleDetailsLinkedItems[language] = _.unionBy(articleDetailsLinkedItems[language], linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems), 'system.id');
+            articleDetailsLinkedItems[language] = _.unionBy(articleDetailsLinkedItems[language], response.data.linkedItems, 'system.id');
           } else {
             articleDetails[defaultLanguage][articleId] = response.data.items[0];
-            articleDetailsLinkedItems[defaultLanguage] = _.unionBy(articleDetailsLinkedItems[defaultLanguage], linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems), 'system.id');
+            articleDetailsLinkedItems[defaultLanguage] = _.unionBy(articleDetailsLinkedItems[defaultLanguage], response.data.linkedItems, 'system.id');
           }
           notifyChange();
         }
