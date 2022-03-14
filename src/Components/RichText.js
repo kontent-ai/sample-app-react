@@ -9,6 +9,7 @@ const RichText = props => {
   return (
     <RichTextElement
       richTextElement={props.element}
+      className={props.className}
       resolveLinkedItem={(linkedItem, _domNode, _domToReact) => {
         const contentItemType = linkedItem ? linkedItem.system.type : '';
 
