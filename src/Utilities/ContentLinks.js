@@ -3,9 +3,9 @@ import { englishCode, spanishCode } from './LanguageCodes';
 export function getAboutUsLink(language) {
   const resultLink =
     !language || language.toLowerCase() === englishCode.toLowerCase()
-      ? `/about-us`
+      ? `${englishCode.toLowerCase()}/about-us`
       : language && language.toLowerCase() === spanishCode.toLowerCase()
-        ? `/acerca-de`
+        ? `${spanishCode.toLowerCase()}/acerca-de`
         : '';
 
   return resultLink;
