@@ -13,7 +13,6 @@ let getState = props => {
       props.match.params.articleId,
       props.language
     ),
-    linkedItems:  ArticleStore.getArticleLinkedItems(props.language)
   };
 };
 
