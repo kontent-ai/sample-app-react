@@ -4,7 +4,6 @@ import {
   defaultLanguage
 } from '../Utilities/LanguageCodes';
 import { spinnerService } from '@simply007org/react-spinners';
-import _ from 'lodash';
 
 const resetStore = () => ({
   articleList: initLanguageCodeObject(),
