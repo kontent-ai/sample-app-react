@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 
 import { ArticleStore } from '../Stores/Article';
-import RichTextElement from '../Components/RichTextElement';
+import RichText from '../Components/RichText';
 import { dateFormats } from '../Utilities/LanguageCodes';
 import Metadata from '../Components/Metadata';
 import { translate } from 'react-translate';
@@ -13,7 +13,6 @@ let getState = props => {
       props.match.params.articleId,
       props.language
     ),
-    linkedItems:  ArticleStore.getArticleLinkedItems(props.language)
   };
 };
 
@@ -88,13 +87,13 @@ class Article extends Component {
       );
 
     let postDate = formatDate(article.elements.postDate.value);
-
+    
+    debugger;
     let bodyCopyElement =
       article.elements.bodyCopy.value !== '<p><br></p>' ? (
-        <RichTextElement
+        <RichText
           className="article-detail-content"
           element={article.elements.bodyCopy}
-          linkedItems={this.state.linkedItems}
         />
       ) : (
         <p className="article-detail-content">

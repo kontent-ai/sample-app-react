@@ -1,6 +1,6 @@
 import React from 'react';
 import { translate } from 'react-translate';
-import RichTextElement from './RichTextElement';
+import RichText from './RichText';
 
 const Banner = props => {
   const heroUnit = props.heroUnit.elements;
@@ -18,7 +18,7 @@ const Banner = props => {
         {heroUnit.title && heroUnit.title.value}
       </h2>
       {heroUnit.marketingMessage && (
-        <RichTextElement
+        <RichText
           element={heroUnit.marketingMessage}
           className="banner-text"
         />

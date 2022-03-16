@@ -1,6 +1,6 @@
 import React from 'react';
 import { translate } from 'react-translate';
-import RichTextElement from './RichTextElement';
+import RichText from './RichText';
 
 const OurStory = props => {
   const fact = props.fact.elements;
@@ -17,7 +17,7 @@ const OurStory = props => {
             imageUrl ? { backgroundImage: 'url(' + imageUrl + ')' } : undefined
           }
         >
-          {fact.description && <RichTextElement element={fact.description} />}
+          {fact.description && <RichText element={fact.description} />}
         </div>
       </div>
     </div>
