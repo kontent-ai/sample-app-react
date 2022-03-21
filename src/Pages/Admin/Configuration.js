@@ -43,7 +43,6 @@ class Configuration extends Component {
       currentProjectInputValue: this.props.cookies.get(
         selectedProjectCookieName
       ),
-      preparingProject: false,
     };
 
     this.handleProjectInputChange = this.handleProjectInputChange.bind(this);
@@ -91,9 +90,6 @@ class Configuration extends Component {
     if (newlyGeneratedProject) {
       this.waitUntilProjectAccessible(newProjectId);
       spinnerService.show("apiSpinner");
-      this.setState({
-        preparingProject: true
-      });
       return;
     }
 
@@ -114,10 +110,7 @@ class Configuration extends Component {
               if (
                 response.data.items.length >= sampleProjectClientResult.data.items.length
               ) {
-                spinnerService.show("apiSpinner");
-                this.setState({
-                  preparingProject: false
-                });
+                spinnerService.hide("apiSpinner");
                 this.redirectToHome(newProjectId);
               } else {
                 this.waitUntilProjectAccessible(newProjectId);
