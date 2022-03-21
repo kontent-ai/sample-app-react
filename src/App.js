@@ -21,7 +21,6 @@ import {
   selectedProjectCookieName,
   projectConfigurationPath
 } from './Utilities/SelectedProject';
-import Home2 from './Pages/Home';
 
 class App extends Component {
   render() {
