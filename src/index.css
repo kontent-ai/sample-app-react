@@ -6145,6 +6145,15 @@ body {
   vertical-align: top;
 }
 
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
 .loader-bg {
   position: fixed;
   z-index: 10;
@@ -6166,10 +6175,10 @@ body {
   content: '';
   height: 10em;
   width: 10em;
-  animation: spin 1s infinite linear;
+  animation: spin 1500ms infinite linear;
 }
 
 /* Not a fan of this, but 'react-spinners' plugin doesn't let you change the inline style of inline-block or set a className to override */
-.application-content > div:first-child {
+#spinnerBox > div:first-child {
   display: block !important;
 }
