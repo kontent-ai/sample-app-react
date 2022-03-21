@@ -1,111 +1,99 @@
-import React, { Component } from 'react';
-import { translate } from 'react-translate';
+import { spinnerService } from "@simply007org/react-spinners";
+import { useEffect, useState } from "react";
+import { translate } from "react-translate";
+import { Client } from "../Client";
+import Banner from "../Components/Banner";
+import LatestArticles from "../Components/LatestArticles";
+import LinkButton from "../Components/LinkButton";
+import Metadata from "../Components/Metadata";
+import OurStory from "../Components/OurStory";
+import TasteOurCoffee from "../Components/TasteOurCoffee";
+import { getAboutUsLink } from "../Utilities/ContentLinks";
+import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
 
-import { HomeStore } from '../Stores/Home';
-import Banner from '../Components/Banner.js';
-import LatestArticles from '../Components/LatestArticles.js';
-import LinkButton from '../Components/LinkButton.js';
-import OurStory from '../Components/OurStory.js';
-import TasteOurCoffee from '../Components/TasteOurCoffee.js';
-import Metadata from '../Components/Metadata';
-import { getAboutUsLink } from '../Utilities/ContentLinks';
+const Home = ({ language, t }) => {
 
-let getState = props => {
-  return {
-    home: HomeStore.getHome(props.language)
-  };
-};
+  const [homeData, setHomeData] = useState(initLanguageCodeObject());
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+  useEffect(() => {
 
-    this.state = getState(props);
-    this.onChange = this.onChange.bind(this);
-  }
+    spinnerService.show("apiSpinner");
 
-  componentDidMount() {
-    HomeStore.addChangeListener(this.onChange);
-    HomeStore.provideHome(this.props.language);
-  }
-
-  componentWillUnmount() {
-    HomeStore.removeChangeListener(this.onChange);
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.language !== nextProps.language) {
-      HomeStore.provideHome(nextProps.language);
-      return {
-        language: nextProps.language
-      };
+    const query = Client.items().type('home');
+    if (language) {
+      query.languageParameter(language);
     }
-    return null;
-  }
 
-  onChange() {
-    this.setState(getState(this.props));
-  }
+    query
+      .toPromise()
+      .then(response => {
 
-  render() {
-    const home = this.state.home;
-    const homeElements = home.elements || {};
-    const aboutUsLink = getAboutUsLink(this.props.language);
+        const currentLanguage = language || defaultLanguage;
 
-        return (
-      <div className="container">
-        <Metadata
-          title={homeElements.metadataMetaTitle}
-          description={homeElements.metadataMetaDescription}
-          ogTitle={homeElements.metadataOgTitle}
-          ogImage={homeElements.metadataOgImage}
-          ogDescription={homeElements.metadataOgDescription}
-          twitterTitle={homeElements.metadataMetaTitle}
-          twitterSite={homeElements.metadataTwitterSite}
-          twitterCreator={homeElements.metadataTwitterCreator}
-          twitterDescription={homeElements.metadataTwitterDescription}
-          twitterImage={homeElements.metadataTwitterImage}
+        spinnerService.hide("apiSpinner");
+        setHomeData(data => ({
+          ...data,
+          [currentLanguage]: response.data.items[0]
+        }));
+      });
+  }, [language]);
+
+  const homeElements = homeData[language].elements || {};
+  const aboutUsLink = getAboutUsLink(language);
+
+  return !spinnerService.isShowing("apiSpinner") && (
+    <div className="container">
+      <Metadata
+        title={homeElements.metadataMetaTitle}
+        description={homeElements.metadataMetaDescription}
+        ogTitle={homeElements.metadataOgTitle}
+        ogImage={homeElements.metadataOgImage}
+        ogDescription={homeElements.metadataOgDescription}
+        twitterTitle={homeElements.metadataMetaTitle}
+        twitterSite={homeElements.metadataTwitterSite}
+        twitterCreator={homeElements.metadataTwitterCreator}
+        twitterDescription={homeElements.metadataTwitterDescription}
+        twitterImage={homeElements.metadataTwitterImage}
+      />
+      {homeElements.heroUnit &&
+        homeElements.heroUnit.linkedItems &&
+        homeElements.heroUnit.linkedItems.length && (
+          <Banner heroUnit={homeElements.heroUnit.linkedItems[0]} />
+        )}
+      {homeElements.articles && (
+        <LatestArticles
+          articles={homeElements.articles.linkedItems}
+          language={language}
         />
-        {homeElements.heroUnit &&
-          homeElements.heroUnit.linkedItems &&
-          homeElements.heroUnit.linkedItems.length && (
-            <Banner heroUnit={homeElements.heroUnit.linkedItems[0]} />
-          )}
-        {homeElements.articles && (
-          <LatestArticles
-            articles={homeElements.articles.linkedItems}
-            language={this.props.language}
+      )}
+      <LinkButton
+        link={`/${language}/articles`}
+        text={t('moreArticles')}
+      />
+      {homeElements.ourStory &&
+        homeElements.ourStory.linkedItems &&
+        homeElements.ourStory.linkedItems.length && (
+          <>
+            <OurStory fact={homeElements.ourStory.linkedItems[0]} />
+            <LinkButton
+              link={aboutUsLink}
+              text={t('aboutLinkText')}
+            />
+          </>
+        )}
+      {homeElements.cafes &&
+        homeElements.cafes.value && (
+          <TasteOurCoffee
+            cafes={homeElements.cafes.linkedItems}
+            language={language}
           />
         )}
-        <LinkButton
-          link={`/${this.props.language}/articles`}
-          text={this.props.t('moreArticles')}
-        />
-        {homeElements.ourStory &&
-          homeElements.ourStory.linkedItems &&
-          homeElements.ourStory.linkedItems.length && (
-            <>
-              <OurStory fact={homeElements.ourStory.linkedItems[0]} />
-              <LinkButton
-                link={aboutUsLink}
-                text={this.props.t('aboutLinkText')}
-              />
-            </>
-          )}
-        {homeElements.cafes &&
-          homeElements.cafes.value && (
-            <TasteOurCoffee
-              cafes={homeElements.cafes.linkedItems}
-              language={this.props.language}
-            />
-          )}
-        <LinkButton
-          link={`/${this.props.language}/cafes`}
-          text={this.props.t('cafesLinkText')}
-        />
-      </div>
-    );
-  }
+      <LinkButton
+        link={`/${language}/cafes`}
+        text={t('cafesLinkText')}
+      />
+    </div>
+  );
 }
 
 export default translate('Home')(Home);
