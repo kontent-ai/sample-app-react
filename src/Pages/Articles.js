@@ -1,111 +1,101 @@
-import React, { Component } from 'react';
-import { ArticleStore } from '../Stores/Article';
-import Link from '../Components/LowerCaseUrlLink';
+import { spinnerService } from "@simply007org/react-spinners";
+import { useEffect, useState } from "react";
+import { translate } from "react-translate";
+import { Client } from "../Client";
 import dateFormat from 'dateformat';
+import { dateFormats, defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
+import { Link } from "react-router-dom";
 
-import { dateFormats } from '../Utilities/LanguageCodes';
-import { translate } from 'react-translate';
+const Articles = ({ language, t }) => {
 
-let articleCount = 10;
+  const [articles, setArticles] = useState(initLanguageCodeObject());
 
-let getState = props => {
-  return {
-    articles: ArticleStore.getArticles(articleCount, props.language)
-  };
-};
+  dateFormat.i18n = dateFormats[language] || dateFormats[0];
 
-class Articles extends Component {
-  constructor(props) {
-    super(props);
+  useEffect(() => {
+    spinnerService.show("apiSpinner");
 
-    this.state = getState(props);
-    this.onChange = this.onChange.bind(this);
-    dateFormat.i18n = dateFormats[props.language] || dateFormats[0];
-  }
+    const query = Client.items()
+      .type('article')
+      .orderByDescending('elements.post_date')
+      .limitParameter(10);
 
-  componentDidMount() {
-    ArticleStore.addChangeListener(this.onChange);
-    ArticleStore.provideArticles(this.props.language);
-  }
-
-  componentWillUnmount() {
-    ArticleStore.removeChangeListener(this.onChange);
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.language !== nextProps.language) {
-      ArticleStore.provideArticles(nextProps.language);
-      dateFormat.i18n = dateFormats[nextProps.language] || dateFormats[0];
-      return {
-        language: nextProps.language
-      };
+    if (language) {
+      query.languageParameter(language);
     }
-    return null;
-  }
 
-  onChange() {
-    this.setState(getState(this.props));
-  }
+    query
+      .toPromise()
+      .then(response => {
 
-  render() {
-    let formatDate = value => {
-      return dateFormat(value, 'mmmm d');
-    };
+        const currentLanguage = language || defaultLanguage;
 
-    let counter = 0;
+        spinnerService.hide("apiSpinner");
+        setArticles(data => ({
+          ...data,
+          [currentLanguage]: response.data.items
+        }));
+      });
+  }, [language]);
 
-    let articles = this.state.articles.reduce((result, article, index) => {
-      if (index % 4 === 0) {
-        result.push(<div className="clear" key={counter++} />);
-      }
+  const formatDate = value => {
+    return dateFormat(value, 'mmmm d');
+  };
 
-      let title =
-        article.elements.title.value.trim().length > 0
-          ? article.elements.title.value
-          : this.props.t('noTitleValue');
+  let counter = 0;
 
-      let postDate = formatDate(article.elements.postDate.value);
+  const articlesComponent = articles[language].reduce((result, article, index) => {
+    if (index % 4 === 0) {
+      result.push(<div className="clear" key={counter++} />);
+    }
 
-      let imageLink =
-        article.elements.teaserImage.value[0] !== undefined ? (
-          <img
-            alt={'Article ' + title}
-            className="article-tile-image"
-            src={article.elements.teaserImage.value[0].url}
-            title={'Article ' + title}
-          />
-        ) : (
-          <div className="article-tile-image placeholder-tile-image">
-            {this.props.t('noTeaserValue')}
-          </div>
-        );
+    const title =
+      article.elements.title.value.trim().length > 0
+        ? article.elements.title.value
+        : t('noTitleValue');
 
-      let summary =
-        article.elements.summary.value.trim().length > 0
-          ? article.elements.summary.value
-          : this.props.t('noSummaryValue');
+    const postDate = formatDate(article.elements.postDate.value);
 
-      let link = `/${this.props.language}/articles/${article.system.id}`;
-
-      result.push(
-        <div className="col-md-3" key={counter++}>
-          <div className="article-tile">
-            <Link to={link}>{imageLink}</Link>
-            <div className="article-tile-date">{postDate}</div>
-            <div className="article-tile-content">
-              <h2 className="h4">
-                <Link to={link}>{title}</Link>
-              </h2>
-              <p className="article-tile-text">{summary}</p>
-            </div>
-          </div>
+    const imageLink =
+      article.elements.teaserImage.value[0] !== undefined ? (
+        <img
+          alt={'Article ' + title}
+          className="article-tile-image"
+          src={article.elements.teaserImage.value[0].url}
+          title={'Article ' + title}
+        />
+      ) : (
+        <div className="article-tile-image placeholder-tile-image">
+          {t('noTeaserValue')}
         </div>
       );
 
-      return result;
-    }, []);
-    return <div className="container">{articles}</div>;
-  }
+    const summary =
+      article.elements.summary.value.trim().length > 0
+        ? article.elements.summary.value
+        : t('noSummaryValue');
+
+    const link = `/${language}/articles/${article.system.id}`;
+
+    result.push(
+      <div className="col-md-3" key={counter++}>
+        <div className="article-tile">
+          <Link to={link}>{imageLink}</Link>
+          <div className="article-tile-date">{postDate}</div>
+          <div className="article-tile-content">
+            <h2 className="h4">
+              <Link to={link}>{title}</Link>
+            </h2>
+            <p className="article-tile-text">{summary}</p>
+          </div>
+        </div>
+      </div>
+    );
+
+    return result;
+  }, []);
+  return <div className="container">{articlesComponent}</div>;
 }
 
 export default translate('Articles')(Articles);
+
