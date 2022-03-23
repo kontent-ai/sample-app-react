@@ -21,26 +21,35 @@ const RichText = props => {
             let selectedTheme = linkedItem.elements.theme.value[0].codename;
             selectedTheme = selectedTheme ? selectedTheme : 'light';
 
-            window.twttr.widgets.createTweet(
-              tweetID,
-              document.getElementById(`tweet${tweetID}`),
-              {
-                theme: selectedTheme
-              }
+            setTimeout(
+              () => {
+                window.twttr.widgets.createTweet(
+                  tweetID,
+                  document.getElementById(`tweet${tweetID}`),
+                  {
+                    theme: selectedTheme
+                  }
+                );
+              },
+              100
+            )
+
+            return (
+              <div id={`tweet${tweetID}`}>
+              </div>
             );
-            return <div id={`tweet${tweetID}`} />;
           }
           case 'hosted_video': {
             if (linkedItem.elements.videoHost.value.find(item => item.codename === 'vimeo')) {
               return (
-                <iframe class="hosted-video__wrapper"
+                <iframe className="hosted-video__wrapper"
                   src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
                   width="640"
                   height="360"
-                  frameborder="0"
-                  webkitallowfullscreen
-                  mozallowfullscreen
-                  allowfullscreen
+                  frameBorder="0"
+                  webkitAllowFullScreen
+                  mozAllowFullScreen
+                  allowFullScreen
                   title={`Vimeo video ${linkedItem.elements.videoId.value}`}
                 >
                 </iframe>
@@ -49,12 +58,12 @@ const RichText = props => {
               linkedItem.elements.videoHost.value.find(item => item.codename === 'youtube')
             ) {
               return (
-                <iframe class="hosted-video__wrapper"
+                <iframe className="hosted-video__wrapper"
                   width="560"
                   height="315"
                   src={`https://www.youtube.com/embed/${linkedItem.elements.videoId.value}`}
-                  frameborder="0"
-                  allowfullscreen
+                  frameBorder="0"
+                  allowFullScreen
                   title={`Youtube video ${linkedItem.elements.videoId.value}`}
                 >
                 </iframe>);
