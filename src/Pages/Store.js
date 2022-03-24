@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { translate } from 'react-translate';
 
-import CoffeeStore from '../Components/CoffeeStore';
+import CoffeeStoreContainer from '../Components/CoffeeStoreContainer';
 import BrewerStoreContainer from '../Components/BrewerStoreContainer';
 
 const Store = props => {
@@ -29,11 +29,11 @@ const Store = props => {
           <Route
             exact
             path={`${props.match.url}`}
-            render={() => <CoffeeStore language={props.language} />}
+            render={() => <CoffeeStoreContainer language={props.language} />}
           />
           <Route
             path={`${props.match.url}/coffees`}
-            render={() => <CoffeeStore language={props.language} />}
+            render={() => <CoffeeStoreContainer language={props.language} />}
           />
           <Route
             path={`${props.match.url}/brewers`}

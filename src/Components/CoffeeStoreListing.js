@@ -3,39 +3,44 @@ import { translate } from "react-translate";
 import { resolveContentLink } from "../Utilities/ContentLinks";
 import { formatPrice, renderProductStatus } from "../Utilities/StoreListing";
 
-const BrewerStoreListing = ({ brewers, language, t }) => {
+const CoffeeStoreListing = ({ coffees, language, t }) => {
 
-  const brewersComponents = brewers.map((brewer) => {
+  const coffeesComponents = coffees.map((coffee) => {
     const price =
-      brewer.elements.price.value !== null
-        ? formatPrice(brewer.elements.price.value, language)
+      coffee.elements.price.value !== null
+        ? formatPrice(coffee.elements.price.value, language)
         : t('noPriceValue');
 
     const name =
-      brewer.elements.productName.value.trim().length > 0
-        ? brewer.elements.productName.value
+      coffee.elements.productName.value.trim().length > 0
+        ? coffee.elements.productName.value
         : t('noNameValue');
 
     const imageLink =
-      brewer.elements.image.value[0] !== undefined ? (
-        <img alt={name} src={brewer.elements.image.value[0].url} title={name} />
+      coffee.elements.image.value[0] !== undefined ? (
+        <img
+          alt={name}
+          className=""
+          src={coffee.elements.image.value[0].url}
+          title={name}
+        />
       ) : (
         <div
           style={{ height: '257.15px' }}
-          className="placeholder-tile-image"
+          className="product-tile-image placeholder-tile-image"
         >
           {t('noTeaserValue')}
         </div>
       );
 
-    const status = renderProductStatus(brewer.elements.productStatus);
+    const status = renderProductStatus(coffee.elements.productStatus);
     const link = resolveContentLink(
-      { type: 'brewer', urlSlug: brewer.elements.urlPattern.value },
+      { type: 'coffee', urlSlug: coffee.elements.urlPattern.value },
       language
     );
 
     return (
-      <div className="col-md-6 col-lg-4" key={brewer.system.codename}>
+      <div className="col-md-6 col-lg-4" key={coffee.system.codename}>
         <article className="product-tile">
           <Link to={link}>
             <h1 className="product-heading">{name}</h1>
@@ -52,9 +57,10 @@ const BrewerStoreListing = ({ brewers, language, t }) => {
 
   return (
     <div id="product-list" className="col-md-8 col-lg-9 product-list">
-      {brewersComponents}
+      {coffeesComponents}
     </div>
   );
 }
 
-export default translate("BrewerStoreListing")(BrewerStoreListing);
+
+export default translate('CoffeeStoreListing')(CoffeeStoreListing);

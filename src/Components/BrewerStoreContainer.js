@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { translate } from 'react-translate';
 import { Client } from '../Client';
+import { matchesTaxonomy } from '../Utilities/CheckboxFilter';
 import { defaultLanguage, initLanguageCodeObject } from '../Utilities/LanguageCodes';
 import BrewerStoreListing from './BrewerStoreListing';
 import CheckboxFilter from './CheckboxFilter';
@@ -66,18 +67,10 @@ const BrewerStoreContainer = ({ language, t }) => {
   }, []);
 
   const matches = (brewer) => (
-    matchesTaxonomy(brewer, "manufacturers", "manufacturer")
+    matchesTaxonomy(brewer, filter.manufacturers, "manufacturer")
     && matchesPriceRanges(brewer)
-    && matchesTaxonomy(brewer, "productStatuses", "productStatus")
+    && matchesTaxonomy(brewer, filter.productStatuses, "productStatus")
   );
-
-  const matchesTaxonomy = (brewer, filterName, elementName) => {
-    if (filter[filterName].length === 0) {
-      return true;
-    }
-    const codenames = brewer.elements[elementName].value.map(x => x.codename);
-    return codenames.some(x => filter[filterName].includes(x));
-  };
 
   const matchesPriceRanges = (brewer) => {
     if (filter.priceRanges.length === 0) {
@@ -94,6 +87,14 @@ const BrewerStoreContainer = ({ language, t }) => {
     );
   };
 
+  const formatPrice = (price, language) => {
+    return price.toLocaleString(language, {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 2
+    });
+  };
+
   const toggleFilter = (filterName, filterValue) => {
     setFilter(filter => ({
       ...filter,
@@ -102,14 +103,6 @@ const BrewerStoreContainer = ({ language, t }) => {
         : [...filter[filterName], filterValue]
     }));
   }
-
-  const formatPrice = (price, language) => {
-    return price.toLocaleString(language, {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 2
-    });
-  };
 
   return (
     <div className="product-page row">
