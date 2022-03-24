@@ -1,112 +1,101 @@
-import React, { Component } from 'react';
-import { BrewerStore } from '../Stores/Brewer';
-import RichText from '../Components/RichText';
-import Metadata from '../Components/Metadata';
-import { translate } from 'react-translate';
+import { spinnerService } from "@simply007org/react-spinners";
+import { useEffect, useState } from "react";
+import { translate } from "react-translate";
+import { Client } from "../Client";
+import Metadata from "../Components/Metadata";
+import RichText from "../Components/RichText";
+import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
 
-let getState = props => {
-  return {
-    brewer: BrewerStore.getBrewer(
-      props.match.params.brewerSlug,
-      props.language
-    ),
-    match: { params: { brewerSlug: props.match.params.brewerSlug } }
-  };
-};
+const Brewer = ({ language, match: { params: { brewerSlug } }, t }) => {
 
-class Brewer extends Component {
-  constructor(props) {
-    super(props);
+  const [brewer, setBrewer] = useState(initLanguageCodeObject());
 
-    this.state = getState(props);
-    this.onChange = this.onChange.bind(this);
-  }
+  useEffect(() => {
 
-  componentDidMount() {
-    BrewerStore.addChangeListener(this.onChange);
-    BrewerStore.provideBrewer(this.props.language);
-  }
+    spinnerService.show("apiSpinner");
 
-  componentWillUnmount() {
-    BrewerStore.removeChangeListener(this.onChange);
-  }
+    const query = Client.items()
+      .type('brewer')
+      .equalsFilter('elements.url_pattern', brewerSlug);
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (
-      prevState.language !== nextProps.language ||
-      prevState.match.params.brewerSlug !== nextProps.match.params.brewerSlug
-    ) {
-      BrewerStore.provideBrewers(nextProps.language);
-      return {
-        language: nextProps.language
-      };
-    }
-    return null;
-  }
 
-  onChange() {
-    this.setState(getState(this.props));
-  }
-
-  render() {
-    if (!this.state.brewer) {
-      return <div className="container" />;
+    if (language) {
+      query.languageParameter(language);
     }
 
-    let brewer = this.state.brewer;
-    let name =
-      brewer.elements.productName.value.trim().length > 0
-        ? brewer.elements.productName.value
-        : this.props.t('noNameValue');
+    query
+      .toPromise()
+      .then(response => {
 
-    let imageLink =
-      brewer.elements.image.value[0] !== undefined ? (
-        <img alt={name} src={brewer.elements.image.value[0].url} title={name} />
-      ) : (
-        <div className="placeholder-tile-image">
-          {this.props.t('noTeaserValue')}
-        </div>
-      );
+        const currentLanguage = language || defaultLanguage;
 
-    let descriptionElement =
-      brewer.elements.longDescription.value !== '<p><br></p>' ? (
-        <RichText element={brewer.elements.longDescription} />
-      ) : (
-        <p>{this.props.t('noDescriptionValue')}</p>
-      );
+        spinnerService.hide("apiSpinner");
+        setBrewer(data => ({
+          ...data,
+          [currentLanguage]: response.data.items[0]
+        }));
+      });
+  }, [language, brewerSlug]);
 
-    return (
-      <div className="container">
-        <Metadata
-          title={brewer.elements.metadataMetaTitle}
-          description={brewer.elements.metadataMetaDescription}
-          ogTitle={brewer.elements.metadataOgTitle}
-          ogImage={brewer.elements.metadataOgImage}
-          ogDescription={brewer.elements.metadataOgDescription}
-          twitterTitle={brewer.elements.metadataMetaTitle}
-          twitterSite={brewer.elements.metadataTwitterSite}
-          twitterCreator={brewer.elements.metadataTwitterCreator}
-          twitterDescription={brewer.elements.metadataTwitterDescription}
-          twitterImage={brewer.elements.metadataTwitterImage}
-        />
-        <article className="product-detail">
-          <div className="row">
-            <div className="col-md-12">
-              <header>
-                <h2>{name}</h2>
-              </header>
-            </div>
-          </div>
-          <div className="row-fluid">
-            <div className="col-lg-7 col-md-6">
-              <figure className="image">{imageLink}</figure>
-              <div className="description">{descriptionElement}</div>
-            </div>
-          </div>
-        </article>
+  const brewerData = brewer[language || defaultLanguage];
+  
+  if (brewerData.length === 0) {
+    return <div className="container" />;
+  }
+
+
+  const name =
+    brewerData.elements.productName.value.trim().length > 0
+      ? brewerData.elements.productName.value
+      : t('noNameValue');
+
+  const imageLink =
+    brewerData.elements.image.value[0] !== undefined ? (
+      <img alt={name} src={brewerData.elements.image.value[0].url} title={name} />
+    ) : (
+      <div className="placeholder-tile-image">
+        {t('noTeaserValue')}
       </div>
     );
-  }
+
+  const descriptionElement =
+    brewerData.elements.longDescription.value !== '<p><br></p>' ? (
+      <RichText element={brewerData.elements.longDescription} />
+    ) : (
+      <p>{t('noDescriptionValue')}</p>
+    );
+
+  return (
+    <div className="container">
+      <Metadata
+        title={brewerData.elements.metadataMetaTitle}
+        description={brewerData.elements.metadataMetaDescription}
+        ogTitle={brewerData.elements.metadataOgTitle}
+        ogImage={brewerData.elements.metadataOgImage}
+        ogDescription={brewerData.elements.metadataOgDescription}
+        twitterTitle={brewerData.elements.metadataMetaTitle}
+        twitterSite={brewerData.elements.metadataTwitterSite}
+        twitterCreator={brewerData.elements.metadataTwitterCreator}
+        twitterDescription={brewerData.elements.metadataTwitterDescription}
+        twitterImage={brewerData.elements.metadataTwitterImage}
+      />
+      <article className="product-detail">
+        <div className="row">
+          <div className="col-md-12">
+            <header>
+              <h2>{name}</h2>
+            </header>
+          </div>
+        </div>
+        <div className="row-fluid">
+          <div className="col-lg-7 col-md-6">
+            <figure className="image">{imageLink}</figure>
+            <div className="description">{descriptionElement}</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  );
 }
 
-export default translate('Brewers')(Brewer);
+export default translate('Brewer')(Brewer);

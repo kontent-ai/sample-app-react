@@ -41,7 +41,7 @@
     "coffeeProcessingTitle": "Coffee processing",
     "statusTitle": "Status"
   },
-  "BrewerFilter": {
+  "BrewerStoreContainer": {
     "manufacturerTitle": "Manufacturer",
     "priceTitle": "Price",
     "statusTitle": "Status"
