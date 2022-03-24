@@ -1,150 +1,127 @@
-import React, { Component } from 'react';
-import { translate } from 'react-translate';
+import { spinnerService } from "@simply007org/react-spinners";
+import { useEffect, useState } from "react";
+import { translate } from "react-translate";
+import { Client } from "../Client";
+import ContactMap from "../Components/ContactMap";
+import { createCafeModel } from "../Utilities/CafeListing";
+import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
 
-import { CafeStore } from '../Stores/Cafe';
-import ContactMap from '../Components/ContactMap';
+const Contacts = ({ language, t }) => {
+  const [companyCafes, setCompanyCafes] = useState(initLanguageCodeObject());
+  const [selectedAddress, setSelectedAddress] = useState(undefined);
 
-let getState = language => {
-  return {
-    cafes: CafeStore.getCompanyCafes(language)
-  };
-};
+  useEffect(() => {
+    spinnerService.show("apiSpinner");
 
-class Contacts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = getState(props.language);
-    this.onChange = this.onChange.bind(this);
-    this.selectAddress = this.selectAddress.bind(this);
-  }
+    const query = Client.items()
+      .type('cafe')
+      .equalsFilter("elements.country", "USA")
+      .orderByDescending('system.name')
 
-  componentDidMount() {
-    CafeStore.addChangeListener(this.onChange);
-    CafeStore.provideCompanyCafes(this.props.language);
-  }
-
-  componentWillUnmount() {
-    CafeStore.removeChangeListener(this.onChange);
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.language !== nextProps.language) {
-      CafeStore.provideCompanyCafes(nextProps.language);
-      return {
-        language: nextProps.language,
-        selectedAddress: undefined
-      };
+    if (language) {
+      query.languageParameter(language);
     }
-    return null;
+
+    query
+      .toPromise()
+      .then(response => {
+
+        const currentLanguage = language || defaultLanguage;
+
+        spinnerService.hide("apiSpinner");
+        setCompanyCafes(data => ({
+          ...data,
+          [currentLanguage]: response.data.items
+        }));
+      });
+  }, [language]);
+
+  const selectAddress = (address) => {
+    setSelectedAddress(address);
   }
 
-  onChange(language) {
-    this.setState(getState(language || this.props.language));
+  if (companyCafes[language].length === 0) {
+    return (<div className="container" />);
   }
 
-  selectAddress(address) {
-    this.setState({
-      selectedAddress: address
-    });
-  }
+  const roastery = createCafeModel(companyCafes[language][0]);
+  const roasteryComponent = (
+    <div className="col-md-12">
+      <h2 className="contact-title">{t('roasteryTitle')}</h2>
+      <ul className="contact-info">
+        <li>{roastery.phone}</li>
+        <li>
+          <a href={'mailto:' + roastery.email} target="_top">
+            {roastery.email}
+          </a>
+        </li>
+        <li>
+          <a
+            href="/#"
+            onClick={e => {
+              e.preventDefault();
+              selectAddress(roastery.dataAddress);
+            }}
+            data-address={roastery.dataAddress}
+            className="js-scroll-to-map"
+          >
+            {roastery.dataAddress},<br />
+            {roastery.zipCode}, {roastery.countryWithState}
+            <br />
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
 
-  render() {
-    let createModel = cafe => {
-      let model = {
-        name: cafe.system.name,
-        street: cafe.elements.street.value,
-        city: cafe.elements.city.value,
-        zipCode: cafe.elements.zipCode.value,
-        country: cafe.elements.country.value,
-        state: cafe.elements.state.value,
-        phone: cafe.elements.phone.value,
-        email: cafe.elements.email.value
-      };
-      model.dataAddress = model.city + ', ' + model.street;
-      model.countryWithState =
-        model.country + (model.state ? ', ' + model.state : '');
-      return model;
-    };
-
-    let roastery = this.state.cafes.map(createModel).map(model => {
-      return (
-        <div className="col-md-12">
-          <h2 className="contact-title">{this.props.t('roasteryTitle')}</h2>
-          <ul className="contact-info">
-            <li>{model.phone}</li>
-            <li>
-              <a href={'mailto:' + model.email} target="_top">
-                {model.email}
-              </a>
-            </li>
-            <li>
+  const companyCafeComponents = companyCafes[language].map(cafe => {
+    const model = createCafeModel(cafe);
+    return (
+      <div className="col-md-6 col-lg-3" key={cafe.system.codename}>
+        <div
+          onClick={() => selectAddress(model.dataAddress)}
+          className="cafe-tile cursor-hand js-scroll-to-map"
+          data-address={model.dataAddress}
+        >
+          <div className="cafe-tile-content">
+            <h3 className="cafe-tile-name">{model.name}</h3>
+            <address className="cafe-tile-address">
               <a
                 href="/#"
-                onClick={e => {
-                  e.preventDefault();
-                  this.selectAddress(model.dataAddress);
-                }}
-                data-address={model.dataAddress}
-                className="js-scroll-to-map"
+                name={model.name}
+                className="cafe-tile-address-anchor"
+                onClick={e => e.preventDefault()}
               >
-                {model.dataAddress},<br />
-                {model.zipCode}, {model.countryWithState}
+                {model.street}, {model.city}
                 <br />
+                {model.zipCode}, {model.countryWithState}
               </a>
-            </li>
-          </ul>
-        </div>
-      );
-    })[0];
-
-    let cafes = this.state.cafes.map(createModel).map((model, index) => {
-      return (
-        <div className="col-md-6 col-lg-3" key={index}>
-          <div
-            onClick={() => this.selectAddress(model.dataAddress)}
-            className="cafe-tile cursor-hand js-scroll-to-map"
-            data-address={model.dataAddress}
-          >
-            <div className="cafe-tile-content">
-              <h3 className="cafe-tile-name">{model.name}</h3>
-              <address className="cafe-tile-address">
-                <a
-                  href="/#"
-                  name={model.name}
-                  className="cafe-tile-address-anchor"
-                  onClick={e => e.preventDefault()}
-                >
-                  {model.street}, {model.city}
-                  <br />
-                  {model.zipCode}, {model.countryWithState}
-                </a>
-              </address>
-              <p>{model.phone}</p>
-            </div>
+            </address>
+            <p>{model.phone}</p>
           </div>
         </div>
-      );
-    });
-
-    let cafesAddresses = this.state.cafes.map(cafe => {
-      return `${cafe.elements.city.value}, ${cafe.elements.street.value}`;
-    });
-
-    return (
-      <div className="container">
-        {roastery}
-        <div>
-          <h2>{this.props.t('ourCafesTitle')}</h2>
-          <div className="row">{cafes}</div>
-        </div>
-        <h2 className="map-title">{this.props.t('mapTitle')}</h2>
-        <ContactMap
-          cafesAddresses={cafesAddresses}
-          focusOnAddress={this.state.selectedAddress}
-        />
       </div>
     );
-  }
+  });
+
+  const cafesAddresses = companyCafes[language].map(cafe => {
+    return `${cafe.elements.city.value}, ${cafe.elements.street.value}`;
+  });
+
+  return (
+    <div className="container">
+      {roasteryComponent}
+      <div>
+        <h2>{t('ourCafesTitle')}</h2>
+        <div className="row">{companyCafeComponents}</div>
+      </div>
+      <h2 className="map-title">{t('mapTitle')}</h2>
+      <ContactMap
+        cafesAddresses={cafesAddresses}
+        focusOnAddress={selectedAddress}
+      />
+    </div>
+  );
 }
 
 export default translate('Contacts')(Contacts);
