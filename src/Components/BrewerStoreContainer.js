@@ -143,5 +143,4 @@ const BrewerStoreContainer = ({ language, t }) => {
   );
 };
 
-// TODO fix up translation label places
 export default translate("BrewerStoreContainer")(BrewerStoreContainer);
