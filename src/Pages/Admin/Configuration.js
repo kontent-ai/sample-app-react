@@ -9,7 +9,6 @@ import {
   selectedProjectCookieName,
   getSampleProjectItems
 } from '../../Utilities/SelectedProject';
-import { resetStores } from '../../Utilities/StoreManager';
 
 import KontentLogo from '../../Images/Admin/kk-logo.svg';
 
@@ -86,7 +85,6 @@ class Configuration extends Component {
     }
 
     resetClient(newProjectId);
-    resetStores();
     if (newlyGeneratedProject) {
       this.waitUntilProjectAccessible(newProjectId);
       this.setState({
