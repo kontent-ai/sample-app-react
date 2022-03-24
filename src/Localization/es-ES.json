@@ -37,7 +37,7 @@
     "coffeesLinkTitle": "Cafés",
     "brewersLinkTitle": "Cerveceros"
   },
-  "CoffeeFilter": {
+  "CoffeeStoreContainer": {
     "coffeeProcessingTitle": "Procesamiento del café",
     "statusTitle": "Estado"
   },
@@ -56,7 +56,7 @@
     "ourCafesTitle": "Nuestros cafés",
     "partnerCafesTitle": "Otros lugares donde puedes tomar nuestro café"
   },
-  "Coffees": {
+  "CoffeeStoreListing": {
     "noPriceValue": "Sin precio llenado",
     "noNameValue": "Sin nombre lleno",
     "noTeaserValue": "(El producto no tiene imagen teaser)",

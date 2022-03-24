@@ -37,7 +37,7 @@
     "coffeesLinkTitle": "Coffees",
     "brewersLinkTitle": "Brewers"
   },
-  "CoffeeFilter": {
+  "CoffeeStoreContainer": {
     "coffeeProcessingTitle": "Coffee processing",
     "statusTitle": "Status"
   },
@@ -46,7 +46,7 @@
     "priceTitle": "Price",
     "statusTitle": "Status"
   },
-  "Brewers": {
+  "BrewerStoreListing": {
     "noPriceValue": "No price filled",
     "noNameValue": "No name filled",
     "noTeaserValue": "(Product has no teaser image)",
@@ -56,7 +56,7 @@
     "ourCafesTitle": "Our cafes",
     "partnerCafesTitle": "Other places where you can drink our coffee"
   },
-  "Coffees": {
+  "CoffeeStoreListing": {
     "noPriceValue": "No price filled",
     "noNameValue": "No name filled",
     "noTeaserValue": "(Product has no teaser image)",
