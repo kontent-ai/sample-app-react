@@ -3,7 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { translate } from 'react-translate';
 
 import CoffeeStore from '../Components/CoffeeStore';
-import BrewerStore from '../Components/BrewerStore';
+import BrewerStoreContainer from '../Components/BrewerStoreContainer';
 
 const Store = props => {
   return (
@@ -37,7 +37,7 @@ const Store = props => {
           />
           <Route
             path={`${props.match.url}/brewers`}
-            render={() => <BrewerStore language={props.language} />}
+            render={() => <BrewerStoreContainer language={props.language} />}
           />
         </Switch>
       </div>

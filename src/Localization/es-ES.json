@@ -41,12 +41,12 @@
     "coffeeProcessingTitle": "Procesamiento del café",
     "statusTitle": "Estado"
   },
-  "BrewerFilter": {
+  "BrewerStoreContainer": {
     "manufacturerTitle": "Fabricante",
     "priceTitle": "Precio",
     "statusTitle": "Estado"
   },
-  "Brewers": {
+  "BrewerStoreListing": {
     "noPriceValue": "Sin precio llenado",
     "noNameValue": "Sin nombre lleno",
     "noTeaserValue": "(El producto no tiene imagen teaser)",
