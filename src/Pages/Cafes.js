@@ -1,140 +1,118 @@
-import React, { Component } from 'react';
-import { translate } from 'react-translate';
+import { spinnerService } from "@simply007org/react-spinners";
+import { useEffect, useState } from "react";
+import { translate } from "react-translate";
+import { Client } from "../Client";
+import { createCafeModel } from "../Utilities/CafeListing";
+import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
 
-import { CafeStore } from '../Stores/Cafe';
+const Cafes = ({ language, t }) => {
 
-let getState = props => {
-  return {
-    companyCafes: CafeStore.getCompanyCafes(props.language),
-    partnerCafes: CafeStore.getPartnerCafes(props.language)
-  };
-};
+  const [cafes, setCafes] = useState(initLanguageCodeObject());
 
-class Cafes extends Component {
-  constructor(props) {
-    super(props);
+  useEffect(() => {
+    spinnerService.show("apiSpinner");
 
-    this.state = getState(props);
-    this.onChange = this.onChange.bind(this);
-  }
+    const query = Client.items()
+      .type('cafe')
+      .orderByDescending('system.name')
 
-  componentDidMount() {
-    CafeStore.addChangeListener(this.onChange);
-    CafeStore.provideCompanyCafes(this.props.language);
-    CafeStore.providePartnerCafes(this.props.language);
-  }
-
-  componentWillUnmount() {
-    CafeStore.removeChangeListener(this.onChange);
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.language !== nextProps.language) {
-      CafeStore.provideCompanyCafes(nextProps.language);
-      CafeStore.providePartnerCafes(nextProps.language);
-      return {
-        language: nextProps.language
-      };
+    if (language) {
+      query.languageParameter(language);
     }
-    return null;
+
+    query
+      .toPromise()
+      .then(response => {
+
+        const currentLanguage = language || defaultLanguage;
+
+        spinnerService.hide("apiSpinner");
+        setCafes(data => ({
+          ...data,
+          [currentLanguage]: response.data.items
+        }));
+      });
+  }, [language]);
+
+  if (cafes[language].length === 0) {
+    return (<div className="container" />);
   }
+  const companyCafes = cafes[language].filter(cafe => cafe.elements.country.value === 'USA');
+  const partnerCafes = cafes[language].filter(cafe => cafe.elements.country.value !== 'USA');
 
-  onChange() {
-    this.setState(getState(this.props));
-  }
+  const companyCafeComponents = companyCafes.map((cafe) => {
+    const model = createCafeModel(cafe);
 
-  render() {
-    let createModel = cafe => {
-      let model = {
-        name: cafe.system.name,
-        imageLink: 'url(' + cafe.elements.photo.value[0].url + ')',
-        street: cafe.elements.street.value,
-        city: cafe.elements.city.value,
-        zipCode: cafe.elements.zipCode.value,
-        country: cafe.elements.country.value,
-        state: cafe.elements.state.value,
-        phone: cafe.elements.phone.value
-      };
-      model.dataAddress = model.city + ', ' + model.street;
-      model.countryWithState =
-        model.country + (model.state ? ', ' + model.state : '');
-      model.location = model.city + ', ' + model.countryWithState;
-
-      return model;
-    };
-
-    let companyCafes = this.state.companyCafes
-      .map(createModel)
-      .map((model, index) => {
-        return (
-          <div className="col-md-6" key={index}>
-            <div
-              className="cafe-image-tile js-scroll-to-map"
-              data-address={model.dataAddress}
-            >
-              <div
-                className="cafe-image-tile-image-wrapper"
-                style={{
-                  backgroundImage: model.imageLink,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'right'
-                }}
-              />
-              <div className="cafe-image-tile-content">
-                <h3 className="cafe-image-tile-name">{model.name}</h3>
-                <address className="cafe-tile-address">
-                  <span name={model.name} className="cafe-tile-address-anchor">
-                    {model.street}, {model.city}
-                    <br />
-                    {model.zipCode}, {model.countryWithState}
-                  </span>
-                </address>
-                <p>{model.phone}</p>
-              </div>
-            </div>
+    return (
+      <div className="col-md-6" key={cafe.system.codename}>
+        <div
+          className="cafe-image-tile js-scroll-to-map"
+          data-address={model.dataAddress}
+        >
+          <div
+            className="cafe-image-tile-image-wrapper"
+            style={{
+              backgroundImage: model.imageLink,
+              backgroundSize: 'cover',
+              backgroundPosition: 'right'
+            }}
+          />
+          <div className="cafe-image-tile-content">
+            <h3 className="cafe-image-tile-name">{model.name}</h3>
+            <address className="cafe-tile-address">
+              <span name={model.name} className="cafe-tile-address-anchor">
+                {model.street}, {model.city}
+                <br />
+                {model.zipCode}, {model.countryWithState}
+              </span>
+            </address>
+            <p>{model.phone}</p>
           </div>
+        </div>
+      </div>
+    );
+  });
+
+  const partnerCafeModels = partnerCafes.map((cafe) => createCafeModel(cafe));
+
+  const partnerCafeLocations = partnerCafeModels
+    .map(model => model.location)
+    .reduce((result, location) => {
+      if (result.indexOf(location) < 0) {
+        result.push(location);
+      }
+      return result;
+    }, [])
+    .sort();
+
+  const partnerCafeComponents = partnerCafeLocations.map((location) => {
+    let locationPartnerCafes = partnerCafeModels
+      .filter(model => model.location === location)
+      .map((model, modelIndex) => {
+        return (
+          <p key={modelIndex}>
+            {model.name}, {model.street}, {model.phone}
+          </p>
         );
       });
 
-    let models = this.state.partnerCafes.map(createModel);
-    let locations = models
-      .map(model => model.location)
-      .reduce((result, location) => {
-        if (result.indexOf(location) < 0) {
-          result.push(location);
-        }
-
-        return result;
-      }, [])
-      .sort();
-    let partnerCafes = locations.map((location, locationIndex) => {
-      let locationPartnerCafes = models
-        .filter(model => model.location === location)
-        .map((model, modelIndex) => {
-          return (
-            <p key={modelIndex}>
-              {model.name}, {model.street}, {model.phone}
-            </p>
-          );
-        });
-
-      return (
-        <div key={locationIndex}>
-          <h3>{location}</h3>
-          {locationPartnerCafes}
-        </div>
-      );
-    });
-
     return (
-      <div className="container">
-        <h2>{this.props.t('ourCafesTitle')}</h2>
-        <div className="row">{companyCafes}</div>
-        <h2>{this.props.t('partnerCafesTitle')}</h2>
-        <div className="row">{partnerCafes}</div>
+      <div key={location}>
+        <h3>{location}</h3>
+        {locationPartnerCafes}
       </div>
     );
-  }
+  });
+
+  return (
+    <div className="container">
+      <h2>{t('ourCafesTitle')}</h2>
+      <div className="row">{companyCafeComponents}</div>
+      <h2>{t('partnerCafesTitle')}</h2>
+      <div className="row">{partnerCafeComponents}</div>
+    </div>
+  );
 }
 
 export default translate('Cafes')(Cafes);
+
