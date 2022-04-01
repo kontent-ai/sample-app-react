@@ -6,7 +6,9 @@ import {
 
 
 import { camelCasePropertyNameResolver, DeliveryClient } from '@kentico/kontent-delivery';
+import packageInfo from "../package.json";
 
+const sourceTrackingHeaderName = "X-KC-SOURCE";
 
 // environment variables
 const projectId = process.env.REACT_APP_PROJECT_ID || '';
@@ -28,6 +30,12 @@ let Client = new DeliveryClient({
   defaultQueryConfig: {
     usePreviewMode: isPreview(),
   },
+  globalHeaders: (_queryConfig) => [
+    {
+      header: sourceTrackingHeaderName,
+      value: `${packageInfo.name};${packageInfo.version}`,
+    },
+  ],
   propertyNameResolver: camelCasePropertyNameResolver
 });
 
@@ -38,6 +46,12 @@ const resetClient = newProjectId => {
     defaultQueryConfig: {
       usePreviewMode: isPreview(),
     },
+    globalHeaders: (_queryConfig) => [
+      {
+        header: sourceTrackingHeaderName,
+        value: `${packageInfo.name};${packageInfo.version}`,
+      },
+    ],
     propertyNameResolver: camelCasePropertyNameResolver
   });
   const cookies = new Cookies(document.cookies);
