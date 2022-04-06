@@ -1,11 +1,9 @@
 import Cookies from 'universal-cookie';
-import {
-  selectedProjectCookieName,
-  defaultProjectId
-} from './Utilities/SelectedProject';
 
 
 import { camelCasePropertyNameResolver, DeliveryClient } from '@kentico/kontent-delivery';
+import { selectedProjectCookieName } from './const';
+import { defaultProjectId } from './Utilities/SelectedProject';
 
 
 // environment variables

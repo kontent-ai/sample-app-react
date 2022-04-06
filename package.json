@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@kentico/kontent-delivery": "^11.7.0",
+    "@simply007org/react-spinners": "^0.0.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -11,6 +12,7 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
@@ -19,6 +21,7 @@
     "react-scripts": "5.0.0",
     "typescript": "^4.6.3",
     "universal-cookie": "^4.0.4",
+    "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.181",
+    "@types/validator": "^13.7.2",
+    "@types/webpack-env": "^1.16.3"
   }
 }
