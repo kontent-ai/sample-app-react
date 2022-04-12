@@ -46,5 +46,6 @@
     "Footer.followUsOnTwitter": "Síganos en Twitter",
     "Footer.contact": "Contacto",
     "Footer.cityStateZip": "Illinois 60601, EE.UU.",
-    "Footer.allRightsReserved": "Todos los derechos reservados."
+    "Footer.allRightsReserved": "Todos los derechos reservados.",
+    "Route.about":"acerca-de"
 }

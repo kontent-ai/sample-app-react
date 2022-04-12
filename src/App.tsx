@@ -12,6 +12,8 @@ import Home from './Pages/Home';
 import Store from './Pages/Store';
 import Articles from './Pages/Articles';
 import Article from './Pages/Article';
+import About from './Pages/About';
+import { useIntl } from 'react-intl';
 
 
 interface AppProps{
@@ -21,6 +23,7 @@ interface AppProps{
 
 const App: React.FC<AppProps> = (props) => {
   const [cookie] = useCookies([selectedProjectCookieName])
+  const { formatMessage } = useIntl();
   // const { pathname } = useLocation();
   // const location = pathname;
   //const projectId = this.props.cookies.get(selectedProjectCookieName);
@@ -82,18 +85,14 @@ const App: React.FC<AppProps> = (props) => {
               <Home language={language} />
             }
           />
-        {/*  <Route*/}
-        {/*    path="/:lang?/:urlSlug?"*/}
-        {/*    render={matchProps => (*/}
-        {/*      <AboutPage {...matchProps} language={language} />*/}
-        {/*    )}*/}
-        {/*  />*/}
-        {/*  <Route*/}
-        {/*    path="*"*/}
-        {/*    render={() => {*/}
-        {/*      return <Redirect to="/" push />;*/}
-        {/*    }}*/}
-        {/*  />*/}
+          <Route
+            path={`/${formatMessage({ id:'Route.about' })}`}
+            element={<About language={language} urlSlug={formatMessage({ id:'Route.about' })} />}
+          />
+          <Route
+            path="*"
+            element = { <Navigate to="/" /> }
+          />
         </Routes>
         <Footer language={language} />
       </div>
