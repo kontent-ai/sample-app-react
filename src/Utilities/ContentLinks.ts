@@ -1,6 +1,6 @@
 import { englishCode, spanishCode } from './LanguageCodes';
 interface linkType{
-  linkId: string,
+  linkId?: string,
   type: string,
   urlSlug: string
 }

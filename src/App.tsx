@@ -8,13 +8,13 @@ import Metadata from './Components/Metadata';
 import qs from 'qs';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import Home from './Pages/Home'
+import Home from './Pages/Home';
+import Store from './Pages/Store';
 
 
 interface AppProps{
   language: string,
   changeLanguage: (newLanguage: any, newUrl: any) => void
-
 }
 
 const App: React.FC<AppProps> = (props) => {
@@ -40,12 +40,12 @@ const App: React.FC<AppProps> = (props) => {
           message={infoMessage}
         />
         <Routes>
-        {/*  <Route*/}
-        {/*    path="/:lang?/store"*/}
-        {/*    render={matchProps => (*/}
-        {/*      <StorePage {...matchProps} language={language} />*/}
-        {/*    )}*/}
-        {/*  />*/}
+          <Route
+            path="/store/*"
+            element={
+              <Store language={language} />
+            }
+          />
         {/*  <Route*/}
         {/*    path="/:lang?/coffees/:coffeeSlug"*/}
         {/*    render={matchProps => (*/}
