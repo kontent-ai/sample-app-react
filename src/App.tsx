@@ -14,6 +14,7 @@ import Articles from './Pages/Articles';
 import Article from './Pages/Article';
 import About from './Pages/About';
 import { useIntl } from 'react-intl';
+import Cafes from './Pages/Cafes';
 
 
 interface AppProps{
@@ -71,10 +72,10 @@ const App: React.FC<AppProps> = (props) => {
             path="/articles/:articleId"
             element={<Article  language={language} />}
           />
-        {/*  <Route*/}
-        {/*    path="/:lang?/cafes"*/}
-        {/*    render={() => <CafesPage language={language} />}*/}
-        {/*  />*/}
+          <Route
+            path="/cafes"
+            element={<Cafes language={language} />}
+          />
         {/*  <Route*/}
         {/*    path="/:lang?/contacts"*/}
         {/*    render={() => <ContactsPage language={language} />}*/}
