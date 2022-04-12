@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { projectConfigurationPath, selectedProjectCookieName } from './const';
 import SpinnerLayout from './Components/SpinnerLayout';
@@ -8,6 +8,8 @@ import Metadata from './Components/Metadata';
 import qs from 'qs';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import Home from './Pages/Home'
+
 
 interface AppProps{
   language: string,
@@ -37,7 +39,7 @@ const App: React.FC<AppProps> = (props) => {
           changeLanguage={changeLanguage}
           message={infoMessage}
         />
-        {/*<Routes>*/}
+        <Routes>
         {/*  <Route*/}
         {/*    path="/:lang?/store"*/}
         {/*    render={matchProps => (*/}
@@ -75,13 +77,12 @@ const App: React.FC<AppProps> = (props) => {
         {/*    path="/:lang?/contacts"*/}
         {/*    render={() => <ContactsPage language={language} />}*/}
         {/*  />*/}
-        {/*  <Route*/}
-        {/*    exact*/}
-        {/*    path="/:lang?"*/}
-        {/*    render={matchProps => (*/}
-        {/*      <HomePage {...matchProps} language={language} />*/}
-        {/*    )}*/}
-        {/*  />*/}
+          <Route
+            path="/"
+            element={
+              <Home language={language} />
+            }
+          />
         {/*  <Route*/}
         {/*    path="/:lang?/:urlSlug?"*/}
         {/*    render={matchProps => (*/}
@@ -94,7 +95,7 @@ const App: React.FC<AppProps> = (props) => {
         {/*      return <Redirect to="/" push />;*/}
         {/*    }}*/}
         {/*  />*/}
-        {/*</Routes>*/}
+        </Routes>
         <Footer language={language} />
       </div>
     </SpinnerLayout>

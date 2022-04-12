@@ -15,7 +15,7 @@ ReactDOM.render(
           path={projectConfigurationPath}
           element={<Configuration  />}
         />
-        <Route path="/:lang" element={<App  />} />
+        <Route path="/:lang/*" element={<App  />} />
         <Route path="/" element={<App  />} />
       </Routes>
     </Router>

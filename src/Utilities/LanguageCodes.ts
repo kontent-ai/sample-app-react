@@ -114,7 +114,7 @@ const dateFormats = {
 
 const defaultLanguage = languageCodes[0];
 
-const initLanguageCodeObject = (object: any) => {
+const initLanguageCodeObject = (object: any|null = null) => {
   if (!object) {
     object = {};
   }

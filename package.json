@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@kentico/kontent-model-generator": "^4.1.0",
+    "@simply007org/kontent-react-components": "^0.0.8",
     "@types/lodash": "^4.14.181",
     "@types/react-helmet": "^6.1.5",
     "@types/validator": "^13.7.2",
