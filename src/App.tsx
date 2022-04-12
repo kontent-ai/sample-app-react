@@ -10,6 +10,8 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
 import Store from './Pages/Store';
+import Articles from './Pages/Articles';
+import Article from './Pages/Article';
 
 
 interface AppProps{
@@ -58,17 +60,14 @@ const App: React.FC<AppProps> = (props) => {
         {/*      <BrewerPage {...matchProps} language={language} />*/}
         {/*    )}*/}
         {/*  />*/}
-        {/*  <Route*/}
-        {/*    exact*/}
-        {/*    path="/:lang?/articles"*/}
-        {/*    render={() => <ArticlesPage language={language} />}*/}
-        {/*  />*/}
-        {/*  <Route*/}
-        {/*    path="/:lang?/articles/:articleId"*/}
-        {/*    render={matchProps => (*/}
-        {/*      <ArticlePage {...matchProps} language={language} />*/}
-        {/*    )}*/}
-        {/*  />*/}
+          <Route
+            path="/articles"
+            element={<Articles language={language} />}
+          />
+          <Route
+            path="/articles/:articleId"
+            element={<Article  language={language} />}
+          />
         {/*  <Route*/}
         {/*    path="/:lang?/cafes"*/}
         {/*    render={() => <CafesPage language={language} />}*/}
