@@ -16,7 +16,7 @@ ReactDOM.render(
           element={<Configuration  />}
         />
         <Route path="/:lang/*" element={<App  />} />
-        <Route path="/" element={<App  />} />
+        <Route path="/*" element={<App  />} />
       </Routes>
     </Router>
   </CookiesProvider>,
