@@ -2,6 +2,7 @@ import { Cafe } from '../Models/cafe';
 
 export type CafeModel = {
   name: string,
+  email: string,
   imageLink: string,
   street: string,
   city: string,
@@ -17,6 +18,7 @@ export type CafeModel = {
 const createCafeModel = (cafe: Cafe): CafeModel => {
   const model = {
     name: cafe.system.name,
+    email: cafe.elements.email.value,
     imageLink: 'url(' + cafe.elements.photo.value[0].url + ')',
     street: cafe.elements.street.value,
     city: cafe.elements.city.value,
