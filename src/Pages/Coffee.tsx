@@ -8,15 +8,13 @@ import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCo
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
-interface CoffeeProps {
-  language: string,
-}
+interface CoffeeProps { }
 
-const Coffee: React.FC<CoffeeProps> = ({ language}) => {
+const Coffee: React.FC<CoffeeProps> = () => {
 
   const [coffee, setCoffee] = useState(initLanguageCodeObject());
   const { coffeeSlug } = useParams();
-  const { formatMessage } = useIntl();
+  const { locale:language, formatMessage } = useIntl();
 
   useEffect(() => {
 

@@ -28,9 +28,6 @@ interface AppProps{
 const App: React.FC<AppProps> = (props) => {
   const [cookie] = useCookies([selectedProjectCookieName])
   const { formatMessage } = useIntl();
-  // const { pathname } = useLocation();
-  // const location = pathname;
-  //const projectId = this.props.cookies.get(selectedProjectCookieName);
 
   if (!cookie.ProjectId) {
     return <Navigate to={projectConfigurationPath} />;
@@ -51,41 +48,39 @@ const App: React.FC<AppProps> = (props) => {
         <Routes>
           <Route
             path="/store/*"
-            element={<Store language={language} />}
+            element={<Store />}
           />
           <Route
             path="/coffees/:coffeeSlug"
-            element={<Coffee language={language} />}
+            element={<Coffee />}
           />
           <Route
             path="/brewers/:brewerSlug"
-            element={<Brewer language={language} />}
+            element={<Brewer />}
           />
           <Route
             path="/articles"
-            element={<Articles language={language} />}
+            element={<Articles />}
           />
           <Route
             path="/articles/:articleId"
-            element={<Article  language={language} />}
+            element={<Article />}
           />
           <Route
             path="/cafes"
-            element={<Cafes language={language} />}
+            element={<Cafes />}
           />
           <Route
             path="/contacts"
-            element={<Contact language={language} />}
+            element={<Contact />}
           />
           <Route
             path="/"
-            element={
-              <Home language={language} />
-            }
+            element={ <Home /> }
           />
           <Route
             path={`/${formatMessage({ id:'Route.about' })}`}
-            element={<About language={language} urlSlug={formatMessage({ id:'Route.about' })} />}
+            element={<About urlSlug={formatMessage({ id:'Route.about' })} />}
           />
           <Route
             path="*"

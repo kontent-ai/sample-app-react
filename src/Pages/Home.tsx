@@ -13,11 +13,10 @@ import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCo
 import { useIntl } from 'react-intl';
 
 interface HomeProps {
-  language: string
 }
 
-const Home: React.FC<HomeProps> = ({ language }) => {
-  const { formatMessage } = useIntl();
+const Home: React.FC<HomeProps> = () => {
+  const { locale:language, formatMessage } = useIntl();
   const [homeData, setHomeData] = useState(initLanguageCodeObject());
 
   useEffect(() => {

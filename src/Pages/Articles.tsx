@@ -1,3 +1,4 @@
+import React from 'react';
 import { spinnerService } from "@simply007org/react-spinners";
 import { useEffect, useState } from "react";
 import { Client } from "../Client";
@@ -6,12 +7,10 @@ import { Link } from "react-router-dom";
 import { useIntl } from 'react-intl';
 import { Article } from '../Models/article';
 
-interface ArticlesProps {
-  language: string
-}
+interface ArticlesProps {}
 
-const Articles: React.FC<ArticlesProps> = ({ language}) => {
-  const { formatDate, formatMessage } = useIntl();
+const Articles: React.FC<ArticlesProps> = () => {
+  const { locale:language, formatDate, formatMessage } = useIntl();
   const [articles, setArticles] = useState(initLanguageCodeObject());
 
   useEffect(() => {

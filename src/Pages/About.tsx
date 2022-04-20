@@ -9,12 +9,11 @@ import { FactAboutUs } from '../Models/fact_about_us';
 import { useIntl } from 'react-intl';
 
 interface AboutProps {
-  language: string
   urlSlug?: string
 }
-//TODO check url slug with Ondra
-const About: React.FC<AboutProps> = ({ language, urlSlug}) => {
-  const { formatMessage } = useIntl();
+
+const About: React.FC<AboutProps> = ({  urlSlug}) => {
+  const { locale: language, formatMessage } = useIntl();
   const [facts, setFacts] = useState(initLanguageCodeObject());
   const [metadata, setMetadata] = useState(initLanguageCodeObject());
 

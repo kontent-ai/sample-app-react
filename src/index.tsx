@@ -16,6 +16,7 @@ ReactDOM.render(
           element={<Configuration  />}
         />
         <Route path="/:lang/*" element={<App  />} />
+        // TODO define behavior when 404 page.
         <Route path="/*" element={<App  />} />
       </Routes>
     </Router>

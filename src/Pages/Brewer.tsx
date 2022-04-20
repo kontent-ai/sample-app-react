@@ -7,15 +7,13 @@ import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCo
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
-interface BrewerProps {
-  language: string
-}
+interface BrewerProps { }
 
-const Brewer: React.FC<BrewerProps> = ({ language}) => {
+const Brewer: React.FC<BrewerProps> = () => {
 
   const [brewer, setBrewer] = useState(initLanguageCodeObject());
   const { brewerSlug } = useParams();
-  const { formatMessage } = useIntl()
+  const { locale:language,  formatMessage } = useIntl()
 
   useEffect(() => {
 

@@ -8,12 +8,10 @@ import Metadata from "../Components/Metadata";
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
-interface ArticleProps{
-  language: string,
-}
+interface ArticleProps{}
 
-const Article: React.FC<ArticleProps> = ({ language}) => {
-  const { formatDate, formatMessage } = useIntl();
+const Article: React.FC<ArticleProps> = () => {
+  const { locale:language, formatDate, formatMessage } = useIntl();
   const { articleId } = useParams();
   const [article, setArticle] = useState(initLanguageCodeObject());
 

@@ -7,12 +7,10 @@ import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCo
 import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
 
-interface CafesProps {
-  language: string
-}
+interface CafesProps { }
 
-const Cafes: React.FC<CafesProps> = ({ language }) => {
-  const { formatMessage } = useIntl();
+const Cafes: React.FC<CafesProps> = () => {
+  const { formatMessage, locale:language } = useIntl();
   const [cafes, setCafes] = useState(initLanguageCodeObject());
 
   useEffect(() => {

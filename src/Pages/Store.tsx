@@ -4,12 +4,10 @@ import CoffeeStoreContainer from '../Components/CoffeeStoreContainer';
 import BrewerStoreContainer from '../Components/BrewerStoreContainer';
 import { useIntl } from 'react-intl';
 
-interface StoreProps {
-  language: string
-}
+interface StoreProps {}
 
-const Store: React.FC<StoreProps> = props => {
-  const { formatMessage } = useIntl();
+const Store: React.FC<StoreProps> = () => {
+  const { locale:language, formatMessage } = useIntl();
 
   return (
     <div className="container">
@@ -34,15 +32,15 @@ const Store: React.FC<StoreProps> = props => {
         <Routes>
           <Route
             path={`/`}
-            element={<CoffeeStoreContainer language={props.language} />}
+            element={<CoffeeStoreContainer language={language} />}
           />
           <Route
             path={`/coffees`}
-            element={<CoffeeStoreContainer language={props.language} />}
+            element={<CoffeeStoreContainer language={language} />}
           />
           <Route
             path={`/brewers`}
-            element={<BrewerStoreContainer language={props.language} />}
+            element={<BrewerStoreContainer language={language} />}
           />
         </Routes>
       </div>
