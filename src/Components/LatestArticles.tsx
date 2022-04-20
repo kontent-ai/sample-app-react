@@ -1,14 +1,7 @@
 import React from 'react';
-import { IContentItemSystemAttributes } from '@kentico/kontent-delivery';
-
 import Link from '../Components/LowerCaseUrlLink';
 import { FormattedDate, useIntl } from 'react-intl';
-import { Article, IArticleElement } from '../Models/article';
-
-interface MapObjectType {
-  system: IContentItemSystemAttributes,
-  elements: IArticleElement
-}
+import { Article } from '../Models/article';
 
 interface LatestArticlesProps {
   articles: Article[],
@@ -21,18 +14,18 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
     return <div className="row" />;
   }
 
-  var otherArticles = props.articles.slice(1).map(({ system, elements: articleElements }: MapObjectType, index: number) => {
+  var otherArticles = props.articles.slice(1).map((article: Article, index: number) => {
     let title =
-      articleElements.title.value.trim().length > 0
-        ? articleElements.title.value
+      article.elements.title.value.trim().length > 0
+        ? article.elements.title.value
         : formatMessage({id: 'LatestArticles.noTitleValue'});
 
     let imageLink =
-      articleElements.teaserImage.value[0] !== undefined ? (
+      article.elements.teaserImage.value[0] !== undefined ? (
         <img
           alt={'Article ' + title}
           className="article-tile-image"
-          src={articleElements.teaserImage.value[0].url}
+          src={article.elements.teaserImage.value[0].url}
           title={'Article ' + title}
         />
       ) : (
@@ -42,11 +35,11 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
       );
 
     let summary =
-      articleElements.summary.value.trim().length > 0
-        ? articleElements.summary.value
+      article.elements.summary.value.trim().length > 0
+        ? article.elements.summary.value
         : formatMessage({ id: 'LatestArticles.noSummaryValue' });
 
-    let link = `/${props.language.toLowerCase()}/articles/${system.id}`;
+    let link = `/${props.language.toLowerCase()}/articles/${article.system.id}`;
 
     return (
       <div className="col-md-3" key={index}>
@@ -54,7 +47,7 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
           <Link to={link}>{imageLink}</Link>
           <div className="article-tile-date">
             <FormattedDate
-            value={articleElements.postDate.value!!}
+            value={article.elements.postDate.value!!}
             day="numeric"
             month="long"
           />
@@ -90,8 +83,6 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
         {formatMessage({id: 'LatestArticles.noTeaserValue'})}
       </div>
     );
-
-  //let postDate = formatDate(articleElements.postDate.value);
 
   let summary =
     articleElements.summary.value.trim().length > 0
