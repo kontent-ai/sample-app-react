@@ -5,7 +5,7 @@ interface linkType{
   urlSlug: string
 }
 
-export function getAboutUsLink(language: string) {
+export function getAboutUsLink(language: string): string {
   const resultLink =
     !language || language.toLowerCase() === englishCode.toLowerCase()
       ? `${englishCode.toLowerCase()}/about-us`
@@ -16,7 +16,7 @@ export function getAboutUsLink(language: string) {
   return resultLink;
 }
 
-export function resolveContentLink(link: linkType , language: string = englishCode) {
+export function resolveContentLink(link: linkType , language: string = englishCode): string {
   let resultLink;
   switch (link.type) {
     case 'about_us':

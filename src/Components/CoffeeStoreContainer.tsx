@@ -71,12 +71,12 @@ const CoffeeStoreContainer: React.FC<CoffeeStoreContainerProps> = ({ language}) 
       });
   }, []);
 
-  const matches = (coffee: Coffee): void => (
+  const matches = (coffee: Coffee): boolean => (
     matchesTaxonomy(coffee, filter.processings, "processing")
     && matchesTaxonomy(coffee, filter.productStatuses, "productStatus")
   );
 
-  const toggleFilter = (filterName: string, filterValue: string) => {
+  const toggleFilter = (filterName: string, filterValue: string): void => {
     setFilter(filter => ({
       ...filter,
       [filterName]: filter[filterName].includes(filterValue)

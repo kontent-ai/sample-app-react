@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { IContentItem } from '@kentico/kontent-delivery';
 
 const languageCodes = [
@@ -155,23 +154,23 @@ const initLanguageCodeObjectWithArray = <TContentItem extends IContentItem>(obje
 
 
 
-const getLanguageCode = (match: any) => {
-  const languageCode = languageCodes[0];
-  if (!_.has(match, ['params', 'lang'])) {
-    return languageCode;
-  }
-
-  const languageParameter = _.get(match, ['params', 'lang']);
-  if (
-    languageParameter &&
-    languageCodesLowerCase.indexOf(languageParameter.toLowerCase()) > -1
-  ) {
-    return languageCodes[
-      languageCodesLowerCase.indexOf(languageParameter.toLowerCase())
-      ];
-  }
-  return defaultLanguage;
-};
+// const getLanguageCode = (match: any): string => {
+//   const languageCode = languageCodes[0];
+//   if (!_.has(match, ['params', 'lang'])) {
+//     return languageCode;
+//   }
+//
+//   const languageParameter = _.get(match, ['params', 'lang']);
+//   if (
+//     languageParameter &&
+//     languageCodesLowerCase.indexOf(languageParameter.toLowerCase()) > -1
+//   ) {
+//     return languageCodes[
+//       languageCodesLowerCase.indexOf(languageParameter.toLowerCase())
+//       ];
+//   }
+//   return defaultLanguage;
+// };
 
 export {
   languageCodes,
@@ -180,7 +179,6 @@ export {
   defaultLanguage,
   initLanguageCodeObject,
   initLanguageCodeObjectWithArray,
-  getLanguageCode,
   englishCode,
   spanishCode
 };

@@ -22,7 +22,7 @@ const LocalizedApp: React.FC = () => {
   //   this.setLanguageCode = this.setLanguageCode.bind(this);
   // }
 
-  const setLanguageCode = (newLanguage: any, newUrl: any) => {
+  const setLanguageCode = (newLanguage: string, newUrl: string): void => {
     if (
       language === newLanguage ||
       languageCodes.indexOf(newLanguage) < 0

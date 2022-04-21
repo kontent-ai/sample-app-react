@@ -41,7 +41,7 @@ const Articles: React.FC<ArticlesProps> = () => {
       });
   }, [language]);
 
-  const makeFormatDate = (value: string) => {
+  const makeFormatDate = (value: string): string => {
     return formatDate(value, {
       month: 'long',
       day: 'numeric',

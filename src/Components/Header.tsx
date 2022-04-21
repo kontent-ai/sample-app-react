@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 <li>
                   <a
                     href="/#"
-                    onClick={e => {
+                    onClick={(e):void => {
                       e.preventDefault();
                       window.location.pathname.endsWith('acerca-de')
                         ? props.changeLanguage(englishCode, '/about-us')
@@ -80,7 +80,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 <li>
                   <a
                     href="/#"
-                    onClick={e => {
+                    onClick={(e):void => {
                       e.preventDefault();
                       window.location.pathname.endsWith('about-us')
                         ? props.changeLanguage(spanishCode, '/acerca-de')

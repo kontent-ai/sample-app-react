@@ -1,6 +1,6 @@
 import { IContentItem, IContentItemElements } from '@kentico/kontent-delivery';
 
-const matchesTaxonomy = (item: IContentItem, filter: string[], elementName: string) => {
+const matchesTaxonomy = (item: IContentItem, filter: string[], elementName: string): boolean => {
   if (filter.length === 0) {
     return true;
   }

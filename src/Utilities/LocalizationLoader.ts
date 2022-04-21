@@ -1,4 +1,10 @@
-const initLocalizationObject = () => {
+type localizationObjectType = {
+  [key: string]: {
+    [key: string]: string
+  }
+}
+
+const initLocalizationObject = (): localizationObjectType => {
   let localizations = require.context('../Localization', false, /\.json$/);
 
   let localizationObject:{[index: string]: any} = {};

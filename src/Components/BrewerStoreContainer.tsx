@@ -82,13 +82,13 @@ const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) 
       });
   }, []);
 
-  const matches = (brewer: Brewer) => (
+  const matches = (brewer: Brewer): boolean => (
     matchesTaxonomy(brewer, filter.manufacturers, "manufacturer")
     && matchesPriceRanges(brewer)
     && matchesTaxonomy(brewer, filter.productStatuses, "productStatus")
   );
 
-  const matchesPriceRanges = (brewer: Brewer) => {
+  const matchesPriceRanges = (brewer: Brewer):boolean => {
     if (filter.priceRanges.length === 0) {
       return true;
     }
@@ -103,7 +103,7 @@ const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) 
     );
   };
 
-  const formatPrice = (price: number, language: string) => {
+  const formatPrice = (price: number, language: string): string => {
     return price.toLocaleString(language, {
       style: 'currency',
       currency: 'USD',
@@ -111,7 +111,7 @@ const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) 
     });
   };
 
-  const toggleFilter = (filterName: string, filterValue: string) => {
+  const toggleFilter = (filterName: string, filterValue: string): void => {
     setFilter(filter => ({
       ...filter,
       [filterName]: filter[filterName].includes(filterValue)

@@ -1,13 +1,14 @@
+import React from 'react'
 import { Elements } from '@kentico/kontent-delivery';
 
-const formatPrice = (price: number, language: string) => {
+const formatPrice = (price: number, language: string): string => {
   return price.toLocaleString(language, {
     style: 'currency',
     currency: 'USD'
   });
 };
 
-const renderProductStatus = (productStatus: Elements.TaxonomyElement) => {
+const renderProductStatus = (productStatus: Elements.TaxonomyElement): React.ReactNode => {
   if (productStatus.value.length === 0) {
     return <span />;
   }

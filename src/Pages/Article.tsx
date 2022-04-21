@@ -69,7 +69,7 @@ const Article: React.FC<ArticleProps> = () => {
     return <div className="container" />;
   }
 
-  let makeFormatDate = (value: string) => {
+  let makeFormatDate = (value: string): string => {
     return formatDate(value, {
       year: 'numeric',
       month: 'long',

@@ -1,11 +1,7 @@
 import Cookies from 'universal-cookie';
-
-
 import { camelCasePropertyNameResolver, DeliveryClient } from '@kentico/kontent-delivery';
 import { selectedProjectCookieName } from './const';
 import { defaultProjectId } from './Utilities/SelectedProject';
-import { LinkedItemsReferenceHandler } from '@kentico/kontent-delivery/lib/models/index';
-
 
 // environment variables
 const projectId = process.env.REACT_APP_PROJECT_ID || '';
@@ -19,12 +15,11 @@ if (currentProjectId) {
   currentProjectId = defaultProjectId;
 }
 
-const isPreview = () => previewApiKey !== '';
+const isPreview = (): boolean => previewApiKey !== '';
 
 let Client = new DeliveryClient({
   projectId: currentProjectId,
   previewApiKey: previewApiKey,
-  linkedItemsReferenceHandler: 'map',
   defaultQueryConfig: {
     usePreviewMode: isPreview(),
   },

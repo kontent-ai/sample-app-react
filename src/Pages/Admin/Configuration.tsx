@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useCookies, withCookies } from 'react-cookie';
 import validator from 'validator';
 
@@ -12,8 +12,12 @@ import SpinnerLayout from '../../Components/SpinnerLayout';
 import { useNavigate } from 'react-router-dom';
 import { selectedProjectCookieName } from '../../const';
 
+type getWindowCenterPositionReturnType ={
+  left:number,
+  top: number
+}
 
-const getWindowCenterPosition = (windowWidth: number, windowHeight: number) => {
+const getWindowCenterPosition = (windowWidth: number, windowHeight: number): getWindowCenterPositionReturnType => {
   const dualScreenLeft =
     window.screenLeft !== undefined ? window.screenLeft : window.screenX;
   const dualScreenTop =
@@ -64,28 +68,24 @@ const Configuration: React.FC = () => {
   //   window.removeEventListener('message', this.receiveMessage);
   // }
 
-  const handleProjectInputChange = (event: any) =>  {
-    setcurrentProjectInputValue(event.taget.value);
+  const handleProjectInputChange = (event: ChangeEvent<HTMLInputElement>): void =>  {
+    setcurrentProjectInputValue(event.target.value);
   }
 
-  const handleSetProjectSubmit = (event:any) => {
+  const handleSetProjectSubmit = (event: any): void => {
     event.preventDefault();
     const newProjectId = event.target[0].value;
 
     setNewProjectId(newProjectId);
   }
 
-  const setNewProjectId = (newProjectId: any, newlyGeneratedProject: any = null) => {
+  const setNewProjectId = (newProjectId: string, newlyGeneratedProject: any = null): void => {
     if (!validator.isUUID(newProjectId)) {
       const message = `Selected project (${newProjectId}) is not a valid GUID`;
       console.error(message);
       alert(message);
       setcurrentProjectInputValue(cookie.ProjectId);
-      // this.setState({
-      //   currentProjectInputValue: this.props.cookies.get(
-      //     selectedProjectCookieName
-      //   )
-      // });
+
       return;
     }
 
@@ -99,7 +99,7 @@ const Configuration: React.FC = () => {
     redirectToHome(newProjectId);
   }
 
-  const waitUntilProjectAccessible = (newProjectId: any) => {
+  const waitUntilProjectAccessible = (newProjectId: string): void => {
     setTimeout(() => {
       resetClient(newProjectId);
       Client.items()
@@ -124,16 +124,15 @@ const Configuration: React.FC = () => {
     }, 2000);
   }
 
-  const redirectToHome = (newProjectId: any) => {
+  const redirectToHome = (newProjectId: string): void => {
     const infoMessage =
       newProjectId === defaultProjectId
         ? `You've configured your app to with a project ID of a shared Kontent project.`
         : `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://kontent.ai/.`;
     navigate(`/?infoMessage=${infoMessage}`);
-    //this.props.history.push(`/?infoMessage=${infoMessage}`);
   }
 
-  const openKenticoKontentProjectSelector = (event: any) => {
+  const openKenticoKontentProjectSelector = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const windowWidth = 800;
     const windowHeight = 800;
@@ -147,7 +146,7 @@ const Configuration: React.FC = () => {
     );
   }
 
-  const receiveMessage= (event: any) => {
+  const receiveMessage = (event: any): void => {
     if (event.origin.toLowerCase() !== 'https://app.kontent.ai') return;
 
     if (!event.data.projectGuid) {
@@ -240,7 +239,7 @@ const Configuration: React.FC = () => {
                     type="submit"
                     className="button button-primary margin-top-xl"
                     value="Use the shared project"
-                    onClick={() => setNewProjectId(defaultProjectId)}
+                    onClick={(): void => setNewProjectId(defaultProjectId)}
                   />
                 </section>
               </div>
