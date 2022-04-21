@@ -54,6 +54,8 @@ const Configuration: React.FC = () => {
   //   );
   // }
 
+  //TODO Check with Ondra
+
   // componentDidMount() {
   //   window.addEventListener('message', this.receiveMessage, false);
   // }

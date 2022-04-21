@@ -3,21 +3,22 @@ import { spinnerService } from "@simply007org/react-spinners";
 import { useEffect, useState } from "react";
 import { Client } from "../Client";
 import { createCafeModel } from "../Utilities/CafeListing";
-import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
+import { defaultLanguage, initLanguageCodeObjectWithArray } from '../Utilities/LanguageCodes';
 import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
+import { projectModel } from '../Models/_project';
 
 interface ContactsProps{ }
 
 const Contacts: React.FC<ContactsProps> = () => {
   const { locale:language, formatMessage } = useIntl();
-  const [companyCafes, setCompanyCafes] = useState(initLanguageCodeObject());
+  const [companyCafes, setCompanyCafes] = useState(initLanguageCodeObjectWithArray<Cafe>());
 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('cafe')
+    const query = Client.items<Cafe>()
+      .type(projectModel.contentTypes.cafe.codename)
       .equalsFilter("elements.country", "USA")
       .orderByDescending('system.name')
 
@@ -39,7 +40,7 @@ const Contacts: React.FC<ContactsProps> = () => {
       });
   }, [language]);
 
-  if (companyCafes[language].length === 0) {
+  if (companyCafes[language]?.length === 0) {
     return (<div className="container" />);
   }
 

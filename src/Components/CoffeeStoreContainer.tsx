@@ -2,12 +2,13 @@ import { spinnerService } from '@simply007org/react-spinners';
 import React, { useEffect, useState } from 'react';
 import { Client } from '../Client';
 import { matchesTaxonomy } from '../Utilities/CheckboxFilter';
-import { defaultLanguage, initLanguageCodeObject } from '../Utilities/LanguageCodes';
+import { defaultLanguage, initLanguageCodeObjectWithArray } from '../Utilities/LanguageCodes';
 import CheckboxFilter from './CheckboxFilter';
 import CoffeeStoreListing from './CoffeeStoreListing';
 import { ITaxonomyTerms } from '@kentico/kontent-delivery';
 import { Coffee } from '../Models/coffee';
 import { useIntl } from 'react-intl';
+import { projectModel } from '../Models/_project';
 
 interface CoffeeStoreContainerProps {
   language: string
@@ -20,7 +21,7 @@ interface filterType {
 }
 
 const CoffeeStoreContainer: React.FC<CoffeeStoreContainerProps> = ({ language}) => {
-  const [coffees, setCoffees] = useState(initLanguageCodeObject());
+  const [coffees, setCoffees] = useState(initLanguageCodeObjectWithArray<Coffee>());
   const [processings, setProcessings] = useState<ITaxonomyTerms[]>([]);
   const [productStatuses, setProductStatuses] = useState<ITaxonomyTerms[]>([]);
   const { formatMessage } = useIntl();
@@ -33,8 +34,8 @@ const CoffeeStoreContainer: React.FC<CoffeeStoreContainerProps> = ({ language}) 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('coffee')
+    const query = Client.items<Coffee>()
+      .type(projectModel.contentTypes.coffee.codename)
       .orderByAscending('elements.product_name');
 
     if (language) {

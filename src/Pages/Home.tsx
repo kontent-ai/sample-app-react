@@ -11,19 +11,22 @@ import TasteOurCoffee from "../Components/TasteOurCoffee";
 import { getAboutUsLink } from "../Utilities/ContentLinks";
 import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
 import { useIntl } from 'react-intl';
+import { Home as HomeType } from '../Models/home';
+import { projectModel } from '../Models/_project';
 
 interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = () => {
   const { locale:language, formatMessage } = useIntl();
-  const [homeData, setHomeData] = useState(initLanguageCodeObject());
+  const [homeData, setHomeData] = useState(initLanguageCodeObject<HomeType>());
 
   useEffect(() => {
 
     spinnerService.show("apiSpinner");
 
-    const query = Client.items().type('home');
+    const query = Client.items<HomeType>()
+      .type(projectModel.contentTypes.home.codename);
     if (language) {
       query.languageParameter(language);
     }
@@ -42,8 +45,12 @@ const Home: React.FC<HomeProps> = () => {
       });
   }, [language]);
 
-  const homeElements = homeData[language].elements || {};
+  const homeElements = homeData[language]?.elements;
   const aboutUsLink = getAboutUsLink(language);
+
+  if(!homeElements){
+    return ( <> </> );
+  };
 
   if (!spinnerService.isShowing("apiSpinner")) {
     return (

@@ -7,12 +7,14 @@ import RichText from "../Components/RichText";
 import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { Coffee as CoffeeType } from '../Models/coffee';
+import { projectModel } from '../Models/_project';
 
 interface CoffeeProps { }
 
 const Coffee: React.FC<CoffeeProps> = () => {
 
-  const [coffee, setCoffee] = useState(initLanguageCodeObject());
+  const [coffee, setCoffee] = useState(initLanguageCodeObject<CoffeeType>());
   const { coffeeSlug } = useParams();
   const { locale:language, formatMessage } = useIntl();
 
@@ -20,8 +22,8 @@ const Coffee: React.FC<CoffeeProps> = () => {
 
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('coffee')
+    const query = Client.items<CoffeeType>()
+      .type(projectModel.contentTypes.coffee.codename)
       .equalsFilter('elements.url_pattern', coffeeSlug!!);
 
 
@@ -45,7 +47,7 @@ const Coffee: React.FC<CoffeeProps> = () => {
 
   const coffeeData = coffee[language || defaultLanguage];
 
-  if (coffeeData.length === 0) {
+  if (!coffeeData) {
     return <div className="container" />;
   }
 

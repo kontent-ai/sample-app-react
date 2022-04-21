@@ -3,12 +3,13 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Client } from '../Client';
 import { matchesTaxonomy } from '../Utilities/CheckboxFilter';
-import { defaultLanguage, initLanguageCodeObject } from '../Utilities/LanguageCodes';
+import { defaultLanguage, initLanguageCodeObjectWithArray } from '../Utilities/LanguageCodes';
 import BrewerStoreListing from './BrewerStoreListing';
 import CheckboxFilter from './CheckboxFilter';
 import { ITaxonomyTerms } from '@kentico/kontent-delivery';
 import { useIntl } from 'react-intl';
 import { Brewer } from '../Models/brewer';
+import { projectModel } from '../Models/_project';
 
 interface BrewerStoreContainerProps {
   language: string
@@ -24,7 +25,7 @@ interface filterType {
 const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) => {
   const { formatMessage } = useIntl();
 
-  const [brewers, setBrewers] = useState(initLanguageCodeObject());
+  const [brewers, setBrewers] = useState(initLanguageCodeObjectWithArray<Brewer>());
 
   const [manufacturers, setManufacturers] = useState<ITaxonomyTerms[]>([]);
   const priceRanges = [
@@ -43,8 +44,8 @@ const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('brewer')
+    const query = Client.items<Brewer>()
+      .type(projectModel.contentTypes.brewer.codename)
       .orderByAscending('elements.product_name');
 
     if (language) {

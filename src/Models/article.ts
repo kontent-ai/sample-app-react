@@ -24,6 +24,6 @@ export type Article = IContentItem<{
     metadataTwitterDescription: Elements.TextElement;
     metaDescription: Elements.TextElement;
     metadataOgImage: Elements.AssetsElement;
-    relatedArticles: Elements.LinkedItemsElement<IContentItem>;
+    relatedArticles: Elements.LinkedItemsElement<Article>;
     urlPattern: Elements.UrlSlugElement;
 }>;

@@ -3,21 +3,26 @@ import { spinnerService } from "@simply007org/react-spinners";
 import { useEffect, useState } from "react";
 import { Client } from "../Client";
 import { CafeModel, createCafeModel } from '../Utilities/CafeListing';
-import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
+import {
+  defaultLanguage,
+  ILanguageObjectWithArray,
+  initLanguageCodeObjectWithArray
+} from '../Utilities/LanguageCodes';
 import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
+import { projectModel } from '../Models/_project';
 
 interface CafesProps { }
 
 const Cafes: React.FC<CafesProps> = () => {
   const { formatMessage, locale:language } = useIntl();
-  const [cafes, setCafes] = useState(initLanguageCodeObject());
+  const [cafes, setCafes] = useState<ILanguageObjectWithArray<Cafe>>(initLanguageCodeObjectWithArray());
 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
     const query = Client.items()
-      .type('cafe')
+      .type(projectModel.contentTypes.cafe.codename)
       .orderByDescending('system.name')
 
     if (language) {

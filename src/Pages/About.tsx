@@ -4,9 +4,15 @@ import { useEffect, useState } from "react";
 import { Client } from "../Client";
 import Metadata from "../Components/Metadata";
 import RichText from "../Components/RichText";
-import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
+import {
+  defaultLanguage,
+  ILanguageObject,
+  initLanguageCodeObject,
+} from '../Utilities/LanguageCodes';
 import { FactAboutUs } from '../Models/fact_about_us';
 import { useIntl } from 'react-intl';
+import { AboutUs } from '../Models/about_us';
+import { projectModel } from '../Models/_project';
 
 interface AboutProps {
   urlSlug?: string
@@ -14,14 +20,14 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({  urlSlug}) => {
   const { locale: language, formatMessage } = useIntl();
-  const [facts, setFacts] = useState(initLanguageCodeObject());
+  const [facts, setFacts] = useState(initLanguageCodeObject<AboutUs>(null));
   const [metadata, setMetadata] = useState(initLanguageCodeObject());
 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('about_us')
+    const query = Client.items<AboutUs>()
+      .type(projectModel.contentTypes.about_us.codename)
       .elementsParameter([
         'facts',
         'modular_content',
@@ -44,9 +50,9 @@ const About: React.FC<AboutProps> = ({  urlSlug}) => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setFacts((data: any) => ({
+        setFacts((data:ILanguageObject<AboutUs>) => ({
           ...data,
-          [currentLanguage]: response.data.items[0].elements.facts
+          [currentLanguage]: response.data.items[0]
         }));
       });
   }, [language, urlSlug]);
@@ -91,8 +97,8 @@ const About: React.FC<AboutProps> = ({  urlSlug}) => {
   }, [language, urlSlug]);
 
   const factsComponent =
-    facts[language].linkedItems &&
-    facts[language].linkedItems.map((fact: FactAboutUs, index: number) => {
+    facts[language]?.elements.facts.linkedItems &&
+    facts[language]?.elements.facts.linkedItems.map((fact: FactAboutUs, index: number) => {
       const title =
         fact.elements.title.value.trim().length > 0
           ? fact.elements.title.value
@@ -143,7 +149,7 @@ const About: React.FC<AboutProps> = ({  urlSlug}) => {
       );
     });
 
-  const metaDataElements = metadata[language].elements || {};
+  const metaDataElements = metadata[language]?.elements || {};
 
   return (
     <div className="container">

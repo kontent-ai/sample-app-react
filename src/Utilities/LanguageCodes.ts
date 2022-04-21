@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { IContentItem } from '@kentico/kontent-delivery';
 
 const languageCodes = [
   'en-US', // default languages
@@ -114,17 +115,45 @@ const dateFormats = {
 
 const defaultLanguage = languageCodes[0];
 
-const initLanguageCodeObject = (object: any|null = null) => {
+export interface ILanguageObject<TContentItem extends IContentItem>{
+  [key: string]:  TContentItem | null
+}
+
+const initLanguageCodeObject = <TContentItem extends IContentItem>(object: ILanguageObject<TContentItem> | null = null)
+  : ILanguageObject<TContentItem> => {
   if (!object) {
     object = {};
   }
 
   languageCodes.forEach(language => {
-    object[language] = [];
+    if (object) {
+      object[language] = null;
+    }
   });
 
   return object;
 };
+
+export interface ILanguageObjectWithArray<TContentItem extends IContentItem> {
+  [key: string]:  TContentItem[]
+}
+
+const initLanguageCodeObjectWithArray = <TContentItem extends IContentItem>(object: ILanguageObjectWithArray<TContentItem> | null = null)
+  : ILanguageObjectWithArray<TContentItem> => {
+  if (!object) {
+    object = {};
+  }
+
+  languageCodes.forEach(language => {
+    if (object) {
+      object[language] = [];
+    }
+  });
+
+  return object;
+};
+
+
 
 const getLanguageCode = (match: any) => {
   const languageCode = languageCodes[0];
@@ -150,6 +179,7 @@ export {
   dateFormats,
   defaultLanguage,
   initLanguageCodeObject,
+  initLanguageCodeObjectWithArray,
   getLanguageCode,
   englishCode,
   spanishCode

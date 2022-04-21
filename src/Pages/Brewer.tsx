@@ -3,15 +3,17 @@ import React, { useEffect, useState } from "react";
 import { Client } from "../Client";
 import Metadata from "../Components/Metadata";
 import RichText from "../Components/RichText";
-import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
+import { defaultLanguage, initLanguageCodeObject, ILanguageObject } from '../Utilities/LanguageCodes';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { Brewer as BrewerType } from '../Models/brewer';
+import { projectModel } from '../Models/_project';
 
 interface BrewerProps { }
 
 const Brewer: React.FC<BrewerProps> = () => {
 
-  const [brewer, setBrewer] = useState(initLanguageCodeObject());
+  const [brewer, setBrewer] = useState(initLanguageCodeObject<BrewerType>(null));
   const { brewerSlug } = useParams();
   const { locale:language,  formatMessage } = useIntl()
 
@@ -19,8 +21,8 @@ const Brewer: React.FC<BrewerProps> = () => {
 
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('brewer')
+    const query = Client.items<BrewerType>()
+      .type(projectModel.contentTypes.brewer.codename)
       .equalsFilter('elements.url_pattern', brewerSlug!!);
 
 
@@ -35,16 +37,16 @@ const Brewer: React.FC<BrewerProps> = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setBrewer((data: any) => ({
+        setBrewer((data: ILanguageObject<BrewerType>): ILanguageObject<BrewerType> => ({
           ...data,
           [currentLanguage]: response.data.items[0]
         }));
       });
   }, [language, brewerSlug]);
 
-  const brewerData = brewer[language || defaultLanguage];
+  const brewerData = brewer[language || defaultLanguage]!;
 
-  if (brewerData.length === 0) {
+  if (!brewerData) {
     return <div className="container" />;
   }
 

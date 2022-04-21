@@ -2,22 +2,24 @@ import React from 'react';
 import { spinnerService } from "@simply007org/react-spinners";
 import { useEffect, useState } from "react";
 import { Client } from "../Client";
-import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
+import { defaultLanguage, initLanguageCodeObjectWithArray } from '../Utilities/LanguageCodes';
 import { Link } from "react-router-dom";
 import { useIntl } from 'react-intl';
 import { Article } from '../Models/article';
+import { Article as ArticleType } from '../Models/article'
+import { projectModel } from '../Models/_project';
 
 interface ArticlesProps {}
 
 const Articles: React.FC<ArticlesProps> = () => {
   const { locale:language, formatDate, formatMessage } = useIntl();
-  const [articles, setArticles] = useState(initLanguageCodeObject());
+  const [articles, setArticles] = useState(initLanguageCodeObjectWithArray<ArticleType>());
 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('article')
+    const query = Client.items<ArticleType>()
+      .type(projectModel.contentTypes.article.codename)
       .orderByDescending('elements.post_date')
       .limitParameter(10);
 

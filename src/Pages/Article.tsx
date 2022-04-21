@@ -7,19 +7,21 @@ import RichText from "../Components/RichText";
 import Metadata from "../Components/Metadata";
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { Article as ArticleType } from '../Models/article'
+import { projectModel } from '../Models/_project';
 
 interface ArticleProps{}
 
 const Article: React.FC<ArticleProps> = () => {
   const { locale:language, formatDate, formatMessage } = useIntl();
   const { articleId } = useParams();
-  const [article, setArticle] = useState(initLanguageCodeObject());
+  const [article, setArticle] = useState(initLanguageCodeObject<ArticleType>());
 
   useEffect(() => {
     spinnerService.show("apiSpinner");
 
-    const query = Client.items()
-      .type('article')
+    const query = Client.items<ArticleType>()
+      .type(projectModel.contentTypes.article.codename)
       .equalsFilter('system.id', articleId!!)
       .elementsParameter([
         'title',
@@ -63,7 +65,7 @@ const Article: React.FC<ArticleProps> = () => {
   }, [language, articleId]);
 
   const currentArticle = article[language];
-  if (currentArticle && currentArticle.length === 0) {
+  if (!currentArticle) {
     return <div className="container" />;
   }
 
@@ -82,7 +84,7 @@ const Article: React.FC<ArticleProps> = () => {
       : formatMessage({id: 'Article.noTitleValue'});
 
   let imageLink =
-    currentArticle.elements.teaserImage.value[0] !== undefined ? (
+    currentArticle?.elements.teaserImage.value[0] !== undefined ? (
       <img
         alt={title}
         className="img-responsive"
@@ -95,7 +97,7 @@ const Article: React.FC<ArticleProps> = () => {
       </div>
     );
 
-  let postDate = makeFormatDate(currentArticle.elements.postDate.value);
+  let postDate = makeFormatDate(currentArticle.elements.postDate.value!);
 
   let bodyCopyElement =
     currentArticle.elements.bodyCopy.value !== '<p><br></p>' ? (
