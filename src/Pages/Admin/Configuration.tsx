@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useCookies, withCookies } from 'react-cookie';
 import validator from 'validator';
 
@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { selectedProjectCookieName } from '../../const';
 
 type getWindowCenterPositionReturnType ={
-  left:number,
+  left: number,
   top: number
 }
 
@@ -40,36 +40,20 @@ const getWindowCenterPosition = (windowWidth: number, windowHeight: number): get
 const Configuration: React.FC = () => {
   const [cookie] = useCookies([selectedProjectCookieName])
   const navigate = useNavigate();
-  const [currentProjectInputValue, setcurrentProjectInputValue] = useState(cookie.ProjectId)
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     currentProjectInputValue: this.props.cookies.get(
-  //       selectedProjectCookieName
-  //     ),
-  //   };
+  const [currentProjectInputValue, setCurrentProjectInputValue] = useState(cookie.ProjectId)
 
-  //   this.handleProjectInputChange = this.handleProjectInputChange.bind(this);
-  //   this.handleSetProjectSubmit = this.handleSetProjectSubmit.bind(this);
-  //   this.setNewProjectId = this.setNewProjectId.bind(this);
-  //   this.receiveMessage = this.receiveMessage.bind(this);
-  //   this.waitUntilProjectAccessible = this.waitUntilProjectAccessible.bind(
-  //     this
-  //   );
-  // }
 
-  //TODO Check with Ondra
+  useEffect(() => {
+    window.addEventListener('message', receiveMessage, false)
 
-  // componentDidMount() {
-  //   window.addEventListener('message', this.receiveMessage, false);
-  // }
-  //
-  // componentWillUnmount() {
-  //   window.removeEventListener('message', this.receiveMessage);
-  // }
+    // clean up the event every time the component is re-rendered
+    return function cleanup() {
+      window.removeEventListener('message', receiveMessage)
+    }
+  })
 
   const handleProjectInputChange = (event: ChangeEvent<HTMLInputElement>): void =>  {
-    setcurrentProjectInputValue(event.target.value);
+    setCurrentProjectInputValue(event.target.value);
   }
 
   const handleSetProjectSubmit = (event: any): void => {
@@ -84,7 +68,7 @@ const Configuration: React.FC = () => {
       const message = `Selected project (${newProjectId}) is not a valid GUID`;
       console.error(message);
       alert(message);
-      setcurrentProjectInputValue(cookie.ProjectId);
+      setCurrentProjectInputValue(cookie.ProjectId);
 
       return;
     }
