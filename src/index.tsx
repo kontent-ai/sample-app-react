@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Configuration from './Pages/Admin/Configuration';
 import { projectConfigurationPath } from './const';
 
+// TODO define behavior when 404 page.
 ReactDOM.render(
   <CookiesProvider>
     <Router>
@@ -16,7 +17,6 @@ ReactDOM.render(
           element={<Configuration  />}
         />
         <Route path="/:lang/*" element={<App  />} />
-        // TODO define behavior when 404 page.
         <Route path="/*" element={<App  />} />
       </Routes>
     </Router>
