@@ -1,10 +1,25 @@
 {
-  "name": "kontent-sample-app-react",
-  "version": "0.1.0",
+  "name": "@kentico/kontent-sample-app-react",
+  "version": "2.0.0",
   "private": true,
+  "devDependencies": {
+    "@kentico/kontent-model-generator": "^4.1.0",
+    "@simply007org/kontent-react-components": "^0.0.8",
+    "@types/lodash": "^4.14.181",
+    "@types/react-helmet": "^6.1.5",
+    "@types/validator": "^13.7.2",
+    "@types/webpack-env": "^1.16.3",
+    "cpy-cli": "^4.0.0",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.7",
+    "prettier": "^2.0.5",
+    "react-scripts": "^5.0.0"
+  },
   "dependencies": {
-    "@kentico/kontent-delivery": "^11.7.0",
-    "@simply007org/react-spinners": "^0.0.3",
+    "@kentico/kontent-delivery": "11.7.0",
+    "@simply007org/kontent-react-components": "0.0.8",
+    "@simply007org/react-spinners": "0.0.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -13,23 +28,29 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "lodash": "^4.17.21",
+    "qs": "^6.9.4",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
-    "react-helmet": "^6.1.0",
+    "react-helmet": "^6.0.0",
     "react-intl": "^5.24.8",
     "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "typescript": "^4.6.3",
     "universal-cookie": "^4.0.4",
     "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },
+  "lint-staged": {
+    "{src,examples}/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "scripts": {
+    "precommit": "lint-staged",
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
+    "test-watch": "react-scripts test --env=jsdom",
+    "test": "cross-env CI=true react-scripts test --env=jsdom --passWithNoTests"
   },
   "eslintConfig": {
     "extends": [
@@ -37,24 +58,14 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@kentico/kontent-model-generator": "^4.1.0",
-    "@simply007org/kontent-react-components": "^0.0.8",
-    "@types/lodash": "^4.14.181",
-    "@types/react-helmet": "^6.1.5",
-    "@types/validator": "^13.7.2",
-    "@types/webpack-env": "^1.16.3"
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ],
+  "engines": {
+    "npm": "7 || 8",
+    "node": "16 || 17"
   }
 }
