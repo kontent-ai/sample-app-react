@@ -1,4 +1,5 @@
 import { englishCode, spanishCode } from './LanguageCodes';
+
 interface linkType{
   linkId?: string,
   type: string,
@@ -6,49 +7,46 @@ interface linkType{
 }
 
 export function getAboutUsLink(language: string): string {
-  const resultLink =
-    !language || language.toLowerCase() === englishCode.toLowerCase()
-      ? `${englishCode.toLowerCase()}/about-us`
-      : language && language.toLowerCase() === spanishCode.toLowerCase()
-        ? `${spanishCode.toLowerCase()}/acerca-de`
-        : '';
-
-  return resultLink;
+  return !language || language.toLowerCase() === englishCode.toLowerCase()
+    ? `about-us`
+    : language && language.toLowerCase() === spanishCode.toLowerCase()
+      ? `acerca-de`
+      : '';
 }
 
 export function resolveContentLink(link: linkType , language: string = englishCode): string {
   let resultLink;
   switch (link.type) {
     case 'about_us':
-      resultLink = `/${link.urlSlug}`;
+      resultLink = `${link.urlSlug}`;
       break;
 
     case 'fact_about_us':
-      resultLink = getAboutUsLink(language);
+      resultLink = `${getAboutUsLink(language)}`;
       break;
 
     case 'article':
-      resultLink = `/articles/${link.linkId}`;
+      resultLink = `articles/${link.linkId}`;
       break;
 
     case 'brewer':
-      resultLink = `/brewers/${link.urlSlug}`;
+      resultLink = `brewers/${link.urlSlug}`;
       break;
 
     case 'cafe':
-      resultLink = '/cafes';
+      resultLink = 'cafes';
       break;
 
     case 'coffee':
-      resultLink = `/coffees/${link.urlSlug}`;
+      resultLink = `coffees/${link.urlSlug}`;
       break;
 
     case 'office':
-      resultLink = '/contacts';
+      resultLink = 'contacts';
       break;
 
     case 'home':
-      resultLink = '/';
+      resultLink = '';
       break;
 
     default:
@@ -56,9 +54,5 @@ export function resolveContentLink(link: linkType , language: string = englishCo
       break;
   }
 
-  if (language) {
-    resultLink = `/${language.toLowerCase()}${resultLink}`;
-  }
-
-  return resultLink;
+  return `/${language}/${resultLink}`.toLowerCase();
 }

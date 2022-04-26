@@ -50,7 +50,7 @@ const Home: React.FC<HomeProps> = () => {
 
   if(!homeElements){
     return ( <> </> );
-  };
+  }
 
   if (!spinnerService.isShowing("apiSpinner")) {
     return (
@@ -79,7 +79,7 @@ const Home: React.FC<HomeProps> = () => {
           />
         )}
         <LinkButton
-          link={`/${language}/articles`}
+          link={`/${language.toLowerCase()}/articles`}
           text={formatMessage({ id: 'Home.moreArticles' })}
         />
         {homeElements.ourStory &&
@@ -88,7 +88,7 @@ const Home: React.FC<HomeProps> = () => {
           <>
             <OurStory fact={homeElements.ourStory.linkedItems[0]} />
             <LinkButton
-              link={aboutUsLink}
+              link={`/${language.toLowerCase()}/${aboutUsLink}`}
               text={formatMessage({ id: 'Home.aboutLinkText' })}
             />
           </>
@@ -101,7 +101,7 @@ const Home: React.FC<HomeProps> = () => {
           />
         )}
         <LinkButton
-          link={`/${language}/cafes`}
+          link={`/${language.toLowerCase()}/cafes`}
           text={formatMessage({ id: 'Home.cafesLinkText' })}
         />
       </div>

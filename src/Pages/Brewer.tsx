@@ -18,7 +18,6 @@ const Brewer: React.FC<BrewerProps> = () => {
   const { locale:language,  formatMessage } = useIntl()
 
   useEffect(() => {
-
     spinnerService.show("apiSpinner");
 
     const query = Client.items<BrewerType>()

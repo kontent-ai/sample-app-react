@@ -3,10 +3,9 @@ import {
   RichTextElement
 } from '@simply007org/kontent-react-components/dist/components/rich-text-element';
 import React from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import { ElementModels, Elements, IContentItem, ILink, IRichTextImage } from '@kentico/kontent-delivery';
-import { useIntl } from 'react-intl';
 
 interface RichTextProps{
   element: Elements.RichTextElement
@@ -14,7 +13,6 @@ interface RichTextProps{
 }
 
 const RichText: React.FC<RichTextProps> = props => {
-  const intl = useIntl();
 
    const resolvers: ResolversType = {
      resolveLinkedItem: (linkedItem: IContentItem|undefined, domOptions: DomElementOptionsType) => {
@@ -82,9 +80,9 @@ const RichText: React.FC<RichTextProps> = props => {
    },
      resolveLink: (link: ILink, domOptions: DomElementOptionsType) => {
      const path = resolveContentLink(link);
-     const lang = intl.locale;
+
      return (
-       <Link to={`/${lang}${path}`}>
+       <Link to={path}>
          {domOptions.domToReact(domOptions.domElement.children)}
        </Link>
      );
