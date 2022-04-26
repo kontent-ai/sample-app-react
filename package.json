@@ -52,12 +52,6 @@
     "test-watch": "react-scripts test --env=jsdom",
     "test": "cross-env CI=true react-scripts test --env=jsdom --passWithNoTests"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": [
     ">0.3%",
     "not ie 11",
