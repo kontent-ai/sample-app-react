@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './LocalizedApp';
-import { CookiesProvider } from 'react-cookie';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Configuration from './Pages/Admin/Configuration';
 import { projectConfigurationPath } from './const';
 
 // TODO define behavior when 404 page.
 ReactDOM.render(
-  <CookiesProvider>
     <Router>
       <Routes>
         <Route
@@ -19,8 +17,7 @@ ReactDOM.render(
         <Route path="/:lang/*" element={<App  />} />
         <Route path="/*" element={<App  />} />
       </Routes>
-    </Router>
-  </CookiesProvider>,
+    </Router>,
   document.getElementById('root')
 );
 

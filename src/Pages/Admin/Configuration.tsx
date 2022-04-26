@@ -1,16 +1,14 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { useCookies, withCookies } from 'react-cookie';
 import validator from 'validator';
-
 import { resetClient, Client } from '../../Client';
 import { defaultProjectId, getSampleProjectItems } from '../../Utilities/SelectedProject';
 import KontentLogo from '../../Images/Admin/kk-logo.svg';
-
 import './Configuration.css';
 import { spinnerService } from '@simply007org/react-spinners';
 import SpinnerLayout from '../../Components/SpinnerLayout';
 import { useNavigate } from 'react-router-dom';
 import { selectedProjectCookieName } from '../../const';
+import Cookies from 'universal-cookie';
 
 type getWindowCenterPositionReturnType ={
   left: number,
@@ -38,9 +36,10 @@ const getWindowCenterPosition = (windowWidth: number, windowHeight: number): get
 };
 
 const Configuration: React.FC = () => {
-  const [cookie] = useCookies([selectedProjectCookieName])
+  const cookies = new Cookies(document.cookie);
+  const cookie = cookies.get(selectedProjectCookieName);
   const navigate = useNavigate();
-  const [currentProjectInputValue, setCurrentProjectInputValue] = useState(cookie.ProjectId)
+  const [currentProjectInputValue, setCurrentProjectInputValue] = useState(cookie);
 
 
   useEffect(() => {
@@ -68,7 +67,7 @@ const Configuration: React.FC = () => {
       const message = `Selected project (${newProjectId}) is not a valid GUID`;
       console.error(message);
       alert(message);
-      setCurrentProjectInputValue(cookie.ProjectId);
+      setCurrentProjectInputValue(cookie);
 
       return;
     }
@@ -234,4 +233,4 @@ const Configuration: React.FC = () => {
     );
 }
 
-export default withCookies(Configuration);
+export default Configuration;

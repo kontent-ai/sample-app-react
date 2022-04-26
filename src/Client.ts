@@ -11,6 +11,7 @@ const projectId = process.env.REACT_APP_PROJECT_ID || '';
 const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 const cookies = new Cookies(document.cookie);
+
 let currentProjectId = projectId || cookies.get(selectedProjectCookieName);
 if (currentProjectId) {
   cookies.set(selectedProjectCookieName, currentProjectId, { path: '/' });

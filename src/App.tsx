@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import { projectConfigurationPath, selectedProjectCookieName } from './const';
 import SpinnerLayout from './Components/SpinnerLayout';
 import Metadata from './Components/Metadata';
@@ -18,6 +17,7 @@ import Cafes from './Pages/Cafes';
 import Contact from './Pages/Contacts';
 import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
+import Cookies from 'universal-cookie';
 
 
 interface AppProps{
@@ -26,10 +26,11 @@ interface AppProps{
 }
 
 const App: React.FC<AppProps> = (props) => {
-  const [cookie] = useCookies([selectedProjectCookieName])
+  const cookies = new Cookies(document.cookie)
+  const cookie = cookies.get(selectedProjectCookieName)
   const { formatMessage } = useIntl();
 
-  if (!cookie.ProjectId) {
+  if (!cookie) {
     return <Navigate to={projectConfigurationPath} />;
   }
 

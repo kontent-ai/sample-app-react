@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import _ from 'lodash';
 import { Elements } from '@kentico/kontent-delivery';
 
 interface MetaDataProps {
@@ -19,18 +18,17 @@ interface MetaDataProps {
 const Metadata:React.FC<MetaDataProps> = (props) => {
   return (
     <Helmet>
-      {!_.has(props, 'title.value') || props.title?.value.trim().length === 0 ? (
+      {props.title?.value.trim().length === 0 ? (
         <title>Dancing Goat</title>
       ) : (
         <title>{props.title?.value.trim()}</title>
       )}
 
-      {!_.has(props, 'description.value') ||
-      props.description?.value.trim().length === 0 ? null : (
+      {props.description?.value.trim().length === 0 ? null : (
         <meta name="description" content={props.description?.value.trim()} />
       )}
 
-      {!_.has(props, 'ogTitle.value') || props.ogTitle?.value.trim().length === 0
+      {props.ogTitle?.value.trim().length === 0
         ? null
         : [
           <meta
@@ -46,17 +44,16 @@ const Metadata:React.FC<MetaDataProps> = (props) => {
           />
         ]}
 
-      {!_.has(props, 'ogImage.value[0].url') ? null : (
+      {props.ogImage?.value[0].url ?(
         <meta property="og:image" content={props.ogImage?.value[0].url} />
-      )}
+      ): null}
 
-      {!_.has(props, 'ogDescription.value') ||
-      props.ogDescription?.value.trim().length === 0 ? null : (
+      {
+        props.ogDescription?.value.trim().length === 0 ? null : (
         <meta property="og:description" content={props.ogDescription?.value} />
       )}
 
-      {!_.has(props, 'twitterTitle.value') ||
-      props.twitterTitle?.value.trim().length === 0
+      {props.twitterTitle?.value.trim().length === 0
         ? null
         : [
           <meta
@@ -71,30 +68,27 @@ const Metadata:React.FC<MetaDataProps> = (props) => {
           />
         ]}
 
-      {!_.has(props, 'twitterSite.value') ||
-      props.twitterSite?.value.trim().length === 0 ? null : (
+      {props.twitterSite?.value.trim().length === 0 ? null : (
         <meta name="twitter:site" content={props.twitterSite?.value.trim()} />
       )}
 
-      {!_.has(props, 'twitterCreator.value') ||
-      props.twitterCreator?.value.trim().length === 0 ? null : (
+      { props.twitterCreator?.value.trim().length === 0 ? null : (
         <meta
           name="twitter:creator"
           content={props.twitterCreator?.value.trim()}
         />
       )}
 
-      {!_.has(props, 'twitterDescription.value') ||
-      props.twitterDescription?.value.trim().length === 0 ? null : (
+      { props.twitterDescription?.value.trim().length === 0 ? null : (
         <meta
           name="twitter:description.value"
           content={props.twitterDescription?.value.trim()}
         />
       )}
 
-      {!_.has(props, 'twitterImage.value[0].url') ? null : (
+      {props.twitterImage?.value[0].url ? (
         <meta name="twitter:image" content={props.twitterImage?.value[0].url} />
-      )}
+      ) : null}
     </Helmet>
   );
 };
