@@ -1,19 +1,5 @@
 import { Cafe } from '../Models/cafe';
-
-export type CafeModel = {
-  name: string,
-  email: string,
-  imageLink: string,
-  street: string,
-  city: string,
-  zipCode: string,
-  country: string,
-  state: string,
-  phone: string,
-  dataAddress: string,
-  countryWithState: string,
-  location: string,
-}
+import { CafeModel } from '../ViewModels/CafeModel';
 
 const createCafeModel = (cafe: Cafe): CafeModel => {
   const model = {

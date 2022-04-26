@@ -2,7 +2,7 @@ import React from 'react';
 import { spinnerService } from "@simply007org/react-spinners";
 import { useEffect, useState } from "react";
 import { Client } from "../Client";
-import { CafeModel, createCafeModel } from '../Utilities/CafeListing';
+import { createCafeModel } from '../Utilities/CafeListing';
 import {
   defaultLanguage,
   ILanguageObjectWithArray,
@@ -11,6 +11,7 @@ import {
 import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
 import { projectModel } from '../Models/_project';
+import { CafeModel } from '../ViewModels/CafeModel';
 
 const Cafes: React.FC = () => {
   const { formatMessage, locale:language } = useIntl();
