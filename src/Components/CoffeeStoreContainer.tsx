@@ -48,9 +48,9 @@ const CoffeeStoreContainer: React.FC<CoffeeStoreContainerProps> = ({ language}) 
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setCoffees((data: any) => ({
+        setCoffees(data => ({
           ...data,
-          [currentLanguage]: response.data.items
+          [currentLanguage]: response.data.items as Coffee[]
         }));
       });
   }, [language]);

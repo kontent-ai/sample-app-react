@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Client } from "../Client";
 import Metadata from "../Components/Metadata";
 import RichText from "../Components/RichText";
-import { defaultLanguage, initLanguageCodeObject, ILanguageObject } from '../Utilities/LanguageCodes';
+import { defaultLanguage, initLanguageCodeObject } from '../Utilities/LanguageCodes';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { Brewer as BrewerType } from '../Models/brewer';
@@ -33,9 +33,9 @@ const Brewer: React.FC= () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setBrewer((data: ILanguageObject<BrewerType>): ILanguageObject<BrewerType> => ({
+        setBrewer(data => ({
           ...data,
-          [currentLanguage]: response.data.items[0]
+          [currentLanguage]: response.data.items[0] as BrewerType
         }));
       });
   }, [language, brewerSlug]);

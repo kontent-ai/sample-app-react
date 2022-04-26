@@ -32,9 +32,9 @@ const Articles: React.FC = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setArticles((data: any) => ({
+        setArticles(data => ({
           ...data,
-          [currentLanguage]: response.data.items
+          [currentLanguage]: response.data.items as ArticleType[]
         }));
       });
   }, [language]);

@@ -35,9 +35,9 @@ const Home: React.FC = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setHomeData((data: any|null) => ({
+        setHomeData(data => ({
           ...data,
-          [currentLanguage]: response.data.items[0]
+          [currentLanguage]: response.data.items[0] as HomeType
         }));
       });
   }, [language]);

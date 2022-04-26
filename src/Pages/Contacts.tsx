@@ -31,9 +31,9 @@ const Contacts: React.FC = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setCompanyCafes((data: any) => ({
+        setCompanyCafes(data => ({
           ...data,
-          [currentLanguage]: response.data.items
+          [currentLanguage]: response.data.items as Cafe[]
         }));
       });
   }, [language]);

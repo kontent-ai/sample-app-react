@@ -56,9 +56,9 @@ const Article: React.FC = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setArticle((data: any) => ({
+        setArticle(data => ({
           ...data,
-          [currentLanguage]: response.data.items[0]
+          [currentLanguage]: response.data.items[0] as ArticleType
         }));
       });
   }, [language, articleId]);

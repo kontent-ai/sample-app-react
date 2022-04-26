@@ -58,9 +58,9 @@ const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) 
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setBrewers((data: any) => ({
+        setBrewers(data => ({
           ...data,
-          [currentLanguage]: response.data.items
+          [currentLanguage]: response.data.items as Brewer[]
         }));
       });
   }, [language]);

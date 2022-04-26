@@ -6,7 +6,6 @@ import Metadata from "../Components/Metadata";
 import RichText from "../Components/RichText";
 import {
   defaultLanguage,
-  ILanguageObject,
   initLanguageCodeObject,
 } from '../Utilities/LanguageCodes';
 import { FactAboutUs } from '../Models/fact_about_us';
@@ -50,9 +49,9 @@ const About: React.FC<AboutProps> = ({  urlSlug}) => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setFacts((data:ILanguageObject<AboutUs>) => ({
+        setFacts(data => ({
           ...data,
-          [currentLanguage]: response.data.items[0]
+          [currentLanguage]: response.data.items[0] as AboutUs
         }));
       });
   }, [language, urlSlug]);

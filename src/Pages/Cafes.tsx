@@ -34,9 +34,9 @@ const Cafes: React.FC = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setCafes((data: any) => ({
+        setCafes(data => ({
           ...data,
-          [currentLanguage]: response.data.items
+          [currentLanguage]: response.data.items as Cafe[]
         }));
       });
   }, [language]);

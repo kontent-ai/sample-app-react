@@ -36,9 +36,9 @@ const Coffee: React.FC = () => {
         const currentLanguage = language || defaultLanguage;
 
         spinnerService.hide("apiSpinner");
-        setCoffee((data: any) => ({
+        setCoffee(data => ({
           ...data,
-          [currentLanguage]: response.data.items[0]
+          [currentLanguage]: response.data.items[0] as CoffeeType
         }));
       });
   }, [language, coffeeSlug]);
