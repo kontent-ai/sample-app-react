@@ -10,9 +10,8 @@ import { useIntl } from 'react-intl';
 import { Article as ArticleType } from '../Models/article'
 import { projectModel } from '../Models/_project';
 
-interface ArticleProps{}
 
-const Article: React.FC<ArticleProps> = () => {
+const Article: React.FC = () => {
   const { locale:language, formatDate, formatMessage } = useIntl();
   const { articleId } = useParams();
   const [article, setArticle] = useState(initLanguageCodeObject<ArticleType>());

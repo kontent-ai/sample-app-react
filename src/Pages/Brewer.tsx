@@ -9,10 +9,7 @@ import { useIntl } from 'react-intl';
 import { Brewer as BrewerType } from '../Models/brewer';
 import { projectModel } from '../Models/_project';
 
-interface BrewerProps { }
-
-const Brewer: React.FC<BrewerProps> = () => {
-
+const Brewer: React.FC= () => {
   const [brewer, setBrewer] = useState(initLanguageCodeObject<BrewerType>(null));
   const { brewerSlug } = useParams();
   const { locale:language,  formatMessage } = useIntl()

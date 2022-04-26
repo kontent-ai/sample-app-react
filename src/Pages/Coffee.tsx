@@ -10,9 +10,7 @@ import { useIntl } from 'react-intl';
 import { Coffee as CoffeeType } from '../Models/coffee';
 import { projectModel } from '../Models/_project';
 
-interface CoffeeProps { }
-
-const Coffee: React.FC<CoffeeProps> = () => {
+const Coffee: React.FC = () => {
 
   const [coffee, setCoffee] = useState(initLanguageCodeObject<CoffeeType>());
   const { coffeeSlug } = useParams();

@@ -8,9 +8,7 @@ import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
 import { projectModel } from '../Models/_project';
 
-interface ContactsProps{ }
-
-const Contacts: React.FC<ContactsProps> = () => {
+const Contacts: React.FC = () => {
   const { locale:language, formatMessage } = useIntl();
   const [companyCafes, setCompanyCafes] = useState(initLanguageCodeObjectWithArray<Cafe>());
 

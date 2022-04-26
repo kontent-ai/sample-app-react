@@ -12,9 +12,7 @@ import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
 import { projectModel } from '../Models/_project';
 
-interface CafesProps { }
-
-const Cafes: React.FC<CafesProps> = () => {
+const Cafes: React.FC = () => {
   const { formatMessage, locale:language } = useIntl();
   const [cafes, setCafes] = useState<ILanguageObjectWithArray<Cafe>>(initLanguageCodeObjectWithArray());
 

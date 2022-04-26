@@ -14,10 +14,7 @@ import { useIntl } from 'react-intl';
 import { Home as HomeType } from '../Models/home';
 import { projectModel } from '../Models/_project';
 
-interface HomeProps {
-}
-
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC = () => {
   const { locale:language, formatMessage } = useIntl();
   const [homeData, setHomeData] = useState(initLanguageCodeObject<HomeType>());
 

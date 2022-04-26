@@ -4,9 +4,7 @@ import CoffeeStoreContainer from '../Components/CoffeeStoreContainer';
 import BrewerStoreContainer from '../Components/BrewerStoreContainer';
 import { useIntl } from 'react-intl';
 
-interface StoreProps {}
-
-const Store: React.FC<StoreProps> = () => {
+const Store: React.FC = () => {
   const { locale:language, formatMessage } = useIntl();
 
   return (

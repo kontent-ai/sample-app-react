@@ -9,9 +9,7 @@ import { Article } from '../Models/article';
 import { Article as ArticleType } from '../Models/article'
 import { projectModel } from '../Models/_project';
 
-interface ArticlesProps {}
-
-const Articles: React.FC<ArticlesProps> = () => {
+const Articles: React.FC = () => {
   const { locale:language, formatDate, formatMessage } = useIntl();
   const [articles, setArticles] = useState(initLanguageCodeObjectWithArray<ArticleType>());
 
