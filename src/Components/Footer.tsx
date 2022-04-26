@@ -2,11 +2,8 @@ import React from 'react';
 import Link from '../Components/LowerCaseUrlLink';
 import { useIntl } from 'react-intl';
 
-interface footerProps{
-  language: string
-}
 
-const Footer: React.FC<footerProps> = () => {
+const Footer: React.FC = () => {
   const { formatMessage } = useIntl();
   return (
     <div className="footer-wrapper">

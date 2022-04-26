@@ -4,12 +4,11 @@ import { FormattedDate, useIntl } from 'react-intl';
 import { Article } from '../Models/article';
 
 interface LatestArticlesProps {
-  articles: Article[],
-  language: string,
+  articles: Article[]
 }
 
 const LatestArticles: React.FC<LatestArticlesProps> = props => {
-  const {formatMessage} = useIntl();
+  const { locale:language, formatMessage } = useIntl();
   if (props.articles.length === 0) {
     return <div className="row" />;
   }
@@ -39,7 +38,7 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
         ? article.elements.summary.value
         : formatMessage({ id: 'LatestArticles.noSummaryValue' });
 
-    let link = `/${props.language.toLowerCase()}/articles/${article.system.id}`;
+    let link = `/${language.toLowerCase()}/articles/${article.system.id}`;
 
     return (
       <div className="col-md-3" key={index}>
@@ -89,7 +88,7 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
       ? articleElements.summary.value
       : formatMessage({ id:'noSummaryValue'} );
 
-  let link = `/${props.language.toLowerCase()}/articles/${system.id}`;
+  let link = `/${language.toLowerCase()}/articles/${system.id}`;
   let tabTitle = formatMessage({ id: 'LatestArticles.title' });
 
   return (

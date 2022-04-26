@@ -7,11 +7,10 @@ import { useIntl } from 'react-intl';
 
 interface CoffeeStoreListingProps {
   coffees: Coffee[],
-  language: string,
 }
 
-const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees, language}) => {
-  const { formatMessage } = useIntl();
+const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees}) => {
+  const { locale:language, formatMessage } = useIntl();
   const coffeesComponents = coffees.map((coffee) => {
     const price =
       coffee.elements.price.value !== null

@@ -7,11 +7,10 @@ import { useIntl } from 'react-intl';
 
 interface BrewerStoreListingProps{
   brewers: Brewer[],
-  language: string,
 }
 
-const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers, language }) => {
-  const { formatMessage } = useIntl();
+const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers }) => {
+  const { locale:language, formatMessage } = useIntl();
 
   const brewersComponents = brewers.map(brewer => {
     const price =

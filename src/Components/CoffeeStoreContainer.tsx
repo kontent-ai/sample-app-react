@@ -10,21 +10,17 @@ import { Coffee } from '../Models/coffee';
 import { useIntl } from 'react-intl';
 import { projectModel } from '../Models/_project';
 
-interface CoffeeStoreContainerProps {
-  language: string
-}
-
 interface filterType {
   [index: string]: string[],
   processings: string[],
   productStatuses: string[]
 }
 
-const CoffeeStoreContainer: React.FC<CoffeeStoreContainerProps> = ({ language}) => {
+const CoffeeStoreContainer: React.FC = () => {
   const [coffees, setCoffees] = useState(initLanguageCodeObjectWithArray<Coffee>());
   const [processings, setProcessings] = useState<ITaxonomyTerms[]>([]);
   const [productStatuses, setProductStatuses] = useState<ITaxonomyTerms[]>([]);
-  const { formatMessage } = useIntl();
+  const { locale:language, formatMessage } = useIntl();
 
   const [filter, setFilter] = useState<filterType>({
     processings: [],
@@ -108,7 +104,7 @@ const CoffeeStoreContainer: React.FC<CoffeeStoreContainerProps> = ({ language}) 
             }
           })} />
         </aside>
-        <CoffeeStoreListing language={language} coffees={coffees[language].filter((coffee: Coffee) => matches(coffee))} />
+        <CoffeeStoreListing coffees={coffees[language].filter((coffee: Coffee) => matches(coffee))} />
       </div>
     </div>
   );

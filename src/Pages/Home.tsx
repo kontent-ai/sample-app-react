@@ -72,7 +72,6 @@ const Home: React.FC = () => {
         {homeElements.articles && (
           <LatestArticles
             articles={homeElements.articles.linkedItems}
-            language={language}
           />
         )}
         <LinkButton
@@ -94,7 +93,6 @@ const Home: React.FC = () => {
         homeElements.cafes.value && (
           <TasteOurCoffee
             cafes={homeElements.cafes.linkedItems}
-            language={language}
           />
         )}
         <LinkButton

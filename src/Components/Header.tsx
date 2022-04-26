@@ -7,14 +7,13 @@ import { useIntl } from 'react-intl';
 
 interface HeaderProps {
   message: string | ParsedQs | string[] | ParsedQs[] | undefined,
-  language: string,
   changeLanguage: (newLanguage: any, newUrl?: any) => void,
 }
 
 
 const Header: React.FC<HeaderProps> = (props) => {
   const messageBox = props.message && <MessageBox message={props.message} />;
-  const { formatMessage } = useIntl();
+  const { locale:language, formatMessage } = useIntl();
   return (
     <header className="header" role="banner">
       <div className="menu">
@@ -22,40 +21,40 @@ const Header: React.FC<HeaderProps> = (props) => {
           <nav>
             <ul>
               <li>
-                <Link to={`/${props.language}`}>
+                <Link to={`/${language}`}>
                   { formatMessage({ id: 'Header.homeLinkTitle' }) }
                 </Link>
               </li>
               <li>
-                <Link to={`/${props.language}/store`}>
+                <Link to={`/${language}/store`}>
                   { formatMessage({ id:'Header.storeLinkTitle' }) }
                 </Link>
               </li>
               <li>
-                <Link to={`/${props.language}/articles`}>
+                <Link to={`/${language}/articles`}>
                   { formatMessage({ id :'Header.articlesLinkTitle' }) }
                 </Link>
               </li>
-              {props.language.toLowerCase() === englishCode.toLowerCase() ? (
+              {language.toLowerCase() === englishCode.toLowerCase() ? (
                 <li>
-                  <Link to={`/${props.language}/about-us`}>
+                  <Link to={`/${language}/about-us`}>
                     { formatMessage({id: 'Header.aboutLinkTitle'} )  }
                   </Link>
                 </li>
-              ) : props.language.toLowerCase() === spanishCode.toLowerCase() ? (
+              ) : language.toLowerCase() === spanishCode.toLowerCase() ? (
                 <li>
-                  <Link to={`/${props.language}/acerca-de`}>
+                  <Link to={`/${language}/acerca-de`}>
                     { formatMessage({ id: 'Header.aboutLinkTitle' })  }
                   </Link>
                 </li>
               ) : null}
               <li>
-                <Link to={`/${props.language}/cafes`}>
+                <Link to={`/${language}/cafes`}>
                   { formatMessage({ id: 'Header.cafesLinkTitle' }) }
                 </Link>
               </li>
               <li>
-                <Link to={`/${props.language}/contacts`}>
+                <Link to={`/${language}/contacts`}>
                   { formatMessage({ id:'Header.contactsLinkTitle'}) }
                 </Link>
               </li>
@@ -100,7 +99,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <div className="container">
           <div className="col-xs-8 col-md-8 col-lg-4 logo">
             <h1 className="logo">
-              <Link to={`/${props.language}`} className="logo-link">
+              <Link to={`/${language}`} className="logo-link">
                 Dancing Goat
               </Link>
             </h1>

@@ -11,10 +11,6 @@ import { useIntl } from 'react-intl';
 import { Brewer } from '../Models/brewer';
 import { projectModel } from '../Models/_project';
 
-interface BrewerStoreContainerProps {
-  language: string
-}
-
 interface filterType {
   [index: string]: string[],
   manufacturers: string[],
@@ -22,10 +18,11 @@ interface filterType {
   productStatuses: string[]
 }
 
-const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) => {
+const BrewerStoreContainer: React.FC = () => {
   const { formatMessage } = useIntl();
 
   const [brewers, setBrewers] = useState(initLanguageCodeObjectWithArray<Brewer>());
+  const { locale:language } = useIntl();
 
   const [manufacturers, setManufacturers] = useState<ITaxonomyTerms[]>([]);
   const priceRanges = [
@@ -153,7 +150,7 @@ const BrewerStoreContainer: React.FC<BrewerStoreContainerProps> = ({ language}) 
             }
           })} />
         </aside>
-        <BrewerStoreListing language={language} brewers={brewers[language].filter((brewer: Brewer) => matches(brewer))} />
+        <BrewerStoreListing brewers={brewers[language].filter((brewer: Brewer) => matches(brewer))} />
       </div>
     </div>
   );

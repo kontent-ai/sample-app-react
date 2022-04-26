@@ -21,11 +21,10 @@ import Cookies from 'universal-cookie';
 
 
 interface AppProps{
-  language: string,
   changeLanguage: (newLanguage: any, newUrl: any) => void
 }
 
-const App: React.FC<AppProps> = (props) => {
+const App: React.FC<AppProps> = ({ changeLanguage }) => {
   const cookies = new Cookies(document.cookie)
   const cookie = cookies.get(selectedProjectCookieName)
   const { formatMessage } = useIntl();
@@ -34,7 +33,6 @@ const App: React.FC<AppProps> = (props) => {
     return <Navigate to={projectConfigurationPath} />;
   }
 
-  const { language, changeLanguage} = props;
   // slice(1) removes the `?` at the beginning of `location.search`
   const infoMessage = qs.parse(window.location.search.slice(1)).infoMessage;
   return (
@@ -42,7 +40,6 @@ const App: React.FC<AppProps> = (props) => {
       <div className="application-content">
         <Metadata />
         <Header
-          language={language}
           changeLanguage={changeLanguage}
           message={infoMessage}
         />
@@ -88,7 +85,7 @@ const App: React.FC<AppProps> = (props) => {
             element = { <Navigate to="/" /> }
           />
         </Routes>
-        <Footer language={language} />
+        <Footer />
       </div>
     </SpinnerLayout>
   );

@@ -59,7 +59,6 @@ const LocalizedApp: React.FC = () => {
         messages={localizationObject[language]}
       >
         <App
-          language={language}
           changeLanguage={setLanguageCode} />
       </IntlProvider>
     </div>

@@ -6,11 +6,10 @@ import { Cafe } from '../Models/cafe';
 
 interface TestOurCoffeeProps {
   cafes: Cafe[],
-  language: string
 }
 
 const TasteOurCoffee: React.FC<TestOurCoffeeProps> = props => {
-  const { formatMessage } = useIntl();
+  const { locale:language, formatMessage } = useIntl();
   let cafes = props.cafes.map((cafe: Cafe, index: number) => {
     let name = cafe.system.name;
     let imageLink = cafe.elements.photo.value[0].url;
@@ -18,7 +17,7 @@ const TasteOurCoffee: React.FC<TestOurCoffeeProps> = props => {
     return (
       <div className="col-xs-6 col-md-3" key={index}>
         <div>
-          <Link to={`/${props.language}/cafes`} className="ourcoffee-tile-link">
+          <Link to={`/${language}/cafes`} className="ourcoffee-tile-link">
             <h2 className="ourcoffee-tile-text center-text">{name}</h2>
             <span className="cafe-overlay"> </span>
             <img
