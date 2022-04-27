@@ -68,7 +68,7 @@ const Article: React.FC = () => {
     return <div className="container" />;
   }
 
-  let makeFormatDate = (value: string): string => {
+  const makeFormatDate = (value: string): string => {
     return formatDate(value, {
       year: 'numeric',
       month: 'long',
@@ -77,12 +77,12 @@ const Article: React.FC = () => {
     })
   };
 
-  let title =
+  const title =
     currentArticle.elements.title.value.trim().length > 0
       ? currentArticle.elements.title.value
       : formatMessage({id: 'Article.noTitleValue'});
 
-  let imageLink =
+  const imageLink =
     currentArticle?.elements.teaserImage.value[0] !== undefined ? (
       <img
         alt={title}
@@ -96,9 +96,9 @@ const Article: React.FC = () => {
       </div>
     );
 
-  let postDate = makeFormatDate(currentArticle.elements.postDate.value!);
+  const postDate = makeFormatDate(currentArticle.elements.postDate.value!);
 
-  let bodyCopyElement =
+  const bodyCopyElement =
     currentArticle.elements.bodyCopy.value !== '<p><br></p>' ? (
       <RichText
         className="article-detail-content"

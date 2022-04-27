@@ -94,7 +94,7 @@ const Cafes: React.FC = () => {
     .sort();
 
   const partnerCafeComponents = partnerCafeLocations.map((location: string) => {
-    let locationPartnerCafes = partnerCafeModels
+    const locationPartnerCafes = partnerCafeModels
       .filter((model: CafeModel) => model.location === location)
       .map((model: CafeModel, modelIndex: number) => {
         return (

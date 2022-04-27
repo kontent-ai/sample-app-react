@@ -13,13 +13,13 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
     return <div className="row" />;
   }
 
-  var otherArticles = props.articles.slice(1).map((article: Article, index: number) => {
-    let title =
+  const otherArticles = props.articles.slice(1).map((article: Article, index: number) => {
+    const title =
       article.elements.title.value.trim().length > 0
         ? article.elements.title.value
         : formatMessage({id: 'LatestArticles.noTitleValue'});
 
-    let imageLink =
+    const imageLink =
       article.elements.teaserImage.value[0] !== undefined ? (
         <img
           alt={'Article ' + title}
@@ -33,12 +33,12 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
         </div>
       );
 
-    let summary =
+    const summary =
       article.elements.summary.value.trim().length > 0
         ? article.elements.summary.value
         : formatMessage({ id: 'LatestArticles.noSummaryValue' });
 
-    let link = `/${language.toLowerCase()}/articles/${article.system.id}`;
+    const link = `/${language.toLowerCase()}/articles/${article.system.id}`;
 
     return (
       <div className="col-md-3" key={index}>
@@ -62,14 +62,14 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
     );
   });
 
-  let { system, elements: articleElements } = props.articles[0];
+  const { system, elements: articleElements } = props.articles[0];
 
-  let title =
+  const title =
     articleElements.title.value.trim().length > 0
       ? articleElements.title.value
       : formatMessage({ id: 'LatestArticles.noTitleValue' });
 
-  let imageLink =
+  const imageLink =
     articleElements.teaserImage.value[0] !== undefined ? (
       <img
         alt={'Article ' + title}
@@ -83,13 +83,13 @@ const LatestArticles: React.FC<LatestArticlesProps> = props => {
       </div>
     );
 
-  let summary =
+  const summary =
     articleElements.summary.value.trim().length > 0
       ? articleElements.summary.value
       : formatMessage({ id:'noSummaryValue'} );
 
-  let link = `/${language.toLowerCase()}/articles/${system.id}`;
-  let tabTitle = formatMessage({ id: 'LatestArticles.title' });
+  const link = `/${language.toLowerCase()}/articles/${system.id}`;
+  const tabTitle = formatMessage({ id: 'LatestArticles.title' });
 
   return (
     <div className="row">

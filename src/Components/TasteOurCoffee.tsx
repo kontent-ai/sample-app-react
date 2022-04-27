@@ -10,9 +10,9 @@ interface TestOurCoffeeProps {
 
 const TasteOurCoffee: React.FC<TestOurCoffeeProps> = props => {
   const { locale:language, formatMessage } = useIntl();
-  let cafes = props.cafes.map((cafe: Cafe, index: number) => {
-    let name = cafe.system.name;
-    let imageLink = cafe.elements.photo.value[0].url;
+  const cafes = props.cafes.map((cafe: Cafe, index: number) => {
+    const name = cafe.system.name;
+    const imageLink = cafe.elements.photo.value[0].url;
 
     return (
       <div className="col-xs-6 col-md-3" key={index}>
