@@ -10,12 +10,14 @@ import {
 import { localizationObject } from './Utilities/LocalizationLoader';
 import { IntlProvider } from 'react-intl';
 
+export type SetLanguageType = (newLanguage: string, newUrl: string) => void;
+
 const LocalizedApp: React.FC = () => {
   const [language, setLanguage] = useState(englishCode);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const setLanguageCode = (newLanguage: string, newUrl: string): void => {
+  const setLanguageCode: SetLanguageType = (newLanguage, newUrl) => {
     if (
       language === newLanguage ||
       languageCodes.indexOf(newLanguage) < 0

@@ -18,10 +18,11 @@ import Contact from './Pages/Contacts';
 import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
 import Cookies from 'universal-cookie';
+import { SetLanguageType } from './LocalizedApp';
 
 
 interface AppProps{
-  changeLanguage: (newLanguage: any, newUrl: any) => void
+  changeLanguage: SetLanguageType
 }
 
 const App: React.FC<AppProps> = ({ changeLanguage }) => {
