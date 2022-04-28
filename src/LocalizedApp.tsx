@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import App from './App';
@@ -9,13 +9,44 @@ import {
 } from './Utilities/LanguageCodes';
 import { localizationObject } from './Utilities/LocalizationLoader';
 import { IntlProvider } from 'react-intl';
+import Cookies from 'universal-cookie';
 
 export type SetLanguageType = (newLanguage: string, newUrl: string) => void;
 
-const LocalizedApp: React.FC = () => {
-  const [language, setLanguage] = useState(englishCode);
+interface LocalizedAppProps {
+  lang?: string
+}
+
+const LocalizedApp: React.FC<LocalizedAppProps> = ({lang}) => {
+  const cookies = useMemo(() => new Cookies(document.cookie), []);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  const getLanguageIndex = (l: string): number => {
+    return languageCodes.map((val) => val.toLowerCase()).indexOf((l).toLowerCase())
+  }
+
+  const setLanguageState = (): string => {
+    let newLang = englishCode;
+
+    const cookiesLangIndex = getLanguageIndex(cookies.get("lang") ?? "");
+    if(cookiesLangIndex >= 0){
+      newLang = languageCodes[cookiesLangIndex];
+    }
+
+    const urlLanguageIndex = getLanguageIndex(lang ?? "");
+    if(urlLanguageIndex >= 0){
+      newLang = languageCodes[urlLanguageIndex];
+    }
+
+    return newLang;
+  }
+
+  const [ language, setLanguage ] = useState(setLanguageState());
+
+  useEffect(() => {
+    cookies.set("lang", language, { path:"/" })
+  }, [language, cookies])
 
   const setLanguageCode: SetLanguageType = (newLanguage, newUrl) => {
     if (

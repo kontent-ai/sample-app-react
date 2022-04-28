@@ -83,7 +83,7 @@ const App: React.FC<AppProps> = ({ changeLanguage }) => {
           />
           <Route
             path="*"
-            element = { <Navigate to="/" /> }
+            element = { <Navigate to="/404" /> }
           />
         </Routes>
         <Footer />

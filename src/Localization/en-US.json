@@ -47,5 +47,6 @@
     "Footer.contact": "Contact",
     "Footer.cityStateZip": "Illinois 60601, USA",
     "Footer.allRightsReserved": "All rights reserved.",
+    "NotFound.message":"Sorry, we could not find what you are looking for.",
     "Route.about":"about-us"
 }

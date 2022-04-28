@@ -6,10 +6,9 @@ import { ParsedQs } from 'qs';
 import { useIntl } from 'react-intl';
 
 interface HeaderProps {
-  message: string | ParsedQs | string[] | ParsedQs[] | undefined,
+  message?: string | ParsedQs | string[] | ParsedQs[] | undefined,
   changeLanguage: (newLanguage: any, newUrl?: any) => void,
 }
-
 
 const Header: React.FC<HeaderProps> = (props) => {
   const messageBox = props.message && <MessageBox message={props.message} />;
