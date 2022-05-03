@@ -17,7 +17,7 @@
     "@types/webpack-env": "^1.16.3",
     "cpy-cli": "^4.0.0",
     "cross-env": "^7.0.2",
-    "husky": "^4.2.5",
+    "husky": "^7.0.4",
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
     "react-scripts": "^5.0.0"
@@ -36,7 +36,7 @@
     "validator": "^13.7.0"
   },
   "lint-staged": {
-    "{src,examples}/**/*.{js,jsx,json,css}": [
+    "{src}/**/*.{ts,tsx,json,css}": [
       "prettier --write",
       "git add"
     ]
@@ -46,7 +46,8 @@
     "start": "react-scripts start",
     "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
     "test-watch": "react-scripts test --env=jsdom",
-    "test": "cross-env CI=true react-scripts test --env=jsdom --passWithNoTests"
+    "test": "cross-env CI=true react-scripts test --env=jsdom --passWithNoTests",
+    "prepare": "husky install"
   },
   "browserslist": [
     ">0.3%",
