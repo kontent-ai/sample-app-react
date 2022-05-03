@@ -19,6 +19,7 @@ import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
 import Cookies from 'universal-cookie';
 import { SetLanguageType } from './LocalizedApp';
+import { NotFound } from './Pages/NotFound';
 
 
 interface AppProps{
@@ -83,7 +84,11 @@ const App: React.FC<AppProps> = ({ changeLanguage }) => {
           />
           <Route
             path="*"
-            element = { <Navigate to="/404" /> }
+            element = { <Navigate to="404" /> }
+          />
+          <Route
+            path="/404"
+            element = { <NotFound /> }
           />
         </Routes>
         <Footer />

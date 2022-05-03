@@ -5,8 +5,11 @@ import App from './LocalizedApp';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import Configuration from './Pages/Admin/Configuration';
 import { projectConfigurationPath } from './const';
-import { NotFound } from './Pages/NotFound';
-import languageCodes from './Utilities/LanguageCodes';
+import languageCodes, { englishCode } from './Utilities/LanguageCodes';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies(document.cookie);
+const lang = cookies.get("lang") ?? englishCode
 
 ReactDOM.render(
     <Router>
@@ -20,9 +23,8 @@ ReactDOM.render(
           <Route key={value} path={`/${value.toLowerCase()}/*`} element={<App lang={value}/>} />
         ))}
 
-        <Route path="/" element={<App />} />
-        <Route path="/404" element={<NotFound /> } />
-        <Route path="*" element={<Navigate to={"/404"} /> } />
+        <Route path="/" element={<Navigate to={`/${lang.toLowerCase()}`} /> } />
+        <Route path="*" element={<Navigate to={`/${lang.toLowerCase()}/404`} /> } />
       </Routes>
     </Router>,
   document.getElementById('root')

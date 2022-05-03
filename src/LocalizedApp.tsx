@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import App from './App';
 import {
   languageCodes,
   languageCodesLowerCase,
-  englishCode
 } from './Utilities/LanguageCodes';
 import { localizationObject } from './Utilities/LocalizationLoader';
 import { IntlProvider } from 'react-intl';
@@ -14,7 +13,7 @@ import Cookies from 'universal-cookie';
 export type SetLanguageType = (newLanguage: string, newUrl?: string) => void;
 
 interface LocalizedAppProps {
-  lang?: string
+  lang: string
 }
 
 const LocalizedApp: React.FC<LocalizedAppProps> = ({lang}) => {
@@ -22,35 +21,13 @@ const LocalizedApp: React.FC<LocalizedAppProps> = ({lang}) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const getLanguageIndex = (l: string): number => {
-    return languageCodes.map((val) => val.toLowerCase()).indexOf((l).toLowerCase())
-  }
-
-  const setLanguageState = (): string => {
-    let newLang = englishCode;
-
-    const cookiesLangIndex = getLanguageIndex(cookies.get("lang") ?? "");
-    if(cookiesLangIndex >= 0){
-      newLang = languageCodes[cookiesLangIndex];
-    }
-
-    const urlLanguageIndex = getLanguageIndex(lang ?? "");
-    if(urlLanguageIndex >= 0){
-      newLang = languageCodes[urlLanguageIndex];
-    }
-
-    return newLang;
-  }
-
-  const [ language, setLanguage ] = useState(setLanguageState());
-
   useEffect(() => {
-    cookies.set("lang", language, { path:"/" })
-  }, [language, cookies])
+    cookies.set("lang", lang, { path:"/" })
+  }, [lang, cookies])
 
   const setLanguageCode: SetLanguageType = (newLanguage, newUrl) => {
     if (
-      language === newLanguage ||
+      lang === newLanguage ||
       languageCodes.indexOf(newLanguage) < 0
     ) {
       return;
@@ -64,23 +41,22 @@ const LocalizedApp: React.FC<LocalizedAppProps> = ({lang}) => {
       urlParts.splice(1, 0, newLanguage);
     }
 
-    setLanguage(newLanguage);
     if (newUrl) {
-      navigate(urlParts.splice(0, 2).join('/') + newUrl);
+      navigate(urlParts.splice(0, 2).join('/').toLowerCase() + newUrl);
     } else {
-      navigate(urlParts.join('/'));
+      navigate(urlParts.join('/').toLowerCase());
     }
   };
 
   if (pathname !== pathname.toLowerCase()) {
-    return <Navigate to={pathname.toLowerCase()} />;
+    return <Navigate to={pathname.toLowerCase()} replace />;
   }
 
   return (
     <div>
       <IntlProvider
-        locale={language}
-        messages={localizationObject[language]}
+        locale={lang}
+        messages={localizationObject[lang]}
       >
         <App
           changeLanguage={setLanguageCode} />
