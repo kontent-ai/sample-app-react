@@ -5570,9 +5570,6 @@ ul.dropdown-items-list.dropdown-items-list-mobile {
   padding-top: 16px;
   padding-bottom: 16px;
 }
-.application-content .cursor-hand {
-  cursor: pointer;
-}
 .application-content .image-responsive {
   max-width: 100%;
 }

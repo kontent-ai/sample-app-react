@@ -70,7 +70,7 @@ const Contacts: React.FC = () => {
     return (
       <div className="col-md-6 col-lg-3" key={cafe.system.codename}>
         <div
-          className="cafe-tile cursor-hand js-scroll-to-map"
+          className="cafe-tile js-scroll-to-map"
           data-address={model.dataAddress}
         >
           <div className="cafe-tile-content">
