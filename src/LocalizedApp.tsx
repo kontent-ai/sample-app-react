@@ -11,7 +11,7 @@ import { localizationObject } from './Utilities/LocalizationLoader';
 import { IntlProvider } from 'react-intl';
 import Cookies from 'universal-cookie';
 
-export type SetLanguageType = (newLanguage: string, newUrl: string) => void;
+export type SetLanguageType = (newLanguage: string, newUrl?: string) => void;
 
 interface LocalizedAppProps {
   lang?: string

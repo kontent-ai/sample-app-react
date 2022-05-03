@@ -88,7 +88,7 @@ const About: React.FC<AboutProps> = ({  urlSlug}) => {
 
         const currentLanguage = language || defaultLanguage;
 
-        setMetadata((data: any) => ({
+        setMetadata(data => ({
           ...data,
           [currentLanguage]: response.data.items[0]
         }));

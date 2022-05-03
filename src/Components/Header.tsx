@@ -4,10 +4,11 @@ import { englishCode, spanishCode } from '../Utilities/LanguageCodes';
 import MessageBox from './MessageBox';
 import { ParsedQs } from 'qs';
 import { useIntl } from 'react-intl';
+import { SetLanguageType } from '../LocalizedApp';
 
 interface HeaderProps {
   message?: string | ParsedQs | string[] | ParsedQs[] | undefined,
-  changeLanguage: (newLanguage: any, newUrl?: any) => void,
+  changeLanguage: SetLanguageType,
 }
 
 const Header: React.FC<HeaderProps> = (props) => {

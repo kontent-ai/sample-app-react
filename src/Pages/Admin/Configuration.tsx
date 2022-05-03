@@ -55,14 +55,14 @@ const Configuration: React.FC = () => {
     setCurrentProjectInputValue(event.target.value);
   }
 
-  const handleSetProjectSubmit = (event: any): void => {
+  const handleSetProjectSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    const newProjectId = event.target[0].value;
+    const newProjectId = ((event.target as HTMLFormElement)[0] as HTMLInputElement)?.value;
 
     setNewProjectId(newProjectId);
   }
 
-  const setNewProjectId = (newProjectId: string, newlyGeneratedProject: any = null): void => {
+  const setNewProjectId = (newProjectId: string, newlyGeneratedProject?: boolean): void => {
     if (!validator.isUUID(newProjectId)) {
       const message = `Selected project (${newProjectId}) is not a valid GUID`;
       console.error(message);
@@ -129,7 +129,7 @@ const Configuration: React.FC = () => {
     );
   }
 
-  const receiveMessage = (event: any): void => {
+  const receiveMessage = (event: MessageEvent): void => {
     if (event.origin.toLowerCase() !== 'https://app.kontent.ai') return;
 
     if (!event.data.projectGuid) {

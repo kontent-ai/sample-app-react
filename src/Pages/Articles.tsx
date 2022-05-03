@@ -48,7 +48,7 @@ const Articles: React.FC = () => {
 
   let counter = 0;
 
-  const articlesComponent = articles[language].reduce((result: any, article: Article, index: number) => {
+  const articlesComponent = articles[language].reduce((result: JSX.Element[], article: Article, index: number) => {
     if (index % 4 === 0) {
       result.push(<div className="clear" key={counter++} />);
     }
