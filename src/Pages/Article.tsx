@@ -1,23 +1,25 @@
 import React from 'react';
-import { spinnerService } from "@simply007org/react-spinners";
-import { useEffect, useState } from "react";
-import { Client } from "../Client";
-import { defaultLanguage, initLanguageCodeObject } from "../Utilities/LanguageCodes";
-import RichText from "../Components/RichText";
-import Metadata from "../Components/Metadata";
+import { spinnerService } from '@simply007org/react-spinners';
+import { useEffect, useState } from 'react';
+import { Client } from '../Client';
+import {
+  defaultLanguage,
+  initLanguageCodeObject,
+} from '../Utilities/LanguageCodes';
+import RichText from '../Components/RichText';
+import Metadata from '../Components/Metadata';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { Article as ArticleType } from '../Models/article'
+import { Article as ArticleType } from '../Models/article';
 import { projectModel } from '../Models/_project';
 
-
 const Article: React.FC = () => {
-  const { locale:language, formatDate, formatMessage } = useIntl();
+  const { locale: language, formatDate, formatMessage } = useIntl();
   const { articleId } = useParams();
   const [article, setArticle] = useState(initLanguageCodeObject<ArticleType>());
 
   useEffect(() => {
-    spinnerService.show("apiSpinner");
+    spinnerService.show('apiSpinner');
 
     const query = Client.items<ArticleType>()
       .type(projectModel.contentTypes.article.codename)
@@ -41,26 +43,22 @@ const Article: React.FC = () => {
         'metadata__twitter_site',
         'metadata__twitter_creator',
         'metadata__twitter_description',
-        'metadata__twitter_image'
+        'metadata__twitter_image',
       ]);
-
 
     if (language) {
       query.languageParameter(language);
     }
 
-    query
-      .toPromise()
-      .then(response => {
+    query.toPromise().then((response) => {
+      const currentLanguage = language || defaultLanguage;
 
-        const currentLanguage = language || defaultLanguage;
-
-        spinnerService.hide("apiSpinner");
-        setArticle(data => ({
-          ...data,
-          [currentLanguage]: response.data.items[0] as ArticleType
-        }));
-      });
+      spinnerService.hide('apiSpinner');
+      setArticle((data) => ({
+        ...data,
+        [currentLanguage]: response.data.items[0] as ArticleType,
+      }));
+    });
   }, [language, articleId]);
 
   const currentArticle = article[language];
@@ -73,14 +71,14 @@ const Article: React.FC = () => {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-      weekday: 'long'
-    })
+      weekday: 'long',
+    });
   };
 
   const title =
     currentArticle.elements.title.value.trim().length > 0
       ? currentArticle.elements.title.value
-      : formatMessage({id: 'Article.noTitleValue'});
+      : formatMessage({ id: 'Article.noTitleValue' });
 
   const imageLink =
     currentArticle?.elements.teaserImage.value[0] !== undefined ? (
@@ -92,7 +90,7 @@ const Article: React.FC = () => {
       />
     ) : (
       <div className="img-responsive placeholder-tile-image">
-        {formatMessage({id: 'Article.noTeaserValue'})}
+        {formatMessage({ id: 'Article.noTeaserValue' })}
       </div>
     );
 
@@ -106,7 +104,7 @@ const Article: React.FC = () => {
       />
     ) : (
       <p className="article-detail-content">
-        {formatMessage({id: 'Article.noBodyCopyValue'})}
+        {formatMessage({ id: 'Article.noBodyCopyValue' })}
       </p>
     );
 
@@ -136,8 +134,6 @@ const Article: React.FC = () => {
       </article>
     </div>
   );
-
-}
+};
 
 export default Article;
-

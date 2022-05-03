@@ -2,9 +2,7 @@
   "extends": ["react-app", "react-app/jest"],
   "overrides": [
     {
-      "files": [
-        "**/*.ts?(x)"
-      ],
+      "files": ["**/*.ts?(x)"],
       "rules": {
         "@typescript-eslint/explicit-function-return-type": "error"
       }

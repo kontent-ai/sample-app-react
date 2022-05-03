@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { resolveContentLink } from "../Utilities/ContentLinks";
-import { formatPrice, renderProductStatus } from "../Utilities/StoreListing";
+import { Link } from 'react-router-dom';
+import { resolveContentLink } from '../Utilities/ContentLinks';
+import { formatPrice, renderProductStatus } from '../Utilities/StoreListing';
 import { Coffee } from '../Models/coffee';
 import { useIntl } from 'react-intl';
 
 interface CoffeeStoreListingProps {
-  coffees: Coffee[],
+  coffees: Coffee[];
 }
 
-const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees}) => {
-  const { locale:language, formatMessage } = useIntl();
+const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees }) => {
+  const { locale: language, formatMessage } = useIntl();
   const coffeesComponents = coffees.map((coffee) => {
     const price =
       coffee.elements.price.value !== null
@@ -20,7 +20,7 @@ const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees}) => {
     const name =
       coffee.elements.productName.value.trim().length > 0
         ? coffee.elements.productName.value
-        : formatMessage({ id: 'CoffeeStoreListing.noNameValue'});
+        : formatMessage({ id: 'CoffeeStoreListing.noNameValue' });
 
     const imageLink =
       coffee.elements.image.value[0] !== undefined ? (
@@ -66,7 +66,6 @@ const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees}) => {
       {coffeesComponents}
     </div>
   );
-}
-
+};
 
 export default CoffeeStoreListing;

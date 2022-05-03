@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface LoweCaseUrlLinkProps {
-  to: string,
-  className?: string
-  target?: string
-  children: React.ReactNode
+  to: string;
+  className?: string;
+  target?: string;
+  children: React.ReactNode;
 }
 
 const LowerCaseUrlLink: React.FC<LoweCaseUrlLinkProps> = (props) => {

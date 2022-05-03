@@ -1,3 +1,3 @@
 interface Window {
-  twttr: any
+  twttr: any;
 }

@@ -3,36 +3,36 @@
   font-style: normal;
   font-weight: 700;
   src: local('PT Serif Bold'), local('PTSerif-Bold'),
-  url(./Fonts/PTSerif-Bold.woff) format('woff');
+    url(./Fonts/PTSerif-Bold.woff) format('woff');
 }
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 300;
   src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
-  url(./Fonts/SourceSansPro-Light.woff) format('woff');
+    url(./Fonts/SourceSansPro-Light.woff) format('woff');
 }
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
   src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
-  url(./Fonts/SourceSansPro-Regular.woff) format('woff');
+    url(./Fonts/SourceSansPro-Regular.woff) format('woff');
 }
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 700;
   src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
-  url(./Fonts/SourceSansPro-Bold.woff) format('woff');
+    url(./Fonts/SourceSansPro-Bold.woff) format('woff');
 }
 @font-face {
   font-family: 'Core-icons';
   src: url(./Fonts/Core-icons.eot);
   src: url(./Fonts/Core-icons.svg#Core-icons) format('svg'),
-  url(./Fonts/Core-icons.eot?#iefix) format('embedded-opentype'),
-  url(./Fonts/Core-icons.woff) format('woff'),
-  url(./Fonts/Core-icons.ttf) format('truetype');
+    url(./Fonts/Core-icons.eot?#iefix) format('embedded-opentype'),
+    url(./Fonts/Core-icons.woff) format('woff'),
+    url(./Fonts/Core-icons.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -1338,8 +1338,8 @@ body {
   text-align: left;
 }
 .application-content
-.mobile-menu
-ul.dropdown-items-list.dropdown-items-list-mobile {
+  .mobile-menu
+  ul.dropdown-items-list.dropdown-items-list-mobile {
   display: none;
 }
 .application-content .mobile-menu ul.dropdown-items-list-mobile a {
@@ -1712,9 +1712,9 @@ ul.dropdown-items-list.dropdown-items-list-mobile {
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   .application-content
-  .product-detail
-  .stock-with-price-saving
-  .total-price-container:before {
+    .product-detail
+    .stock-with-price-saving
+    .total-price-container:before {
     margin-top: 7.75rem;
   }
 }
@@ -2015,8 +2015,8 @@ ul.dropdown-items-list.dropdown-items-list-mobile {
   color: #6badba;
 }
 .application-content
-.shopping-cart-mini-preview
-.shopping-cart-mini-preview-label {
+  .shopping-cart-mini-preview
+  .shopping-cart-mini-preview-label {
   float: left;
   background-color: #08768c;
   color: white;
@@ -2024,8 +2024,8 @@ ul.dropdown-items-list.dropdown-items-list-mobile {
   text-transform: uppercase;
 }
 .application-content
-.shopping-cart-mini-preview
-.shopping-cart-mini-preview-value {
+  .shopping-cart-mini-preview
+  .shopping-cart-mini-preview-value {
   float: left;
   background-color: #208397;
   color: white;
@@ -5959,9 +5959,9 @@ ul.dropdown-items-list.dropdown-items-list-mobile {
 @media (max-width: 768px) {
   .application-content .signin-register .form-group-input input[type='text'],
   .application-content
-  .signin-register
-  .form-group-input
-  input[type='password'],
+    .signin-register
+    .form-group-input
+    input[type='password'],
   .application-content .signin-register .form-group-input input[type='email'],
   .application-content .signin-register .form-group-input textarea {
     width: 100% !important;
@@ -6144,10 +6144,10 @@ ul.dropdown-items-list.dropdown-items-list-mobile {
 
 @keyframes spin {
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

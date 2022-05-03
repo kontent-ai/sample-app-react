@@ -5,11 +5,11 @@ import { useIntl } from 'react-intl';
 import { Cafe } from '../Models/cafe';
 
 interface TestOurCoffeeProps {
-  cafes: Cafe[],
+  cafes: Cafe[];
 }
 
-const TasteOurCoffee: React.FC<TestOurCoffeeProps> = props => {
-  const { locale:language, formatMessage } = useIntl();
+const TasteOurCoffee: React.FC<TestOurCoffeeProps> = (props) => {
+  const { locale: language, formatMessage } = useIntl();
   const cafes = props.cafes.map((cafe: Cafe, index: number) => {
     const name = cafe.system.name;
     const imageLink = cafe.elements.photo.value[0].url;
@@ -35,7 +35,9 @@ const TasteOurCoffee: React.FC<TestOurCoffeeProps> = props => {
   return (
     <div className="row">
       <div>
-        <h1 className="title-tab">{formatMessage({id: 'TasteOurCoffee.title'})}</h1>
+        <h1 className="title-tab">
+          {formatMessage({ id: 'TasteOurCoffee.title' })}
+        </h1>
       </div>
       {cafes}
     </div>

@@ -89,4 +89,3 @@ We would like to express our thanks to the following people who contributed and 
 - [Bee Martinez](https://github.com/beemtz)
 
 Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/kontent-sample-app-react/issues) and send us a pull request!
-

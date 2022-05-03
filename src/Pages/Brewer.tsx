@@ -1,43 +1,44 @@
-import { spinnerService } from "@simply007org/react-spinners";
-import React, { useEffect, useState } from "react";
-import { Client } from "../Client";
-import Metadata from "../Components/Metadata";
-import RichText from "../Components/RichText";
-import { defaultLanguage, initLanguageCodeObject } from '../Utilities/LanguageCodes';
+import { spinnerService } from '@simply007org/react-spinners';
+import React, { useEffect, useState } from 'react';
+import { Client } from '../Client';
+import Metadata from '../Components/Metadata';
+import RichText from '../Components/RichText';
+import {
+  defaultLanguage,
+  initLanguageCodeObject,
+} from '../Utilities/LanguageCodes';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { Brewer as BrewerType } from '../Models/brewer';
 import { projectModel } from '../Models/_project';
 
-const Brewer: React.FC= () => {
-  const [brewer, setBrewer] = useState(initLanguageCodeObject<BrewerType>(null));
+const Brewer: React.FC = () => {
+  const [brewer, setBrewer] = useState(
+    initLanguageCodeObject<BrewerType>(null)
+  );
   const { brewerSlug } = useParams();
-  const { locale:language,  formatMessage } = useIntl()
+  const { locale: language, formatMessage } = useIntl();
 
   useEffect(() => {
-    spinnerService.show("apiSpinner");
+    spinnerService.show('apiSpinner');
 
     const query = Client.items<BrewerType>()
       .type(projectModel.contentTypes.brewer.codename)
       .equalsFilter('elements.url_pattern', brewerSlug!!);
 
-
     if (language) {
       query.languageParameter(language);
     }
 
-    query
-      .toPromise()
-      .then(response => {
+    query.toPromise().then((response) => {
+      const currentLanguage = language || defaultLanguage;
 
-        const currentLanguage = language || defaultLanguage;
-
-        spinnerService.hide("apiSpinner");
-        setBrewer(data => ({
-          ...data,
-          [currentLanguage]: response.data.items[0] as BrewerType
-        }));
-      });
+      spinnerService.hide('apiSpinner');
+      setBrewer((data) => ({
+        ...data,
+        [currentLanguage]: response.data.items[0] as BrewerType,
+      }));
+    });
   }, [language, brewerSlug]);
 
   const brewerData = brewer[language || defaultLanguage]!;
@@ -46,7 +47,6 @@ const Brewer: React.FC= () => {
     return <div className="container" />;
   }
 
-
   const name =
     brewerData.elements.productName.value.trim().length > 0
       ? brewerData.elements.productName.value
@@ -54,7 +54,11 @@ const Brewer: React.FC= () => {
 
   const imageLink =
     brewerData.elements.image.value[0] !== undefined ? (
-      <img alt={name} src={brewerData.elements.image.value[0].url} title={name} />
+      <img
+        alt={name}
+        src={brewerData.elements.image.value[0].url}
+        title={name}
+      />
     ) : (
       <div className="placeholder-tile-image">
         {formatMessage({ id: 'noTeaserValue' })}
@@ -99,6 +103,6 @@ const Brewer: React.FC= () => {
       </article>
     </div>
   );
-}
+};
 
 export default Brewer;

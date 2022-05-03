@@ -2,11 +2,11 @@ import React from 'react';
 import RichText from './RichText';
 import { FactAboutUs } from '../Models/fact_about_us';
 
-interface OurStoryProps{
-  fact: FactAboutUs
+interface OurStoryProps {
+  fact: FactAboutUs;
 }
 
-const OurStory: React.FC<OurStoryProps> = props => {
+const OurStory: React.FC<OurStoryProps> = (props) => {
   const fact = props.fact.elements;
   const images = fact.image && fact.image.value;
   const imageUrl = images && images.length && images[0].url;

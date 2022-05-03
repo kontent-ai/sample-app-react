@@ -13,23 +13,20 @@ import Cookies from 'universal-cookie';
 export type SetLanguageType = (newLanguage: string, newUrl?: string) => void;
 
 interface LocalizedAppProps {
-  lang: string
+  lang: string;
 }
 
-const LocalizedApp: React.FC<LocalizedAppProps> = ({lang}) => {
+const LocalizedApp: React.FC<LocalizedAppProps> = ({ lang }) => {
   const cookies = useMemo(() => new Cookies(document.cookie), []);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    cookies.set("lang", lang, { path:"/" })
-  }, [lang, cookies])
+    cookies.set('lang', lang, { path: '/' });
+  }, [lang, cookies]);
 
   const setLanguageCode: SetLanguageType = (newLanguage, newUrl) => {
-    if (
-      lang === newLanguage ||
-      languageCodes.indexOf(newLanguage) < 0
-    ) {
+    if (lang === newLanguage || languageCodes.indexOf(newLanguage) < 0) {
       return;
     }
 
@@ -54,12 +51,8 @@ const LocalizedApp: React.FC<LocalizedAppProps> = ({lang}) => {
 
   return (
     <div>
-      <IntlProvider
-        locale={lang}
-        messages={localizationObject[lang]}
-      >
-        <App
-          changeLanguage={setLanguageCode} />
+      <IntlProvider locale={lang} messages={localizationObject[lang]}>
+        <App changeLanguage={setLanguageCode} />
       </IntlProvider>
     </div>
   );

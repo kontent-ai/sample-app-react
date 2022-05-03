@@ -6,7 +6,9 @@ export const NotFound: React.FC = () => {
     <div className={'container'}>
       <div style={{ textAlign: 'center' }}>
         <h1>404</h1>
-        <h2><FormattedMessage id={'NotFound.message'} /></h2>
+        <h2>
+          <FormattedMessage id={'NotFound.message'} />
+        </h2>
       </div>
     </div>
   );

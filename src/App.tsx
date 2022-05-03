@@ -21,14 +21,13 @@ import Cookies from 'universal-cookie';
 import { SetLanguageType } from './LocalizedApp';
 import { NotFound } from './Pages/NotFound';
 
-
-interface AppProps{
-  changeLanguage: SetLanguageType
+interface AppProps {
+  changeLanguage: SetLanguageType;
 }
 
 const App: React.FC<AppProps> = ({ changeLanguage }) => {
-  const cookies = new Cookies(document.cookie)
-  const cookie = cookies.get(selectedProjectCookieName)
+  const cookies = new Cookies(document.cookie);
+  const cookie = cookies.get(selectedProjectCookieName);
   const { formatMessage } = useIntl();
 
   if (!cookie) {
@@ -41,60 +40,27 @@ const App: React.FC<AppProps> = ({ changeLanguage }) => {
     <SpinnerLayout>
       <div className="application-content">
         <Metadata />
-        <Header
-          changeLanguage={changeLanguage}
-          message={infoMessage}
-        />
+        <Header changeLanguage={changeLanguage} message={infoMessage} />
         <Routes>
+          <Route path="/store/*" element={<Store />} />
+          <Route path="/coffees/:coffeeSlug" element={<Coffee />} />
+          <Route path="/brewers/:brewerSlug" element={<Brewer />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:articleId" element={<Article />} />
+          <Route path="/cafes" element={<Cafes />} />
+          <Route path="/contacts" element={<Contact />} />
+          <Route path="/" element={<Home />} />
           <Route
-            path="/store/*"
-            element={<Store />}
+            path={`/${formatMessage({ id: 'Route.about' })}`}
+            element={<About urlSlug={formatMessage({ id: 'Route.about' })} />}
           />
-          <Route
-            path="/coffees/:coffeeSlug"
-            element={<Coffee />}
-          />
-          <Route
-            path="/brewers/:brewerSlug"
-            element={<Brewer />}
-          />
-          <Route
-            path="/articles"
-            element={<Articles />}
-          />
-          <Route
-            path="/articles/:articleId"
-            element={<Article />}
-          />
-          <Route
-            path="/cafes"
-            element={<Cafes />}
-          />
-          <Route
-            path="/contacts"
-            element={<Contact />}
-          />
-          <Route
-            path="/"
-            element={ <Home /> }
-          />
-          <Route
-            path={`/${formatMessage({ id:'Route.about' })}`}
-            element={<About urlSlug={formatMessage({ id:'Route.about' })} />}
-          />
-          <Route
-            path="*"
-            element = { <Navigate to="404" /> }
-          />
-          <Route
-            path="/404"
-            element = { <NotFound /> }
-          />
+          <Route path="*" element={<Navigate to="404" />} />
+          <Route path="/404" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
     </SpinnerLayout>
   );
-}
+};
 
 export default App;

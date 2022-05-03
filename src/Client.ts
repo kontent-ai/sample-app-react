@@ -1,10 +1,13 @@
 import Cookies from 'universal-cookie';
-import { camelCasePropertyNameResolver, DeliveryClient } from '@kentico/kontent-delivery';
-import packageInfo from "../package.json";
+import {
+  camelCasePropertyNameResolver,
+  DeliveryClient,
+} from '@kentico/kontent-delivery';
+import packageInfo from '../package.json';
 import { selectedProjectCookieName } from './const';
 import { defaultProjectId } from './Utilities/SelectedProject';
 
-const sourceTrackingHeaderName = "X-KC-SOURCE";
+const sourceTrackingHeaderName = 'X-KC-SOURCE';
 
 // environment variables
 const projectId = process.env.REACT_APP_PROJECT_ID || '';
@@ -22,9 +25,9 @@ if (currentProjectId) {
 const isPreview = (): boolean => previewApiKey !== '';
 
 type GlobalHeadersType = {
-  header: string,
-  value: string
-}
+  header: string;
+  value: string;
+};
 
 let Client = new DeliveryClient({
   projectId: currentProjectId,
@@ -38,7 +41,7 @@ let Client = new DeliveryClient({
       value: `${packageInfo.name};${packageInfo.version}`,
     },
   ],
-  propertyNameResolver: camelCasePropertyNameResolver
+  propertyNameResolver: camelCasePropertyNameResolver,
 });
 
 const resetClient = (newProjectId: string): void => {
@@ -54,7 +57,7 @@ const resetClient = (newProjectId: string): void => {
         value: `${packageInfo.name};${packageInfo.version}`,
       },
     ],
-    propertyNameResolver: camelCasePropertyNameResolver
+    propertyNameResolver: camelCasePropertyNameResolver,
   });
   const cookies = new Cookies(document.cookie);
   cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });

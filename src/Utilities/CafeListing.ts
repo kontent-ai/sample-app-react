@@ -17,15 +17,13 @@ const createCafeModel = (cafe: Cafe): CafeModel => {
   const addressModel = {
     dataAddress: model.city + ', ' + model.street,
     countryWithState: model.country + (model.state ? ', ' + model.state : ''),
-  }
+  };
 
   const locationModel = {
     location: model.city + ', ' + addressModel.countryWithState,
-  }
+  };
 
   return { ...model, ...addressModel, ...locationModel };
 };
 
-export {
-  createCafeModel
-}
+export { createCafeModel };

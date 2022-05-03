@@ -1,8 +1,8 @@
 type localizationObjectType = {
   [key: string]: {
-    [key: string]: string
-  }
-}
+    [key: string]: string;
+  };
+};
 
 const initLocalizationObject = (): localizationObjectType => {
   const localizations = require.context('../Localization', false, /\.json$/);

@@ -1,7 +1,6 @@
 ---
 name: Spike
 about: Suggest an analysis of a problem
-
 ---
 
 ### Expected result
@@ -14,4 +13,4 @@ Add any other context or guidelines here.
 
 ### Resources
 
-* URL
+- URL

@@ -1,22 +1,22 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { resolveContentLink } from "../Utilities/ContentLinks";
-import { formatPrice, renderProductStatus } from "../Utilities/StoreListing";
+import { Link } from 'react-router-dom';
+import { resolveContentLink } from '../Utilities/ContentLinks';
+import { formatPrice, renderProductStatus } from '../Utilities/StoreListing';
 import { Brewer } from '../Models/brewer';
 import { useIntl } from 'react-intl';
 
-interface BrewerStoreListingProps{
-  brewers: Brewer[],
+interface BrewerStoreListingProps {
+  brewers: Brewer[];
 }
 
 const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers }) => {
-  const { locale:language, formatMessage } = useIntl();
+  const { locale: language, formatMessage } = useIntl();
 
-  const brewersComponents = brewers.map(brewer => {
+  const brewersComponents = brewers.map((brewer) => {
     const price =
       brewer.elements.price.value !== null
         ? formatPrice(brewer.elements.price.value, language)
-        : formatMessage({id: 'BrewerStoreListing.noPriceValue' });
+        : formatMessage({ id: 'BrewerStoreListing.noPriceValue' });
 
     const name =
       brewer.elements.productName.value.trim().length > 0
@@ -27,11 +27,8 @@ const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers }) => {
       brewer.elements.image.value[0] !== undefined ? (
         <img alt={name} src={brewer.elements.image.value[0].url} title={name} />
       ) : (
-        <div
-          style={{ height: '257.15px' }}
-          className="placeholder-tile-image"
-        >
-          {formatMessage({ id:'BrewerStoreListing.noTeaserValue' })}
+        <div style={{ height: '257.15px' }} className="placeholder-tile-image">
+          {formatMessage({ id: 'BrewerStoreListing.noTeaserValue' })}
         </div>
       );
 
@@ -62,6 +59,6 @@ const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers }) => {
       {brewersComponents}
     </div>
   );
-}
+};
 
 export default BrewerStoreListing;

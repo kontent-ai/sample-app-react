@@ -1,20 +1,23 @@
 import { englishCode, spanishCode } from './LanguageCodes';
 
-interface linkType{
-  linkId?: string,
-  type: string,
-  urlSlug: string
+interface linkType {
+  linkId?: string;
+  type: string;
+  urlSlug: string;
 }
 
 export function getAboutUsLink(language: string): string {
   return !language || language.toLowerCase() === englishCode.toLowerCase()
     ? `about-us`
     : language && language.toLowerCase() === spanishCode.toLowerCase()
-      ? `acerca-de`
-      : '';
+    ? `acerca-de`
+    : '';
 }
 
-export function resolveContentLink(link: linkType , language: string = englishCode): string {
+export function resolveContentLink(
+  link: linkType,
+  language: string = englishCode
+): string {
   let resultLink;
   switch (link.type) {
     case 'about_us':

@@ -15,12 +15,12 @@ const Store: React.FC = () => {
             <ul>
               <li>
                 <Link to={`coffees`}>
-                  {formatMessage({ id:'Store.coffeesLinkTitle' })}
+                  {formatMessage({ id: 'Store.coffeesLinkTitle' })}
                 </Link>
               </li>
               <li>
                 <Link to={`brewers`}>
-                  {formatMessage({ id:'Store.brewersLinkTitle' })}
+                  {formatMessage({ id: 'Store.brewersLinkTitle' })}
                 </Link>
               </li>
             </ul>
@@ -28,18 +28,9 @@ const Store: React.FC = () => {
         </nav>
 
         <Routes>
-          <Route
-            path={`/`}
-            element={<CoffeeStoreContainer />}
-          />
-          <Route
-            path={`/coffees`}
-            element={<CoffeeStoreContainer />}
-          />
-          <Route
-            path={`/brewers`}
-            element={<BrewerStoreContainer />}
-          />
+          <Route path={`/`} element={<CoffeeStoreContainer />} />
+          <Route path={`/coffees`} element={<CoffeeStoreContainer />} />
+          <Route path={`/brewers`} element={<BrewerStoreContainer />} />
         </Routes>
       </div>
     </div>

@@ -2,12 +2,12 @@ import React from 'react';
 
 import Link from '../Components/LowerCaseUrlLink';
 
-interface  LinkButtonProps{
-  link: string,
-  text: string
+interface LinkButtonProps {
+  link: string;
+  text: string;
 }
 
-const LinkButton: React.FC<LinkButtonProps> = props => {
+const LinkButton: React.FC<LinkButtonProps> = (props) => {
   return (
     <div className="row">
       <div className="clear center-text">
