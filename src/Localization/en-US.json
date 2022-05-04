@@ -1,78 +1,52 @@
 {
   "locale": "en-US",
-  "LatestArticles": {
-    "title": "Latest articles",
-    "noTitleValue": "(Article has no title)",
-    "noTeaserValue": "(Article has no teaser image)",
-    "noSummaryValue": "No summary filled"
-  },
-  "About": {
-    "noTitleValue": "(Fact has no title)",
-    "noDescriptionValue": "No description filled",
-    "noTeaserValue": "(Fact has no teaser image)"
-  },
-  "Articles": {
-    "noTitleValue": "(Article has no title)",
-    "noTeaserValue": "(Article has no teaser image)",
-    "noSummaryValue": "No summary filled",
-    "noBodyCopyValue": "No body copy filled"
-  },
-  "Home": {
-    "moreArticles": "More articles",
-    "aboutLinkText": "Read the whole story",
-    "cafesLinkText": "Find out more"
-  },
-  "TasteOurCoffee": {
-    "title": "Taste Our Coffee"
-  },
-  "Header": {
-    "homeLinkTitle": "Home",
-    "storeLinkTitle": "Product catalog",
-    "articlesLinkTitle": "Articles",
-    "aboutLinkTitle": "About us",
-    "cafesLinkTitle": "Cafes",
-    "contactsLinkTitle": "Contact"
-  },
-  "Store": {
-    "coffeesLinkTitle": "Coffees",
-    "brewersLinkTitle": "Brewers"
-  },
-  "CoffeeStoreContainer": {
-    "coffeeProcessingTitle": "Coffee processing",
-    "statusTitle": "Status"
-  },
-  "BrewerStoreContainer": {
-    "manufacturerTitle": "Manufacturer",
-    "priceTitle": "Price",
-    "statusTitle": "Status"
-  },
-  "BrewerStoreListing": {
-    "noPriceValue": "No price filled",
-    "noNameValue": "No name filled",
-    "noTeaserValue": "(Product has no teaser image)",
-    "noDescriptionValue": "No description filled"
-  },
-  "Cafes": {
-    "ourCafesTitle": "Our cafes",
-    "partnerCafesTitle": "Other places where you can drink our coffee"
-  },
-  "CoffeeStoreListing": {
-    "noPriceValue": "No price filled",
-    "noNameValue": "No name filled",
-    "noTeaserValue": "(Product has no teaser image)",
-    "noDescriptionValue": "No description filled"
-  },
-  "Contacts": {
-    "roasteryTitle": "Roastery",
-    "ourCafesTitle": "Our cafes",
-    "mapTitle": "Drop in"
-  },
-  "Footer": {
-    "followUs": "Follow us",
-    "followUsOnFacebook": "Follow us on Facebook",
-    "followUsOnTwitter": "Follow us on Twitter",
-    "contact": "Contact",
-    "cityStateZip": "Illinois 60601, USA",
-    "allRightsReserved": "All rights reserved."
-  }
+  "LatestArticles.title": "Latest articles",
+  "LatestArticles.noTitleValue": "(Article has no title)",
+  "LatestArticles.noTeaserValue": "(Article has no teaser image)",
+  "LatestArticles.noSummaryValue": "No summary filled",
+  "About.noTitleValue": "(Fact has no title)",
+  "About.noDescriptionValue": "No description filled",
+  "About.noTeaserValue": "(Fact has no teaser image)",
+  "Articles.noTitleValue": "(Article has no title)",
+  "Articles.noTeaserValue": "(Article has no teaser image)",
+  "Articles.noSummaryValue": "No summary filled",
+  "Articles.noBodyCopyValue": "No body copy filled",
+  "Home.moreArticles": "More articles",
+  "Home.aboutLinkText": "Read the whole story",
+  "Home.cafesLinkText": "Find out more",
+  "TasteOurCoffee.title": "Taste Our Coffee",
+  "Header.homeLinkTitle": "Home",
+  "Header.storeLinkTitle": "Product catalog",
+  "Header.articlesLinkTitle": "Articles",
+  "Header.aboutLinkTitle": "About us",
+  "Header.cafesLinkTitle": "Cafes",
+  "Header.contactsLinkTitle": "Contact",
+  "Store.coffeesLinkTitle": "Coffees",
+  "Store.brewersLinkTitle": "Brewers",
+  "CoffeeStoreContainer.coffeeProcessingTitle": "Coffee processing",
+  "CoffeeStoreContainer.statusTitle": "Status",
+  "BrewerStoreContainer.manufacturerTitle": "Manufacturer",
+  "BrewerStoreContainer.priceTitle": "Price",
+  "BrewerStoreContainer.statusTitle": "Status",
+  "BrewerStoreListing.noPriceValue": "No price filled",
+  "BrewerStoreListing.noNameValue": "No name filled",
+  "BrewerStoreListing.noTeaserValue": "(Product has no teaser image)",
+  "BrewerStoreListing.noDescriptionValue": "No description filled",
+  "Cafes.ourCafesTitle": "Our cafes",
+  "Cafes.partnerCafesTitle": "Other places where you can drink our coffee",
+  "CoffeeStoreListing.noPriceValue": "No price filled",
+  "CoffeeStoreListing.noNameValue": "No name filled",
+  "CoffeeStoreListing.noTeaserValue": "(Product has no teaser image)",
+  "CoffeeStoreListing.noDescriptionValue": "No description filled",
+  "Contacts.roasteryTitle": "Roastery",
+  "Contacts.ourCafesTitle": "Our cafes",
+  "Contacts.mapTitle": "Drop in",
+  "Footer.followUs": "Follow us",
+  "Footer.followUsOnFacebook": "Follow us on Facebook",
+  "Footer.followUsOnTwitter": "Follow us on Twitter",
+  "Footer.contact": "Contact",
+  "Footer.cityStateZip": "Illinois 60601, USA",
+  "Footer.allRightsReserved": "All rights reserved.",
+  "NotFound.message": "Sorry, we could not find what you are looking for.",
+  "Route.about": "about-us"
 }

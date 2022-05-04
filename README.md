@@ -4,7 +4,7 @@
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.netlify.app/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This is a sample website written in JavaScript utilizing the Kontent Delivery API to manage and retrieve content from Kontent by Kentico. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
+This is a sample website written in Typescript utilizing the Kontent Delivery API to retrieve content from Kontent by Kentico. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
 
 ## Application setup
 
@@ -14,8 +14,6 @@ This is a sample website written in JavaScript utilizing the Kontent Delivery AP
 4. Type `npm install` to install required npm packages.
 5. Type `npm start` to start a development server.
 6. The application opens in your browser at <http://localhost:3000>.
-
-After starting, the sample application retrieves content from the **default** Kontent sample project.
 
 ### Connecting to your sample project
 
@@ -89,4 +87,3 @@ We would like to express our thanks to the following people who contributed and 
 - [Bee Martinez](https://github.com/beemtz)
 
 Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/kontent-sample-app-react/issues) and send us a pull request!
-

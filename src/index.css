@@ -5570,9 +5570,6 @@ body {
   padding-top: 16px;
   padding-bottom: 16px;
 }
-.application-content .cursor-hand {
-  cursor: pointer;
-}
 .application-content .image-responsive {
   max-width: 100%;
 }
@@ -6147,10 +6144,10 @@ body {
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

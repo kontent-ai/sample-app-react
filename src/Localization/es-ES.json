@@ -1,78 +1,52 @@
 {
   "locale": "es-ES",
-  "LatestArticles": {
-    "title": "Último artículo",
-    "noTitleValue": "(El artículo no tiene título)",
-    "noTeaserValue": "(El artículo no tiene imagen teaser)",
-    "noSummaryValue": "Sin resumen lleno"
-  },
-  "About": {
-    "noTitleValue": "(Hecho no tiene titulo)",
-    "noDescriptionValue": "ninguna descripción llena",
-    "noTeaserValue": "(hecho no tiene imagen teaser)"
-  },
-  "Articles": {
-    "noTitleValue": "(El artículo no tiene título)",
-    "noTeaserValue": "(El artículo no tiene imagen teaser)",
-    "noSummaryValue": "Sin resumen lleno",
-    "noBodyCopyValue": "ninguna copia del cuerpo llena"
-  },
-  "Home": {
-    "moreArticles": "Más artículos",
-    "aboutLinkText": "Leer toda la historia",
-    "cafesLinkText": "Más cafés"
-  },
-  "TasteOurCoffee": {
-    "title": "Probar nuestro café"
-  },
-  "Header": {
-    "homeLinkTitle": "Inicio",
-    "storeLinkTitle": "Tienda",
-    "articlesLinkTitle": "Artículos",
-    "aboutLinkTitle": "Quiénes somos",
-    "cafesLinkTitle": "Cafés",
-    "contactsLinkTitle": "Contacto"
-  },
-  "Store": {
-    "coffeesLinkTitle": "Cafés",
-    "brewersLinkTitle": "Cerveceros"
-  },
-  "CoffeeStoreContainer": {
-    "coffeeProcessingTitle": "Procesamiento del café",
-    "statusTitle": "Estado"
-  },
-  "BrewerStoreContainer": {
-    "manufacturerTitle": "Fabricante",
-    "priceTitle": "Precio",
-    "statusTitle": "Estado"
-  },
-  "BrewerStoreListing": {
-    "noPriceValue": "Sin precio llenado",
-    "noNameValue": "Sin nombre lleno",
-    "noTeaserValue": "(El producto no tiene imagen teaser)",
-    "noDescriptionValue": "ninguna descripción llena"
-  },
-  "Cafes": {
-    "ourCafesTitle": "Nuestros cafés",
-    "partnerCafesTitle": "Otros lugares donde puedes tomar nuestro café"
-  },
-  "CoffeeStoreListing": {
-    "noPriceValue": "Sin precio llenado",
-    "noNameValue": "Sin nombre lleno",
-    "noTeaserValue": "(El producto no tiene imagen teaser)",
-    "noDescriptionValue": "ninguna descripción llena"
-  },
-  "Contacts": {
-    "roasteryTitle": "Roastery",
-    "ourCafesTitle": "Probar nuestro café",
-    "mapTitle": "Pase por nuestros cafés        "
-  },
-  "Footer": {
-    "followUs": "Síguenos",
-    "followUsOnFacebook": "Síguenos en Facebook",
-    "followUsOnTwitter": "Síganos en Twitter",
-    "contact": "Contacto",
-    "cityStateZip": "Illinois 60601, EE.UU.",
-    "allRightsReserved": "Todos los derechos reservados."
-  }
+  "LatestArticles.title": "Último artículo",
+  "LatestArticles.noTitleValue": "(El artículo no tiene título)",
+  "LatestArticles.noTeaserValue": "(El artículo no tiene imagen teaser)",
+  "LatestArticles.noSummaryValue": "Sin resumen lleno",
+  "About.noTitleValue": "(Hecho no tiene titulo)",
+  "About.noDescriptionValue": "ninguna descripción llena",
+  "About.noTeaserValue": "(hecho no tiene imagen teaser)",
+  "Articles.noTitleValue": "(El artículo no tiene título)",
+  "Articles.noTeaserValue": "(El artículo no tiene imagen teaser)",
+  "Articles.noSummaryValue": "Sin resumen lleno",
+  "Articles.noBodyCopyValue": "ninguna copia del cuerpo llena",
+  "Home.moreArticles": "Más artículos",
+  "Home.aboutLinkText": "Leer toda la historia",
+  "Home.cafesLinkText": "Más cafés",
+  "TasteOurCoffee.title": "Probar nuestro café",
+  "Header.homeLinkTitle": "Inicio",
+  "Header.storeLinkTitle": "Tienda",
+  "Header.articlesLinkTitle": "Artículos",
+  "Header.aboutLinkTitle": "Quiénes somos",
+  "Header.cafesLinkTitle": "Cafés",
+  "Header.contactsLinkTitle": "Contacto",
+  "Store.coffeesLinkTitle": "Cafés",
+  "Store.brewersLinkTitle": "Cerveceros",
+  "CoffeeStoreContainer.coffeeProcessingTitle": "Procesamiento del café",
+  "CoffeeStoreContainer.statusTitle": "Estado",
+  "BrewerStoreContainer.manufacturerTitle": "Fabricante",
+  "BrewerStoreContainer.priceTitle": "Precio",
+  "BrewerStoreContainer.statusTitle": "Estado",
+  "BrewerStoreListing.PriceValue": "Sin precio llenado",
+  "BrewerStoreListing.NameValue": "Sin nombre lleno",
+  "BrewerStoreListing.TeaserValue": "(El producto no tiene imagen teaser)",
+  "BrewerStoreListing.DescriptionValue": "ninguna descripción llena",
+  "Cafes.ourCafesTitle": "Nuestros cafés",
+  "Cafes.partnerCafesTitle": "Otros lugares donde puedes tomar nuestro café",
+  "CoffeeStoreListing.noPriceValue": "Sin precio llenado",
+  "CoffeeStoreListing.noNameValue": "Sin nombre lleno",
+  "CoffeeStoreListing.noTeaserValue": "(El producto no tiene imagen teaser)",
+  "CoffeeStoreListing.noDescriptionValue": "ninguna descripción llena",
+  "Contacts.roasteryTitle": "Roastery",
+  "Contacts.ourCafesTitle": "Probar nuestro café",
+  "Contacts.mapTitle": "Pase por nuestros cafés        ",
+  "Footer.followUs": "Síguenos",
+  "Footer.followUsOnFacebook": "Síguenos en Facebook",
+  "Footer.followUsOnTwitter": "Síganos en Twitter",
+  "Footer.contact": "Contacto",
+  "Footer.cityStateZip": "Illinois 60601, EE.UU.",
+  "Footer.allRightsReserved": "Todos los derechos reservados.",
+  "NotFound.message": "Lo sentimos, no pudimos encontrar lo que buscas.",
+  "Route.about": "acerca-de"
 }
