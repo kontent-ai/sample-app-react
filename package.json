@@ -35,7 +35,7 @@
     "validator": "^13.7.0"
   },
   "scripts": {
-    "lint": "eslint & prettier . --check --debug-check --loglevel=debug",
+    "lint": "eslint & prettier . --check",
     "start": "react-scripts start",
     "build": "cross-env CI=true react-scripts build && cpy build/index.html build --rename=200.html",
     "test-watch": "react-scripts test --env=jsdom",
