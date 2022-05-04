@@ -19,7 +19,7 @@
     "cross-env": "^7.0.2",
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
-    "react-scripts": "^5.0.0"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "@kentico/kontent-delivery": "11.7.0",
