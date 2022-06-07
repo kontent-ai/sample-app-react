@@ -76,6 +76,50 @@ For more info about the API, see the [API reference](https://kontent.ai/learn/re
 
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
+## About
+This section describes the application.
+
+### Used toolchain
+This application is based on the [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) using the following template `--template typescript`.
+
+### Model mapping
+There are two types of model mapping in this application:
+- content types -> component
+- component -> view model
+
+For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in in [src/Models](https://github.com/Kentico/kontent-sample-app-react/tree/master/src/Models) folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as information such as codenames about content types. Those generated models are used to obtain correctly typed objects via client in [src/Pages](https://github.com/Kentico/kontent-sample-app-react/tree/master/src/Pages). To obtain your data provide a generated DTO type into generic brackets for `items` method and content types codename from `projectModel` as a parameter of `type` method. See following example:
+
+```{typescript}
+const query = Client.items<generatedDTO>()
+      .type(projectModel.contentTypes.generatedDTO.codename)...
+```
+
+Some models displayed in views might require a small adjustment from content types. For example, `Cafe` content type contains fields for `city` and `street` and we would like to have model containing an address in the format `city, street`. You can find an example for such a view model in `CafeModel.tsx` can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` you can use function located in `src/Utilities/CafeListing.ts`
+
+### Filtering in product catalog 
+Filters in Kontent.ai are implement by using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
+
+### Data fetching
+This solution fetches required data directly in the pages using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to setup client see `src/Client.ts`. Depending on your needs, you can use other technologies for managing application state such as:
+- Context
+- Redux
+- Flux
+- ...
+
+### Localization
+In Kontent each language is identified by codename, in case of this project its is `en-US` and `es-ES`.
+
+#### Resoure strings
+Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts and so on, can be stored locally. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language we have created JSON file in `src/Localization` folder. As we use `React-intl` it can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder we have prepared a script, see `src/utilities/LocalizationLoader.ts`
+
+#### Prefixes and Localizable Url slugs
+The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then is then adjusted in pages modifying `Client` with `languageParameter()` method to obtain items in specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
+
+You might want to request items based on the url slugs. For more information how it works in Kontent see this [link](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). We have provided an example in this application for `src/Pages/About.tsx' page.
+
+### Handling 404
+For the not found resources we use prefixed 404 pages for both languages. As the content in one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
+
 ## Deployment
 
 You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kontent.ai/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
