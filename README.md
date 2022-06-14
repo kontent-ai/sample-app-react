@@ -89,7 +89,7 @@ There are two types of model mapping in this application:
 
 For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in in [src/Models](https://github.com/Kentico/kontent-sample-app-react/tree/master/src/Models) folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as information such as codenames about content types. Those generated models are used to obtain correctly typed objects via client in [src/Pages](https://github.com/Kentico/kontent-sample-app-react/tree/master/src/Pages). To obtain your data provide a generated DTO type into generic brackets for `items` method and content types codename from `projectModel` as a parameter of `type` method. See following example:
 
-```{typescript}
+```typescript
 const query = Client.items<generatedDTO>()
       .type(projectModel.contentTypes.generatedDTO.codename)...
 ```
