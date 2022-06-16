@@ -90,7 +90,7 @@ There are two types of model mapping in this application:
 
 #### content type -> DTO -> component
 
-For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in [src/Models] folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as other information such as codenames about content types. Generated models are used to obtain correctly typed objects via client.
+For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in `src/Models` folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as other information such as codenames about content types. Generated models are used to obtain correctly typed objects via client.
 
 #### content type -> DTO -> view model -> component
 
@@ -98,7 +98,7 @@ Some models displayed in views might require a small adjustment from content typ
 
 #### Data fetching
 
-This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to setup client see `src/Client.ts`. The data are fetched and stored in a `container` component and they are then passed to presentation component. For better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application state such as:
+This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to setup client see `src/Client.ts`. The data are fetched and stored in a `container` component and they are then passed to `presentation` component. For better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application state such as:
 
 - Context
 - Redux
@@ -128,7 +128,7 @@ const Component: React.FC = () => {
 
 ### Filtering in product catalog
 
-Filters in Kontent.ai are implement using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
+Filters in Kontent.ai are implemented using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
 
 ```typescript
 interface FilterType {
@@ -195,22 +195,22 @@ In Kontent each language is identified by codename, in case of this project it i
 
 #### Resoure strings
 
-Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts and so on, can be stored locally. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language we have created JSON file in `src/Localization` folder. As we use `React-intl` it can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder we have prepared a script, see `src/utilities/LocalizationLoader.ts`
+Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts and so on, can be stored locally. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language we have created JSON file in `src/Localization` folder. As we use `React-intl` it can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder we have prepared a script, see `src/utilities/LocalizationLoader.ts`.
 
-```JSON
-//en-US.json
+```json
+// en-US.json
 {
   "LatestArticles.title": "Latest articles",
   "LatestArticles.noTitleValue": "(Article has no title)",
   "LatestArticles.noTeaserValue": "(Article has no teaser image)",
-  "LatestArticles.noSummaryValue": "No summary filled",
-  ...
+  "LatestArticles.noSummaryValue": "No summary filled"
+  // ...
 }
 ```
 
 #### Prefixes and Localizable Url slugs
 
-The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then is then adjusted in pages modifying `Client` with `languageParameter()` method to obtain items in specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
+The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then adjusted by modifying `Client` with `languageParameter()` method to obtain items in specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
 
 ```typescript
 const Component: React.FC = () => {
