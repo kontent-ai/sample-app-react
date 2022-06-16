@@ -77,47 +77,159 @@ For more info about the API, see the [API reference](https://kontent.ai/learn/re
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
 ## About
+
 This section describes the application.
 
 ### Used toolchain
+
 This application is based on the [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) using the following template `--template typescript`.
 
-### Model mapping
+### Model mapping and data fetching
+
 There are two types of model mapping in this application:
-- content types -> component
-- component -> view model
 
-For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in in [src/Models](https://github.com/Kentico/kontent-sample-app-react/tree/master/src/Models) folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as information such as codenames about content types. Those generated models are used to obtain correctly typed objects via client in [src/Pages](https://github.com/Kentico/kontent-sample-app-react/tree/master/src/Pages). To obtain your data provide a generated DTO type into generic brackets for `items` method and content types codename from `projectModel` as a parameter of `type` method. See following example:
+#### content type -> DTO -> component
 
-```{typescript}
-const query = Client.items<generatedDTO>()
-      .type(projectModel.contentTypes.generatedDTO.codename)...
-```
+For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in [src/Models] folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as other information such as codenames about content types. Generated models are used to obtain correctly typed objects via client.
 
-Some models displayed in views might require a small adjustment from content types. For example, `Cafe` content type contains fields for `city` and `street` and we would like to have model containing an address in the format `city, street`. You can find an example for such a view model in `CafeModel.tsx` can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` you can use function located in `src/Utilities/CafeListing.ts`
+#### content type -> DTO -> view model -> component
 
-### Filtering in product catalog 
-Filters in Kontent.ai are implement by using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
+Some models displayed in views might require a small adjustment from content types. For example, `Cafe` content type contains fields for `city` and `street` and we would like to have model containing an address in the format `city, street`. You can find an example for such a view model in `CafeModel.tsx` that can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` you can use function located in `src/Utilities/CafeListing.ts`
 
-### Data fetching
-This solution fetches required data directly in the pages using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to setup client see `src/Client.ts`. Depending on your needs, you can use other technologies for managing application state such as:
+#### Data fetching
+
+This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to setup client see `src/Client.ts`. The data are fetched and stored in a `container` component and they are then passed to presentation component. For better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application state such as:
+
 - Context
 - Redux
 - Flux
 - ...
 
+```typescript
+const Component: React.FC = () => {
+    const [data, setData] = useState([] : DTOComponentProps);
+
+    useEffect(() => {
+      const query = Client.items<GeneratedDTO>()
+          .type(projectModel.contentTypes.generatedDTO.codename)
+          ...
+
+      const items : GeneratedDTO[] = query.ToPromise()
+          .then(data => data.items()
+          .then(items => setData(items));
+    }, []);
+
+    return (
+        {data.map(item => <DisplayItem dto={item}/>)}
+    );
+    ...
+}
+```
+
+### Filtering in product catalog
+
+Filters in Kontent.ai are implement using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
+
+```typescript
+interface FilterType {
+  [index: string]: string[];
+  filterVariable1: string[];
+  filterVariable2: string[];
+}
+
+const Container: React.FC = () => {
+    const [filterVariable1, setFilterVariable1] = useState<ITaxonomyTerms[]>([]);
+      const [filterVariable2, setFilterVariable2] = useState<ITaxonomyTerms[]>([]);
+
+      const [filter, setFilter] = useState<FilterType>({
+          filterVariable1: [],
+          filterVariable2: [],
+      });
+
+      useEffect(() => {
+          Client.taxonomy('filter_variable_1')
+            .toPromise()
+            .then((response) => {setFilterVariable1(response.data.taxonomy.terms);});
+      }, []);
+
+      useEffect(() => {
+          Client.taxonomy('filter_variable_2')
+            .toPromise()
+            .then((response) => {setFilterVariable2(response.data.taxonomy.terms);});
+      }, []);
+
+      const matches = (coffee: Coffee): boolean =>
+          matchesTaxonomy(coffee, filter.processings, 'filterVariable1') &&
+          matchesTaxonomy(coffee, filter.productStatuses, 'filterVariable2');
+      // To see how matchesTaxonomy can work see src/Utilities/CheckboxFilter
+
+      const toggleFilter = (filterName: string, filterValue: string): void => {
+          setFilter((filter) => ({
+            ...filter,
+            [filterName]: filter[filterName].includes(filterValue)
+            ? filter[filterName].filter((x: string) => x !== filterValue)
+            : [...filter[filterName], filterValue],
+            }));
+      };.
+
+      return (
+          <div>
+              ...
+              <CheckboxFilter
+              ...
+              onChange: (event) => toggleFilter('filterVariable1', event.target.id),
+              />
+           ...
+              <ItemListing
+               items={ items[language].filter((item: ItemDTO) =>matches(coffee)) }
+               />
+           ...
+           </div>
+      );
+}
+```
+
 ### Localization
-In Kontent each language is identified by codename, in case of this project its is `en-US` and `es-ES`.
+
+In Kontent each language is identified by codename, in case of this project it is `en-US` and `es-ES`.
 
 #### Resoure strings
+
 Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts and so on, can be stored locally. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language we have created JSON file in `src/Localization` folder. As we use `React-intl` it can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder we have prepared a script, see `src/utilities/LocalizationLoader.ts`
 
+```JSON
+//en-US.json
+{
+  "LatestArticles.title": "Latest articles",
+  "LatestArticles.noTitleValue": "(Article has no title)",
+  "LatestArticles.noTeaserValue": "(Article has no teaser image)",
+  "LatestArticles.noSummaryValue": "No summary filled",
+  ...
+}
+```
+
 #### Prefixes and Localizable Url slugs
+
 The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then is then adjusted in pages modifying `Client` with `languageParameter()` method to obtain items in specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
+
+```typescript
+const Component: React.FC = () => {
+  const { locale: language } = useIntl();;
+
+  useEffect(() => {
+    const query = Client.items<ItemDTO>()
+      .type(projectModel.contentTypes.itemDTO.codename);
+
+    if (language) {
+      query.languageParameter(language);
+    }
+    ...
+```
 
 You might want to request items based on the url slugs. For more information how it works in Kontent see this [link](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). We have provided an example in this application for `src/Pages/About.tsx' page.
 
 ### Handling 404
+
 For the not found resources we use prefixed 404 pages for both languages. As the content in one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
 
 ## Deployment
