@@ -214,7 +214,7 @@ The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it i
 
 ```typescript
 const Component: React.FC = () => {
-  const { locale: language } = useIntl();;
+  const { locale: language } = useIntl();
 
   useEffect(() => {
     const query = Client.items<ItemDTO>()
