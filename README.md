@@ -130,7 +130,8 @@ const Component: React.FC = () => {
 
 Filters in Kontent.ai are implemented using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
 
-```typescript
+```tsx
+
 interface FilterType {
   [index: string]: string[];
   filterVariable1: string[];
