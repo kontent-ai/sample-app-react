@@ -90,7 +90,7 @@ There are two types of model mapping in this application:
 
 #### content type -> DTO -> component
 
-For generating component models from content types, we have used [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated models can be found in `src/Models` folder. The `_project.ts` exports `projectModel` which contains information about the project structure such as project languages as well as other information such as codenames about content types. Generated models are used to obtain correctly typed objects via client.
+Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information such as codenames about content types.
 
 #### content type -> DTO -> view model -> component
 
