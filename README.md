@@ -76,34 +76,29 @@ For more info about the API, see the [API reference](https://kontent.ai/learn/re
 
 You can find the Delivery and other SDKs at <https://github.com/Kentico>.
 
-## About
-
-This section describes the application.
-
-### Used toolchain
+## Used toolchain
 
 This application is based on the [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) using the following template `--template typescript`.
 
-### Model mapping and data fetching
+## Model mapping and data fetching
 
 There are two types of model mapping in this application:
 
-#### content type -> DTO -> component
+### content type -> DTO -> component
 
-Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information such as codenames about content types.
+Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information like codenames about content types.
 
-#### content type -> DTO -> view model -> component
+### content type -> DTO -> view model -> component
 
-Some models displayed in views might require an adjustment from content types. For example, the `Cafe` content type contains fields for `city` and `street` and we would like to have a model containing an address in the format `city, street`. You can find an example for such a view model in `CafeModel.tsx` that can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` you can use the function located in `src/Utilities/CafeListing.ts`
+Some models displayed in views might require an adjustment from content types. For example, the `Cafe` content type contains fields for `city` and `street` and we would like to have a model containing an address in the format `city, street`. An example of such a view model is in `CafeModel.tsx` that can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` the function located in `src/Utilities/CafeListing.ts` can be used.
 
-
-#### Data fetching
+### Data fetching
 
 This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to set up the client see `src/Client.ts`. The data are fetched and stored in a `container` component directly in its state. Then they are passed to the `presentation` component. For a better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application states such as:
 
-- Context
-- Redux
-- Flux
+- [Context](https://reactjs.org/docs/context.html)
+- [Redux](https://react-redux.js.org/)
+- [Flux](https://facebook.github.io/flux/)
 - ...
 
 ```tsx
@@ -127,42 +122,42 @@ const Component: React.FC = () => {
 }
 ```
 
-### Filtering in product catalog
+## Filtering by taxonomy
 
-Filters in Kontent.ai are implemented using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. We store selected values for filtering in `filter` variable. Items to be displayed are then selected with functional `filter` function checking whether the item matches the filter.
+Filters in Kontent.ai are implemented using taxonomies. Filtering examples can be found in `src/Components/BrewerStoreContainer.tsx` or `src/Components/CoffeeStoreContainer.tsx`. Firstly, the taxonomies groups that contain possible values for filters are loaded in `useEffect` blocks. Selected values for filtering are stored in the `filter` variable. Items to be displayed are then selected with the functional `filter` function checking whether the item matches the filter.
 
 ```tsx
 
 interface FilterType {
   [index: string]: string[];
-  filterVariable1: string[];
-  filterVariable2: string[];
+  processings: string[];
+  productStatuses: string[];
 }
 
 const Container: React.FC = () => {
-    const [filterVariable1, setFilterVariable1] = useState<ITaxonomyTerms[]>([]);
-      const [filterVariable2, setFilterVariable2] = useState<ITaxonomyTerms[]>([]);
+    const [processings, setProcessings] = useState<ITaxonomyTerms[]>([]);
+      const [productStatuses, setProductStatuses] = useState<ITaxonomyTerms[]>([]);
 
       const [filter, setFilter] = useState<FilterType>({
-          filterVariable1: [],
-          filterVariable2: [],
+          processings: [],
+          productStatuses: [],
       });
 
       useEffect(() => {
-          Client.taxonomy('filter_variable_1')
+          Client.taxonomy('processings')
             .toPromise()
-            .then((response) => {setFilterVariable1(response.data.taxonomy.terms);});
+            .then((response) => {setProcessings(response.data.taxonomy.terms);});
       }, []);
 
       useEffect(() => {
-          Client.taxonomy('filter_variable_2')
+          Client.taxonomy('product_status')
             .toPromise()
-            .then((response) => {setFilterVariable2(response.data.taxonomy.terms);});
+            .then((response) => {setProductStatuses(response.data.taxonomy.terms);});
       }, []);
 
       const matches = (coffee: Coffee): boolean =>
-          matchesTaxonomy(coffee, filter.processings, 'filterVariable1') &&
-          matchesTaxonomy(coffee, filter.productStatuses, 'filterVariable2');
+          matchesTaxonomy(coffee, filter.processings, 'processings') &&
+          matchesTaxonomy(coffee, filter.productStatuses, 'productStatuses');
       // To see how matchesTaxonomy can work see src/Utilities/CheckboxFilter
 
       const toggleFilter = (filterName: string, filterValue: string): void => {
@@ -179,7 +174,7 @@ const Container: React.FC = () => {
               ...
               <CheckboxFilter
               ...
-              onChange: (event) => toggleFilter('filterVariable1', event.target.id),
+              onChange: (event) => toggleFilter('processings', event.target.id),
               />
            ...
               <ItemListing
@@ -191,13 +186,13 @@ const Container: React.FC = () => {
 }
 ```
 
-### Localization
+## Localization
 
-In Kontent each language is identified by codename, in case of this project it is `en-US` and `es-ES`.
+In Kontent each language is identified by codename, in case of this project, it is `en-US` and `es-ES`.
 
-#### Resoure strings
+### Resoure strings
 
-Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts, and so on, can be stored directly in the application. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language, there is a JSON file in `src/Localization` folder. 
+Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts, and so on, can be stored directly in the application. For those texts [React-intl](https://formatjs.io/docs/getting-started/installation/) is used. For every language, there is a JSON file in `src/Localization` folder.
 
 > `React-intl` can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder there is a `src/utilities/LocalizationLoader.ts` script.
 
@@ -212,9 +207,9 @@ Not every text of the application must be stored in Kontent.ai. Some strings, su
 }
 ```
 
-#### Language prefixes
+### Language prefixes
 
-The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then adjusted by modifying `Client` with `languageParameter()` method to obtain items in specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
+The language prefix is obtained from the URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then adjusted by modifying `Client` with `languageParameter()` method to obtain items in a specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
 
 ```typescript
 const Component: React.FC = () => {
@@ -230,14 +225,15 @@ const Component: React.FC = () => {
     ...
 ```
 
-#### Localizable URL slugs
-You might want to request items based on the URL slugs. For more information check out [Kontent.ai/learn tutorial](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). We have provided an example in this application for `src/Pages/About.tsx` page.
+### Localizable URL slugs
 
+You might want to request items based on the URL slugs. For more information check out [Kontent.ai/learn tutorial](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). An example in this application for this is provided in `src/Pages/About.tsx` page.
 
 > The showcase is not ideal, because it is using a combination of the language prefix and localizable solution is not ideal. You should try to stick with one of the approaches. Because it is hard to define the behavior for language setting clash i.e. `/<EN-PREFIX>/articles/<ES-URL-SLUG>`.
-### Handling 404
 
-For the not found resources we use prefixed 404 pages for both languages. As the content in one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
+## Handling 404
+
+For the not found resources, prefixed 404 pages are used for both languages. As the content on one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
 
 ## Deployment
 
