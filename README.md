@@ -99,7 +99,7 @@ Some models displayed in views might require an adjustment from content types. F
 
 #### Data fetching
 
-This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to setup client see `src/Client.ts`. The data are fetched and stored in a `container` component and they are then passed to `presentation` component. For better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application state such as:
+This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to set up the client see `src/Client.ts`. The data are fetched and stored in a `container` component directly in its state. Then they are passed to the `presentation` component. For a better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application states such as:
 
 - Context
 - Redux
