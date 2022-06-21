@@ -228,6 +228,7 @@ const Component: React.FC = () => {
     ...
 ```
 
+#### Localizable URL slugs
 You might want to request items based on the url slugs. For more information how it works in Kontent see this [link](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). We have provided an example in this application for `src/Pages/About.tsx' page.
 
 ### Handling 404
