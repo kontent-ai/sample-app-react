@@ -197,7 +197,9 @@ In Kontent each language is identified by codename, in case of this project it i
 
 #### Resoure strings
 
-Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts and so on, can be stored locally. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language we have created JSON file in `src/Localization` folder. As we use `React-intl` it can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder we have prepared a script, see `src/utilities/LocalizationLoader.ts`.
+Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts, and so on, can be stored directly in the application. For those texts we use [React-intl](https://formatjs.io/docs/getting-started/installation/). For every language, there is a JSON file in `src/Localization` folder. 
+
+> `React-intl` can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder there is a `src/utilities/LocalizationLoader.ts` script.
 
 ```json
 // en-US.json
