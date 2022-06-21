@@ -231,6 +231,7 @@ const Component: React.FC = () => {
 #### Localizable URL slugs
 You might want to request items based on the url slugs. For more information how it works in Kontent see this [link](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). We have provided an example in this application for `src/Pages/About.tsx' page.
 
+> The showcase is not ideal, because it is using a combination of the language prefix and localizable solution is not ideal. You should try to stick with one of the approaches. Because it is hard to define the behavior for language setting clash i.e. `/<EN-PREFIX>/articles/<ES-URL-SLUG>`.
 ### Handling 404
 
 For the not found resources we use prefixed 404 pages for both languages. As the content in one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
