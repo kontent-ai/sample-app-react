@@ -106,7 +106,7 @@ This solution fetches data using the [Delivery client](https://github.com/Kentic
 - Flux
 - ...
 
-```typescript
+```tsx
 const Component: React.FC = () => {
     const [data, setData] = useState([] : DTOComponentProps);
 
