@@ -94,7 +94,8 @@ For generating component models from content types, we have used [Kontent.ai mod
 
 #### content type -> DTO -> view model -> component
 
-Some models displayed in views might require a small adjustment from content types. For example, `Cafe` content type contains fields for `city` and `street` and we would like to have model containing an address in the format `city, street`. You can find an example for such a view model in `CafeModel.tsx` that can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` you can use function located in `src/Utilities/CafeListing.ts`
+Some models displayed in views might require an adjustment from content types. For example, the `Cafe` content type contains fields for `city` and `street` and we would like to have a model containing an address in the format `city, street`. You can find an example for such a view model in `CafeModel.tsx` that can be found in the `src/ViewModels` folder. To convert `Cafe` into `CafeModel` you can use the function located in `src/Utilities/CafeListing.ts`
+
 
 #### Data fetching
 
