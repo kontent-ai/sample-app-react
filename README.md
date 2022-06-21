@@ -210,7 +210,7 @@ Not every text of the application must be stored in Kontent.ai. Some strings, su
 }
 ```
 
-#### Prefixes and Localizable Url slugs
+#### Language prefixes
 
 The language prefix is obtained from URL in the `LocalizedApp.tsx` and then it is propagated via IntlProvider to the whole application. Content language is then adjusted by modifying `Client` with `languageParameter()` method to obtain items in specific language. By default it uses [language fallbacks](https://kontent.ai/learn/tutorials/manage-kontent/projects/set-up-languages/#a-language-fallbacks) set up in the project.
 
