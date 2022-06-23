@@ -111,9 +111,8 @@ const Component: React.FC = () => {
           .type(projectModel.contentTypes.generatedDTO.codename)
           ...
 
-      const items : GeneratedDTO[] = query.ToPromise()
-          .then(data => data.items()
-          .then(items => setData(items));
+      query.ToPromise()
+          .then(data => setData(data.items()));
     }, []);
 
     return (
@@ -191,7 +190,7 @@ const Container: React.FC = () => {
 
 In Kontent each language is identified by codename, in case of this project, it is `en-US` and `es-ES`.
 
-### Resoure strings
+### Resource strings
 
 Not every text of the application must be stored in Kontent.ai. Some strings, such as button texts, navigation texts, and so on, can be stored directly in the application. For those texts [React-intl](https://formatjs.io/docs/getting-started/installation/) is used. For every language, there is a JSON file in `src/Localization` folder.
 
