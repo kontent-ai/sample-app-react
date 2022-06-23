@@ -103,7 +103,8 @@ This solution fetches data using the [Delivery client](https://github.com/Kentic
 
 ```tsx
 const Component: React.FC = () => {
-    const [data, setData] = useState([] : DTOComponentProps);
+    const [data, setData] = useState<GeneratedDTO[]>([]);
+
 
     useEffect(() => {
       const query = Client.items<GeneratedDTO>()
