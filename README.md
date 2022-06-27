@@ -196,7 +196,7 @@ Not every text of the application must be stored in Kontent.ai. Some strings, su
 
 > `React-intl` can not parse nested JSON objects and therefore the format of files is `key:value`. To load all files from `src/Localization` folder there is a `src/utilities/LocalizationLoader.ts` script.
 
-```json
+```jsonc
 // en-US.json
 {
   "LatestArticles.title": "Latest articles",
