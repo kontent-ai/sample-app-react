@@ -112,7 +112,7 @@ const Component: React.FC = () => {
           ...
 
       query.ToPromise()
-          .then(data => setData(data.items()));
+          .then(data => setData(data.items));
     }, []);
 
     return (
