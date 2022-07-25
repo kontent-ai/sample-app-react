@@ -2,7 +2,7 @@ import Cookies from 'universal-cookie';
 import {
   camelCasePropertyNameResolver,
   DeliveryClient,
-} from '@kentico/kontent-delivery';
+} from '@kontent-ai/delivery-sdk';
 import packageInfo from '../package.json';
 import { selectedProjectCookieName } from './const';
 import { defaultProjectId } from './Utilities/SelectedProject';

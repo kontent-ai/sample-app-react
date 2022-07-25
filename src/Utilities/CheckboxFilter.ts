@@ -1,4 +1,4 @@
-import { IContentItem, IContentItemElements } from '@kentico/kontent-delivery';
+import { IContentItem, IContentItemElements } from '@kontent-ai/delivery-sdk';
 
 const matchesTaxonomy = (
   item: IContentItem,

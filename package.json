@@ -1,9 +1,8 @@
 {
-  "name": "@kentico/kontent-sample-app-react",
+  "name": "@kontent-ai/sample-app-react",
   "version": "2.1.0",
   "private": true,
   "devDependencies": {
-    "@kentico/kontent-model-generator": "^4.1.0",
     "@simply007org/kontent-react-components": "^0.0.8",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -22,7 +21,7 @@
     "react-scripts": "^5.0.1"
   },
   "dependencies": {
-    "@kentico/kontent-delivery": "11.7.0",
+    "@kontent-ai/delivery-sdk": "^12.0.2",
     "@simply007org/kontent-react-components": "0.0.8",
     "@simply007org/react-spinners": "0.0.3",
     "qs": "^6.9.4",

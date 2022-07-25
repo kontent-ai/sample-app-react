@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Elements } from '@kentico/kontent-delivery';
+import { Elements } from '@kontent-ai/delivery-sdk';
 
 interface MetaDataProps {
   title?: Elements.TextElement;

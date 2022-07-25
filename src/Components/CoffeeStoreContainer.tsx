@@ -8,7 +8,7 @@ import {
 } from '../Utilities/LanguageCodes';
 import CheckboxFilter from './CheckboxFilter';
 import CoffeeStoreListing from './CoffeeStoreListing';
-import { ITaxonomyTerms } from '@kentico/kontent-delivery';
+import { ITaxonomyTerms } from '@kontent-ai/delivery-sdk';
 import { Coffee } from '../Models/coffee';
 import { useIntl } from 'react-intl';
 import { projectModel } from '../Models/_project';

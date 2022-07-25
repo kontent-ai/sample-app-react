@@ -1,4 +1,4 @@
-import { IContentItem } from '@kentico/kontent-delivery';
+import { IContentItem } from '@kontent-ai/delivery-sdk';
 
 const languageCodes = [
   'en-US', // default languages

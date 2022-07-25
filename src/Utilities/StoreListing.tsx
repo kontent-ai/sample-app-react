@@ -1,5 +1,5 @@
 import React from 'react';
-import { Elements } from '@kentico/kontent-delivery';
+import { Elements } from '@kontent-ai/delivery-sdk';
 
 const formatPrice = (price: number, language: string): string => {
   return price.toLocaleString(language, {

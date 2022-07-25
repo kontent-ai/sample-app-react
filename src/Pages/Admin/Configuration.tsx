@@ -129,7 +129,7 @@ const Configuration: React.FC = () => {
     navigate(`/?infoMessage=${infoMessage}`);
   };
 
-  const openKenticoKontentProjectSelector = (
+  const openKontentProjectSelector = (
     event: FormEvent<HTMLFormElement>
   ): void => {
     event.preventDefault();
@@ -139,7 +139,7 @@ const Configuration: React.FC = () => {
 
     window.open(
       'https://app.kontent.ai/sample-site-configuration',
-      'Kentico Kontent',
+      'Kontent-ai',
       `status=no,width=${windowWidth},height=${windowHeight},resizable=yes,left=
       ${left},top=${top},toolbar=no,menubar=no,location=no,directories=no`
     );
@@ -164,7 +164,7 @@ const Configuration: React.FC = () => {
               <img
                 className="logo"
                 src={KontentLogo}
-                alt="Kentico Kontent logo"
+                alt="Kontent.ai logo"
               />
             </a>
           </div>
@@ -188,7 +188,7 @@ const Configuration: React.FC = () => {
                 new sample project. The app will be configured with its project
                 ID.
               </p>
-              <form onSubmit={openKenticoKontentProjectSelector}>
+              <form onSubmit={openKontentProjectSelector}>
                 <input
                   type="submit"
                   className="button button-primary margin-top-xl"

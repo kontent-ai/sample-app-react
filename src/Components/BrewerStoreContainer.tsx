@@ -9,7 +9,7 @@ import {
 } from '../Utilities/LanguageCodes';
 import BrewerStoreListing from './BrewerStoreListing';
 import CheckboxFilter from './CheckboxFilter';
-import { ITaxonomyTerms } from '@kentico/kontent-delivery';
+import { ITaxonomyTerms } from '@kontent-ai/delivery-sdk';
 import { useIntl } from 'react-intl';
 import { Brewer } from '../Models/brewer';
 import { projectModel } from '../Models/_project';
