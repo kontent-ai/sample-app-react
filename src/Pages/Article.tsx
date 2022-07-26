@@ -10,8 +10,8 @@ import RichText from '../Components/RichText';
 import Metadata from '../Components/Metadata';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { Article as ArticleType } from '../Models/article';
-import { projectModel } from '../Models/_project';
+import { Article as ArticleType } from '../Models/content-types/article';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Article: React.FC = () => {
   const { locale: language, formatDate, formatMessage } = useIntl();
@@ -22,7 +22,7 @@ const Article: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<ArticleType>()
-      .type(projectModel.contentTypes.article.codename)
+      .type(contentTypes.article.codename)
       .equalsFilter('system.id', articleId!!)
       .elementsParameter([
         'title',

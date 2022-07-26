@@ -9,8 +9,8 @@ import {
 } from '../Utilities/LanguageCodes';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { Brewer as BrewerType } from '../Models/brewer';
-import { projectModel } from '../Models/_project';
+import { Brewer as BrewerType } from '../Models/content-types/brewer';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Brewer: React.FC = () => {
   const [brewer, setBrewer] = useState(
@@ -23,7 +23,7 @@ const Brewer: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<BrewerType>()
-      .type(projectModel.contentTypes.brewer.codename)
+      .type(contentTypes.brewer.codename)
       .equalsFilter('elements.url_pattern', brewerSlug!!);
 
     if (language) {

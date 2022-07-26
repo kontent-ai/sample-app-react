@@ -8,10 +8,10 @@ import {
   ILanguageObjectWithArray,
   initLanguageCodeObjectWithArray,
 } from '../Utilities/LanguageCodes';
-import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
-import { projectModel } from '../Models/_project';
 import { CafeModel } from '../ViewModels/CafeModel';
+import { Cafe } from '../Models/content-types/cafe';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Cafes: React.FC = () => {
   const { formatMessage, locale: language } = useIntl();
@@ -23,7 +23,7 @@ const Cafes: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items()
-      .type(projectModel.contentTypes.cafe.codename)
+      .type(contentTypes.cafe.codename)
       .orderByDescending('system.name');
 
     if (language) {

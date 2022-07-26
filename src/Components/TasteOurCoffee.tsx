@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from '../Components/LowerCaseUrlLink';
 import { useIntl } from 'react-intl';
-import { Cafe } from '../Models/cafe';
+import { Cafe } from '../Models/content-types/cafe';
 
 interface TestOurCoffeeProps {
   cafes: Cafe[];

@@ -10,8 +10,8 @@ import {
 } from '../Utilities/LanguageCodes';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { Coffee as CoffeeType } from '../Models/coffee';
-import { projectModel } from '../Models/_project';
+import { Coffee as CoffeeType } from '../Models/content-types/coffee';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Coffee: React.FC = () => {
   const [coffee, setCoffee] = useState(initLanguageCodeObject<CoffeeType>());
@@ -22,7 +22,7 @@ const Coffee: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<CoffeeType>()
-      .type(projectModel.contentTypes.coffee.codename)
+      .type(contentTypes.coffee.codename)
       .equalsFilter('elements.url_pattern', coffeeSlug!!);
 
     if (language) {

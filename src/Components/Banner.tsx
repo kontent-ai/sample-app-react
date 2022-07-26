@@ -1,6 +1,6 @@
 import React from 'react';
+import { HeroUnit } from '../Models/content-types/hero_unit';
 import RichText from './RichText';
-import { HeroUnit } from '../Models/hero_unit';
 
 interface BannerProps {
   heroUnit: HeroUnit;

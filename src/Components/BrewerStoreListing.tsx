@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { resolveContentLink } from '../Utilities/ContentLinks';
 import { formatPrice, renderProductStatus } from '../Utilities/StoreListing';
-import { Brewer } from '../Models/brewer';
 import { useIntl } from 'react-intl';
+import { Brewer } from '../Models/content-types/brewer';
 
 interface BrewerStoreListingProps {
   brewers: Brewer[];
