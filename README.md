@@ -4,7 +4,7 @@
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.netlify.app/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-This is a sample website written in Typescript utilizing the Kontent Delivery API to retrieve content from Kontent by Kentico. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
+This is a sample website written in Typescript utilizing the Kontent.ai Delivery API to retrieve content from Kontent.ai. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
 
 ## Application setup
 
@@ -74,7 +74,7 @@ You can retrieve content either through the Kontent Delivery SDKs or the Kontent
 
 For more info about the API, see the [API reference](https://kontent.ai/learn/reference).
 
-You can find the Delivery and other SDKs at <https://github.com/Kentico>.
+You can find the Delivery and other SDKs at <https://github.com/kontent-ai>.
 
 ## Used toolchain
 
@@ -86,7 +86,7 @@ There are two types of model mapping in this application:
 
 ### content type -> DTO -> component
 
-Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information like codenames about content types.
+Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/kontent-ai/model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information like codenames about content types.
 
 ### content type -> DTO -> view model -> component
 
@@ -94,7 +94,7 @@ Some models displayed in views might require an adjustment from content types. F
 
 ### Data fetching
 
-This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to set up the client see `src/Client.ts`. The data are fetched and stored in a `container` component directly in its state. Then they are passed to the `presentation` component. For a better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application states such as:
+This solution fetches data using the [Delivery client](https://github.com/kontent-ai/delivery-sdk-js). For more implementation detail to set up the client see `src/Client.ts`. The data are fetched and stored in a `container` component directly in its state. Then they are passed to the `presentation` component. For a better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application states such as:
 
 - [Context](https://reactjs.org/docs/context.html)
 - [Redux](https://react-redux.js.org/)
@@ -245,4 +245,4 @@ We would like to express our thanks to the following people who contributed and 
 
 - [Bee Martinez](https://github.com/beemtz)
 
-Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/kontent-sample-app-react/issues) and send us a pull request!
+Would you like to become a hero too? Pick an [issue](https://github.com/kontent-ai/delivery-sdk-js/issues) and send us a pull request!

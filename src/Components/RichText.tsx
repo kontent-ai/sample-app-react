@@ -12,7 +12,7 @@ import {
   IContentItem,
   ILink,
   IRichTextImage,
-} from '@kentico/kontent-delivery';
+} from '@kontent-ai/delivery-sdk';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
