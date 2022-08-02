@@ -74,5 +74,3 @@ Your pull request will now go through extensive checks by the subject matter exp
 <img align="right" width="100" height="100" src="https://i.imgur.com/cObdKQy.png">
 
 The Kotent.ai team is committed to fostering a welcoming community, therefore this project has adopted the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). If you have any additional questions or comments, you can contact us directly at devrel@kontent.ai
-
-![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/Home/master/CONTRIBUTING.md?pixel)
