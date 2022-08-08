@@ -2,7 +2,7 @@ import {
   DomElementOptionsType,
   ResolversType,
   RichTextElement,
-} from '@simply007org/kontent-react-components/dist/components/rich-text-element';
+} from '@kontent-ai/react-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { resolveContentLink } from '../Utilities/ContentLinks';
