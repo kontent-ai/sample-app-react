@@ -1,10 +1,10 @@
-# Kontent sample React single-page application
+# Kontent.ai sample React single-page application
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5018e8db-b76e-4f19-8ad2-7fd9da21a2ee/deploy-status)](https://app.netlify.com/sites/kontent-sample-app-react/deploys)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.netlify.app/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kontent-ai)
 
-This is a sample website written in Typescript utilizing the Kontent.ai Delivery API to retrieve content from Kontent.ai. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
+This is a sample website written in Typescript utilizing the Kontent.ai Delivery API to retrieve content from Kontent.ai. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent.ai Learn.
 
 ## Application setup
 
@@ -17,15 +17,15 @@ This is a sample website written in Typescript utilizing the Kontent.ai Delivery
 
 ### Connecting to your sample project
 
-At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kontent project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
+At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kontent.ai project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
 
 Alternatively, you can connect your project manually as per the chapter below.
 
 #### Connecting to your project manually
 
-If you want to change the source Kontent project, follow these steps:
+If you want to change the source Kontent.ai project, follow these steps:
 
-1. In Kontent, choose Project settings from the app menu.
+1. In Kontent.ai, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID.
 4. Open `.env.example` in the root directory.
@@ -44,11 +44,11 @@ Deploy, explore and change the app directly in the browser.
 
 ## Previewing content from your project
 
-If you already have a Kontent account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
+If you already have a Kontent.ai account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
 
 To preview content in the sample application, follow these steps:
 
-1. In Kontent, choose Project settings from the app menu.
+1. In Kontent.ai, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID and Preview API key.
 4. Open `.env.example` in the root directory .
@@ -63,11 +63,11 @@ When you now run the application, you will see all project content including the
 2. Sign in with your credentials.
 3. Manage content in the content administration interface of your sample project.
 
-You can learn more about content editing in our tutorials at [Kontent Learn](https://kontent.ai/learn/tutorials/write-and-collaborate/create-content/introducing-content-items).
+You can learn more about content editing in our tutorials at [Kontent.ai Learn](https://kontent.ai/learn/tutorials/write-and-collaborate/create-content/introducing-content-items).
 
 ## Content delivery
 
-You can retrieve content either through the Kontent Delivery SDKs or the Kontent Delivery API:
+You can retrieve content either through the Kontent.ai Delivery SDKs or the Kontent.ai Delivery API:
 
 - For published content, use `https://deliver.kontent.ai/PROJECT_ID/items`.
 - For unpublished content, use `https://preview-deliver.kontent.ai/PROJECT_ID/items`.
@@ -188,7 +188,7 @@ const Container: React.FC = () => {
 
 ## Localization
 
-In Kontent each language is identified by codename, in case of this project, it is `en-US` and `es-ES`.
+In Kontent.ai each language is identified by codename, in case of this project, it is `en-US` and `es-ES`.
 
 ### Resource strings
 
