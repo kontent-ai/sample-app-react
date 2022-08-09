@@ -24,9 +24,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     spinnerService.show('apiSpinner');
 
-    const query = Client.items<HomeType>().type(
-      contentTypes.home.codename
-    );
+    const query = Client.items<HomeType>().type(contentTypes.home.codename);
     if (language) {
       query.languageParameter(language);
     }

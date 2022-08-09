@@ -161,11 +161,7 @@ const Configuration: React.FC = () => {
         <div className="gradient-desk padding-bottom-xl">
           <div className="kk-container">
             <a href="/" className="logo-link">
-              <img
-                className="logo"
-                src={KontentLogo}
-                alt="Kontent.ai logo"
-              />
+              <img className="logo" src={KontentLogo} alt="Kontent.ai logo" />
             </a>
           </div>
           <header>
