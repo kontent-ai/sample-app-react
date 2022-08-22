@@ -8,15 +8,18 @@ import {
 } from '../Utilities/LanguageCodes';
 import RichText from '../Components/RichText';
 import Metadata from '../Components/Metadata';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { Article as ArticleType } from '../Models/content-types/article';
 import { contentTypes } from '../Models/project/contentTypes';
+import { resolveChangeLanguageLink } from '../Utilities/LanugageLink';
 
 const Article: React.FC = () => {
   const { locale: language, formatDate, formatMessage } = useIntl();
   const { articleId } = useParams();
   const [article, setArticle] = useState(initLanguageCodeObject<ArticleType>());
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -52,6 +55,10 @@ const Article: React.FC = () => {
 
     query.toPromise().then((response) => {
       const currentLanguage = language || defaultLanguage;
+      
+      if (response.data.items[0].system.language !==  language){
+        navigate(resolveChangeLanguageLink(pathname, response.data.items[0].system.language), { replace: true })
+      }
 
       spinnerService.hide('apiSpinner');
       setArticle((data) => ({
@@ -59,7 +66,7 @@ const Article: React.FC = () => {
         [currentLanguage]: response.data.items[0] as ArticleType,
       }));
     });
-  }, [language, articleId]);
+  }, [language, articleId, navigate, pathname]);
 
   const currentArticle = article[language];
   if (!currentArticle) {
