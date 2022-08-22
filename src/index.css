@@ -6,25 +6,25 @@
     url(./Fonts/PTSerif-Bold.woff) format('woff');
 }
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
-    url(./Fonts/SourceSansPro-Light.woff) format('woff');
+  src: local('Work Sans Regular'), local('WorkSans-Regular'),
+    url(./Fonts/WorkSans-Regular.woff2) format('woff');
 }
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
-    url(./Fonts/SourceSansPro-Regular.woff) format('woff');
+  src: local('Work Sans Medium'), local('WorkSans-Medium'),
+    url(./Fonts/WorkSans-Medium.woff2) format('woff');
 }
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
-    url(./Fonts/SourceSansPro-Bold.woff) format('woff');
+  src: local('Work Sans Bold'), local('WorkSans-Bold'),
+    url(./Fonts/WorkSans-Bold.woff2) format('woff');
 }
 @font-face {
   font-family: 'Core-icons';
@@ -46,7 +46,7 @@ body {
   margin: 0;
 }
 .application-content {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.4;
@@ -323,7 +323,7 @@ body {
 }
 .application-content h4,
 .application-content .h4 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 1.375rem;
   margin-bottom: 0.7rem;
@@ -332,7 +332,7 @@ body {
 }
 .application-content h5,
 .application-content .h5 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 300;
   font-size: 1.375rem;
   margin-bottom: 0.7rem;
@@ -344,7 +344,7 @@ body {
   margin-bottom: 0.7rem;
 }
 .application-content .lead-paragraph {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 300;
   margin-bottom: 20px;
   font-size: 1.375rem;
@@ -1411,7 +1411,7 @@ body {
   text-align: center;
   font-size: 1rem;
   font-weight: normal;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   z-index: 1;
   position: absolute;
   display: block;
@@ -1427,7 +1427,7 @@ body {
   display: block;
   float: right !important;
   margin-left: 1rem;
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
   border: 2px solid #08768c;
@@ -1474,7 +1474,7 @@ body {
   text-align: center;
   font-size: 1rem;
   font-weight: normal;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 .application-content .featured-product .product-tile {
   margin: 0 -2px -2px 0;
@@ -1569,7 +1569,7 @@ body {
   color: #bbbbbb;
 }
 .application-content .product-detail .option-category-name {
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-size: 1.375rem;
   font-weight: 400;
 }
@@ -1677,7 +1677,7 @@ body {
   display: block;
   float: left !important;
   margin-left: 1rem;
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
 }
@@ -5615,7 +5615,7 @@ body {
   display: inline-block;
   font-size: 1rem;
   text-transform: uppercase;
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-weight: normal;
 }
 @media (max-width: 1111px) {
@@ -5723,7 +5723,7 @@ body {
   text-transform: uppercase;
   color: #ffffff;
   background-color: #b24143;
-  font-family: 'Source Sans Pro';
+  font-family: 'Work Sans';
   font-weight: normal;
   font-size: 1.375rem;
   padding: 1rem;

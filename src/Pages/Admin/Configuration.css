@@ -1,7 +1,7 @@
 /* taken from https://github.com/kontent-ai/sample-app-net build output*/
 /* and prefixed to not affect rest of the site */
 .configuration-page .button {
-  font-family: helvetica, arial, sans-serif;
+  font-family: "Work Sans", arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
@@ -13,23 +13,15 @@
   text-transform: uppercase;
 }
 .configuration-page .button-primary {
-  background: #db3c00;
-  box-shadow: 0 8px 14px 2px rgba(244, 92, 35, 0.14),
-    0 6px 20px 5px rgba(244, 92, 35, 0.12),
-    0 8px 10px -5px rgba(244, 92, 35, 0.2);
+  background: #6956CC;
   color: #fff;
 }
+.configuration-page .button-primary:hover,
 .configuration-page .button-primary:focus {
-  box-shadow: 0 0 0 2px #0093ff, inset 0 0 3px 0 #0093ff,
-    0 8px 14px 2px rgba(244, 92, 35, 0.14),
-    0 6px 20px 5px rgba(244, 92, 35, 0.12),
-    0 8px 10px -5px rgba(244, 92, 35, 0.2);
+  background-color: #231f20;
 }
 .configuration-page .button-primary.active,
 .configuration-page .button-primary:active,
-.configuration-page .button-primary:hover {
-  background: #953000;
-}
 .configuration-page .button-primary.disabled,
 .configuration-page .button-primary[disabled] {
   color: #8c8c8c;
@@ -105,19 +97,19 @@
 }
 .configuration-page p {
   margin: 0;
-  font-family: helvetica, arial, sans-serif;
+  font-family: "Work Sans", arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 }
 .configuration-page .headline-large {
-  font-family: helvetica, arial, sans-serif;
+  font-family: "Work Sans", arial, sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
 }
 .configuration-page .headline-medium {
-  font-family: helvetica, arial, sans-serif;
+  font-family: "Work Sans", arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
