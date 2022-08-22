@@ -14,9 +14,8 @@ import languageCodes, { englishCode } from './Utilities/LanguageCodes';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies(document.cookie);
-const cookiesLang = cookies.get('lang')
+const cookiesLang = cookies.get('lang');
 const lang = languageCodes.includes(cookiesLang) ? cookiesLang : englishCode;
-
 
 ReactDOM.render(
   <Router>

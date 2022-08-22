@@ -36,8 +36,14 @@ const Brewer: React.FC = () => {
     query.toPromise().then((response) => {
       const currentLanguage = language || defaultLanguage;
 
-      if (response.data.items[0].system.language !==  language){
-        navigate(resolveChangeLanguageLink(pathname, response.data.items[0].system.language), { replace: true })
+      if (response.data.items[0].system.language !== language) {
+        navigate(
+          resolveChangeLanguageLink(
+            pathname,
+            response.data.items[0].system.language
+          ),
+          { replace: true }
+        );
       }
 
       spinnerService.hide('apiSpinner');

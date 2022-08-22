@@ -1,7 +1,7 @@
 /* taken from https://github.com/kontent-ai/sample-app-net build output*/
 /* and prefixed to not affect rest of the site */
 .configuration-page .button {
-  font-family: "Work Sans", arial, sans-serif;
+  font-family: 'Work Sans', arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
@@ -13,7 +13,7 @@
   text-transform: uppercase;
 }
 .configuration-page .button-primary {
-  background: #6956CC;
+  background: #6956cc;
   color: #fff;
 }
 .configuration-page .button-primary:hover,
@@ -97,19 +97,19 @@
 }
 .configuration-page p {
   margin: 0;
-  font-family: "Work Sans", arial, sans-serif;
+  font-family: 'Work Sans', arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 }
 .configuration-page .headline-large {
-  font-family: "Work Sans", arial, sans-serif;
+  font-family: 'Work Sans', arial, sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
 }
 .configuration-page .headline-medium {
-  font-family: "Work Sans", arial, sans-serif;
+  font-family: 'Work Sans', arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
