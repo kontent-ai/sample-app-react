@@ -8,21 +8,24 @@ import {
   defaultLanguage,
   initLanguageCodeObject,
 } from '../Utilities/LanguageCodes';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { Coffee as CoffeeType } from '../Models/coffee';
-import { projectModel } from '../Models/_project';
+import { Coffee as CoffeeType } from '../Models/content-types/coffee';
+import { contentTypes } from '../Models/project/contentTypes';
+import { resolveChangeLanguageLink } from '../Utilities/LanugageLink';
 
 const Coffee: React.FC = () => {
   const [coffee, setCoffee] = useState(initLanguageCodeObject<CoffeeType>());
   const { coffeeSlug } = useParams();
   const { locale: language, formatMessage } = useIntl();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<CoffeeType>()
-      .type(projectModel.contentTypes.coffee.codename)
+      .type(contentTypes.coffee.codename)
       .equalsFilter('elements.url_pattern', coffeeSlug!!);
 
     if (language) {
@@ -32,13 +35,23 @@ const Coffee: React.FC = () => {
     query.toPromise().then((response) => {
       const currentLanguage = language || defaultLanguage;
 
+      if (response.data.items[0].system.language !== language) {
+        navigate(
+          resolveChangeLanguageLink(
+            pathname,
+            response.data.items[0].system.language
+          ),
+          { replace: true }
+        );
+      }
+
       spinnerService.hide('apiSpinner');
       setCoffee((data) => ({
         ...data,
         [currentLanguage]: response.data.items[0] as CoffeeType,
       }));
     });
-  }, [language, coffeeSlug]);
+  }, [language, coffeeSlug, pathname, navigate]);
 
   const coffeeData = coffee[language || defaultLanguage];
 

@@ -124,12 +124,12 @@ const Configuration: React.FC = () => {
   const redirectToHome = (newProjectId: string): void => {
     const infoMessage =
       newProjectId === defaultProjectId
-        ? `You've configured your app to with a project ID of a shared Kontent project.`
+        ? `You've configured your app to with a project ID of a shared Kontent.ai project.`
         : `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://kontent.ai/.`;
     navigate(`/?infoMessage=${infoMessage}`);
   };
 
-  const openKenticoKontentProjectSelector = (
+  const openKontentProjectSelector = (
     event: FormEvent<HTMLFormElement>
   ): void => {
     event.preventDefault();
@@ -139,7 +139,7 @@ const Configuration: React.FC = () => {
 
     window.open(
       'https://app.kontent.ai/sample-site-configuration',
-      'Kentico Kontent',
+      'Kontent-ai',
       `status=no,width=${windowWidth},height=${windowHeight},resizable=yes,left=
       ${left},top=${top},toolbar=no,menubar=no,location=no,directories=no`
     );
@@ -161,22 +161,18 @@ const Configuration: React.FC = () => {
         <div className="gradient-desk padding-bottom-xl">
           <div className="kk-container">
             <a href="/" className="logo-link">
-              <img
-                className="logo"
-                src={KontentLogo}
-                alt="Kentico Kontent logo"
-              />
+              <img className="logo" src={KontentLogo} alt="Kontent.ai logo" />
             </a>
           </div>
           <header>
             <div className="kk-container">
               <h1 className="headline-large">Sample Site—Configuration</h1>
               <p className="margin-top-xl">
-                For your sample app to work, you should have a Kontent project
-                containing content. Your app should be then configured with its
-                project ID. You can either get it by signing in using your
-                Kontent credentials or by signing up for a trial. Later, it will
-                be converted to a free plan.
+                For your sample app to work, you should have a Kontent.ai
+                project containing content. Your app should be then configured
+                with its project ID. You can either get it by signing in using
+                your Kontent.ai credentials or by signing up for a trial. Later,
+                it will be converted to a free plan.
               </p>
             </div>
           </header>
@@ -188,7 +184,7 @@ const Configuration: React.FC = () => {
                 new sample project. The app will be configured with its project
                 ID.
               </p>
-              <form onSubmit={openKenticoKontentProjectSelector}>
+              <form onSubmit={openKontentProjectSelector}>
                 <input
                   type="submit"
                   className="button button-primary margin-top-xl"

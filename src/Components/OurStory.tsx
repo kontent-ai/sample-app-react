@@ -1,6 +1,6 @@
 import React from 'react';
+import { FactAboutUs } from '../Models/content-types/fact_about_us';
 import RichText from './RichText';
-import { FactAboutUs } from '../Models/fact_about_us';
 
 interface OurStoryProps {
   fact: FactAboutUs;

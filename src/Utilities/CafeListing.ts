@@ -1,4 +1,4 @@
-import { Cafe } from '../Models/cafe';
+import { Cafe } from '../Models/content-types/cafe';
 import { CafeModel } from '../ViewModels/CafeModel';
 
 const createCafeModel = (cafe: Cafe): CafeModel => {

@@ -8,9 +8,8 @@ import {
 } from '../Utilities/LanguageCodes';
 import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { Article } from '../Models/article';
-import { Article as ArticleType } from '../Models/article';
-import { projectModel } from '../Models/_project';
+import { Article as ArticleType } from '../Models/content-types/article';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Articles: React.FC = () => {
   const { locale: language, formatDate, formatMessage } = useIntl();
@@ -22,7 +21,7 @@ const Articles: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<ArticleType>()
-      .type(projectModel.contentTypes.article.codename)
+      .type(contentTypes.article.codename)
       .orderByDescending('elements.post_date')
       .limitParameter(10);
 
@@ -51,7 +50,7 @@ const Articles: React.FC = () => {
   let counter = 0;
 
   const articlesComponent = articles[language].reduce(
-    (result: JSX.Element[], article: Article, index: number) => {
+    (result: JSX.Element[], article: ArticleType, index: number) => {
       if (index % 4 === 0) {
         result.push(<div className="clear" key={counter++} />);
       }

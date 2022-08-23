@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '../Components/LowerCaseUrlLink';
 import { FormattedDate, useIntl } from 'react-intl';
-import { Article } from '../Models/article';
+import { Article } from '../Models/content-types/article';
 
 interface LatestArticlesProps {
   articles: Article[];

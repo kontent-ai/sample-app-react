@@ -7,9 +7,9 @@ import {
   defaultLanguage,
   initLanguageCodeObjectWithArray,
 } from '../Utilities/LanguageCodes';
-import { Cafe } from '../Models/cafe';
 import { useIntl } from 'react-intl';
-import { projectModel } from '../Models/_project';
+import { Cafe } from '../Models/content-types/cafe';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Contacts: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
@@ -21,7 +21,7 @@ const Contacts: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<Cafe>()
-      .type(projectModel.contentTypes.cafe.codename)
+      .type(contentTypes.cafe.codename)
       .equalsFilter('elements.country', 'USA')
       .orderByDescending('system.name');
 

@@ -14,8 +14,8 @@ import {
   initLanguageCodeObject,
 } from '../Utilities/LanguageCodes';
 import { useIntl } from 'react-intl';
-import { Home as HomeType } from '../Models/home';
-import { projectModel } from '../Models/_project';
+import { Home as HomeType } from '../Models/content-types/home';
+import { contentTypes } from '../Models/project/contentTypes';
 
 const Home: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
@@ -24,9 +24,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     spinnerService.show('apiSpinner');
 
-    const query = Client.items<HomeType>().type(
-      projectModel.contentTypes.home.codename
-    );
+    const query = Client.items<HomeType>().type(contentTypes.home.codename);
     if (language) {
       query.languageParameter(language);
     }

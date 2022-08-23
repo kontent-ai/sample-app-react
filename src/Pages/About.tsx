@@ -8,10 +8,10 @@ import {
   defaultLanguage,
   initLanguageCodeObject,
 } from '../Utilities/LanguageCodes';
-import { FactAboutUs } from '../Models/fact_about_us';
 import { useIntl } from 'react-intl';
-import { AboutUs } from '../Models/about_us';
-import { projectModel } from '../Models/_project';
+import { AboutUs } from '../Models/content-types/about_us';
+import { contentTypes } from '../Models/project/contentTypes';
+import { FactAboutUs } from '../Models/content-types/fact_about_us';
 
 interface AboutProps {
   urlSlug?: string;
@@ -26,7 +26,7 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<AboutUs>()
-      .type(projectModel.contentTypes.about_us.codename)
+      .type(contentTypes.about_us.codename)
       .elementsParameter([
         'facts',
         'modular_content',

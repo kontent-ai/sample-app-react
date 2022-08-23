@@ -9,10 +9,10 @@ import {
 } from '../Utilities/LanguageCodes';
 import BrewerStoreListing from './BrewerStoreListing';
 import CheckboxFilter from './CheckboxFilter';
-import { ITaxonomyTerms } from '@kentico/kontent-delivery';
+import { ITaxonomyTerms } from '@kontent-ai/delivery-sdk';
 import { useIntl } from 'react-intl';
-import { Brewer } from '../Models/brewer';
-import { projectModel } from '../Models/_project';
+import { Brewer } from '../Models/content-types/brewer';
+import { contentTypes } from '../Models/project/contentTypes';
 
 interface filterType {
   [index: string]: string[];
@@ -47,7 +47,7 @@ const BrewerStoreContainer: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<Brewer>()
-      .type(projectModel.contentTypes.brewer.codename)
+      .type(contentTypes.brewer.codename)
       .orderByAscending('elements.product_name');
 
     if (language) {

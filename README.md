@@ -1,10 +1,10 @@
-# Kontent sample React single-page application
+# Kontent.ai sample React single-page application
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5018e8db-b76e-4f19-8ad2-7fd9da21a2ee/deploy-status)](https://app.netlify.com/sites/kontent-sample-app-react/deploys)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react.netlify.app/)
-[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kontent-ai)
 
-This is a sample website written in Typescript utilizing the Kontent Delivery API to retrieve content from Kontent by Kentico. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent Learn.
+This is a sample website written in Typescript utilizing the Kontent.ai Delivery API to retrieve content from Kontent.ai. You can register your developer account at <https://app.kontent.ai>. For a brief walkthrough, check out [Running the React sample app](https://kontent.ai/learn/tutorials/develop-apps/get-started/run-the-react-sample-app) at Kontent.ai Learn.
 
 ## Application setup
 
@@ -17,15 +17,15 @@ This is a sample website written in Typescript utilizing the Kontent Delivery AP
 
 ### Connecting to your sample project
 
-At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kontent project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
+At the first run of the app, you'll be presented with a configuration page. It will allow you to connect the app to your Kontent.ai project or create a new one. You'll also be able to start a trial and convert to a free plan when the trial expires.
 
 Alternatively, you can connect your project manually as per the chapter below.
 
 #### Connecting to your project manually
 
-If you want to change the source Kontent project, follow these steps:
+If you want to change the source Kontent.ai project, follow these steps:
 
-1. In Kontent, choose Project settings from the app menu.
+1. In Kontent.ai, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID.
 4. Open `.env.example` in the root directory.
@@ -38,17 +38,17 @@ When you now run the sample application, the application retrieves content from 
 
 Deploy, explore and change the app directly in the browser.
 
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/remix/clone-from-repo?REPO_URL=https://github.com/Kentico/kontent-sample-app-react)
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/remix/clone-from-repo?REPO_URL=https://github.com/kontent-ai/sample-app-react)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Kentico/kontent-sample-app-react)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kontent-ai/sample-app-react)
 
 ## Previewing content from your project
 
-If you already have a Kontent account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
+If you already have a Kontent.ai account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
 
 To preview content in the sample application, follow these steps:
 
-1. In Kontent, choose Project settings from the app menu.
+1. In Kontent.ai, choose Project settings from the app menu.
 2. Under Development, choose API keys.
 3. Copy your Project ID and Preview API key.
 4. Open `.env.example` in the root directory .
@@ -63,18 +63,18 @@ When you now run the application, you will see all project content including the
 2. Sign in with your credentials.
 3. Manage content in the content administration interface of your sample project.
 
-You can learn more about content editing in our tutorials at [Kontent Learn](https://kontent.ai/learn/tutorials/write-and-collaborate/create-content/introducing-content-items).
+You can learn more about content editing in our tutorials at [Kontent.ai Learn](https://kontent.ai/learn/tutorials/write-and-collaborate/create-content/introducing-content-items).
 
 ## Content delivery
 
-You can retrieve content either through the Kontent Delivery SDKs or the Kontent Delivery API:
+You can retrieve content either through the Kontent.ai Delivery SDKs or the Kontent.ai Delivery API:
 
 - For published content, use `https://deliver.kontent.ai/PROJECT_ID/items`.
 - For unpublished content, use `https://preview-deliver.kontent.ai/PROJECT_ID/items`.
 
 For more info about the API, see the [API reference](https://kontent.ai/learn/reference).
 
-You can find the Delivery and other SDKs at <https://github.com/Kentico>.
+You can find the Delivery and other SDKs at <https://github.com/kontent-ai>.
 
 ## Used toolchain
 
@@ -86,7 +86,7 @@ There are two types of model mapping in this application:
 
 ### content type -> DTO -> component
 
-Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/Kentico/kontent-model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information like codenames about content types.
+Content type definitions are being generated from content types via [Kontent.ai model generator](https://github.com/kontent-ai/model-generator-js) tool. All generated types can be found in `src/Models` folder. The `_project.ts` contains information about the project structure such as project languages as well as other structure information like codenames about content types.
 
 ### content type -> DTO -> view model -> component
 
@@ -94,7 +94,7 @@ Some models displayed in views might require an adjustment from content types. F
 
 ### Data fetching
 
-This solution fetches data using the [Delivery client](https://github.com/Kentico/kontent-delivery-sdk-js). For more implementation detail to set up the client see `src/Client.ts`. The data are fetched and stored in a `container` component directly in its state. Then they are passed to the `presentation` component. For a better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application states such as:
+This solution fetches data using the [Delivery client](https://github.com/kontent-ai/delivery-sdk-js). For more implementation detail to set up the client see `src/Client.ts`. The data are fetched and stored in a `container` component directly in its state. Then they are passed to the `presentation` component. For a better understanding see the code example below. However, depending on your needs, you can use other technologies for managing application states such as:
 
 - [Context](https://reactjs.org/docs/context.html)
 - [Redux](https://react-redux.js.org/)
@@ -188,7 +188,7 @@ const Container: React.FC = () => {
 
 ## Localization
 
-In Kontent each language is identified by codename, in case of this project, it is `en-US` and `es-ES`.
+In Kontent.ai each language is identified by codename, in case of this project, it is `en-US` and `es-ES`.
 
 ### Resource strings
 
@@ -229,7 +229,21 @@ const Component: React.FC = () => {
 
 You might want to request items based on the URL slugs. For more information check out [Kontent.ai/learn tutorial](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). An example in this application for this is provided in `src/Pages/About.tsx` page.
 
-> The showcase is not ideal, because it is using a combination of the language prefix and localizable solution is not ideal. You should try to stick with one of the approaches. Because it is hard to define the behavior for language setting clash i.e. `/<EN-PREFIX>/articles/<ES-URL-SLUG>`.
+> The showcase is not ideal, because it is using a combination of the language prefixes and localizable routes. You should try to stick with one of the approaches. Because it is hard to define the behavior (priority) for language setting clashes like `/<EN-PREFIX>/articles/<ES-URL-SLUG>.
+
+### Language fallbacks
+
+To deal with content that is not available in current language, this project uses method called language fallbacks. It will fetch the content in the language which set as fallback language in the Kontent.ai project and redirect the website to the URL with prefix of the given language. However, it is possible to disable language fallbacks by adding a filter of `system.language` to your query. For more information about getting localized content check this [`link.`](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/?tech=javascript)
+
+```js
+var query = Client.items<AboutUs>().type(contentTypes.about_us.codename);
+
+if (this.language) {
+    query
+    .languageParameter(this.language)
+    .equalsFilter('system.language', 'es-ES');
+}
+```
 
 ## Handling 404
 
@@ -245,4 +259,4 @@ We would like to express our thanks to the following people who contributed and 
 
 - [Bee Martinez](https://github.com/beemtz)
 
-Would you like to become a hero too? Pick an [issue](https://github.com/Kentico/kontent-sample-app-react/issues) and send us a pull request!
+Would you like to become a hero too? Pick an [issue](https://github.com/kontent-ai/delivery-sdk-js/issues) and send us a pull request!

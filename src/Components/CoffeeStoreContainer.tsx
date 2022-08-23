@@ -8,10 +8,10 @@ import {
 } from '../Utilities/LanguageCodes';
 import CheckboxFilter from './CheckboxFilter';
 import CoffeeStoreListing from './CoffeeStoreListing';
-import { ITaxonomyTerms } from '@kentico/kontent-delivery';
-import { Coffee } from '../Models/coffee';
+import { ITaxonomyTerms } from '@kontent-ai/delivery-sdk';
 import { useIntl } from 'react-intl';
-import { projectModel } from '../Models/_project';
+import { Coffee } from '../Models/content-types/coffee';
+import { contentTypes } from '../Models/project/contentTypes';
 
 interface filterType {
   [index: string]: string[];
@@ -36,7 +36,7 @@ const CoffeeStoreContainer: React.FC = () => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<Coffee>()
-      .type(projectModel.contentTypes.coffee.codename)
+      .type(contentTypes.coffee.codename)
       .orderByAscending('elements.product_name');
 
     if (language) {
