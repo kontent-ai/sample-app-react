@@ -51,7 +51,7 @@ const Coffee: React.FC = () => {
         [currentLanguage]: response.data.items[0] as CoffeeType,
       }));
     });
-  }, [language, coffeeSlug]);
+  }, [language, coffeeSlug, pathname, navigate]);
 
   const coffeeData = coffee[language || defaultLanguage];
 

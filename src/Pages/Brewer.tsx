@@ -52,7 +52,7 @@ const Brewer: React.FC = () => {
         [currentLanguage]: response.data.items[0] as BrewerType,
       }));
     });
-  }, [language, brewerSlug]);
+  }, [language, brewerSlug, pathname, navigate]);
 
   const brewerData = brewer[language || defaultLanguage]!;
 
