@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'PT Serif';
-  font-style: normal;
-  font-weight: 700;
-  src: local('PT Serif Bold'), local('PTSerif-Bold'),
-    url(./Fonts/PTSerif-Bold.woff) format('woff');
-}
-@font-face {
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 300;
@@ -304,7 +297,7 @@ body {
 .application-content .h1,
 .application-content .h2,
 .application-content .h3 {
-  font-family: 'PT Serif', serif;
+  font-family: 'Work Sans', serif;
   line-height: 1.4;
   color: inherit;
   margin-bottom: 0.7rem;
@@ -1594,7 +1587,7 @@ body {
   padding: 0;
   text-align: left;
   font-weight: bold;
-  font-family: 'PT Serif', serif;
+  font-family: 'Work Sans', serif;
   line-height: 1.4;
   color: inherit;
   font-size: 1.375rem;
