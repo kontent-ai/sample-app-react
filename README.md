@@ -231,6 +231,20 @@ You might want to request items based on the URL slugs. For more information che
 
 > The showcase is not ideal, because it is using a combination of the language prefix and localizable solution is not ideal. You should try to stick with one of the approaches. Because it is hard to define the behavior for language setting clash i.e. `/<EN-PREFIX>/articles/<ES-URL-SLUG>`.
 
+### Language fallbacks
+
+To deal with content that is not available in current language, this project uses method called language fallbacks. It will fetch the content in the language which set as fallback language in the Kontent.ai project and redirect the website to the URL with prefix of the given language. However, it is possible to disable language fallbacks by adding a filter of `system.language` to your query. For more information about getting localized content check this [`link.`](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/?tech=javascript)
+
+```js
+var query = Client.items<AboutUs>().type(contentTypes.about_us.codename);
+
+if (this.language) {
+    query
+    .languageParameter(this.language)
+    .equalsFilter('system.language', 'es-ES');
+}
+```
+
 ## Handling 404
 
 For the not found resources, prefixed 404 pages are used for both languages. As the content on one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
