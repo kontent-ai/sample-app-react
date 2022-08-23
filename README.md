@@ -229,7 +229,7 @@ const Component: React.FC = () => {
 
 You might want to request items based on the URL slugs. For more information check out [Kontent.ai/learn tutorial](https://kontent.ai/learn/tutorials/develop-apps/get-content/localized-content-items/#a-get-items-by-localized-url-slug). An example in this application for this is provided in `src/Pages/About.tsx` page.
 
-> The showcase is not ideal, because it is using a combination of the language prefix and localizable solution is not ideal. You should try to stick with one of the approaches. Because it is hard to define the behavior for language setting clash i.e. `/<EN-PREFIX>/articles/<ES-URL-SLUG>`.
+> The showcase is not ideal, because it is using a combination of the language prefixes and localizable routes. You should try to stick with one of the approaches. Because it is hard to define the behavior (priority) for language setting clashes like `/<EN-PREFIX>/articles/<ES-URL-SLUG>.
 
 ### Language fallbacks
 
