@@ -1,4 +1,5 @@
 import { IContentItem } from '@kontent-ai/delivery-sdk';
+import { RecordWithTtl } from 'dns';
 
 const languageCodes = [
   'en-US', // default languages
@@ -22,6 +23,18 @@ const initLanguageCodeObject = <TContentItem extends IContentItem>(
   if (!object) {
     object = {};
   }
+
+  languageCodes.forEach((language) => {
+    if (object) {
+      object[language] = null;
+    }
+  });
+
+  return object;
+};
+
+const initLanguageCodeObjectCustomValue = <TOutput> () : Record<string, TOutput | null> => {
+  const object : Record<string, TOutput | null> = {};
 
   languageCodes.forEach((language) => {
     if (object) {
@@ -58,6 +71,7 @@ export {
   defaultLanguage,
   initLanguageCodeObject,
   initLanguageCodeObjectWithArray,
+  initLanguageCodeObjectCustomValue,
   englishCode,
   spanishCode,
 };

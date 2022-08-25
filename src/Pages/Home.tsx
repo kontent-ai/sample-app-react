@@ -12,6 +12,7 @@ import { getAboutUsLink } from '../Utilities/ContentLinks';
 import {
   defaultLanguage,
   initLanguageCodeObject,
+  initLanguageCodeObjectCustomValue,
 } from '../Utilities/LanguageCodes';
 import { useIntl } from 'react-intl';
 import { Home as HomeType } from '../Models/content-types/home';
@@ -22,9 +23,15 @@ type HomeProps = {
   changes: ChangeFeedItem[]
 }
 
+type ItemIdentification = {
+  codename: string,
+  lang: string
+}
+
 const Home: React.FC<HomeProps> = ({ changes }) => {
   const { locale: language, formatMessage } = useIntl();
   const [homeData, setHomeData] = useState(initLanguageCodeObject<HomeType>());
+  const [homeUsedItems, setHomeUsedItems] = useState(initLanguageCodeObjectCustomValue<ItemIdentification[]>());
 
   const refetchData = useCallback((): void => {
     spinnerService.show('apiSpinner');
@@ -42,6 +49,15 @@ const Home: React.FC<HomeProps> = ({ changes }) => {
         ...data,
         [currentLanguage]: response.data.items[0] as HomeType,
       }));
+
+      const usedItems: ItemIdentification[] = Object.values(response.data.linkedItems).map(item => ({ codename: item.system.codename, lang: item.system.language }));
+      usedItems.push(...response.data.items.map(item => ({ codename: item.system.codename, lang: item.system.language })));
+
+      setHomeUsedItems((data) => ({
+        ...data,
+        [currentLanguage]: usedItems
+      }));
+
     });
   }, [language]);
 
@@ -54,8 +70,17 @@ const Home: React.FC<HomeProps> = ({ changes }) => {
     if (changes.length === 0) {
       return;
     }
+
     console.log('Update changes', changes.map(change => change.codename));
-    refetchData();
+    const currentLanguage = language || defaultLanguage
+    for (const change of changes) {
+      for (const usedItem of homeUsedItems[currentLanguage] || []) {
+        if (change.codename === usedItem.codename && change.language === usedItem.lang) {
+          refetchData();
+        }
+      }
+    }
+
   }, [changes, refetchData])
 
   const homeElements = homeData[language]?.elements;
