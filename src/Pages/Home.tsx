@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
 import { Client } from '../Client';
@@ -16,12 +16,17 @@ import {
 import { useIntl } from 'react-intl';
 import { Home as HomeType } from '../Models/content-types/home';
 import { contentTypes } from '../Models/project/contentTypes';
+import { ChangeFeedItem } from '../types';
 
-const Home: React.FC = () => {
+type HomeProps = {
+  changes: ChangeFeedItem[]
+}
+
+const Home: React.FC<HomeProps> = ({ changes }) => {
   const { locale: language, formatMessage } = useIntl();
   const [homeData, setHomeData] = useState(initLanguageCodeObject<HomeType>());
 
-  useEffect(() => {
+  const refetchData = useCallback((): void => {
     spinnerService.show('apiSpinner');
 
     const query = Client.items<HomeType>().type(contentTypes.home.codename);
@@ -39,6 +44,19 @@ const Home: React.FC = () => {
       }));
     });
   }, [language]);
+
+
+  useEffect(() => {
+    refetchData();
+  }, [language, refetchData]);
+
+  useEffect(() => {
+    if (changes.length === 0) {
+      return;
+    }
+    console.log('Update changes', changes.map(change => change.codename));
+    refetchData();
+  }, [changes, refetchData])
 
   const homeElements = homeData[language]?.elements;
   const aboutUsLink = getAboutUsLink(language);
@@ -62,6 +80,20 @@ const Home: React.FC = () => {
           twitterDescription={homeElements.metadataTwitterDescription}
           twitterImage={homeElements.metadataTwitterImage}
         />
+        <div style={{
+          'backgroundColor': 'silver',
+          'padding': '.5em',
+          'margin': '.5em'
+        }}>
+          <h2>Changes</h2>
+          <ul>
+            {changes.map(change =>
+              <li key={change.codename + '-' + change.language}>
+                {change.codename}({change.language},{change.collection}) - {change.change_type} {change.timestamp}
+              </li>
+            )}
+          </ul>
+        </div>
         {homeElements.heroUnit &&
           homeElements.heroUnit.linkedItems &&
           homeElements.heroUnit.linkedItems.length && (

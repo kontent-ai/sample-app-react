@@ -20,19 +20,22 @@ import Brewer from './Pages/Brewer';
 import Cookies from 'universal-cookie';
 import { SetLanguageType } from './LocalizedApp';
 import { NotFound } from './Pages/NotFound';
-
+import { ChangeFeedItem } from './types';
 interface AppProps {
   changeLanguage: SetLanguageType;
+  changes: ChangeFeedItem[]
 }
 
-const App: React.FC<AppProps> = ({ changeLanguage }) => {
+const App: React.FC<AppProps> = ({ changeLanguage, changes }) => {
+
   const cookies = new Cookies(document.cookie);
   const cookie = cookies.get(selectedProjectCookieName);
   const { formatMessage } = useIntl();
 
-  if (!cookie) {
-    return <Navigate to={projectConfigurationPath} />;
-  }
+  // TODO -check cookies does not work for web spotlight
+  // if (!cookie) {
+  //   return <Navigate to={projectConfigurationPath} />;
+  // }
 
   // slice(1) removes the `?` at the beginning of `location.search`
   const infoMessage = qs.parse(window.location.search.slice(1)).infoMessage;
@@ -49,7 +52,7 @@ const App: React.FC<AppProps> = ({ changeLanguage }) => {
           <Route path="/articles/:articleId" element={<Article />} />
           <Route path="/cafes" element={<Cafes />} />
           <Route path="/contacts" element={<Contact />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home changes={changes} />} />
           <Route
             path={`/${formatMessage({ id: 'Route.about' })}`}
             element={<About urlSlug={formatMessage({ id: 'Route.about' })} />}

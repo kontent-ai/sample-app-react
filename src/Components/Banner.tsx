@@ -13,16 +13,24 @@ const Banner: React.FC<BannerProps> = (props) => {
 
   return (
     <section
+      data-kontent-item-id={props.heroUnit.system.id}
       className="banner-section"
       style={
         imageUrl ? { backgroundImage: 'url(' + imageUrl + ')' } : undefined
       }
     >
-      <h2 className="banner-heading">
+      <h2
+        className="banner-heading"
+        data-kontent-element-codename="title"
+      >
         {heroUnit.title && heroUnit.title.value}
       </h2>
       {heroUnit.marketingMessage && (
-        <RichText element={heroUnit.marketingMessage} className="banner-text" />
+        <div data-kontent-element-codename="marketing_message">
+          <RichText
+            element={heroUnit.marketingMessage}
+            className="banner-text" />
+        </div>
       )}
     </section>
   );
