@@ -28,8 +28,51 @@ const RichText: React.FC<RichTextProps> = (props) => {
   const [richText, setRichText] = useState<IOutputResult<JSX.Element | string> | null>(null);
   const [richTextResolved, setRichTextResolved] = useState<JSX.Element | null>(null);
 
+  // useEffect(() => {
+  //   const resolver = new RichTextResolver();
+  //   resolver.resolveAsync({
+  //     value: "",
+  //     images: {},
+  //     links: {},
+  //     modular_content: []
+  //   }).then(result => {
+  //     const link = (domNode: IDomNode): any => {
+  //       if (domNode.type === 'tag') {
+  //         // There could be any resolution
+  //         return domNode.children.map(child => link(child));
+  //       }
+  //       else if (domNode.type === 'text') {
+  //         {
+  //           // There could be any resolution
+  //         }
+  //       }
+  //       result.childrenNodes.map(child => link(child));
+
+  //     }
+  //   });
+  // }, [props.element])
+
   useEffect(() => {
     const resolver = new RichTextResolver<JSX.Element | string>();
+
+    resolver.resolveAsync({
+      value: "",
+      images: {},
+      links: {},
+      modular_content: []
+    }).then(result => {
+
+      const link = (domNode: IDomNode): any => {
+        if (domNode.type === 'tag') {
+          // </p>
+          return domNode.children.map(child => link(child));
+        }
+        else if (domNode.type === 'text') {
+
+        }
+      }
+      result.childrenNodes.map(child => link(child));
+    });
 
     resolver.resolveAsync({
       value: props.element.value,
@@ -58,27 +101,27 @@ const RichText: React.FC<RichTextProps> = (props) => {
       }])),
       modular_content: props.element.linkedItemCodenames
     }, {}
-    // {
-    //   resolveDomNode: ((domNode) => {
-    //     let resolvedNode: JSX.Element | string | null = null;
-    //     switch (domNode.type) {
-    //       case 'tag':
-    //         resolvedNode = React.createElement(domNode.tagName, { ...domNode.attributes })
-    //         break;
-    //       case 'text':
-    //         resolvedNode = domNode.content
-    //         break
-    //       default:
-    //         break;
-    //     }
-    //     if (resolvedNode !== null) {
-    //       return Promise.resolve(resolvedNode);
-    //     }
-    //     else {
-    //       return Promise.reject()
-    //     }
-    //   })
-    // }
+      // {
+      //   resolveDomNode: ((domNode) => {
+      //     let resolvedNode: JSX.Element | string | null = null;
+      //     switch (domNode.type) {
+      //       case 'tag':
+      //         resolvedNode = React.createElement(domNode.tagName, { ...domNode.attributes })
+      //         break;
+      //       case 'text':
+      //         resolvedNode = domNode.content
+      //         break
+      //       default:
+      //         break;
+      //     }
+      //     if (resolvedNode !== null) {
+      //       return Promise.resolve(resolvedNode);
+      //     }
+      //     else {
+      //       return Promise.reject()
+      //     }
+      //   })
+      // }
     )
       .then((value) => {
         debugger;
@@ -88,7 +131,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
           if (domNode.type === 'tag') {
             // TODO "key properies"
             const childElements = domNode.children.map(node => link(node));
-            // TODO For non-pair element like <br/> to avoid "" error
+            // TODO For non-pair element like <br/> to avoid error
             const children = childElements.length === 0 ? undefined : childElements;
 
             // It is possible to make the resolution here
