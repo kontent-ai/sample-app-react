@@ -23,6 +23,7 @@
     "@kontent-ai/delivery-sdk": "^12.0.2",
     "@kontent-ai/react-components": "0.1.1",
     "@simply007org/react-spinners": "0.0.3",
+    "kontent-rich-text-to-json-converter": "file:../rich-text-resolver",
     "qs": "^6.9.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -47,6 +48,6 @@
   ],
   "engines": {
     "npm": "7 || 8",
-    "node": "16 || 17"
+    "node": "16 || 17 || 18"
   }
 }
