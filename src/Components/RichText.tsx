@@ -18,7 +18,6 @@ const isLinkedItem = (node: IDomHtmlNode): boolean => (
 );
 
 const RichText: React.FC<RichTextProps> = (props) => {
-
   const [richTextContent, setRichTextContent] = useState<JSX.Element[] | null>(null);
 
   useEffect(() => {
@@ -81,7 +80,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
                       }
                     );
                   }, 100);
-                  return <div style={{ backgroundColor: 'red' }} id={`tweet${tweetID}`}>TWEET {tweetID}</div>;
+                  return <div key={crypto.randomUUID().toString()} style={{ backgroundColor: 'red' }} id={`tweet${tweetID}`}>TWEET {tweetID}</div>;
                 }
                 case 'hosted_video': {
                   if (
@@ -92,6 +91,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
                   ) {
                     return (
                       <iframe
+                        key={crypto.randomUUID().toString()}
                         className="hosted-video__wrapper"
                         src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
                         width="640"
@@ -109,6 +109,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
                   ) {
                     return (
                       <iframe
+                        key={crypto.randomUUID().toString()}
                         className="hosted-video__wrapper"
                         width="560"
                         height="315"
@@ -119,11 +120,11 @@ const RichText: React.FC<RichTextProps> = (props) => {
                       ></iframe>
                     );
                   } else {
-                    return <div>Content item not supported</div>;
+                    return <div key={crypto.randomUUID().toString()}>Content item not supported</div>;
                   }
                 }
                 default:
-                  return <div>Content item not supported</div>;
+                  return <div key={crypto.randomUUID().toString()}>Content item not supported</div>;
               }
             }
 
@@ -154,7 +155,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
   }, [props.element]);
 
   return (
-    <div className={props.className} key="jiril">
+    <div className={props.className}>
       {/* <pre>{JSON.stringify(richTextContent, undefined, 2)}</pre> */}
       {richTextContent}
       {/* <RichTextElement richTextElement={props.element} resolvers={resolvers} /> */}
