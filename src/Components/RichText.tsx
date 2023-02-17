@@ -22,34 +22,6 @@ const RichText: React.FC<RichTextProps> = (props) => {
   useEffect(() => {
     const parser = new RichTextBrowserParser();
     const parseResult = parser.parse(props.element.value);
-      
-    //   {
-    //   value: props.element.value,
-    //   // other way of transformation
-    //   // images: props.element.images.reduce<IRichTextInput["images"]>((obj, value) => {
-    //   //   obj[value.imageId] = {
-    //   //     image_id: value.imageId,
-    //   //     description: value.description || "",
-    //   //     url: value.url,
-    //   //     width: value.width || 0,
-    //   //     height: value.height || 0
-    //   //   }
-    //   //   return obj;
-    //   // }, {})
-    //   images: Object.fromEntries(props.element.images.map(image => [image.imageId, {
-    //     image_id: image.imageId,
-    //     description: image.description,
-    //     url: image.url,
-    //     width: image.width || undefined,
-    //     height: image.height || undefined
-    //   }])),
-    //   links: Object.fromEntries(props.element.links.map(link => [link.linkId, {
-    //     codename: link.codename,
-    //     type: link.type,
-    //     url_slug: link.urlSlug
-    //   }])),
-    //   modular_content: props.element.linkedItemCodenames
-    // })
 
     const link = (domNode: IDomNode, index: number): JSX.Element => {
       if (domNode.type === 'tag') {
@@ -147,8 +119,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
       throw new Error("Undefined state")
     }
 
-    // TODO keys
-    const result = parseResult.childNodes.map((node, index) => link(node, index));
+    const result = parseResult.children.map((node, index) => link(node, index));
     setRichTextContent(result);
   }, [props.element]);
 
