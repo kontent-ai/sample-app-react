@@ -3,18 +3,13 @@ import {
   ElementModels,
   Elements,
 } from '@kontent-ai/delivery-sdk';
-import { RichTextBrowserParser, IDomHtmlNode, IDomNode, isText, isUnPairedElement } from '@pokornyd/kontent-ai-rich-text-parser';
+import { RichTextBrowserParser, IDomHtmlNode, IDomNode, isText, isUnPairedElement, isLinkedItem } from '@pokornyd/kontent-ai-rich-text-parser';
 import { useEffect } from 'react';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
   className?: string;
 }
-
-const isLinkedItem = (node: IDomHtmlNode): boolean => (
-  node.tagName === 'object'
-  && node.attributes.type === 'application/kenticocloud'
-);
 
 const RichText: React.FC<RichTextProps> = (props) => {
   const [richTextContent, setRichTextContent] = useState<JSX.Element[] | null>(null);
