@@ -3,7 +3,7 @@ import {
   ElementModels,
   Elements,
 } from '@kontent-ai/delivery-sdk';
-import { RichTextBrowserParser, IDomHtmlNode, IDomNode, isText, isUnPairedElement, isLinkedItem } from '@pokornyd/kontent-ai-rich-text-parser';
+import { RichTextBrowserParser, IDomNode, isText, isUnPairedElement, isLinkedItem } from '@pokornyd/kontent-ai-rich-text-parser';
 import { useEffect } from 'react';
 
 interface RichTextProps {
