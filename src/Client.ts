@@ -17,7 +17,7 @@ const cookies = new Cookies(document.cookie);
 
 let currentProjectId = projectId || cookies.get(selectedProjectCookieName);
 if (currentProjectId) {
-  cookies.set(selectedProjectCookieName, currentProjectId, { path: '/' });
+  cookies.set(selectedProjectCookieName, currentProjectId, { path: '/', sameSite:'none', secure:true });
 } else {
   currentProjectId = defaultProjectId;
 }
@@ -59,8 +59,8 @@ const resetClient = (newProjectId: string): void => {
     ],
     propertyNameResolver: camelCasePropertyNameResolver,
   });
-  const cookies = new Cookies(document.cookie);
-  cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
+  
+  cookies.set(selectedProjectCookieName, newProjectId, { path: '/', sameSite:'none', secure:true });
 };
 
 export { Client, resetClient };
