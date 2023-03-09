@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { projectConfigurationPath, selectedProjectCookieName } from './const';
+import { projectConfigurationPath } from './const';
 import SpinnerLayout from './Components/SpinnerLayout';
 import Metadata from './Components/Metadata';
 import qs from 'qs';
