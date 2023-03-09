@@ -17,20 +17,18 @@ import Cafes from './Pages/Cafes';
 import Contact from './Pages/Contacts';
 import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
-import Cookies from 'universal-cookie';
 import { SetLanguageType } from './LocalizedApp';
 import { NotFound } from './Pages/NotFound';
+import { getProjectId } from './Client';
 
 interface AppProps {
   changeLanguage: SetLanguageType;
 }
 
 const App: React.FC<AppProps> = ({ changeLanguage }) => {
-  const cookies = new Cookies(document.cookie);
-  const cookie = cookies.get(selectedProjectCookieName);
   const { formatMessage } = useIntl();
 
-  if (!cookie) {
+  if (!getProjectId()) {
     return <Navigate to={projectConfigurationPath} />;
   }
 
