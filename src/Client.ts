@@ -13,24 +13,38 @@ const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 const cookies = new Cookies(document.cookie);
 
-const getProjectId = (): string => {
-  const projectId = process.env.REACT_APP_PROJECT_ID || '';
+const getProjectIdFromEnvironment = (): string | null | undefined => {
+  const projectIdFromEnv = process.env.REACT_APP_PROJECT_ID;
 
-  let currentProjectId = projectId;
-
-  if (projectId) {
-    if (!validator.isUUID(projectId)) {
-      console.error(
-        `Your projectId (${projectId}) given in your environment variables is not a valid GUID.`
-      );
-    }
-    return projectId;
+  if (projectIdFromEnv === undefined) {
+    return undefined;
   }
-  currentProjectId = cookies.get(selectedProjectCookieName);
-  return currentProjectId ? currentProjectId : '';
+
+  if (projectIdFromEnv && !validator.isUUID(projectIdFromEnv)) {
+    console.error(
+      `Your projectId (${projectIdFromEnv}) given in your environment variables is not a valid GUID.`
+    );
+    return null;
+  }
+
+  return projectIdFromEnv;
 };
 
-const currentProjectId = getProjectId();
+const getProjectIdFromCookies = (): string | null => {
+  const projectIdFromCookie = cookies.get(selectedProjectCookieName);
+
+  if (projectIdFromCookie && !validator.isUUID(projectIdFromCookie)) {
+    console.error(
+      `Your projectId (${projectIdFromCookie}) from cookies is not a valid GUID.`
+    );
+    return null;
+  }
+
+  return projectIdFromCookie;
+};
+
+const currentProjectId =
+  getProjectIdFromEnvironment() ?? getProjectIdFromCookies() ?? '';
 
 const isPreview = (): boolean => previewApiKey !== '';
 
@@ -77,4 +91,9 @@ const resetClient = (newProjectId: string): void => {
   });
 };
 
-export { Client, resetClient, getProjectId };
+export {
+  Client,
+  resetClient,
+  getProjectIdFromEnvironment,
+  getProjectIdFromCookies,
+};

@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { projectConfigurationPath } from './const';
 import SpinnerLayout from './Components/SpinnerLayout';
 import Metadata from './Components/Metadata';
 import qs from 'qs';
@@ -19,7 +18,8 @@ import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
 import { SetLanguageType } from './LocalizedApp';
 import { NotFound } from './Pages/NotFound';
-import { getProjectId } from './Client';
+import { getProjectIdFromCookies, getProjectIdFromEnvironment } from './Client';
+import { projectConfigurationPath } from './const';
 
 interface AppProps {
   changeLanguage: SetLanguageType;
@@ -28,7 +28,10 @@ interface AppProps {
 const App: React.FC<AppProps> = ({ changeLanguage }) => {
   const { formatMessage } = useIntl();
 
-  if (!getProjectId()) {
+  if (
+    getProjectIdFromEnvironment() === undefined &&
+    !getProjectIdFromCookies()
+  ) {
     return <Navigate to={projectConfigurationPath} />;
   }
 
