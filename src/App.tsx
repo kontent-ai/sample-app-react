@@ -28,6 +28,14 @@ interface AppProps {
 const App: React.FC<AppProps> = ({ changeLanguage }) => {
   const { formatMessage } = useIntl();
 
+  if (getProjectIdFromEnvironment() === null) {
+    return (
+      <div>
+        Your projectId given in your environment variables is not a valid GUID.
+      </div>
+    );
+  }
+
   if (
     getProjectIdFromEnvironment() === undefined &&
     !getProjectIdFromCookies()
