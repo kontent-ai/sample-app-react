@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { projectConfigurationPath, selectedProjectCookieName } from './const';
 import SpinnerLayout from './Components/SpinnerLayout';
 import Metadata from './Components/Metadata';
 import qs from 'qs';
@@ -17,20 +16,30 @@ import Cafes from './Pages/Cafes';
 import Contact from './Pages/Contacts';
 import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
-import Cookies from 'universal-cookie';
 import { SetLanguageType } from './LocalizedApp';
 import { NotFound } from './Pages/NotFound';
+import { getProjectIdFromCookies, getProjectIdFromEnvironment } from './Client';
+import { projectConfigurationPath } from './const';
 
 interface AppProps {
   changeLanguage: SetLanguageType;
 }
 
 const App: React.FC<AppProps> = ({ changeLanguage }) => {
-  const cookies = new Cookies(document.cookie);
-  const cookie = cookies.get(selectedProjectCookieName);
   const { formatMessage } = useIntl();
 
-  if (!cookie) {
+  if (getProjectIdFromEnvironment() === null) {
+    return (
+      <div>
+        Your projectId given in your environment variables is not a valid GUID.
+      </div>
+    );
+  }
+
+  if (
+    getProjectIdFromEnvironment() === undefined &&
+    !getProjectIdFromCookies()
+  ) {
     return <Navigate to={projectConfigurationPath} />;
   }
 

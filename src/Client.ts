@@ -5,22 +5,42 @@ import {
 } from '@kontent-ai/delivery-sdk';
 import packageInfo from '../package.json';
 import { selectedProjectCookieName } from './const';
-import { defaultProjectId } from './Utilities/SelectedProject';
+import validator from 'validator';
 
 const sourceTrackingHeaderName = 'X-KC-SOURCE';
 
-// environment variables
-const projectId = process.env.REACT_APP_PROJECT_ID || '';
 const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 const cookies = new Cookies(document.cookie);
 
-let currentProjectId = projectId || cookies.get(selectedProjectCookieName);
-if (currentProjectId) {
-  cookies.set(selectedProjectCookieName, currentProjectId, { path: '/' });
-} else {
-  currentProjectId = defaultProjectId;
-}
+const getProjectIdFromEnvironment = (): string | null | undefined => {
+  const projectIdFromEnv = process.env.REACT_APP_PROJECT_ID;
+
+  if (projectIdFromEnv && !validator.isUUID(projectIdFromEnv)) {
+    console.error(
+      `Your projectId (${projectIdFromEnv}) given in your environment variables is not a valid GUID.`
+    );
+    return null;
+  }
+
+  return projectIdFromEnv;
+};
+
+const getProjectIdFromCookies = (): string | null => {
+  const projectIdFromCookie = cookies.get(selectedProjectCookieName);
+
+  if (projectIdFromCookie && !validator.isUUID(projectIdFromCookie)) {
+    console.error(
+      `Your projectId (${projectIdFromCookie}) from cookies is not a valid GUID.`
+    );
+    return null;
+  }
+
+  return projectIdFromCookie;
+};
+
+const currentProjectId =
+  getProjectIdFromEnvironment() ?? getProjectIdFromCookies() ?? '';
 
 const isPreview = (): boolean => previewApiKey !== '';
 
@@ -59,8 +79,17 @@ const resetClient = (newProjectId: string): void => {
     ],
     propertyNameResolver: camelCasePropertyNameResolver,
   });
-  const cookies = new Cookies(document.cookie);
-  cookies.set(selectedProjectCookieName, newProjectId, { path: '/' });
+
+  cookies.set(selectedProjectCookieName, newProjectId, {
+    path: '/',
+    sameSite: 'none',
+    secure: true,
+  });
 };
 
-export { Client, resetClient };
+export {
+  Client,
+  resetClient,
+  getProjectIdFromEnvironment,
+  getProjectIdFromCookies,
+};
