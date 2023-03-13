@@ -16,10 +16,6 @@ const cookies = new Cookies(document.cookie);
 const getProjectIdFromEnvironment = (): string | null | undefined => {
   const projectIdFromEnv = process.env.REACT_APP_PROJECT_ID;
 
-  if (projectIdFromEnv === undefined) {
-    return undefined;
-  }
-
   if (projectIdFromEnv && !validator.isUUID(projectIdFromEnv)) {
     console.error(
       `Your projectId (${projectIdFromEnv}) given in your environment variables is not a valid GUID.`
