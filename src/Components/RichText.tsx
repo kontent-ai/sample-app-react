@@ -4,7 +4,7 @@ import {
   Elements,
 } from '@kontent-ai/delivery-sdk';
 import { PortableText, PortableTextReactComponents, toPlainText } from '@portabletext/react';
-import { browserParse, resolveTable, transform } from '@pokornyd/kontent-ai-rich-text-parser';
+import { browserParse, nodeParse, resolveTable, transform } from '@pokornyd/kontent-ai-rich-text-parser';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
@@ -108,11 +108,33 @@ const RichText: React.FC<RichTextProps> = (props) => {
   }
 
   const parsedTree = browserParse(props.element.value);
+  const nodeParsedTree = nodeParse(props.element.value);
   const portableText = transform(parsedTree);
+  const transformedNodeParsedTree = transform(nodeParsedTree);
 
   return (
     <div className={props.className}>
       <PortableText value={portableText} components={portableTextComponents} />
+      
+      <h4>parsedTree - Browser</h4>
+      <details>
+        <pre>{JSON.stringify(parsedTree, undefined, 2)}</pre>
+      </details>
+
+      <h4>parsedTree - Node</h4>
+      <details>
+        <pre>{JSON.stringify(nodeParsedTree, undefined, 2)}</pre>
+      </details>
+
+      <h4>portable text from browser parser</h4>
+      <details>
+        <pre>{JSON.stringify(portableText, undefined, 2)}</pre>
+      </details>
+
+      <h4>portable text from Node parser</h4>
+      <details>
+        <pre>{JSON.stringify(transformedNodeParsedTree, undefined, 2)}</pre>
+      </details>
     </div>
   );
 };
