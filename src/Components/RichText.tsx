@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  ElementModels,
   Elements,
 } from '@kontent-ai/delivery-sdk';
-import { RichTextBrowserParser, IDomNode, isText, isUnPairedElement, isLinkedItem } from '@pokornyd/kontent-ai-rich-text-parser';
-import { useEffect } from 'react';
+import { PortableText, toPlainText } from '@portabletext/react';
+import { IPortableTextItem, browserParse, resolveTable, transform } from '@pokornyd/kontent-ai-rich-text-parser';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
@@ -12,115 +11,44 @@ interface RichTextProps {
 }
 
 const RichText: React.FC<RichTextProps> = (props) => {
-  const [richTextContent, setRichTextContent] = useState<JSX.Element[] | null>(null);
 
-  useEffect(() => {
-    const parser = new RichTextBrowserParser();
-    const parseResult = parser.parse(props.element.value);
-
-    const link = (domNode: IDomNode, index: number): JSX.Element => {
-      if (domNode.type === 'tag') {
-
-        const childElements = domNode.children.map(node => link(node, index));
-
-        // Resolution
-        if (isLinkedItem(domNode)) {
-          const itemCode = domNode.attributes['data-codename'];
-          const linkedItem = props.element.linkedItems.find(item => item.system.codename === itemCode);
-
-          switch (linkedItem?.system.type) {
-            case 'tweet': {
-              // TODO test out external call
-              let tweetLink = linkedItem?.elements.tweetLink.value;
-              let tweetID = tweetLink.match('^.*twitter.com/.*/(\\d+)/?.*$')[1];
-
-              let selectedTheme = linkedItem?.elements.theme.value[0].codename;
-              selectedTheme = selectedTheme ? selectedTheme : 'light';
-
-              setTimeout(() => {
-                window.twttr.widgets.createTweet(
-                  tweetID,
-                  document.getElementById(`tweet${tweetID}`),
-                  {
-                    theme: selectedTheme,
-                  }
-                );
-              }, 100);
-              return <div key={index} style={{ backgroundColor: 'red' }} id={`tweet${tweetID}`}>TWEET {tweetID}</div>;
-            }
-            case 'hosted_video': {
-              if (
-                linkedItem?.elements.videoHost.value.find(
-                  (item: ElementModels.MultipleChoiceOption) =>
-                    item.codename === 'vimeo'
-                )
-              ) {
-                return (
-                  <iframe
-                    key={index}
-                    className="hosted-video__wrapper"
-                    src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
-                    width="640"
-                    height="360"
-                    frameBorder="0"
-                    allowFullScreen
-                    title={`Vimeo video ${linkedItem.elements.videoId.value}`}
-                  ></iframe>
-                );
-              } else if (
-                linkedItem?.elements.videoHost.value.find(
-                  (item: ElementModels.MultipleChoiceOption) =>
-                    item.codename === 'youtube'
-                )
-              ) {
-                return (
-                  <iframe
-                    key={index}
-                    className="hosted-video__wrapper"
-                    width="560"
-                    height="315"
-                    src={`https://www.youtube.com/embed/${linkedItem.elements.videoId.value}`}
-                    frameBorder="0"
-                    allowFullScreen
-                    title={`Youtube video ${linkedItem.elements.videoId.value}`}
-                  ></iframe>
-                );
-              } else {
-                return <div key={index}>Content item not supported</div>;
-              }
-            }
-            default:
-              return <div key={index}>Content item not supported</div>;
-          }
-        }
-
-        const attributes = { ...domNode.attributes, key: index };
-
-        if(isUnPairedElement(domNode)) {
-          return React.createElement(domNode.tagName, attributes);
-        }
-
-        // Fallback without resolution       
-        const element = React.createElement(domNode.tagName, attributes, childElements);
-        console.log(element);
-
-        return element;
+  const portableTextComponents = {
+    types: {
+      component: (block: any) => {
+        const item = props.element.linkedItems.find(item => item.system.codename === block.value.component._ref);
+        return <div>{item?.elements.text_element.value}</div>;
+      },
+      table: ({ value }: any) => {
+        let tableString = resolveTable(value, toPlainText);
+        return <>{tableString}</>;
       }
-
-      if (isText(domNode)) {
-        return <span key={index}>{domNode.content}</span>
+    },
+    marks: {
+      link: ({ value, children }: any) => {
+        const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
+        return (
+          <a href={value?.href} target={target} rel={value?.rel} title={value?.title} data-new-window={value['data-new-window']}>
+            {children}
+          </a>
+        )
+      },
+      internalLink: ({ value, children }: any) => {
+        const item = props.element.linkedItems.find(item => item.system.id === value.reference._ref);
+        return (
+          <a href={"https://somerandomwebsite.xyz/" + item?.system.codename}>
+            {children}
+          </a>
+        )
       }
-
-      throw new Error("Undefined state")
     }
+  }
 
-    const result = parseResult.children.map((node, index) => link(node, index));
-    setRichTextContent(result);
-  }, [props.element]);
+  const parsedTree = browserParse(props.element.value);
+  const portableText = transform(parsedTree);
 
   return (
     <div className={props.className}>
-      {richTextContent}
+      {/* <PortableText value={portableText} components={portableTextComponents} /> */}
     </div>
   );
 };
