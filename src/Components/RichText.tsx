@@ -4,7 +4,7 @@ import {
   Elements,
 } from '@kontent-ai/delivery-sdk';
 import { PortableText, PortableTextReactComponents, toPlainText } from '@portabletext/react';
-import { browserParse, nodeParse, resolveTable, transform } from '@pokornyd/kontent-ai-rich-text-parser';
+import { browserParse, resolveTable, transformToPortableText } from '@pokornyd/kontent-ai-rich-text-parser';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
@@ -97,9 +97,9 @@ const RichText: React.FC<RichTextProps> = (props) => {
         )
       },
       internalLink: ({ value, children }) => {
-        const item = props.element.linkedItems.find(item => item.system.id === value.reference._ref);
+        const link = props.element.links.find(link => link.linkId == value.reference._ref);
         return (
-          <a href={"https://somerandomwebsite.xyz/" + item?.system.codename}>
+          <a href={"https://somerandomwebsite.xyz/" + link?.urlSlug || link?.codename}>
             {children}
           </a>
         )
@@ -108,15 +108,15 @@ const RichText: React.FC<RichTextProps> = (props) => {
   }
 
   const parsedTree = browserParse(props.element.value);
-  const nodeParsedTree = nodeParse(props.element.value);
-  const portableText = transform(parsedTree);
-  const transformedNodeParsedTree = transform(nodeParsedTree);
+  // const nodeParsedTree = nodeParse(props.element.value);
+  const portableText = transformToPortableText(parsedTree);
+  // const transformedNodeParsedTree = transform(nodeParsedTree);
 
   return (
     <div className={props.className}>
       <PortableText value={portableText} components={portableTextComponents} />
-      
-      <h4>parsedTree - Browser</h4>
+
+      {/* <h4>parsedTree - Browser</h4>
       <details>
         <pre>{JSON.stringify(parsedTree, undefined, 2)}</pre>
       </details>
@@ -134,7 +134,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
       <h4>portable text from Node parser</h4>
       <details>
         <pre>{JSON.stringify(transformedNodeParsedTree, undefined, 2)}</pre>
-      </details>
+      </details> */}
     </div>
   );
 };
