@@ -5,19 +5,19 @@ import {
   Responses,
 } from '@kontent-ai/delivery-sdk';
 
-const defaultProjectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
+const defaultEnvironmentId = '975bf280-fd91-488c-994c-2f04416e5ee3';
 
 const getSampleProjectItems = (
-  projectId = defaultProjectId
+  environmentId = defaultEnvironmentId
 ): Promise<
   IDeliveryNetworkResponse<
     Responses.IListContentItemsResponse,
     Contracts.IListContentItemsContract
   >
 > => {
-  const client = resetClient(projectId);
+  const client = resetClient(environmentId);
 
   return client.items().elementsParameter(['id']).depthParameter(0).toPromise();
 };
 
-export { defaultProjectId, getSampleProjectItems };
+export { defaultEnvironmentId, getSampleProjectItems };

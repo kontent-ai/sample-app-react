@@ -22,34 +22,34 @@ const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 
 const cookies = new Cookies(document.cookie);
 
-const getProjectIdFromEnvironment = (): string | null | undefined => {
-  const projectIdFromEnv = process.env.REACT_APP_PROJECT_ID;
+const getEnvironmentIdFromEnvironment = (): string | null | undefined => {
+  const environmentIdFromEnv = process.env.REACT_APP_PROJECT_ID;
 
-  if (projectIdFromEnv && !validator.isUUID(projectIdFromEnv)) {
+  if (environmentIdFromEnv && !validator.isUUID(environmentIdFromEnv)) {
     console.error(
-      `Your projectId (${projectIdFromEnv}) given in your environment variables is not a valid GUID.`
+      `Your environmentId (${environmentIdFromEnv}) given in your environment variables is not a valid GUID.`
     );
     return null;
   }
 
-  return projectIdFromEnv;
+  return environmentIdFromEnv;
 };
 
-const getProjectIdFromCookies = (): string | null => {
-  const projectIdFromCookie = cookies.get(selectedProjectCookieName);
+const getEnvironmentIdFromCookies = (): string | null => {
+  const environmentIdFromCookie = cookies.get(selectedProjectCookieName);
 
-  if (projectIdFromCookie && !validator.isUUID(projectIdFromCookie)) {
+  if (environmentIdFromCookie && !validator.isUUID(environmentIdFromCookie)) {
     console.error(
-      `Your projectId (${projectIdFromCookie}) from cookies is not a valid GUID.`
+      `Your environmentId (${environmentIdFromCookie}) from cookies is not a valid GUID.`
     );
     return null;
   }
 
-  return projectIdFromCookie;
+  return environmentIdFromCookie;
 };
 
-const currentProjectId =
-  getProjectIdFromEnvironment() ?? getProjectIdFromCookies() ?? '';
+const currentEnvironmentId =
+  getEnvironmentIdFromEnvironment() ?? getEnvironmentIdFromCookies() ?? '';
 
 const isPreview = (): boolean => previewApiKey !== '';
 
@@ -59,7 +59,7 @@ type GlobalHeadersType = {
 };
 
 const Client = new DeliveryClient({
-  projectId: currentProjectId,
+  environmentId: currentEnvironmentId,
   previewApiKey: previewApiKey,
   defaultQueryConfig: {
     usePreviewMode: isPreview(),
@@ -73,9 +73,9 @@ const Client = new DeliveryClient({
   propertyNameResolver: camelCasePropertyNameResolver,
 });
 
-const createClient = (newProjectId: string): DeliveryClient =>
+const createClient = (newEnvironmentId: string): DeliveryClient =>
   new DeliveryClient({
-    projectId: newProjectId,
+    environmentId: newEnvironmentId,
     previewApiKey: previewApiKey,
     defaultQueryConfig: {
       usePreviewMode: isPreview(),
@@ -89,7 +89,7 @@ const createClient = (newProjectId: string): DeliveryClient =>
     propertyNameResolver: camelCasePropertyNameResolver,
   });
 
-type ClientState = [DeliveryClient, (projectId: string) => void];
+type ClientState = [DeliveryClient, (environmentId: string) => void];
 
 const ClientContext = createContext<ClientState>(undefined as never);
 
@@ -100,10 +100,10 @@ export const ClientProvider: FC = ({
 }: PropsWithChildren<unknown>) => {
   const [client, setClient] = useState(Client);
 
-  const updateClient = useCallback((newProjectId: string) => {
-    setClient(createClient(newProjectId));
+  const updateClient = useCallback((newEnvironmentId: string) => {
+    setClient(createClient(newEnvironmentId));
 
-    cookies.set(selectedProjectCookieName, newProjectId, {
+    cookies.set(selectedProjectCookieName, newEnvironmentId, {
       path: '/',
       sameSite: 'none',
       secure: true,
@@ -119,4 +119,4 @@ export const ClientProvider: FC = ({
   );
 };
 
-export { createClient as resetClient, getProjectIdFromEnvironment, getProjectIdFromCookies };
+export { createClient as resetClient, getEnvironmentIdFromEnvironment, getEnvironmentIdFromCookies };

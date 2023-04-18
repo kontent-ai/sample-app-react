@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import validator from 'validator';
 import { resetClient, useClient } from '../../Client';
 import {
-  defaultProjectId,
+  defaultEnvironmentId,
   getSampleProjectItems,
 } from '../../Utilities/SelectedProject';
 import KontentLogo from '../../Images/Admin/kk-logo.svg';
@@ -69,19 +69,19 @@ const Configuration: React.FC = () => {
     event: React.FormEvent<HTMLFormElement>
   ): void => {
     event.preventDefault();
-    const newProjectId = (
+    const newEnvironmentId = (
       (event.target as HTMLFormElement)[0] as HTMLInputElement
     )?.value;
 
-    setNewProjectId(newProjectId);
+    setNewEnvironmentId(newEnvironmentId);
   };
 
-  const setNewProjectId = (
-    newProjectId: string,
+  const setNewEnvironmentId = (
+    newEnvironmentId: string,
     newlyGeneratedProject?: boolean
   ): void => {
-    if (!validator.isUUID(newProjectId)) {
-      const message = `Selected project (${newProjectId}) is not a valid GUID`;
+    if (!validator.isUUID(newEnvironmentId)) {
+      const message = `Selected project (${newEnvironmentId}) is not a valid GUID`;
       console.error(message);
       alert(message);
       setCurrentProjectInputValue(cookie);
@@ -89,25 +89,25 @@ const Configuration: React.FC = () => {
       return;
     }
 
-    setClient(newProjectId);
+    setClient(newEnvironmentId);
     if (newlyGeneratedProject) {
-      waitUntilProjectAccessible(newProjectId);
+      waitUntilProjectAccessible(newEnvironmentId);
       spinnerService.show('apiSpinner');
       return;
     }
 
-    redirectToHome(newProjectId);
+    redirectToHome(newEnvironmentId);
   };
 
   const waitUntilProjectAccessible = async (
-    newProjectId: string
+    newEnvironmentId: string
   ): Promise<void> => {
     const sampleProjectClientResult = await getSampleProjectItems();
 
-    setClient(newProjectId);
+    setClient(newEnvironmentId);
 
     const intervalId = setInterval(() => {
-      resetClient(newProjectId)
+      resetClient(newEnvironmentId)
         .items()
         .elementsParameter(['id'])
         .depthParameter(0)
@@ -119,17 +119,17 @@ const Configuration: React.FC = () => {
           ) {
             spinnerService.hide('apiSpinner');
             clearInterval(intervalId);
-            redirectToHome(newProjectId);
+            redirectToHome(newEnvironmentId);
           }
         });
     }, 2000);
   };
 
-  const redirectToHome = (newProjectId: string): void => {
+  const redirectToHome = (newEnvironmentId: string): void => {
     const infoMessage =
-      newProjectId === defaultProjectId
+      newEnvironmentId === defaultEnvironmentId
         ? `You've configured your app to with a project ID of a shared Kontent.ai project.`
-        : `You've configured your app with a project ID "${newProjectId}". You can edit its contents at https://kontent.ai/.`;
+        : `You've configured your app with a project ID "${newEnvironmentId}". You can edit its contents at https://kontent.ai/.`;
     navigate(`/?infoMessage=${infoMessage}`);
   };
 
@@ -156,7 +156,7 @@ const Configuration: React.FC = () => {
       return;
     }
 
-    setNewProjectId(event.data.projectGuid, event.data.newlyGeneratedProject);
+    setNewEnvironmentId(event.data.projectGuid, event.data.newlyGeneratedProject);
   };
 
   return (
@@ -236,7 +236,7 @@ const Configuration: React.FC = () => {
                 <h2 className="headline-medium">Use the Shared Project</h2>
                 <p className="margin-top-l">
                   Alternatively, you may wish to use the shared project (project
-                  ID "{defaultProjectId}
+                  ID "{defaultEnvironmentId}
                   ").
                 </p>
                 <p className="margin-top-l">
@@ -247,7 +247,7 @@ const Configuration: React.FC = () => {
                   type="submit"
                   className="button button-primary margin-top-xl"
                   value="Use the shared project"
-                  onClick={(): void => setNewProjectId(defaultProjectId)}
+                  onClick={(): void => setNewEnvironmentId(defaultEnvironmentId)}
                 />
               </section>
             </div>
