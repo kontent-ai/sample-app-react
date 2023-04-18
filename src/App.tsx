@@ -18,7 +18,10 @@ import Coffee from './Pages/Coffee';
 import Brewer from './Pages/Brewer';
 import { SetLanguageType } from './LocalizedApp';
 import { NotFound } from './Pages/NotFound';
-import { getEnvironmentIdFromCookies, getEnvironmentIdFromEnvironment } from './Client';
+import {
+  getEnvironmentIdFromCookies,
+  getEnvironmentIdFromEnvironment,
+} from './Client';
 import { projectConfigurationPath } from './const';
 
 interface AppProps {
@@ -31,7 +34,8 @@ const App: React.FC<AppProps> = ({ changeLanguage }) => {
   if (getEnvironmentIdFromEnvironment() === null) {
     return (
       <div>
-        Your environmentId given in your environment variables is not a valid GUID.
+        Your environmentId given in your environment variables is not a valid
+        GUID.
       </div>
     );
   }

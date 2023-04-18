@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import validator from 'validator';
-import { resetClient, useClient } from '../../Client';
+import { createClient, useClient } from '../../Client';
 import {
   defaultEnvironmentId,
   getSampleProjectItems,
@@ -107,7 +107,7 @@ const Configuration: React.FC = () => {
     setClient(newEnvironmentId);
 
     const intervalId = setInterval(() => {
-      resetClient(newEnvironmentId)
+      createClient(newEnvironmentId)
         .items()
         .elementsParameter(['id'])
         .depthParameter(0)
@@ -156,7 +156,10 @@ const Configuration: React.FC = () => {
       return;
     }
 
-    setNewEnvironmentId(event.data.projectGuid, event.data.newlyGeneratedProject);
+    setNewEnvironmentId(
+      event.data.projectGuid,
+      event.data.newlyGeneratedProject
+    );
   };
 
   return (
@@ -247,7 +250,9 @@ const Configuration: React.FC = () => {
                   type="submit"
                   className="button button-primary margin-top-xl"
                   value="Use the shared project"
-                  onClick={(): void => setNewEnvironmentId(defaultEnvironmentId)}
+                  onClick={(): void =>
+                    setNewEnvironmentId(defaultEnvironmentId)
+                  }
                 />
               </section>
             </div>

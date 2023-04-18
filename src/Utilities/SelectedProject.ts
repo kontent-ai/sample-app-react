@@ -1,4 +1,4 @@
-import { resetClient } from '../Client';
+import { createClient } from '../Client';
 import {
   Contracts,
   IDeliveryNetworkResponse,
@@ -15,7 +15,7 @@ const getSampleProjectItems = (
     Contracts.IListContentItemsContract
   >
 > => {
-  const client = resetClient(environmentId);
+  const client = createClient(environmentId);
 
   return client.items().elementsParameter(['id']).depthParameter(0).toPromise();
 };

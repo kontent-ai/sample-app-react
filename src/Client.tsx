@@ -119,4 +119,8 @@ export const ClientProvider: FC = ({
   );
 };
 
-export { createClient as resetClient, getEnvironmentIdFromEnvironment, getEnvironmentIdFromCookies };
+export {
+  createClient,
+  getEnvironmentIdFromEnvironment,
+  getEnvironmentIdFromCookies,
+};
