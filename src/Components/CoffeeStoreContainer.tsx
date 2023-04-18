@@ -1,6 +1,5 @@
 import { spinnerService } from '@simply007org/react-spinners';
 import React, { useEffect, useState } from 'react';
-import { Client } from '../Client';
 import { matchesTaxonomy } from '../Utilities/CheckboxFilter';
 import {
   defaultLanguage,
@@ -12,6 +11,7 @@ import { ITaxonomyTerms } from '@kontent-ai/delivery-sdk';
 import { useIntl } from 'react-intl';
 import { Coffee } from '../Models/content-types/coffee';
 import { contentTypes } from '../Models/project/contentTypes';
+import { useClient } from '../Client';
 
 interface filterType {
   [index: string]: string[];
@@ -31,6 +31,8 @@ const CoffeeStoreContainer: React.FC = () => {
     processings: [],
     productStatuses: [],
   });
+
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -52,7 +54,7 @@ const CoffeeStoreContainer: React.FC = () => {
         [currentLanguage]: response.data.items as Coffee[],
       }));
     });
-  }, [language]);
+  }, [language, Client]);
 
   useEffect(() => {
     Client.taxonomy('processing')
@@ -60,7 +62,7 @@ const CoffeeStoreContainer: React.FC = () => {
       .then((response) => {
         setProcessings(response.data.taxonomy.terms);
       });
-  }, []);
+  }, [Client]);
 
   useEffect(() => {
     Client.taxonomy('product_status')
@@ -68,7 +70,7 @@ const CoffeeStoreContainer: React.FC = () => {
       .then((response) => {
         setProductStatuses(response.data.taxonomy.terms);
       });
-  }, []);
+  }, [Client]);
 
   const matches = (coffee: Coffee): boolean =>
     matchesTaxonomy(coffee, filter.processings, 'processing') &&

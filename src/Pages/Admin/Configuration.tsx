@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import validator from 'validator';
-import { resetClient, Client } from '../../Client';
+import { resetClient, useClient } from '../../Client';
 import {
   defaultProjectId,
   getSampleProjectItems,
@@ -48,6 +48,8 @@ const Configuration: React.FC = () => {
   const [currentProjectInputValue, setCurrentProjectInputValue] =
     useState(cookie);
 
+  const [, setClient] = useClient();
+
   useEffect(() => {
     window.addEventListener('message', receiveMessage, false);
 
@@ -87,7 +89,7 @@ const Configuration: React.FC = () => {
       return;
     }
 
-    resetClient(newProjectId);
+    setClient(newProjectId);
     if (newlyGeneratedProject) {
       waitUntilProjectAccessible(newProjectId);
       spinnerService.show('apiSpinner');
@@ -97,26 +99,28 @@ const Configuration: React.FC = () => {
     redirectToHome(newProjectId);
   };
 
-  const waitUntilProjectAccessible = (newProjectId: string): void => {
-    setTimeout(() => {
-      resetClient(newProjectId);
-      Client.items()
+  const waitUntilProjectAccessible = async (
+    newProjectId: string
+  ): Promise<void> => {
+    const sampleProjectClientResult = await getSampleProjectItems();
+
+    setClient(newProjectId);
+
+    const intervalId = setInterval(() => {
+      resetClient(newProjectId)
+        .items()
         .elementsParameter(['id'])
         .depthParameter(0)
         .toPromise()
         .then((response) => {
-          getSampleProjectItems().then((sampleProjectClientResult) => {
-            resetClient(newProjectId);
-            if (
-              response.data.items.length >=
-              sampleProjectClientResult.data.items.length
-            ) {
-              spinnerService.hide('apiSpinner');
-              redirectToHome(newProjectId);
-            } else {
-              waitUntilProjectAccessible(newProjectId);
-            }
-          });
+          if (
+            response.data.items.length >=
+            sampleProjectClientResult.data.items.length
+          ) {
+            spinnerService.hide('apiSpinner');
+            clearInterval(intervalId);
+            redirectToHome(newProjectId);
+          }
         });
     }, 2000);
   };

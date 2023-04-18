@@ -1,7 +1,6 @@
 import { spinnerService } from '@simply007org/react-spinners';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Client } from '../Client';
 import { matchesTaxonomy } from '../Utilities/CheckboxFilter';
 import {
   defaultLanguage,
@@ -13,6 +12,7 @@ import { ITaxonomyTerms } from '@kontent-ai/delivery-sdk';
 import { useIntl } from 'react-intl';
 import { Brewer } from '../Models/content-types/brewer';
 import { contentTypes } from '../Models/project/contentTypes';
+import { useClient } from '../Client';
 
 interface filterType {
   [index: string]: string[];
@@ -43,6 +43,8 @@ const BrewerStoreContainer: React.FC = () => {
     productStatuses: [],
   });
 
+  const [Client] = useClient();
+
   useEffect(() => {
     spinnerService.show('apiSpinner');
 
@@ -63,7 +65,7 @@ const BrewerStoreContainer: React.FC = () => {
         [currentLanguage]: response.data.items as Brewer[],
       }));
     });
-  }, [language]);
+  }, [language, Client]);
 
   useEffect(() => {
     Client.taxonomy('manufacturer')
@@ -71,7 +73,7 @@ const BrewerStoreContainer: React.FC = () => {
       .then((response) => {
         setManufacturers(response.data.taxonomy.terms);
       });
-  }, []);
+  }, [Client]);
 
   useEffect(() => {
     Client.taxonomy('product_status')
@@ -79,7 +81,7 @@ const BrewerStoreContainer: React.FC = () => {
       .then((response) => {
         setProductStatuses(response.data.taxonomy.terms);
       });
-  }, []);
+  }, [Client]);
 
   const matches = (brewer: Brewer): boolean =>
     matchesTaxonomy(brewer, filter.manufacturers, 'manufacturer') &&

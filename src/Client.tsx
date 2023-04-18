@@ -6,6 +6,15 @@ import {
 import packageInfo from '../package.json';
 import { selectedProjectCookieName } from './const';
 import validator from 'validator';
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 
 const sourceTrackingHeaderName = 'X-KC-SOURCE';
 
@@ -49,7 +58,7 @@ type GlobalHeadersType = {
   value: string;
 };
 
-let Client = new DeliveryClient({
+const Client = new DeliveryClient({
   projectId: currentProjectId,
   previewApiKey: previewApiKey,
   defaultQueryConfig: {
@@ -64,8 +73,8 @@ let Client = new DeliveryClient({
   propertyNameResolver: camelCasePropertyNameResolver,
 });
 
-const resetClient = (newProjectId: string): void => {
-  Client = new DeliveryClient({
+const createClient = (newProjectId: string): DeliveryClient =>
+  new DeliveryClient({
     projectId: newProjectId,
     previewApiKey: previewApiKey,
     defaultQueryConfig: {
@@ -80,16 +89,34 @@ const resetClient = (newProjectId: string): void => {
     propertyNameResolver: camelCasePropertyNameResolver,
   });
 
-  cookies.set(selectedProjectCookieName, newProjectId, {
-    path: '/',
-    sameSite: 'none',
-    secure: true,
-  });
+type ClientState = [DeliveryClient, (projectId: string) => void];
+
+const ClientContext = createContext<ClientState>(undefined as never);
+
+export const useClient = (): ClientState => useContext(ClientContext);
+
+export const ClientProvider: FC = ({
+  children,
+}: PropsWithChildren<unknown>) => {
+  const [client, setClient] = useState(Client);
+
+  const updateClient = useCallback((newProjectId: string) => {
+    setClient(createClient(newProjectId));
+
+    cookies.set(selectedProjectCookieName, newProjectId, {
+      path: '/',
+      sameSite: 'none',
+      secure: true,
+    });
+  }, []);
+
+  return (
+    <ClientContext.Provider
+      value={useMemo(() => [client, updateClient], [client, updateClient])}
+    >
+      {children}
+    </ClientContext.Provider>
+  );
 };
 
-export {
-  Client,
-  resetClient,
-  getProjectIdFromEnvironment,
-  getProjectIdFromCookies,
-};
+export { createClient as resetClient, getProjectIdFromEnvironment, getProjectIdFromCookies };

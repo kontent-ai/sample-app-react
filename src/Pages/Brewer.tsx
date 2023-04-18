@@ -1,6 +1,5 @@
 import { spinnerService } from '@simply007org/react-spinners';
 import React, { useEffect, useState } from 'react';
-import { Client } from '../Client';
 import Metadata from '../Components/Metadata';
 import RichText from '../Components/RichText';
 import {
@@ -12,6 +11,7 @@ import { useIntl } from 'react-intl';
 import { Brewer as BrewerType } from '../Models/content-types/brewer';
 import { contentTypes } from '../Models/project/contentTypes';
 import { resolveChangeLanguageLink } from '../Utilities/LanugageLink';
+import { useClient } from '../Client';
 
 const Brewer: React.FC = () => {
   const [brewer, setBrewer] = useState(
@@ -21,6 +21,7 @@ const Brewer: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -52,7 +53,7 @@ const Brewer: React.FC = () => {
         [currentLanguage]: response.data.items[0] as BrewerType,
       }));
     });
-  }, [language, brewerSlug, pathname, navigate]);
+  }, [language, brewerSlug, pathname, navigate, Client]);
 
   const brewerData = brewer[language || defaultLanguage]!;
 

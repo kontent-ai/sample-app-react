@@ -1,7 +1,6 @@
 import React from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
-import { Client } from '../Client';
 import {
   defaultLanguage,
   initLanguageCodeObject,
@@ -13,6 +12,7 @@ import { useIntl } from 'react-intl';
 import { Article as ArticleType } from '../Models/content-types/article';
 import { contentTypes } from '../Models/project/contentTypes';
 import { resolveChangeLanguageLink } from '../Utilities/LanugageLink';
+import { useClient } from '../Client';
 
 const Article: React.FC = () => {
   const { locale: language, formatDate, formatMessage } = useIntl();
@@ -20,6 +20,7 @@ const Article: React.FC = () => {
   const [article, setArticle] = useState(initLanguageCodeObject<ArticleType>());
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -72,7 +73,7 @@ const Article: React.FC = () => {
         [currentLanguage]: response.data.items[0] as ArticleType,
       }));
     });
-  }, [language, articleId, navigate, pathname]);
+  }, [language, articleId, navigate, pathname, Client]);
 
   const currentArticle = article[language];
   if (!currentArticle) {

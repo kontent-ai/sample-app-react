@@ -1,7 +1,6 @@
 import React from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
-import { Client } from '../Client';
 import Banner from '../Components/Banner';
 import LatestArticles from '../Components/LatestArticles';
 import LinkButton from '../Components/LinkButton';
@@ -16,10 +15,12 @@ import {
 import { useIntl } from 'react-intl';
 import { Home as HomeType } from '../Models/content-types/home';
 import { contentTypes } from '../Models/project/contentTypes';
+import { useClient } from '../Client';
 
 const Home: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
   const [homeData, setHomeData] = useState(initLanguageCodeObject<HomeType>());
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -38,7 +39,7 @@ const Home: React.FC = () => {
         [currentLanguage]: response.data.items[0] as HomeType,
       }));
     });
-  }, [language]);
+  }, [language, Client]);
 
   const homeElements = homeData[language]?.elements;
   const aboutUsLink = getAboutUsLink(language);

@@ -1,4 +1,4 @@
-import { resetClient, Client } from '../Client';
+import { resetClient } from '../Client';
 import {
   Contracts,
   IDeliveryNetworkResponse,
@@ -15,9 +15,9 @@ const getSampleProjectItems = (
     Contracts.IListContentItemsContract
   >
 > => {
-  resetClient(projectId);
+  const client = resetClient(projectId);
 
-  return Client.items().elementsParameter(['id']).depthParameter(0).toPromise();
+  return client.items().elementsParameter(['id']).depthParameter(0).toPromise();
 };
 
 export { defaultProjectId, getSampleProjectItems };

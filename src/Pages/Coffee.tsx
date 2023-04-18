@@ -1,7 +1,7 @@
 import React from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
-import { Client } from '../Client';
+import { useClient } from '../Client';
 import Metadata from '../Components/Metadata';
 import RichText from '../Components/RichText';
 import {
@@ -20,6 +20,7 @@ const Coffee: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -51,7 +52,7 @@ const Coffee: React.FC = () => {
         [currentLanguage]: response.data.items[0] as CoffeeType,
       }));
     });
-  }, [language, coffeeSlug, pathname, navigate]);
+  }, [language, coffeeSlug, pathname, navigate, Client]);
 
   const coffeeData = coffee[language || defaultLanguage];
 
