@@ -8,7 +8,7 @@ import {
 import {
   browserParse,
   resolveTable,
-  transformToJson,
+  transformToPortableText,
 } from '@kontent-ai/rich-text-resolver';
 
 interface RichTextProps {
@@ -112,7 +112,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
       },
       internalLink: ({ value, children }) => {
         const link = props.element.links.find(
-          (link) => link.linkId == value.reference._ref
+          (link) => link.linkId === value.reference._ref
         );
         return (
           <a
@@ -129,7 +129,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
 
   const parsedTree = browserParse(props.element.value);
   // const nodeParsedTree = nodeParse(props.element.value);
-  const portableText = transformToJson(parsedTree);
+  const portableText = transformToPortableText(parsedTree);
   // const transformedNodeParsedTree = transform(nodeParsedTree);
 
   return (
