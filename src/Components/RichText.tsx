@@ -4,7 +4,7 @@ import {
   Elements,
 } from '@kontent-ai/delivery-sdk';
 import { PortableText, PortableTextReactComponents, toPlainText } from '@portabletext/react';
-import { browserParse, resolveTable, transformToPortableText } from '@pokornyd/kontent-ai-rich-text-parser';
+import { browserParse, resolveTable, transformToJson } from '@kontent-ai/rich-text-resolver';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
@@ -109,7 +109,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
 
   const parsedTree = browserParse(props.element.value);
   // const nodeParsedTree = nodeParse(props.element.value);
-  const portableText = transformToPortableText(parsedTree);
+  const portableText = transformToJson(parsedTree);
   // const transformedNodeParsedTree = transform(nodeParsedTree);
 
   return (
