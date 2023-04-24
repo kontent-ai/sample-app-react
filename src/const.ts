@@ -1,2 +1,2 @@
-export const selectedProjectCookieName = 'EnvironmentId';
+export const selectedEnvironmentCookieName = 'EnvironmentId';
 export const projectConfigurationPath = '/Admin/Configuration';

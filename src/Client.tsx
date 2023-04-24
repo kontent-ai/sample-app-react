@@ -4,7 +4,7 @@ import {
   DeliveryClient,
 } from '@kontent-ai/delivery-sdk';
 import packageInfo from '../package.json';
-import { selectedProjectCookieName } from './const';
+import { selectedEnvironmentCookieName } from './const';
 import validator from 'validator';
 import {
   createContext,
@@ -23,7 +23,7 @@ const previewApiKey = process.env.REACT_APP_PREVIEW_API_KEY || '';
 const cookies = new Cookies(document.cookie);
 
 const getEnvironmentIdFromEnvironment = (): string | null | undefined => {
-  const environmentIdFromEnv = process.env.REACT_APP_PROJECT_ID;
+  const environmentIdFromEnv = process.env.REACT_APP_ENVIRONMENT_ID;
 
   if (environmentIdFromEnv && !validator.isUUID(environmentIdFromEnv)) {
     console.error(
@@ -36,7 +36,7 @@ const getEnvironmentIdFromEnvironment = (): string | null | undefined => {
 };
 
 const getEnvironmentIdFromCookies = (): string | null => {
-  const environmentIdFromCookie = cookies.get(selectedProjectCookieName);
+  const environmentIdFromCookie = cookies.get(selectedEnvironmentCookieName);
 
   if (environmentIdFromCookie && !validator.isUUID(environmentIdFromCookie)) {
     console.error(
@@ -58,21 +58,6 @@ type GlobalHeadersType = {
   value: string;
 };
 
-const Client = new DeliveryClient({
-  environmentId: currentEnvironmentId,
-  previewApiKey: previewApiKey,
-  defaultQueryConfig: {
-    usePreviewMode: isPreview(),
-  },
-  globalHeaders: (_queryConfig): GlobalHeadersType[] => [
-    {
-      header: sourceTrackingHeaderName,
-      value: `${packageInfo.name};${packageInfo.version}`,
-    },
-  ],
-  propertyNameResolver: camelCasePropertyNameResolver,
-});
-
 const createClient = (newEnvironmentId: string): DeliveryClient =>
   new DeliveryClient({
     environmentId: newEnvironmentId,
@@ -89,6 +74,8 @@ const createClient = (newEnvironmentId: string): DeliveryClient =>
     propertyNameResolver: camelCasePropertyNameResolver,
   });
 
+const Client = createClient(currentEnvironmentId);
+
 type ClientState = [DeliveryClient, (environmentId: string) => void];
 
 const ClientContext = createContext<ClientState>(undefined as never);
@@ -103,7 +90,7 @@ export const ClientProvider: FC = ({
   const updateClient = useCallback((newEnvironmentId: string) => {
     setClient(createClient(newEnvironmentId));
 
-    cookies.set(selectedProjectCookieName, newEnvironmentId, {
+    cookies.set(selectedEnvironmentCookieName, newEnvironmentId, {
       path: '/',
       sameSite: 'none',
       secure: true,

@@ -7,15 +7,13 @@ import {
 
 const defaultEnvironmentId = '975bf280-fd91-488c-994c-2f04416e5ee3';
 
-const getSampleProjectItems = (
-  environmentId = defaultEnvironmentId
-): Promise<
+const getSampleProjectItems = (): Promise<
   IDeliveryNetworkResponse<
     Responses.IListContentItemsResponse,
     Contracts.IListContentItemsContract
   >
 > => {
-  const client = createClient(environmentId);
+  const client = createClient(defaultEnvironmentId);
 
   return client.items().elementsParameter(['id']).depthParameter(0).toPromise();
 };

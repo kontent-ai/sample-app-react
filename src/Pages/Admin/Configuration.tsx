@@ -10,7 +10,7 @@ import './Configuration.css';
 import { spinnerService } from '@simply007org/react-spinners';
 import SpinnerLayout from '../../Components/SpinnerLayout';
 import { useNavigate } from 'react-router-dom';
-import { selectedProjectCookieName } from '../../const';
+import { selectedEnvironmentCookieName } from '../../const';
 import Cookies from 'universal-cookie';
 
 type getWindowCenterPositionReturnType = {
@@ -43,9 +43,9 @@ const getWindowCenterPosition = (
 
 const Configuration: React.FC = () => {
   const cookies = new Cookies(document.cookie);
-  const cookie = cookies.get(selectedProjectCookieName);
+  const cookie = cookies.get(selectedEnvironmentCookieName);
   const navigate = useNavigate();
-  const [currentProjectInputValue, setCurrentProjectInputValue] =
+  const [currentEnvironmentInputValue, setCurrentEnvironmentInputValue] =
     useState(cookie);
 
   const [, setClient] = useClient();
@@ -59,13 +59,13 @@ const Configuration: React.FC = () => {
     };
   });
 
-  const handleProjectInputChange = (
+  const handleEnvironmentInputChange = (
     event: ChangeEvent<HTMLInputElement>
   ): void => {
-    setCurrentProjectInputValue(event.target.value);
+    setCurrentEnvironmentInputValue(event.target.value);
   };
 
-  const handleSetProjectSubmit = (
+  const handleSetEnvironmentSubmit = (
     event: React.FormEvent<HTMLFormElement>
   ): void => {
     event.preventDefault();
@@ -81,10 +81,10 @@ const Configuration: React.FC = () => {
     newlyGeneratedProject?: boolean
   ): void => {
     if (!validator.isUUID(newEnvironmentId)) {
-      const message = `Selected project (${newEnvironmentId}) is not a valid GUID`;
+      const message = `Selected envrionment ID (${newEnvironmentId}) is not a valid GUID`;
       console.error(message);
       alert(message);
-      setCurrentProjectInputValue(cookie);
+      setCurrentEnvironmentInputValue(cookie);
 
       return;
     }
@@ -128,8 +128,8 @@ const Configuration: React.FC = () => {
   const redirectToHome = (newEnvironmentId: string): void => {
     const infoMessage =
       newEnvironmentId === defaultEnvironmentId
-        ? `You've configured your app to with a project ID of a shared Kontent.ai project.`
-        : `You've configured your app with a project ID "${newEnvironmentId}". You can edit its contents at https://kontent.ai/.`;
+        ? `You've configured your app to with a environment ID of a shared Kontent.ai project.`
+        : `You've configured your app with a environment ID "${newEnvironmentId}". You can edit its contents at https://kontent.ai/.`;
     navigate(`/?infoMessage=${infoMessage}`);
   };
 
@@ -152,12 +152,12 @@ const Configuration: React.FC = () => {
   const receiveMessage = (event: MessageEvent): void => {
     if (event.origin.toLowerCase() !== 'https://app.kontent.ai') return;
 
-    if (!event.data.projectGuid) {
+    if (!event.data.environmentGuid) {
       return;
     }
 
     setNewEnvironmentId(
-      event.data.projectGuid,
+      event.data.environmentGuid,
       event.data.newlyGeneratedProject
     );
   };
@@ -177,25 +177,25 @@ const Configuration: React.FC = () => {
               <p className="margin-top-xl">
                 For your sample app to work, you should have a Kontent.ai
                 project containing content. Your app should be then configured
-                with its project ID. You can either get it by signing in using
-                your Kontent.ai credentials or by signing up for a trial. Later,
-                it will be converted to a free plan.
+                with its environment ID. You can either get it by signing in
+                using your Kontent.ai credentials or by signing up for a trial.
+                Later, it will be converted to a free plan.
               </p>
             </div>
           </header>
           <div className="kk-container">
             <section className="paper margin-top-xl">
-              <h2 className="headline-medium">Get a Project ID</h2>
+              <h2 className="headline-medium">Get a Environment ID</h2>
               <p className="margin-top-l">
                 You may wish to either select from existing projects or create a
-                new sample project. The app will be configured with its project
-                ID.
+                new sample project. The app will be configured with its
+                environment ID.
               </p>
               <form onSubmit={openKontentProjectSelector}>
                 <input
                   type="submit"
                   className="button button-primary margin-top-xl"
-                  value="Get Project ID from Kontent"
+                  value="Get Environment ID from Kontent"
                 />
               </form>
             </section>
@@ -203,29 +203,31 @@ const Configuration: React.FC = () => {
           <div className="kk-container">
             <div className="row-lg row-lg--align-start">
               <section className="col paper margin-top-xl">
-                <h2 className="headline-medium">Set A Project ID Manually</h2>
+                <h2 className="headline-medium">
+                  Set A Environment ID Manually
+                </h2>
                 <p className="margin-top-l">
                   Alternatively, you can configure your app manually by
-                  submitting a project ID below.
+                  submitting a Environment ID below.
                 </p>
                 <form
                   className="project-id-form margin-top-xl"
-                  onSubmit={handleSetProjectSubmit}
+                  onSubmit={handleSetEnvironmentSubmit}
                 >
                   <input
                     aria-label="Project ID"
                     autoComplete="off"
-                    id="ProjectGuid"
-                    name="ProjectGuid"
+                    id="EnvironmentGuid"
+                    name="EnvironmentGuid"
                     placeholder="Project ID"
                     type="text"
-                    value={currentProjectInputValue}
-                    onChange={handleProjectInputChange}
+                    value={currentEnvironmentInputValue}
+                    onChange={handleEnvironmentInputChange}
                     className="project-id-form__input text-box single-line"
                   />
                   <span
                     className="field-validation-valid"
-                    data-valmsg-for="ProjectGuid"
+                    data-valmsg-for="EnvironmentGuid"
                     data-valmsg-replace="true"
                   ></span>
                   <input
@@ -238,8 +240,8 @@ const Configuration: React.FC = () => {
               <section className="col paper margin-top-xl">
                 <h2 className="headline-medium">Use the Shared Project</h2>
                 <p className="margin-top-l">
-                  Alternatively, you may wish to use the shared project (project
-                  ID "{defaultEnvironmentId}
+                  Alternatively, you may wish to use the shared project
+                  (environment ID "{defaultEnvironmentId}
                   ").
                 </p>
                 <p className="margin-top-l">
