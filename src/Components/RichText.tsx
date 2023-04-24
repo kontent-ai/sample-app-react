@@ -3,11 +3,11 @@ import { ElementModels, Elements } from '@kontent-ai/delivery-sdk';
 import {
   PortableText,
   PortableTextReactComponents,
-  toPlainText,
 } from '@portabletext/react';
 import {
+  IPortableTextTableCell,
+  IPortableTextTableRow,
   browserParse,
-  resolveTable,
   transformToPortableText,
 } from '@kontent-ai/rich-text-resolver';
 
@@ -89,54 +89,73 @@ const RichText: React.FC<RichTextProps> = (props) => {
         }
       },
       table: ({ value }) => {
-        const tableString = resolveTable(value, toPlainText);
-        return <>{tableString}</>;
-      },
+  const table = (
+    <table>
+      {
+        value.rows.map((row: IPortableTextTableRow) => (
+          <tr>
+            {row.cells.map((cell: IPortableTextTableCell) => {
+              return (
+                <td>
+                  <PortableText
+                    value={cell.content}
+                    components={portableTextComponents}
+                  />
+                </td>
+              );
+            })}
+          </tr>
+        ))
+      }
+    </table>
+  );
+  return table;
+}
     },
-    marks: {
-      link: ({ value, children }) => {
-        const target = (value?.href || '').startsWith('http')
-          ? '_blank'
-          : undefined;
-        return (
-          <a
-            href={value?.href}
-            target={target}
-            rel={value?.rel}
-            title={value?.title}
-            data-new-window={value['data-new-window']}
-          >
-            {children}
-          </a>
-        );
-      },
-      internalLink: ({ value, children }) => {
-        const link = props.element.links.find(
-          (link) => link.linkId === value.reference._ref
-        );
-        return (
-          <a
-            href={
-              'https://somerandomwebsite.xyz/' + link?.urlSlug || link?.codename
-            }
-          >
-            {children}
-          </a>
-        );
-      },
+marks: {
+  link: ({ value, children }) => {
+    const target = (value?.href || '').startsWith('http')
+      ? '_blank'
+      : undefined;
+    return (
+      <a
+        href={value?.href}
+        target={target}
+        rel={value?.rel}
+        title={value?.title}
+        data-new-window={value['data-new-window']}
+      >
+        {children}
+      </a>
+    );
+  },
+    internalLink: ({ value, children }) => {
+      const link = props.element.links.find(
+        (link) => link.linkId === value.reference._ref
+      );
+      return (
+        <a
+          href={
+            'https://somerandomwebsite.xyz/' + link?.urlSlug || link?.codename
+          }
+        >
+          {children}
+        </a>
+      );
+    },
     },
   };
 
-  const parsedTree = browserParse(props.element.value);
-  // const nodeParsedTree = nodeParse(props.element.value);
-  const portableText = transformToPortableText(parsedTree);
-  // const transformedNodeParsedTree = transform(nodeParsedTree);
+const parsedTree = browserParse(props.element.value);
+// const nodeParsedTree = nodeParse(props.element.value);
+const portableText = transformToPortableText(parsedTree);
+// const transformedNodeParsedTree = transform(nodeParsedTree);
 
-  return (
-    <div className={props.className}>
-      <PortableText value={portableText} components={portableTextComponents} />
+return (
+  <div className={props.className}>
+    <PortableText value={portableText} components={portableTextComponents} />
 
-      {/* <h4>parsedTree - Browser</h4>
+    {/* <h4>parsedTree - Browser</h4>
       <details>
         <pre>{JSON.stringify(parsedTree, undefined, 2)}</pre>
       </details>
@@ -155,8 +174,8 @@ const RichText: React.FC<RichTextProps> = (props) => {
       <details>
         <pre>{JSON.stringify(transformedNodeParsedTree, undefined, 2)}</pre>
       </details> */}
-    </div>
-  );
+  </div>
+);
 };
 
 export default RichText;
