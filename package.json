@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@kontent-ai/delivery-sdk": "^12.0.2",
-    "@kontent-ai/rich-text-resolver": "^0.0.2",
+    "@kontent-ai/rich-text-resolver": "^0.0.3",
     "@portabletext/react": "^2.0.2",
     "@simply007org/react-spinners": "0.0.3",
     "qs": "^6.9.4",
