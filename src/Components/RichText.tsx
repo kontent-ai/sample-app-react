@@ -1,18 +1,12 @@
-import {
-  DomElementOptionsType,
-  ResolversType,
-  RichTextElement,
-} from '@kontent-ai/react-components';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { resolveContentLink } from '../Utilities/ContentLinks';
+import { ElementModels, Elements } from '@kontent-ai/delivery-sdk';
+import { PortableText, PortableTextReactComponents } from '@portabletext/react';
 import {
-  ElementModels,
-  Elements,
-  IContentItem,
-  ILink,
-  IRichTextImage,
-} from '@kontent-ai/delivery-sdk';
+  IPortableTextTableCell,
+  IPortableTextTableRow,
+  browserParse,
+  transformToPortableText,
+} from '@kontent-ai/rich-text-resolver';
 
 interface RichTextProps {
   element: Elements.RichTextElement;
@@ -20,103 +14,161 @@ interface RichTextProps {
 }
 
 const RichText: React.FC<RichTextProps> = (props) => {
-  const resolvers: ResolversType = {
-    resolveLinkedItem: (
-      linkedItem: IContentItem | undefined,
-      domOptions: DomElementOptionsType
-    ) => {
-      const contentItemType = linkedItem ? linkedItem.system.type : '';
+  const portableTextComponents: Partial<PortableTextReactComponents> = {
+    types: {
+      component: (block) => {
+        const linkedItem = props.element.linkedItems.find(
+          (item) => item.system.codename === block.value.component._ref
+        );
+        const contentItemType = linkedItem ? linkedItem.system.type : '';
 
-      switch (contentItemType) {
-        case 'tweet': {
-          let tweetLink = linkedItem?.elements.tweetLink.value;
-          let tweetID = tweetLink.match('^.*twitter.com/.*/(\\d+)/?.*$')[1];
+        switch (contentItemType) {
+          case 'tweet': {
+            let tweetLink = linkedItem?.elements.tweetLink.value;
+            let tweetID = tweetLink.match('^.*twitter.com/.*/(\\d+)/?.*$')[1];
 
-          let selectedTheme = linkedItem?.elements.theme.value[0].codename;
-          selectedTheme = selectedTheme ? selectedTheme : 'light';
+            let selectedTheme = linkedItem?.elements.theme.value[0].codename;
+            selectedTheme = selectedTheme ? selectedTheme : 'light';
 
-          setTimeout(() => {
-            window.twttr.widgets.createTweet(
-              tweetID,
-              document.getElementById(`tweet${tweetID}`),
-              {
-                theme: selectedTheme,
-              }
-            );
-          }, 100);
+            setTimeout(() => {
+              window.twttr.widgets.createTweet(
+                tweetID,
+                document.getElementById(`tweet${tweetID}`),
+                {
+                  theme: selectedTheme,
+                }
+              );
+            }, 100);
 
-          return <div id={`tweet${tweetID}`}></div>;
-        }
-        case 'hosted_video': {
-          if (
-            linkedItem?.elements.videoHost.value.find(
-              (item: ElementModels.MultipleChoiceOption) =>
-                item.codename === 'vimeo'
-            )
-          ) {
-            return (
-              <iframe
-                className="hosted-video__wrapper"
-                src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
-                width="640"
-                height="360"
-                frameBorder="0"
-                allowFullScreen
-                title={`Vimeo video ${linkedItem.elements.videoId.value}`}
-              ></iframe>
-            );
-          } else if (
-            linkedItem?.elements.videoHost.value.find(
-              (item: ElementModels.MultipleChoiceOption) =>
-                item.codename === 'youtube'
-            )
-          ) {
-            return (
-              <iframe
-                className="hosted-video__wrapper"
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${linkedItem.elements.videoId.value}`}
-                frameBorder="0"
-                allowFullScreen
-                title={`Youtube video ${linkedItem.elements.videoId.value}`}
-              ></iframe>
-            );
-          } else {
-            return <div>Content item not supported</div>;
+            return <div id={`tweet${tweetID}`}></div>;
           }
+          case 'hosted_video': {
+            if (
+              linkedItem?.elements.videoHost.value.find(
+                (item: ElementModels.MultipleChoiceOption) =>
+                  item.codename === 'vimeo'
+              )
+            ) {
+              return (
+                <iframe
+                  className="hosted-video__wrapper"
+                  src={`https://player.vimeo.com/video/${linkedItem.elements.videoId.value}?title=0&byline=0&portrait=0`}
+                  width="640"
+                  height="360"
+                  frameBorder="0"
+                  allowFullScreen
+                  title={`Vimeo video ${linkedItem.elements.videoId.value}`}
+                ></iframe>
+              );
+            } else if (
+              linkedItem?.elements.videoHost.value.find(
+                (item: ElementModels.MultipleChoiceOption) =>
+                  item.codename === 'youtube'
+              )
+            ) {
+              return (
+                <iframe
+                  className="hosted-video__wrapper"
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${linkedItem.elements.videoId.value}`}
+                  frameBorder="0"
+                  allowFullScreen
+                  title={`Youtube video ${linkedItem.elements.videoId.value}`}
+                ></iframe>
+              );
+            } else {
+              return <div>Content item not supported</div>;
+            }
+          }
+          default:
+            return <div>Content item not supported</div>;
         }
-        default:
-          return <div>Content item not supported</div>;
-      }
+      },
+      table: ({ value }) => {
+        const table = (
+          <table>
+            {value.rows.map((row: IPortableTextTableRow) => (
+              <tr>
+                {row.cells.map((cell: IPortableTextTableCell) => {
+                  return (
+                    <td>
+                      <PortableText
+                        value={cell.content}
+                        components={portableTextComponents}
+                      />
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </table>
+        );
+        return table;
+      },
     },
-    resolveLink: (link: ILink, domOptions: DomElementOptionsType) => {
-      const path = resolveContentLink(link);
-
-      return (
-        <Link to={path}>
-          {domOptions.domToReact(domOptions.domElement.children)}
-        </Link>
-      );
+    marks: {
+      link: ({ value, children }) => {
+        const target = (value?.href || '').startsWith('http')
+          ? '_blank'
+          : undefined;
+        return (
+          <a
+            href={value?.href}
+            target={target}
+            rel={value?.rel}
+            title={value?.title}
+            data-new-window={value['data-new-window']}
+          >
+            {children}
+          </a>
+        );
+      },
+      internalLink: ({ value, children }) => {
+        const link = props.element.links.find(
+          (link) => link.linkId === value.reference._ref
+        );
+        return (
+          <a
+            href={
+              'https://somerandomwebsite.xyz/' + link?.urlSlug || link?.codename
+            }
+          >
+            {children}
+          </a>
+        );
+      },
     },
-    resolveImage: (
-      image: IRichTextImage,
-      domOptions: DomElementOptionsType
-    ) => {
-      return (
-        <img
-          className="xImage"
-          src={`${image.url}`}
-          alt={`${image.description || `image with id: ${image.imageId}`}`}
-        />
-      );
-    },
-    resolveDomNode: undefined,
   };
+
+  const parsedTree = browserParse(props.element.value);
+  // const nodeParsedTree = nodeParse(props.element.value);
+  const portableText = transformToPortableText(parsedTree);
+  // const transformedNodeParsedTree = transform(nodeParsedTree);
 
   return (
     <div className={props.className}>
-      <RichTextElement richTextElement={props.element} resolvers={resolvers} />
+      <PortableText value={portableText} components={portableTextComponents} />
+
+      {/* <h4>parsedTree - Browser</h4>
+      <details>
+        <pre>{JSON.stringify(parsedTree, undefined, 2)}</pre>
+      </details>
+
+      <h4>parsedTree - Node</h4>
+      <details>
+        <pre>{JSON.stringify(nodeParsedTree, undefined, 2)}</pre>
+      </details>
+
+      <h4>portable text from browser parser</h4>
+      <details>
+        <pre>{JSON.stringify(portableText, undefined, 2)}</pre>
+      </details>
+
+      <h4>portable text from Node parser</h4>
+      <details>
+        <pre>{JSON.stringify(transformedNodeParsedTree, undefined, 2)}</pre>
+      </details> */}
     </div>
   );
 };

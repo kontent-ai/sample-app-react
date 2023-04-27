@@ -17,11 +17,12 @@
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
     "react-scripts": "^5.0.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.7.0"
   },
   "dependencies": {
     "@kontent-ai/delivery-sdk": "^12.0.2",
-    "@kontent-ai/react-components": "0.1.1",
+    "@kontent-ai/rich-text-resolver": "^0.0.3",
+    "@portabletext/react": "^2.0.2",
     "@simply007org/react-spinners": "0.0.3",
     "qs": "^6.9.4",
     "react": "^17.0.2",
@@ -47,6 +48,6 @@
   ],
   "engines": {
     "npm": "7 || 8",
-    "node": "16 || 17"
+    "node": "16 || 17 || 18"
   }
 }
