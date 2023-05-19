@@ -1,7 +1,7 @@
 import React from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
-import { Client } from '../Client';
+import { useClient } from '../Client';
 import {
   defaultLanguage,
   initLanguageCodeObjectWithArray,
@@ -16,6 +16,8 @@ const Articles: React.FC = () => {
   const [articles, setArticles] = useState(
     initLanguageCodeObjectWithArray<ArticleType>()
   );
+
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -38,7 +40,7 @@ const Articles: React.FC = () => {
         [currentLanguage]: response.data.items as ArticleType[],
       }));
     });
-  }, [language]);
+  }, [language, Client]);
 
   const makeFormatDate = (value: string): string => {
     return formatDate(value, {

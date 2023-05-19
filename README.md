@@ -27,9 +27,9 @@ If you want to change the source Kontent.ai project, follow these steps:
 
 1. In Kontent.ai, choose Project settings from the app menu.
 2. Under Development, choose API keys.
-3. Copy your Project ID.
+3. Copy your Environemnt ID.
 4. Open `.env.example` in the root directory.
-5. Replace `your_project_id` with your Project ID and remove `REACT_APP_PREVIEW_API_KEY` entry.
+5. Replace `your_environment_id` with your Environment ID and remove `REACT_APP_PREVIEW_API_KEY` entry.
 6. Save and rename the file `.env`.
 
 When you now run the sample application, the application retrieves content from your project.
@@ -44,15 +44,15 @@ Deploy, explore and change the app directly in the browser.
 
 ## Previewing content from your project
 
-If you already have a Kontent.ai account and you want to connect the sample application to a project of your own, you need to provide your Project ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
+If you already have a Kontent.ai account and you want to connect the sample application to a project of your own, you need to provide your Environment ID and your Preview API key to authorize requests to the Delivery Preview API. For example, you can connect the application to your modified version of the sample project.
 
 To preview content in the sample application, follow these steps:
 
 1. In Kontent.ai, choose Project settings from the app menu.
 2. Under Development, choose API keys.
-3. Copy your Project ID and Preview API key.
+3. Copy your Environemnt ID and Preview API key.
 4. Open `.env.example` in the root directory .
-5. Replace `your_project_id` and `your_api_key` with your Project ID and Preview API key.
+5. Replace `your_environment_id` and `your_api_key` with your Environment ID and Preview API key.
 6. Save and rename the file `.env`.
 
 When you now run the application, you will see all project content including the unpublished version of content items.
@@ -69,8 +69,8 @@ You can learn more about content editing in our tutorials at [Kontent.ai Learn](
 
 You can retrieve content either through the Kontent.ai Delivery SDKs or the Kontent.ai Delivery API:
 
-- For published content, use `https://deliver.kontent.ai/PROJECT_ID/items`.
-- For unpublished content, use `https://preview-deliver.kontent.ai/PROJECT_ID/items`.
+- For published content, use `https://deliver.kontent.ai/ENVIRONMENT_ID/items`.
+- For unpublished content, use `https://preview-deliver.kontent.ai/ENVIRONMENT_ID/items`.
 
 For more info about the API, see the [API reference](https://kontent.ai/learn/reference).
 

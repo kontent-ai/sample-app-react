@@ -1,7 +1,7 @@
 import React from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
-import { Client } from '../Client';
+import { useClient } from '../Client';
 import { createCafeModel } from '../Utilities/CafeListing';
 import {
   defaultLanguage,
@@ -18,6 +18,7 @@ const Cafes: React.FC = () => {
   const [cafes, setCafes] = useState<ILanguageObjectWithArray<Cafe>>(
     initLanguageCodeObjectWithArray()
   );
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -39,7 +40,7 @@ const Cafes: React.FC = () => {
         [currentLanguage]: response.data.items as Cafe[],
       }));
     });
-  }, [language]);
+  }, [language, Client]);
 
   if (cafes[language].length === 0) {
     return <div className="container" />;

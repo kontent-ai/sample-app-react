@@ -1,7 +1,7 @@
 import React from 'react';
 import { spinnerService } from '@simply007org/react-spinners';
 import { useEffect, useState } from 'react';
-import { Client } from '../Client';
+import { useClient } from '../Client';
 import Metadata from '../Components/Metadata';
 import RichText from '../Components/RichText';
 import {
@@ -21,6 +21,7 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
   const { locale: language, formatMessage } = useIntl();
   const [facts, setFacts] = useState(initLanguageCodeObject<AboutUs>(null));
   const [metadata, setMetadata] = useState(initLanguageCodeObject());
+  const [Client] = useClient();
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -51,7 +52,7 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
         [currentLanguage]: response.data.items[0] as AboutUs,
       }));
     });
-  }, [language, urlSlug]);
+  }, [language, urlSlug, Client]);
 
   useEffect(() => {
     // do not use spinner for metadata fetch
@@ -86,7 +87,7 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
         [currentLanguage]: response.data.items[0],
       }));
     });
-  }, [language, urlSlug]);
+  }, [language, urlSlug, Client]);
 
   const factsComponent =
     facts[language]?.elements.facts.linkedItems &&

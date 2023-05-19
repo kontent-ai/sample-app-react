@@ -1,23 +1,21 @@
-import { resetClient, Client } from '../Client';
+import { createClient } from '../Client';
 import {
   Contracts,
   IDeliveryNetworkResponse,
   Responses,
 } from '@kontent-ai/delivery-sdk';
 
-const defaultProjectId = '975bf280-fd91-488c-994c-2f04416e5ee3';
+const defaultEnvironmentId = '975bf280-fd91-488c-994c-2f04416e5ee3';
 
-const getSampleProjectItems = (
-  projectId = defaultProjectId
-): Promise<
+const getSampleProjectItems = (): Promise<
   IDeliveryNetworkResponse<
     Responses.IListContentItemsResponse,
     Contracts.IListContentItemsContract
   >
 > => {
-  resetClient(projectId);
+  const client = createClient(defaultEnvironmentId);
 
-  return Client.items().elementsParameter(['id']).depthParameter(0).toPromise();
+  return client.items().elementsParameter(['id']).depthParameter(0).toPromise();
 };
 
-export { defaultProjectId, getSampleProjectItems };
+export { defaultEnvironmentId, getSampleProjectItems };
