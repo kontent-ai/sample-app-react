@@ -22,6 +22,7 @@
   "dependencies": {
     "@kontent-ai/delivery-sdk": "^14.0.1",
     "@kontent-ai/react-components": "0.3.0",
+    "@kontent-ai/smart-link": "^3.1.0",
     "@simply007org/react-spinners": "0.0.3",
     "qs": "^6.9.4",
     "react": "^18.2.0",

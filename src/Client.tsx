@@ -48,10 +48,10 @@ const getEnvironmentIdFromCookies = (): string | null => {
   return environmentIdFromCookie;
 };
 
-const currentEnvironmentId =
+export const currentEnvironmentId =
   getEnvironmentIdFromEnvironment() ?? getEnvironmentIdFromCookies() ?? '';
 
-const isPreview = (): boolean => previewApiKey !== '';
+export const isPreview = (): boolean => previewApiKey !== '';
 
 type GlobalHeadersType = {
   header: string;
