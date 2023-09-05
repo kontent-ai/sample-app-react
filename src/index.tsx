@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './LocalizedApp';
 import {
@@ -18,7 +17,10 @@ const cookies = new Cookies(document.cookie);
 const cookiesLang = cookies.get('lang');
 const lang = languageCodes.includes(cookiesLang) ? cookiesLang : englishCode;
 
-ReactDOM.render(
+const container = document.getElementById('root') as HTMLElement;
+const root = createRoot(container);
+
+root.render(
   <ClientProvider>
     <Router>
       <Routes>
@@ -40,5 +42,4 @@ ReactDOM.render(
       </Routes>
     </Router>
   </ClientProvider>,
-  document.getElementById('root')
 );
