@@ -3,6 +3,7 @@ import { CafeModel } from '../ViewModels/CafeModel';
 
 const createCafeModel = (cafe: Cafe): CafeModel => {
   const model = {
+    id: cafe.system.id,
     name: cafe.system.name,
     email: cafe.elements.email.value,
     imageLink: 'url(' + cafe.elements.photo.value[0].url + ')',

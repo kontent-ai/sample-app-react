@@ -1,4 +1,5 @@
 export type CafeModel = {
+  id: string;
   name: string;
   email: string;
   imageLink: string;
