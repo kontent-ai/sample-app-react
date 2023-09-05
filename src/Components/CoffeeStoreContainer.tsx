@@ -12,6 +12,7 @@ import { useIntl } from 'react-intl';
 import { Coffee } from '../Models/content-types/coffee';
 import { contentTypes } from '../Models/project/contentTypes';
 import { useClient } from '../Client';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 interface filterType {
   [index: string]: string[];
@@ -33,6 +34,8 @@ const CoffeeStoreContainer: React.FC = () => {
   });
 
   const [Client] = useClient();
+
+  useKontentSmartLink([language, coffees, processings, productStatuses, filter]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');

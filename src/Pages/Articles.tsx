@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { Article as ArticleType } from '../Models/content-types/article';
 import { contentTypes } from '../Models/project/contentTypes';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 const Articles: React.FC = () => {
   const { locale: language, formatDate, formatMessage } = useIntl();
@@ -18,6 +19,8 @@ const Articles: React.FC = () => {
   );
 
   const [Client] = useClient();
+
+  useKontentSmartLink([language, articles]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -86,7 +89,14 @@ const Articles: React.FC = () => {
       const link = article.system.id;
 
       result.push(
-        <div className="col-md-3" key={counter++}>
+        <div
+          className="col-md-3"
+          key={counter++}
+          data-kontent-item-id={article.system.id}
+          data-kontent-element-codename={
+            contentTypes.article.elements.title.codename
+          }
+        >
           <div className="article-tile">
             <Link to={link}>{imageLink}</Link>
             <div className="article-tile-date">{postDate}</div>

@@ -10,6 +10,7 @@ import { useIntl } from 'react-intl';
 import { Cafe } from '../Models/content-types/cafe';
 import { contentTypes } from '../Models/project/contentTypes';
 import { useClient } from '../Client';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 const Contacts: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
@@ -18,6 +19,8 @@ const Contacts: React.FC = () => {
   );
 
   const [Client] = useClient();
+
+  useKontentSmartLink([language, companyCafes]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -52,7 +55,13 @@ const Contacts: React.FC = () => {
       <h2 className="contact-title">
         {formatMessage({ id: 'Contacts.roasteryTitle' })}
       </h2>
-      <ul className="contact-info">
+      <ul
+        className="contact-info"
+        data-kontent-item-id={roastery.id}
+        data-kontent-element-codename={
+          contentTypes.cafe.elements.street.codename
+        }
+      >
         <li>{roastery.phone}</li>
         <li>
           <a href={'mailto:' + roastery.email} target="_top">
@@ -73,7 +82,14 @@ const Contacts: React.FC = () => {
   const companyCafeComponents = companyCafes[language].map((cafe: Cafe) => {
     const model = createCafeModel(cafe);
     return (
-      <div className="col-md-6 col-lg-3" key={cafe.system.codename}>
+      <div
+        className="col-md-6 col-lg-3"
+        key={cafe.system.codename}
+        data-kontent-item-id={cafe.system.id}
+        data-kontent-element-codename={
+          contentTypes.cafe.elements.street.codename
+        }
+      >
         <div
           className="cafe-tile js-scroll-to-map"
           data-address={model.dataAddress}
@@ -93,6 +109,7 @@ const Contacts: React.FC = () => {
       </div>
     );
   });
+
   return (
     <div className="container">
       {roasteryComponent}

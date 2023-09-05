@@ -16,11 +16,14 @@ import { useIntl } from 'react-intl';
 import { Home as HomeType } from '../Models/content-types/home';
 import { contentTypes } from '../Models/project/contentTypes';
 import { useClient } from '../Client';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 const Home: React.FC = () => {
   const { locale: language, formatMessage } = useIntl();
   const [homeData, setHomeData] = useState(initLanguageCodeObject<HomeType>());
   const [Client] = useClient();
+
+  useKontentSmartLink([language, homeData]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -50,7 +53,10 @@ const Home: React.FC = () => {
 
   if (!spinnerService.isShowing('apiSpinner')) {
     return (
-      <div className="container">
+      <div
+        className="container"
+        data-kontent-item-id={homeData[language]?.system.id}
+      >
         <Metadata
           title={homeElements.metadataMetaTitle}
           description={homeElements.metadataMetaDescription}

@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '../Components/LowerCaseUrlLink';
 import { FormattedDate, useIntl } from 'react-intl';
 import { Article } from '../Models/content-types/article';
+import { contentTypes } from '../Models';
 
 interface LatestArticlesProps {
   articles: Article[];
@@ -28,6 +29,9 @@ const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
             className="article-tile-image"
             src={article.elements.teaserImage.value[0].url}
             title={'Article ' + title}
+            data-kontent-element-codename={
+              contentTypes.article.elements.teaser_image.codename
+            }
           />
         ) : (
           <div className="article-tile-image placeholder-tile-image">
@@ -43,10 +47,15 @@ const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
       const link = `/${language.toLowerCase()}/articles/${article.system.id}`;
 
       return (
-        <div className="col-md-3" key={index}>
+        <div className="col-md-3" key={index} data-kontent-item-id={article.system.id}>
           <div className="article-tile">
             <Link to={link}>{imageLink}</Link>
-            <div className="article-tile-date">
+            <div
+              className="article-tile-date"
+              data-kontent-element-codename={
+                contentTypes.article.elements.post_date.codename
+              }
+            >
               <FormattedDate
                 value={article.elements.postDate.value!!}
                 day="numeric"
@@ -55,9 +64,23 @@ const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
             </div>
             <div className="article-tile-content">
               <h2 className="h4">
-                <Link to={link}>{title}</Link>
+                <Link
+                  to={link}
+                  data-kontent-element-codename={
+                    contentTypes.article.elements.title.codename
+                  }
+                >
+                  {title}
+                </Link>
               </h2>
-              <p className="article-tile-text">{summary}</p>
+              <p
+                className="article-tile-text"
+                data-kontent-element-codename={
+                  contentTypes.article.elements.summary.codename
+                }
+              >
+                {summary}
+              </p>
             </div>
           </div>
         </div>
@@ -78,6 +101,9 @@ const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
         className="article-tile-image"
         src={articleElements.teaserImage.value[0].url}
         title={'Article ' + title}
+        data-kontent-element-codename={
+          contentTypes.article.elements.teaser_image.codename
+        }
       />
     ) : (
       <div className="article-tile-image placeholder-tile-image">
@@ -94,14 +120,19 @@ const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
   const tabTitle = formatMessage({ id: 'LatestArticles.title' });
 
   return (
-    <div className="row">
+    <div className="row" data-kontent-element-codename={contentTypes.home.elements.articles.codename}>
       <h1 className="title-tab">{tabTitle}</h1>
-      <div className="article-tile article-tile-large">
+      <div className="article-tile article-tile-large" data-kontent-item-id={system.id}>
         <div className="col-md-12 col-lg-6">
           <Link to={link}>{imageLink}</Link>
         </div>
         <div className="col-md-12 col-lg-6">
-          <div className="article-tile-date">
+          <div
+            className="article-tile-date"
+            data-kontent-element-codename={
+              contentTypes.article.elements.post_date.codename
+            }
+          >
             <FormattedDate
               value={articleElements.postDate.value!!}
               day="numeric"
@@ -110,9 +141,23 @@ const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
           </div>
           <div className="article-tile-content">
             <h2>
-              <Link to={link}>{title}</Link>
+              <Link
+                to={link}
+                data-kontent-element-codename={
+                  contentTypes.article.elements.title.codename
+                }
+              >
+                {title}
+              </Link>
             </h2>
-            <p className="article-tile-text lead-paragraph">{summary}</p>
+            <p
+              className="article-tile-text lead-paragraph"
+              data-kontent-element-codename={
+                contentTypes.article.elements.summary.codename
+              }
+            >
+              {summary}
+            </p>
           </div>
         </div>
       </div>

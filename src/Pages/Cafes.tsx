@@ -12,6 +12,7 @@ import { useIntl } from 'react-intl';
 import { CafeModel } from '../ViewModels/CafeModel';
 import { Cafe } from '../Models/content-types/cafe';
 import { contentTypes } from '../Models/project/contentTypes';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 const Cafes: React.FC = () => {
   const { formatMessage, locale: language } = useIntl();
@@ -19,6 +20,8 @@ const Cafes: React.FC = () => {
     initLanguageCodeObjectWithArray()
   );
   const [Client] = useClient();
+
+  useKontentSmartLink([language, cafes]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -56,10 +59,11 @@ const Cafes: React.FC = () => {
     const model = createCafeModel(cafe);
 
     return (
-      <div className="col-md-6" key={cafe.system.codename}>
+      <div className="col-md-6" key={cafe.system.codename} data-kontent-item-id={cafe.system.id}>
         <div
           className="cafe-image-tile js-scroll-to-map"
           data-address={model.dataAddress}
+          data-kontent-element-codename={contentTypes.cafe.elements.street}
         >
           <div
             className="cafe-image-tile-image-wrapper"
@@ -68,6 +72,7 @@ const Cafes: React.FC = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'right',
             }}
+            data-kontent-element-codename={contentTypes.cafe.elements.photo}
           />
           <div className="cafe-image-tile-content">
             <h3 className="cafe-image-tile-name">{model.name}</h3>
@@ -104,7 +109,7 @@ const Cafes: React.FC = () => {
       .filter((model: CafeModel) => model.location === location)
       .map((model: CafeModel, modelIndex: number) => {
         return (
-          <p key={modelIndex}>
+          <p key={modelIndex} data-kontent-item-id={model.id} data-kontent-element-codename={contentTypes.cafe.codename}>
             {model.name}, {model.street}, {model.phone}
           </p>
         );

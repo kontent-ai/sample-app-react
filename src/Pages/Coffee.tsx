@@ -13,6 +13,7 @@ import { useIntl } from 'react-intl';
 import { Coffee as CoffeeType } from '../Models/content-types/coffee';
 import { contentTypes } from '../Models/project/contentTypes';
 import { resolveChangeLanguageLink } from '../Utilities/LanugageLink';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 const Coffee: React.FC = () => {
   const [coffee, setCoffee] = useState(initLanguageCodeObject<CoffeeType>());
@@ -21,6 +22,8 @@ const Coffee: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [Client] = useClient();
+
+  useKontentSmartLink([language, coffee]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -105,7 +108,10 @@ const Coffee: React.FC = () => {
       : '\u00A0';
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      data-kontent-item-id={coffee[language]?.system.id}
+    >
       <Metadata
         title={coffeeData.elements.metadataMetaTitle}
         description={coffeeData.elements.metadataMetaDescription}
@@ -122,26 +128,72 @@ const Coffee: React.FC = () => {
         <div className="row">
           <div className="col-md-12">
             <header>
-              <h2>{name}</h2>
+              <h2
+                data-kontent-element-codename={
+                  contentTypes.coffee.elements.product_name.codename
+                }
+              >
+                {name}
+              </h2>
             </header>
           </div>
         </div>
         <div className="row-fluid">
           <div className="col-lg-7 col-md-6">
-            <figure className="image">{imageLink}</figure>
-            <div className="description">
+            <figure
+              className="image"
+              data-kontent-element-codename={
+                contentTypes.coffee.elements.image.codename
+              }
+            >
+              {imageLink}
+            </figure>
+            <div
+              className="description"
+              data-kontent-element-codename={
+                contentTypes.coffee.elements.long_description.codename
+              }
+            >
               {descriptionElement}
               <div className="product-detail-properties">
                 <h4>Parameters</h4>
                 <dl className="row">
                   <dt className="col-xs-12 col-sm-4">Farm</dt>
-                  <dd className="col-xs-12 col-sm-8">{farm}</dd>
+                  <dd
+                    className="col-xs-12 col-sm-8"
+                    data-kontent-element-codename={
+                      contentTypes.coffee.elements.farm.codename
+                    }
+                  >
+                    {farm}
+                  </dd>
                   <dt className="col-xs-12 col-sm-4">Variety</dt>
-                  <dd className="col-xs-12 col-sm-8">{variety}</dd>
+                  <dd
+                    className="col-xs-12 col-sm-8"
+                    data-kontent-element-codename={
+                      contentTypes.coffee.elements.variety.codename
+                    }
+                  >
+                    {variety}
+                  </dd>
                   <dt className="col-xs-12 col-sm-4">Processing</dt>
-                  <dd className="col-xs-12 col-sm-8">{processing}</dd>
+                  <dd
+                    className="col-xs-12 col-sm-8"
+                    data-kontent-element-codename={
+                      contentTypes.coffee.elements.processing.codename
+                    }
+                  >
+                    {processing}
+                  </dd>
                   <dt className="col-xs-12 col-sm-4">Altitude</dt>
-                  <dd className="col-xs-12 col-sm-8">{altitude}</dd>
+                  <dd
+                    className="col-xs-12 col-sm-8"
+                    data-kontent-element-codename={
+                      contentTypes.coffee.elements.altitude.codename
+                    }
+                  >
+                    {altitude}
+                  </dd>
                 </dl>
               </div>
             </div>

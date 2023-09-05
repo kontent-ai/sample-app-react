@@ -4,6 +4,7 @@ import { resolveContentLink } from '../Utilities/ContentLinks';
 import { formatPrice, renderProductStatus } from '../Utilities/StoreListing';
 import { useIntl } from 'react-intl';
 import { Brewer } from '../Models/content-types/brewer';
+import { contentTypes } from '../Models';
 
 interface BrewerStoreListingProps {
   brewers: Brewer[];
@@ -25,7 +26,11 @@ const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers }) => {
 
     const imageLink =
       brewer.elements.image.value[0] !== undefined ? (
-        <img alt={name} src={brewer.elements.image.value[0].url} title={name} />
+        <img
+          alt={name}
+          src={brewer.elements.image.value[0].url}
+          title={name}
+        />
       ) : (
         <div style={{ height: '257.15px' }} className="placeholder-tile-image">
           {formatMessage({ id: 'BrewerStoreListing.noTeaserValue' })}
@@ -40,7 +45,13 @@ const BrewerStoreListing: React.FC<BrewerStoreListingProps> = ({ brewers }) => {
 
     return (
       <div className="col-md-6 col-lg-4" key={brewer.system.codename}>
-        <article className="product-tile">
+        <article
+          className="product-tile"
+          data-kontent-item-id={brewer.system.id}
+          data-kontent-element-codename={
+            contentTypes.brewer.elements.product_name.codename
+          }
+        >
           <Link to={link}>
             <h1 className="product-heading">{name}</h1>
             {status}

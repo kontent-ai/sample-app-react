@@ -13,6 +13,7 @@ import { Article as ArticleType } from '../Models/content-types/article';
 import { contentTypes } from '../Models/project/contentTypes';
 import { resolveChangeLanguageLink } from '../Utilities/LanugageLink';
 import { useClient } from '../Client';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 const Article: React.FC = () => {
   const { locale: language, formatDate, formatMessage } = useIntl();
@@ -21,6 +22,8 @@ const Article: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [Client] = useClient();
+
+  useKontentSmartLink([language, article]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -101,6 +104,9 @@ const Article: React.FC = () => {
         className="img-responsive"
         src={currentArticle.elements.teaserImage.value[0].url}
         title={title}
+        data-kontent-element-codename={
+          contentTypes.article.elements.teaser_image.codename
+        }
       />
     ) : (
       <div className="img-responsive placeholder-tile-image">
@@ -115,6 +121,9 @@ const Article: React.FC = () => {
       <RichText
         className="article-detail-content"
         element={currentArticle.elements.bodyCopy}
+        data-kontent-element-codename={
+          contentTypes.article.elements.body_copy.codename
+        }
       />
     ) : (
       <p className="article-detail-content">
@@ -123,7 +132,10 @@ const Article: React.FC = () => {
     );
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      data-kontent-item-id={article[language]?.system.id}
+    >
       <Metadata
         title={currentArticle.elements.metadataMetaTitle}
         description={currentArticle.elements.metadataMetaDescription}
@@ -137,8 +149,21 @@ const Article: React.FC = () => {
         twitterImage={currentArticle.elements.metadataTwitterImage}
       />
       <article className="article-detail col-lg-9 col-md-12 article-detail-related-box">
-        <h2>{title}</h2>
-        <div className="article-detail-datetime">{postDate}</div>
+        <h2
+          data-kontent-element-codename={
+            contentTypes.article.elements.title.codename
+          }
+        >
+          {title}
+        </h2>
+        <div
+          className="article-detail-datetime"
+          data-kontent-element-codename={
+            contentTypes.article.elements.post_date.codename
+          }
+        >
+          {postDate}
+        </div>
         <div className="row">
           <div className="article-detail-image col-md-push-2 col-md-8">
             {imageLink}

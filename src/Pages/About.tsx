@@ -12,6 +12,7 @@ import { useIntl } from 'react-intl';
 import { AboutUs } from '../Models/content-types/about_us';
 import { contentTypes } from '../Models/project/contentTypes';
 import { FactAboutUs } from '../Models/content-types/fact_about_us';
+import { useKontentSmartLink } from '../Utilities/SmartLink';
 
 interface AboutProps {
   urlSlug?: string;
@@ -22,6 +23,8 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
   const [facts, setFacts] = useState(initLanguageCodeObject<AboutUs>(null));
   const [metadata, setMetadata] = useState(initLanguageCodeObject());
   const [Client] = useClient();
+
+  useKontentSmartLink([language, facts, metadata]);
 
   useEffect(() => {
     spinnerService.show('apiSpinner');
@@ -126,19 +129,69 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
 
         if (index % 2 === 0) {
           return (
-            <section className="row text-and-image" key={index}>
-              <h2 className="col-lg-12">{title}</h2>
-              <div className="col-md-6">{descriptionElement}</div>
-              <div className="col-md-6">{imageLink}</div>
+            <section
+              className="row text-and-image"
+              key={index}
+              data-kontent-item-id={fact.system.id}
+            >
+              <h2
+                className="col-lg-12"
+                data-kontent-element-codename={
+                  contentTypes.fact_about_us.elements.title.codename
+                }
+              >
+                {title}
+              </h2>
+              <div
+                className="col-md-6"
+                data-kontent-element-codename={
+                  contentTypes.fact_about_us.elements.description.codename
+                }
+              >
+                {descriptionElement}
+              </div>
+              <div
+                className="col-md-6"
+                data-kontent-element-codename={
+                  contentTypes.fact_about_us.elements.image.codename
+                }
+              >
+                {imageLink}
+              </div>
             </section>
           );
         }
 
         return (
-          <section className="row text-and-image" key={index}>
-            <h2 className="col-lg-12">{title}</h2>
-            <div className="col-md-6 col-md-push-6">{descriptionElement}</div>
-            <div className="col-md-6 col-md-pull-6">{imageLink}</div>
+          <section
+            className="row text-and-image"
+            key={index}
+            data-kontent-item-id={fact.system.id}
+          >
+            <h2
+              className="col-lg-12"
+              data-kontent-element-codename={
+                contentTypes.fact_about_us.elements.title.codename
+              }
+            >
+              {title}
+            </h2>
+            <div
+              className="col-md-6 col-md-push-6"
+              data-kontent-element-codename={
+                contentTypes.fact_about_us.elements.description.codename
+              }
+            >
+              {descriptionElement}
+            </div>
+            <div
+              className="col-md-6 col-md-pull-6"
+              data-kontent-element-codename={
+                contentTypes.fact_about_us.elements.image.codename
+              }
+            >
+              {imageLink}
+            </div>
           </section>
         );
       }
@@ -147,7 +200,10 @@ const About: React.FC<AboutProps> = ({ urlSlug }) => {
   const metaDataElements = metadata[language]?.elements || {};
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      data-kontent-item-id={metadata[language]?.system.id}
+    >
       <Metadata
         title={metaDataElements.metadataMetaTitle}
         description={metaDataElements.metadataMetaDescription}

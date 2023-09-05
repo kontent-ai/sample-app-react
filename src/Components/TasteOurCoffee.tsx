@@ -3,6 +3,7 @@ import React from 'react';
 import Link from '../Components/LowerCaseUrlLink';
 import { useIntl } from 'react-intl';
 import { Cafe } from '../Models/content-types/cafe';
+import { contentTypes } from '../Models';
 
 interface TestOurCoffeeProps {
   cafes: Cafe[];
@@ -15,7 +16,7 @@ const TasteOurCoffee: React.FC<TestOurCoffeeProps> = (props) => {
     const imageLink = cafe.elements.photo.value[0].url;
 
     return (
-      <div className="col-xs-6 col-md-3" key={index}>
+      <div className="col-xs-6 col-md-3" key={index} data-kontent-item-id={cafe.system.id}>
         <div>
           <Link to={`/${language}/cafes`} className="ourcoffee-tile-link">
             <h2 className="ourcoffee-tile-text center-text">{name}</h2>
@@ -25,6 +26,7 @@ const TasteOurCoffee: React.FC<TestOurCoffeeProps> = (props) => {
               className="ourcoffee-tile-image"
               src={imageLink}
               title={name}
+              data-kontent-element-codename={contentTypes.cafe.elements.photo.codename}
             />
           </Link>
         </div>
@@ -33,7 +35,7 @@ const TasteOurCoffee: React.FC<TestOurCoffeeProps> = (props) => {
   });
 
   return (
-    <div className="row">
+    <div className="row" data-kontent-element-codename={contentTypes.home.elements.cafes.codename}>
       <div>
         <h1 className="title-tab">
           {formatMessage({ id: 'TasteOurCoffee.title' })}

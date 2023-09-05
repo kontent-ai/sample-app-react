@@ -17,9 +17,11 @@ import {
 interface RichTextProps {
   element: Elements.RichTextElement;
   className?: string;
+  // Pass-through props
+  [x: string]: any;
 }
 
-const RichText: React.FC<RichTextProps> = (props) => {
+const RichText: React.FC<RichTextProps> = ({ element, className, ...passThroughProps }) => {
   const resolvers: ResolversType = {
     resolveLinkedItem: (
       linkedItem: IContentItem | undefined,
@@ -115,8 +117,8 @@ const RichText: React.FC<RichTextProps> = (props) => {
   };
 
   return (
-    <div className={props.className}>
-      <RichTextElement richTextElement={props.element} resolvers={resolvers} />
+    <div className={className} {...passThroughProps}>
+      <RichTextElement richTextElement={element} resolvers={resolvers} />
     </div>
   );
 };

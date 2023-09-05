@@ -4,6 +4,7 @@ import { resolveContentLink } from '../Utilities/ContentLinks';
 import { formatPrice, renderProductStatus } from '../Utilities/StoreListing';
 import { useIntl } from 'react-intl';
 import { Coffee } from '../Models/content-types/coffee';
+import { contentTypes } from '../Models';
 
 interface CoffeeStoreListingProps {
   coffees: Coffee[];
@@ -47,7 +48,13 @@ const CoffeeStoreListing: React.FC<CoffeeStoreListingProps> = ({ coffees }) => {
 
     return (
       <div className="col-md-6 col-lg-4" key={coffee.system.codename}>
-        <article className="product-tile">
+        <article
+          className="product-tile"
+          data-kontent-item-id={coffee.system.id}
+          data-kontent-element-codename={
+            contentTypes.coffee.elements.product_name.codename
+          }
+        >
           <Link to={link}>
             <h1 className="product-heading">{name}</h1>
             {status}
