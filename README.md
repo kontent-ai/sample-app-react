@@ -249,6 +249,10 @@ if (this.language) {
 
 For the not found resources, prefixed 404 pages are used for both languages. As the content on one page should be in one language, this approach might help you to optimize SEO. If language is not set in the URL the application uses the last used language, which is set in cookies.
 
+## Smart Links
+
+Pages have [Smart Link](https://github.com/kontent-ai/smart-link) data attributes to create edit links when in preview mode. To enable Smart Links, you will need to [configure previews within your Kontent environment](https://kontent.ai/learn/docs/preview/preview-configuration/typescript). The application will render Smart Links when it recognizes it's in preview mode. This is done by providing the environment variable `REACT_APP_PREVIEW_API_KEY` in a `.env` file.
+
 ## Deployment
 
 You can use eg. [surge](http://surge.sh/) to deploy your app live. Check out the step-by-step guide on our [blog](https://kontent.ai/blog/3-steps-to-rapidly-deploy-headless-single-page-app).
