@@ -1,3 +1,8 @@
+> [!WARNING]  
+> **Deprecation Notice:** This repository is no longer maintained.  
+>  
+> We encourage you to explore our latest solutions for React integration. Check out the [Kickstart Sample App](https://github.com/kontent-ai/kickstart-react-app) or the [Next.js Sample App](https://github.com/kontent-ai/sample-app-next-js) for up-to-date implementations.
+
 > [!IMPORTANT]
 > This sample app relies on the Dancing Goat project, which is no longer available for creation in Kontent.ai.
 >
